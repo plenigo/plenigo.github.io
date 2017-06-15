@@ -25,7 +25,7 @@ twitter_username: plenigo
 github_username:  plenigo
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
 theme: jekyll-theme-tactile
 gems:
   - jekyll-feed
