@@ -20,6 +20,16 @@
     }
   }
 }
-h1 {
-  font-family: 'Ubuntu', sans-serif;
+header {
+  position: relative;
+  padding-left: 30%;
+  
+  h1 {
+    font-family: 'Ubuntu', sans-serif;
+  }
+  img {
+    position: absolute;
+    left: 0;
+    width: 30%;
+  }
 }
