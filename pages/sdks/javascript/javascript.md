@@ -38,9 +38,27 @@ The snippet call expects the following parameters. All these parameters are mand
 |Parameter|Type|Description|
 |:--------|:-----|:----------|
 |elementId|string|The id of the HTML element the snippet should be rendered into.|
-|snippetId|There are predefined constants for the different snippets.<br/><br/>Snippets that combine different elements:<br/><ul><li>plenigo.Snippet.PERSONAL_DATA</li><li>plenigo.Snippet.ORDER</li><li>plenigo.Snippet.SUBSCRIPTION</li><li>plenigo.Snippet.PAYMENT_METHODS</li><li>plenigo.Snippet.ADDRESS_DATA</li></ul><br/>Single elements:<br/><ul><li>plenigo.Snippet.BILLING_ADDRESS_DATA</li><li>plenigo.Snippet.DELIVERY_ADDRESS_DATA</li><li>plenigo.Snippet.BANK_ACCOUNT</li><li>plenigo.Snippet.CREDIT_CARD</li><li>plenigo.Snippet.PERSONAL_DATA_SETTINGS</li><li>plenigo.Snippet.PERSONAL_DATA_ADDRESS</li><li>plenigo.Snippet.PERSONAL_DATA_PROTECTION</li><li>plenigo.Snippet.PERSONAL_DATA_SOCIAL_MEDIA</li><li>plenigo.Snippet.PERSONAL_DATA_PASSWORD</li></ul>|The snippet type that should be rendered.|
+|snippetId|string|The snippet type that should be rendered. there are predefined constants listed below.|
 |loggedOutRedirectUrl|string|It is strongly recommended that you check if a user is logged in before showing a snippet. If you don't do this check the user will be redirected to this URL if the user is not logged in.|
 |loginToken|string|string	The login token is the optional fourth parameter. It is only necessary and mandatory if the plenigo user management is not used but an external user management.|
+
+Snippets that combine different elements
+* plenigo.Snippet.PERSONAL_DATA
+* plenigo.Snippet.ORDER
+* plenigo.Snippet.SUBSCRIPTION
+* plenigo.Snippet.PAYMENT_METHODS
+* plenigo.Snippet.ADDRESS_DATA
+
+Single elements
+* plenigo.Snippet.BILLING_ADDRESS_DATA
+* plenigo.Snippet.DELIVERY_ADDRESS_DATA
+* plenigo.Snippet.BANK_ACCOUNT
+* plenigo.Snippet.CREDIT_CARD
+* plenigo.Snippet.PERSONAL_DATA_SETTINGS
+* plenigo.Snippet.PERSONAL_DATA_ADDRESS
+* plenigo.Snippet.PERSONAL_DATA_PROTECTION
+* plenigo.Snippet.PERSONAL_DATA_SOCIAL_MEDIA
+* plenigo.Snippet.PERSONAL_DATA_PASSWORD
 
 Example snippet for the JavaScript to render a personal data snippet.
 
