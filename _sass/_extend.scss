@@ -34,13 +34,15 @@ header {
   position: relative;
   padding-left: 20%;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.18);
+  padding-top: 20px;
   
   h1 {
     font-family: 'Ubuntu', sans-serif;
   }
   img {
     position: absolute;
-    left: 5%;
+    left: 3%;
     width: 14%;
+    top: 17px
   }
 }
