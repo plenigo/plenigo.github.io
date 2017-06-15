@@ -9,6 +9,15 @@
   a, a:link, a:visited, a:active {
     color: #16aeb9;
   }
+  table {
+    th {
+      text-align: center;
+      padding: 3
+    }
+    td {
+      padding: 3
+    }
+  }
 }
 h1 {
   font-family: 'Ubuntu', sans-serif;
