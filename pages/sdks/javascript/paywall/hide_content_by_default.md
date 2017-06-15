@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Client side JavaScript-SDK
-permalink: /sdk/javascript/hide_content_afterwards
+title: JavaScript-SDK Paywall - hide by default
+permalink: /sdk/javascript/hide_by_default
 ---
 
 # Hide content by default

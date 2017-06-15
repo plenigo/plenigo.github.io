@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Client side JavaScript-SDK
+title: JavaScript-SDK Paywall - hide content afterwards
 permalink: /sdk/javascript/hide_content_afterwards
 ---
 
