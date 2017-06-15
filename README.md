@@ -1,7 +1,7 @@
 # plenigo.github.io
 plenigo developers documentation
 
-[test.md](test.md)
+[test](test)
 
 ```javascript
 alert('test');
