@@ -4,6 +4,7 @@ layout: default
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
+[Javascript SDK] (pages/sdks/javascript/client_paywall)
 [Link to another page](another-page).
 
 There should be whitespace between paragraphs.
