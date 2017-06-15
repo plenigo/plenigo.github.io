@@ -70,3 +70,27 @@
   .vi    { color: #008080 } // Name.Variable.Instance
   .il    { color: #099 } // Literal.Number.Integer.Long
 }
+
+
+
+code, pre {
+  margin-bottom: 30px;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;
+  font-size: 14px;
+  color: #222;
+}
+
+code {
+  padding: 0 3px;
+  border: solid 1px #ddd;
+}
+
+pre {
+  padding: 20px;
+  overflow: auto;
+  text-shadow: none;
+}
+pre code {
+  padding: 0;
+  border: none;
+}
