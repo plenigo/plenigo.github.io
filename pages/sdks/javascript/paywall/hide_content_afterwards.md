@@ -74,5 +74,3 @@ A complete example page where you only need to insert your data. This example as
     </body>
 </html>
 ```
-
-[back](/)
