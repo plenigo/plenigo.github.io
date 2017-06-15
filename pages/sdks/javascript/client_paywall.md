@@ -38,12 +38,12 @@ Important: The data-disable-metered tag don't need to be used if metered shouldn
 Examples:
 
 1. User has bought the product so metered must be disabled for this product
-    ´´´HTML
+    ```HTML
     <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-disable-metered="true"></script>
-    ´´´
+    ```
 2. Use metered functionality but don't show the plenigo metered counter widget
-    ´´´HTML
+    ```HTML
     <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-hide-metered-counter="true"></script>
-    ´´´
+    ```
 
 [back](/)
