@@ -26,7 +26,7 @@ github_username:  plenigo
 
 # Build settings
 markdown: kramdown
-theme: tactile
+theme: jekyll-theme-tactile
 gems:
   - jekyll-feed
 exclude:
