@@ -15,7 +15,7 @@ In the case of a server side paywall the JavaScript SDK is responsible for:
 
 To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
 
-`<script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"></script>
+`<script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"></script>`
 
 There are additional configuration options. This options are added as attributes to the JavaScript tag.
 
@@ -36,8 +36,8 @@ Important: The data-disable-metered tag don't need to be used if metered shouldn
 Examples:
 
 1. User has bought the product so metered must be disabled for this product
-    `<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-disable-metered="true"></script>
+    `<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-disable-metered="true"></script>`
 2. Use metered functionality but don't show the plenigo metered counter widget
-    `<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-hide-metered-counter="true"></script>
+    `<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-hide-metered-counter="true"></script>`
 
 [back](/)
