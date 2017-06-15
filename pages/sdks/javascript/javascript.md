@@ -43,22 +43,22 @@ The snippet call expects the following parameters. All these parameters are mand
 |loginToken|string|string	The login token is the optional fourth parameter. It is only necessary and mandatory if the plenigo user management is not used but an external user management.|
 
 Snippets that combine different elements
-* plenigo.Snippet.PERSONAL_DATA
-* plenigo.Snippet.ORDER
-* plenigo.Snippet.SUBSCRIPTION
-* plenigo.Snippet.PAYMENT_METHODS
-* plenigo.Snippet.ADDRESS_DATA
+* `plenigo.Snippet.PERSONAL_DATA`
+* `plenigo.Snippet.ORDER`
+* `plenigo.Snippet.SUBSCRIPTION`
+* `plenigo.Snippet.PAYMENT_METHODS`
+* `plenigo.Snippet.ADDRESS_DATA`
 
 Single elements
-* plenigo.Snippet.BILLING_ADDRESS_DATA
-* plenigo.Snippet.DELIVERY_ADDRESS_DATA
-* plenigo.Snippet.BANK_ACCOUNT
-* plenigo.Snippet.CREDIT_CARD
-* plenigo.Snippet.PERSONAL_DATA_SETTINGS
-* plenigo.Snippet.PERSONAL_DATA_ADDRESS
-* plenigo.Snippet.PERSONAL_DATA_PROTECTION
-* plenigo.Snippet.PERSONAL_DATA_SOCIAL_MEDIA
-* plenigo.Snippet.PERSONAL_DATA_PASSWORD
+* `plenigo.Snippet.BILLING_ADDRESS_DATA`
+* `plenigo.Snippet.DELIVERY_ADDRESS_DATA`
+* `plenigo.Snippet.BANK_ACCOUNT`
+* `plenigo.Snippet.CREDIT_CARD`
+* `plenigo.Snippet.PERSONAL_DATA_SETTINGS`
+* `plenigo.Snippet.PERSONAL_DATA_ADDRESS`
+* `plenigo.Snippet.PERSONAL_DATA_PROTECTION`
+* `plenigo.Snippet.PERSONAL_DATA_SOCIAL_MEDIA`
+* `plenigo.Snippet.PERSONAL_DATA_PASSWORD`
 
 Example snippet for the JavaScript to render a personal data snippet.
 
