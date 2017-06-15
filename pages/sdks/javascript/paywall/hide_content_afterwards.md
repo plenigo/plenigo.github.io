@@ -46,33 +46,32 @@ A complete example page where you only need to insert your data. This example as
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>A great news page </title>
-
-    <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-test-mode="true">
-    </script>
-</head>
-<body>
-
-<h2>This is the content area</h2>
-
-<div id="targetId">
-    <p>
-        This is the content you waited for!
-    </p>
-</div>
-<div id="sourceId" style="display:none;">
-    <p>
-        You don't have the right to see this content! Sry!
-        <button onclick="plenigo.checkout('YOUR_CHECKOUT_CODE_FROM_THE_PLENIGO_PRODUCT_PAGE')">
-            Buy now
-        </button>
-        <button onclick="plenigo.login();">
-            Login
-        </button>
-    </p>
-</div>
-</body>
+    <head>
+        <title>A great news page </title>
+    
+        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-test-mode="true">
+        </script>
+    </head>
+    <body>
+        <h2>This is the content area</h2>
+        
+        <div id="targetId">
+            <p>
+                This is the content you waited for!
+            </p>
+        </div>
+        <div id="sourceId" style="display:none;">
+            <p>
+                You don't have the right to see this content! Sry!
+                <button onclick="plenigo.checkout('YOUR_CHECKOUT_CODE_FROM_THE_PLENIGO_PRODUCT_PAGE')">
+                    Buy now
+                </button>
+                <button onclick="plenigo.login();">
+                    Login
+                </button>
+            </p>
+        </div>
+    </body>
 </html>
 ```
 
