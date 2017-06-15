@@ -28,7 +28,7 @@ github_username:  plenigo
 markdown: kramdown
 theme: jekyll-theme-tactile
 gems:
-  - jekyll-feed
+#  - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock
