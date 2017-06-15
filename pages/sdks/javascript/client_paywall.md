@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Client side JavaScript-SDK
 permalink: /sdk/javascript
 ---
