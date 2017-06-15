@@ -1,7 +1,7 @@
 ---
 layout: default
 title: JavaScript-SDK PayWall - hide by default
-permalink: /sdk/javascript/hide_by_default
+permalink: /sdk/javascript/hide_content_by_default
 ---
 
 # PayWall - hide content by default
