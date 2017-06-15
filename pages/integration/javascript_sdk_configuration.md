@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Client side JavaScript-SDK
-permalink: /sdk/javascript
+permalink: /sdk/javascript/something
 ---
 
 # Server side paywall
