@@ -4,28 +4,30 @@ title: Client side JavaScript-SDK
 permalink: /sdk/javascript/hide_content_afterwards
 ---
 
-# Server side paywall
+# Hide content afterwards
 
-In the case of a server side paywall the JavaScript SDK is responsible for:
-
-* User login
-* User status
-* Count metered views
-* Show metered view counter
-
-To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
+The full page with all content is rendered by default. The plenigo JavaScript checks if the user has all rights necessary to see the content and if 
+not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. 
+The **COMPANY_ID** variable must be replaced with the actual company id.
 
 ```html
-<script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"></script>
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true"></script>
 ```
 
 There are additional configuration options. This options are added as attributes to the JavaScript tag.
 
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
-|data-disable-metered|Yes, if product is owned by user|true/false|Deactivates the metered functionality and all the logic coming with it.|
+|data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
 |data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
 |data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
+|data-client-paywall|Yes|true|Must be set to enabled client side paywall.|
+|data-test-mode|No|true/false|Flag indicating if test mode should be used.|
+|data-paywall-type|Yes|hide|Indicates the client side paywall type.|
+|data-paywall-source-element-id|Yes|id of the element to get the content from.|id of the element to get the content from.|
+|data-paywall-target-element-id|Yes|id of the element to add the content to.|id of the element to add the content to.|
+|paywall-registration-element-id|Yes, if two two phase metered is planed|id of the element containing the registration/login form.|id of the element containing the registration/login form.|
+|data-product-id|Yes|product id of the product on this page.|Product id that identifies the product that is sold on this page.|
 |data-login-status|No|function to call after user status change.|Function that should be called if user status changed. The only argument passed is the status as boolean value.|
 |data-oauth2-access-code|No|function to call after OAuth2 was successful.|Function that should be called if OAuth2 is done. The only argument passed is the access code.|
 |data-original-site-url|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
@@ -33,17 +35,45 @@ There are additional configuration options. This options are added as attributes
 |data-auto-browser-prepare|No|deactivate automatic browser preparation|You can disable automatic browser configuration but you have to call plenigo.initializeBrowser() in that case before any call to the plenigo script.|
 |data-profile-security-label|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
 
-Important: The data-disable-metered tag don't need to be used if metered shouldn't be used at all. This can be configured within the plenigo backend. It is only necessary for the case the user has bought the product. 
+Example snippet for the JavaScript to include if you use the client side paywall and hide the content if user has not bought the product.
 
-Examples:
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="product"></script>
+```
 
-1. User has bought the product so metered must be disabled for this product
-    ```html
-    <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-disable-metered="true"></script>
-    ```
-2. Use metered functionality but don't show the plenigo metered counter widget
-    ```html
-    <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-hide-metered-counter="true"></script>
-    ```
+A complete example page where you only need to insert your data. This example assumes you are running in test mode with metered views enabled.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A great news page </title>
+
+    <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-test-mode="true">
+    </script>
+</head>
+<body>
+
+<h2>This is the content area</h2>
+
+<div id="targetId">
+    <p>
+        This is the content you waited for!
+    </p>
+</div>
+<div id="sourceId" style="display:none;">
+    <p>
+        You don't have the right to see this content! Sry!
+        <button onclick="plenigo.checkout('YOUR_CHECKOUT_CODE_FROM_THE_PLENIGO_PRODUCT_PAGE')">
+            Buy now
+        </button>
+        <button onclick="plenigo.login();">
+            Login
+        </button>
+    </p>
+</div>
+</body>
+</html>
+```
 
 [back](/)
