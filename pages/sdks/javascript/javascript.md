@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Client side JavaScript-SDK
-permalink: /sdk/javascript
+permalink: /sdks/javascript
 ---
 
 # JavaScript SDK client side integration
@@ -12,17 +12,17 @@ The plenigo JavaScript-SDK offers the possibility to implement the plenigo funct
 
 If you plan to use the PayWall functionality of plenigo you have to choose between three different use cases:
 
-1. [Hide content afterwards](/sdk/javascript/hide_content_afterwards)
+1. [Hide content afterwards](/sdks/javascript/hide_content_afterwards)
 
    The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content.
    If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK she can access the whole page without any restrictions.
    
-2. [Hide content by default](/sdk/javascript/hide_content_by_default)
+2. [Hide content by default](/sdks/javascript/hide_content_by_default)
 
    The content will be placed in an HTML element that is hidden. After the user was verified to be allowed to see the content the content will be made visible
    by the plenigo JavaScript-SDK. The user is still able to access the content in the HTML sources.
    
-3. [Load content afterwards](/sdk/javascript/load_content_afterwards)
+3. [Load content afterwards](/sdks/javascript/load_content_afterwards)
 
    The content to be protected isn't on the site at all. After the user was verified to be allowed to see the content the content will be loaded by another URL.
    If the user disables JavaScript or blocks the plenigo JavaScript-SDK he will not be able to see the content. It is also not visible in the HTML sources.
@@ -69,7 +69,7 @@ Functions that are not covered on this page are used by your own risk. Only func
 If a function disappears it normally isn't needed anymore and if you are still using it nothing happens. But you could also remove this function. Functions that
 must be replaced with other functions are marked as deprecated with an end date mentioned.
 
-#### Start - Initialization call
+### Start - Initialization call
 
 The plenigo JavaScript-SDK initialize itself automatically when it is included in the HTML page after the page is loaded completely. If you are loading the 
 Javascript-SDK manually after the page is loaded you need to start the initialization by calling this method.
@@ -78,10 +78,10 @@ Javascript-SDK manually after the page is loaded you need to start the initializ
 /**
  * Initialize the plenigo JavaScript-SDK.
  */
-plenigo.start()
+plenigo.start();
 ```
 
-#### Checkout - Start a plenigo checkout
+### Checkout - Start a plenigo checkout
 
 This function offers the possibility to start a checkout process for the customer including the login and registration process of plenigo.
 
@@ -91,7 +91,7 @@ This function offers the possibility to start a checkout process for the custome
  * 
  * @param {object} configuration              
  */
-plenigo.checkout(configuration)
+plenigo.checkout(configuration);
 ```
 The following tables describes the configuration object. Non mandatory parameters can be filled with _null_.
 
@@ -104,7 +104,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |affiliateId|string|No|Id of the affiliate defined in the plenigo backend. The affiliate module must be purchased for this functionality.|
 |elementId|string|No|If you want to start the checkout in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
 
-#### Checkout with remote login - Start a plenigo checkout with external user management
+### Checkout with remote login - Start a plenigo checkout with external user management
 
 This function offers the possibility to start a checkout process for the customer including the login and registration process of plenigo.
 
@@ -114,7 +114,7 @@ This function offers the possibility to start a checkout process for the custome
  * 
  * @param {object} configuration              
  */
-plenigo.checkoutWithRemoteLogin(configuration)
+plenigo.checkoutWithRemoteLogin(configuration);
 ```
 The following tables describes the configuration object. Non mandatory parameters can be filled with _null_.
 
@@ -127,7 +127,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |affiliateId|string|No|Id of the affiliate defined in the plenigo backend. The affiliate module must be purchased for this functionality.|
 |elementId|string|No|If you want to start the checkout in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
 
-#### Login - Open the plenigo login window
+### Login - Open the plenigo login window
 
 This function offers the possibility to open up the plenigo login window. It is possible for the user to switch to the registration window if needed.
 
@@ -137,7 +137,7 @@ This function offers the possibility to open up the plenigo login window. It is 
  * 
  * @param {object} configuration              
  */
-plenigo.login(configuration)
+plenigo.login(configuration);
 ```
 The following tables describes the configuration object. Non mandatory parameters can be filled with _null_.
 
@@ -148,7 +148,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |state|string|No|CSRF token for the [OAuth2](https://tools.ietf.org/html/rfc6749) process to use. This way you can verify the request source.|
 |elementId|string|No|If you want to start the login in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
 
-#### Registration - Open the plenigo registration window
+### Registration - Open the plenigo registration window
 
 This function offers the possibility to open up the plenigo registration window. It is possible for the user to switch to the login window if needed.
 
@@ -158,7 +158,7 @@ This function offers the possibility to open up the plenigo registration window.
  * 
  * @param {object} configuration              
  */
-plenigo.registration(configuration)
+plenigo.registration(configuration);
 ```
 The following tables describes the configuration object. Non mandatory parameters can be filled with _null_.
 
@@ -169,7 +169,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |state|string|No|CSRF token for the [OAuth2](https://tools.ietf.org/html/rfc6749) process to use. This way you can verify the request source.|
 |elementId|string|No|If you want to start the login in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
 
-#### Logout - Logout the user
+### Logout - Logout the user
 
 This function deletes the user's login cookie. It doesn't have any additional functionality.
 
@@ -182,7 +182,7 @@ This function deletes the user's login cookie. It doesn't have any additional fu
 plenigo.logout();
 ```
 
-#### Is user logged in - Indicates if the user is currently logged in
+### Is user logged in - Indicates if the user is currently logged in
 
 This function indicates if the user is logged in.
 

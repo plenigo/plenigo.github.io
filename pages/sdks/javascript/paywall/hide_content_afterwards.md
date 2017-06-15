@@ -1,7 +1,7 @@
 ---
 layout: default
 title: JavaScript-SDK PayWall - hide content afterwards
-permalink: /sdk/javascript/hide_content_afterwards
+permalink: /sdks/javascript/hide_content_afterwards
 ---
 
 # PayWall - hide content afterwards

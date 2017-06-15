@@ -1,7 +1,7 @@
 ---
 layout: default
 title: JavaScript-SDK PayWall - load content afterwards
-permalink: /sdk/javascript/load_content_afterwards
+permalink: /sdks/javascript/load_content_afterwards
 ---
 
 # PayWall - load content afterwards
