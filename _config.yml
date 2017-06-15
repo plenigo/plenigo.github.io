@@ -1,3 +1,9 @@
+#title: Tactile theme
+#description: Tactile is a theme for GitHub Pages.
+#show_downloads: true
+#google_analytics:
+#theme: 
+
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
@@ -32,3 +38,5 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+
