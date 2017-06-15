@@ -1,10 +1,10 @@
 ---
 layout: default
-title: JavaScript-SDK Paywall - load content afterwards
+title: JavaScript-SDK PayWall - load content afterwards
 permalink: /sdk/javascript/load_content_afterwards
 ---
 
-# Server side paywall
+# PayWall - load content afterwards
 
 The page is only rendered with a teaser and an up selling window or anything else defined. The plenigo JavaScript checks if the user has all rights 
 necessary to see the content and if the content is accessible it loads the complete article snippet from another URL not visible to the user. 
@@ -21,9 +21,9 @@ There are additional configuration options. This options are added as attributes
 |<code>data-disable-metered</code>|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
 |<code>data-hide-metered-counter</code>|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
 |<code>data-lang</code>|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
-|<code>data-client-paywall</code>|Yes|true|Must be set to enabled client side paywall.|
+|<code>data-client-paywall</code>|Yes|true|Must be set to enabled client side PayWall.|
 |<code>data-test-mode</code>|No|true/false|Flag indicating if test mode should be used.|
-|<code>data-paywall-type</code>|Yes|url|Indicates the client side paywall type.|
+|<code>data-paywall-type</code>|Yes|url|Indicates the client side PayWall type.|
 |<code>data-paywall-base-url</code>|Yes|base URL to find real content|Base URL to find real content for. To access the content the product id will be hashed with MD5 and added to the paywall-base-url.|
 |<code>data-paywall-target-element-id</code>|Yes|id of the element to add the content to.|id of the element to add the content to.|
 |<code>data-paywall-external-content-id</code>|Yes|id of the external content|The MD5 hash of this value will identify the external content.|
@@ -36,7 +36,7 @@ There are additional configuration options. This options are added as attributes
 |<code>data-auto-browser-prepare</code>|No|deactivate automatic browser preparation|You can disable automatic browser configuration but you have to call plenigo.initializeBrowser() in that case before any call to the plenigo script.|
 |<code>data-profile-security-label</code>|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
 
-Example snippet for the JavaScript to include if you use the client side paywall and load the content from another url if user has not bought the product.
+Example snippet for the JavaScript to include if you use the client side PayWall and load the content from another url if user has not bought the product.
 
 ```html
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="http://example.com" data-paywall-target-element-id="targetId" data-product-id="productId" data-paywall-external-content-id="externalContentId"></script>
