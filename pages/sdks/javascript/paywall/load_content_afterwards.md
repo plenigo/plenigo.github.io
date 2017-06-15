@@ -33,7 +33,6 @@ There are additional configuration options. This options are added as attributes
 |<code>data-oauth2-access-code</code>|No|function to call after OAuth2 was successful.|Function that should be called if OAuth2 is done. The only argument passed is the access code.|
 |<code>data-original-site-url</code>|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
 |<code>data-metered-description-url</code>|No|metered description url|Link to a page that describes the metered model.|
-|<code>data-auto-browser-prepare</code>|No|deactivate automatic browser preparation|You can disable automatic browser configuration but you have to call plenigo.initializeBrowser() in that case before any call to the plenigo script.|
 |<code>data-profile-security-label</code>|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
 
 Example snippet for the JavaScript to include if you use the client side PayWall and load the content from another url if user has not bought the product.

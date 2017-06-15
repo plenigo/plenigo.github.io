@@ -45,5 +45,3 @@ Examples:
     ```html
     <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-hide-metered-counter="true"></script>
     ```
-
-[back](/)
