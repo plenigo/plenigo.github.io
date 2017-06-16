@@ -44,8 +44,16 @@ developed are designed and implemented mainly for that purpose.
 
 ## Customer mobile secret
    
-{% include_relative includes/customer_mobile_secrets.md %}
+{% include_relative includes/customer_mobile_secret.md %}
 
 ## Company information (user/order/subscription)
    
 {% include_relative includes/statistic_information.md %}
+
+## Error handling
+   
+{% include_relative includes/error_handling.md %}
+
+## Use cases
+   
+{% include_relative includes/use_cases.md %}
