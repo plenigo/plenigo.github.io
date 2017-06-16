@@ -6,7 +6,7 @@ permalink: /plugins/sixcms
 
 # plenigo SixCMS plugin
 
-plenigo offers a plugin for the SixCMS to integrate and enable plenigo out-of-the-box. The plugin uses the plenigo [PHP-SDK](https://github.com/plenigo/plenigo_php_sdk/wiki).
+plenigo offers a plugin for the SixCMS to integrate and enable plenigo out-of-the-box. The plugin uses the plenigo [PHP-SDK](/sdks/php).
 This way all the functionality that is available in the plenigo PHP-SDK can also be added manually.
 
 ## Installation 
