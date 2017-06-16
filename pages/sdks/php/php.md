@@ -18,3 +18,6 @@ developed are designed and implemented mainly for that purpose.
    
 {% include_relative includes/login.md %}
 
+## External user management
+   
+{% include_relative includes/external_user_management.md %}

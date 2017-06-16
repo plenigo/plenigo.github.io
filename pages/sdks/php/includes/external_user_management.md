@@ -5,7 +5,7 @@ To register an external user into the plenigo system you shoul use the method \p
 
 If you try to register a user twice you will get the user id returned that was created during the first registration process.
 
-```PHP
+```php
 /**
  * Registers a new user bound to the company that registers the user.
  *
@@ -25,7 +25,7 @@ If you try to register a user twice you will get the user id returned that was c
 ###  Change email address of an existing user
 It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes. 
 
-```PHP
+```php
 /**
  * Change email address of an existing user.
  *
@@ -42,7 +42,7 @@ It is very important for the plenigo system to know the correct email address of
 ### Create login token for an external user
 To indicate a successful login to the plenigo system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed e.g. to the `build()`-method of the \plenigo\builders\CheckoutSnippetBuilder. 
 
-```PHP
+```php
 /**
  * Create a login token for an existing user.
  *
