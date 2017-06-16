@@ -37,3 +37,15 @@ developed are designed and implemented mainly for that purpose.
 ## App management
    
 {% include_relative includes/app_management.md %}
+
+## Web page snippets
+   
+{% include_relative includes/web_page_snippets.md %}
+
+## Customer mobile secret
+   
+{% include_relative includes/customer_mobile_secrets.md %}
+
+## Company information (user/order/subscription)
+   
+{% include_relative includes/statistic_information.md %}

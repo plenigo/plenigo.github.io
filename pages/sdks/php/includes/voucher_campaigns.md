@@ -1,10 +1,10 @@
-## Create loyalty campaigns by giving vouchers as giveaways
+### Create loyalty campaigns by giving vouchers as giveaways
 
 As a company if you want to give free access to customers you can generate a voucher campaign (by creating voucher Ids that can be redeemed as a free purchase of a product.
 
 Vouchers are numbered and limited in nature (up to 10 thousand per channel) but if you are looking for an unlimited free giveaway, you can create and allow purchase of a free (as in $0-. price) product.
 
-### Campaigns
+#### Campaigns
 
 Campaigns are a set of channels with an amount of vouchers generated for each channel. Campaigns contain a _name_ and a _date range_ when that campaign will be active. After the expiration date or before the start date, the vouchers will not be able to be redeemed.
 Some examples:
@@ -14,7 +14,7 @@ Some examples:
 * "New advertising push"
 * "New branding acquisition"
 
-### Channels
+#### Channels
 
 Channels are a way to funnel your customers in order to measure statistics on the redemption of vouchers. You can name the channel anything you want and assign that channel to a product when creating the campaign.
 Some examples:
@@ -24,7 +24,7 @@ Some examples:
 * "Mobile users"
 * "People at the mall in downtown New Jersey"
 
-### Creating a voucher campaign
+#### Creating a voucher campaign
 
 A voucher can be used to put a "tag" on a free product purchase. Also, if you only provide the purchase though Voucher Redemption, it means that when the voucher Ids are redeemed, then there is no more purchases left for the product.
 
@@ -58,7 +58,7 @@ $ytVouchers = $channelYT->getIds(); // array of strings with 100 voucher ids
 
 ```
 
-### Redeeming a voucher
+#### Redeeming a voucher
 
 Once you got the voucher code you can redeem it using the `CheckoutService::redeemVoucher()` with these parameters:
 
@@ -80,7 +80,7 @@ if($result){
 
 ```
 
-### 'Buying' a free product
+#### 'Buying' a free product
 
 Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
 
@@ -100,5 +100,4 @@ $result = CheckoutService::buyFreeProduct($prodId, $customerId, false);
 if($result){
   // Profit!
 }
-
 ```
