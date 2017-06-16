@@ -86,7 +86,7 @@ With this functionality the company can provide several access ids to a given cu
 //2. Get the customer id
 
 $isExternal = false; // False=Plenigo Customer ID / True=External customer ID
-$customerIds = array('<MY_SAP_CUSTID', '<MY_CRM_CUSTID', '<MY_BILLING_CUSTID', '<MY_ECOMMERCE_CUSTID'); // one up to four access id
+$customerIds = array('<MY_SAP_CUSTID>', '<MY_CRM_CUSTID>', '<MY_BILLING_CUSTID>', '<MY_ECOMMERCE_CUSTID>'); // one up to four access id
 
 // (surround this code with a try/catch block to handle errors)
 UserManagementService::importCustomerAccess($customerId, $isExternal, $customerIds);
