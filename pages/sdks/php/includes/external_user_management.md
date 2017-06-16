@@ -40,7 +40,7 @@ It is very important for the plenigo system to know the correct email address of
 ```
 
 ### Create login token for an external user
-To indicate a successful login to the plenigo system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed e.g. to the `build()`-method of the \plenigo\builders\CheckoutSnippetBuilder. 
+To indicate a successful login to the plenigo system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed e.g. to the `build()`-method of the `\plenigo\builders\CheckoutSnippetBuilder`. 
 
 ```php
 /**

@@ -1,5 +1,4 @@
-## Allow a third party to access customer information for a specific product(only companies can do this)
-
+### Allow a third party to access customer information for a specific product(only companies can do this)
 
 As a company, if you want to register a third party so that they can query product access of a specific customer, you can do this using the sdk. 
 
@@ -9,13 +8,13 @@ There are a couple of steps that you have to do in order to do this:
 2. Request an access token
 3. Request a customer application access
 
-###1. Configure an application id
+#### Configure an application id
 
 As a company, you have to add this using the plenigo management interface, through the account menu, inside the extended settings tab.
 
-###2-3. Request an access token and a customer application access(only companies can do this)
+#### Request an access token and a customer application access(only companies can do this)
 
-You can use the com.plenigo.sdk.services.AppManagement#requestAppToken method for this purpose, followed by the com.plenigo.sdk.services.AppManagement#requestAppId method:
+You can use the `\plenigo\services\AppManagement#requestAppToken` method for this purpose, followed by the `\plenigo\services\AppManagement#requestAppId` method:
 
 ```php
 //2. Request an access token
@@ -34,7 +33,7 @@ Once you have the application access data, you can give this information to the 
 There is a limit of how many customer application ids you can request, but you can configure that in the company management interface of plenigo.
 ***
 
-## Sample usage of customer application id for third parties(companies and third parties can do this)
+### Sample usage of customer application id for third parties(companies and third parties can do this)
 
 As a third party, once we have all the information provided above, we can query information, a code sample of how to do this is provided below:
 
@@ -50,22 +49,22 @@ Also companies can use their own secret instead of the application id to call th
 //This returns a boolean that will tell you if the user did buy the product(true) or not(false).
 $hasUserBought = AppManagementService::hasUserBought("customerId", "productId", "customerAppId");
 ```
-## Query customer application ids(companies and third parties can do this)
+### Query customer application ids(companies and third parties can do this)
 
 As a company or a third party, you can request the current applications that you have registered for a specific customer(As a third party, you must configure the application id in the plenigo manager to do this, for more information see the "Sample usage of customer application id for third parties" in this wiki).
 
-In order to do this, you can use the com.plenigo.sdk.services.AppManagement#getCustomerApps method, an example is provided below:
+In order to do this, you can use the `\plenigo\services\AppManagement#getCustomerApps` method, an example is provided below:
 
 ```php
 //This method will return a list of customer application access information
 $appsData = AppManagementService::getCustomerApps("customerId");
 ```
 
-## Remove an application id for a customer(only companies can do this)
+### Remove an application id for a customer(only companies can do this)
 
 As a company, if you would like to remove a customer application id, you can do this with the Application management service.
 
-In order to do this, you must use the com.plenigo.sdk.services.AppManagement#deleteCustomerApp method, an example is provided below:
+In order to do this, you must use the `\plenigo\services\AppManagement#deleteCustomerApp` method, an example is provided below:
 
 ```php
 //As long as this method does not return an exception, this will delete the customer app id for the specific //customer

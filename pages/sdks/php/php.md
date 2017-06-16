@@ -25,3 +25,15 @@ developed are designed and implemented mainly for that purpose.
 ## Checkout
    
 {% include_relative includes/checkout.md %}
+
+## Products
+   
+{% include_relative includes/products.md %}
+
+## Voucher campaigns
+   
+{% include_relative includes/voucher_campaigns.md %}
+
+## App management
+   
+{% include_relative includes/app_management.md %}

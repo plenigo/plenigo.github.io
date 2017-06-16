@@ -49,7 +49,7 @@ echo '<a href="#" onclick="'.$snippet.'return false;">Login to plenigo</a>';
 
 For a more secure way to communicate with the server you can generate a cross-site request forgery token so that when the user is redirected to the page, you can ensure that the redirect comes from the website you requested it to, below there are examples of how to generate the snippet.
 
-You can use the \plenigo\services\TokenService class to generate a token.
+You can use the `\plenigo\services\TokenService class to generate a token.
 
 ```php
 $code = "CODE_RECEIVED_FROM_THE_REDIRECTION";

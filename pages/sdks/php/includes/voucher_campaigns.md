@@ -6,7 +6,7 @@ Vouchers are numbered and limited in nature (up to 10 thousand per channel) but 
 
 ### Campaigns
 
-Campaigns are a set of channels with an amount of vouchers generated for each channel. Campaigns contain a **name** and a **date range** when that campaign will be active. After the expiration date or before the start date, the vouchers will not be able to be redeemed.
+Campaigns are a set of channels with an amount of vouchers generated for each channel. Campaigns contain a _name_ and a _date range_ when that campaign will be active. After the expiration date or before the start date, the vouchers will not be able to be redeemed.
 Some examples:
 
 * "YouTube Channel push campaign"
@@ -24,16 +24,14 @@ Some examples:
 * "Mobile users"
 * "People at the mall in downtown New Jersey"
 
-You get the point...
-
 ### Creating a voucher campaign
 
 A voucher can be used to put a "tag" on a free product purchase. Also, if you only provide the purchase though Voucher Redemption, it means that when the voucher Ids are redeemed, then there is no more purchases left for the product.
 
-You can create a campaign programmatically by calling the ```VoucherService::generateCampaign()``` method with these parameters:
+You can create a campaign programmatically by calling the `VoucherService::generateCampaign()` method with these parameters:
 
-| **Parameter** | **Required** | **Value type** | **Description** |
-|---------------|--------------|----------------|-----------------|
+|Parameter|Required|Value type|Description|
+|:--------|:-------|: --------|:----------|
 | $name     | no     | string         | The name you wish to give this campaign. Campaigns can have several channels (user acquisition funnels) |
 | $productId     | yes     | string         | (default: 1, max: 10000) The amount of vouchers to generate for each channel, will always be 1 for SINGLE voucher types. |
 | $startDate     | no     | string         | The start date of the campaign in the following format: YYYY-MM-DD. |
@@ -62,12 +60,12 @@ $ytVouchers = $channelYT->getIds(); // array of strings with 100 voucher ids
 
 ### Redeeming a voucher
 
-Once you got the voucher code you can redeem it using the ```CheckoutService::redeemVoucher()``` with these parameters:
+Once you got the voucher code you can redeem it using the `CheckoutService::redeemVoucher()` with these parameters:
 
-| **Parameter** | **Required** | **Value type** | **Description** |
-|---------------|--------------|----------------|-----------------|
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
 | $voucherCode     | yes     | string         | The voucher code you got when creating the campaign |
-| $customerId     | yes     | string         | The customer id you can get from the ```UserService::getCustomerInfo()``` method. |
+| $customerId     | yes     | string         | The customer id you can get from the `UserService::getCustomerInfo()` method. |
 | $externalUserid     | no     | boolean         | TRUE to specify you are using [[external user management|UserManagement]] |
 
 > IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful
@@ -84,12 +82,12 @@ if($result){
 
 ### 'Buying' a free product
 
-Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the ```CheckoutService::buyFreeProduct()``` with these parameters:
+Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
 
-| **Parameter** | **Required** | **Value type** | **Description** |
-|---------------|--------------|----------------|-----------------|
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
 | $productId     | yes     | string         | The product id of a free product |
-| $customerId     | yes     | string         | The customer id you can get from the ```UserService::getCustomerInfo()``` method. |
+| $customerId     | yes     | string         | The customer id you can get from the `UserService::getCustomerInfo()` method. |
 | $externalUserid     | no     | boolean         | TRUE to specify you are using [[external user management|UserManagement]] |
 
 > IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful
