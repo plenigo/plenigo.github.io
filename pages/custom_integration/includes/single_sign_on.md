@@ -84,7 +84,6 @@ Java example
 // Create a state token to prevent request forgery and store it in the session for later validation.
 String state = new BigInteger(130, new SecureRandom()).toString(32);
 request.session().attribute("state", state);
-
 ```
 
 PHP example
@@ -149,7 +148,6 @@ Java example
 if (!request.queryParams("state").equals(
     // show error to the user (HttpStatus code 401)
 }
-
 ```
 
 PHP example
