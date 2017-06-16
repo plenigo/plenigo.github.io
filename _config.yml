@@ -52,7 +52,7 @@ kramdown:
     block:
       line_numbers: false
 
-theme: minima
+theme: tactile
 gems:
 #  - jekyll-feed
 exclude:
