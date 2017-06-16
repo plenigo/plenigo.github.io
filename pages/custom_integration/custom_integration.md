@@ -52,8 +52,9 @@ The values mentioned above will contain the following information`
 |browserId|unique browser fingerprint|
 |activated|flag indicating if metered view is activated at all|
 |freeViews|number of free views allowed|
-|viewsTaken|number of free views already taken</td></tr><tr><td class="confluenceTd">limitReached|flag indicating if free view limit is reached|
-|countOnlyUniqueViews|<p>flag indicating to count only unique views</p>|
+|viewsTaken|number of free views already taken|
+|limitReached|flag indicating if free view limit is reached|
+|countOnlyUniqueViews|flag indicating to count only unique views|
 |ignoreSearchEngines|flag indicating to ignore search engines|
 |ignoreSocialMedia|flag indicating to ignore social media|
 |articlesVisited|comma separated list containing the already visited articles (in case of the http-addresses these are the first 8 characters of the MD5 sum of the http-address)|
@@ -61,7 +62,7 @@ The values mentioned above will contain the following information`
 |viewsTakenAfterLogin|free views taken after login|
 |limitReachedAfterLogin|flag indicating if limit of free views after login is reached|
 |startTime|time of the first page hit|
-|meteredPeriod|time period metered view counter is running. Possible values (DAY|WEEK|MONTH|YEAR)|
+|meteredPeriod|time period metered view counter is running. Possible values (DAY, WEEK, MONTH, YEAR)|
 |startWithFirstDay|flag indicating if metered period starts with first visit or at first day / 0 o'clock, etc.|
 |cookieCreationTime|time as long indicating representing cookie creating time|
 
@@ -93,7 +94,7 @@ checkCookieValidity = function() {
         return true;
 }
  
-if (isLimitReached() && userNotLoggedIn() && checkCookieValidity())
+if (limitReached && userNotLoggedIn() && checkCookieValidity())
    blockAccess();
 else if (limitReachedAfterLogin && userLoggedIn() && checkCookieValidity())
    blockAcccess();
