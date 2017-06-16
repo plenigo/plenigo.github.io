@@ -3,7 +3,7 @@ If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK she can 
    
 The plenigo JavaScript checks if the user has all rights necessary to see the content and if 
 not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. 
-The **COMPANY_ID** variable must be replaced with the actual company id.
+The `COMPANY_ID` variable must be replaced with the actual company id.
 
 ```html
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true"></script>
