@@ -1,12 +1,7 @@
----
-layout: default
-title: JavaScript-SDK PayWall - hide content afterwards
-permalink: /sdks/javascript/hide_content_afterwards
----
-
-# PayWall - hide content afterwards
-
-The full page with all content is rendered by default. The plenigo JavaScript checks if the user has all rights necessary to see the content and if 
+The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content.
+If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK she can access the whole page without any restrictions.
+   
+The plenigo JavaScript checks if the user has all rights necessary to see the content and if 
 not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. 
 The **COMPANY_ID** variable must be replaced with the actual company id.
 

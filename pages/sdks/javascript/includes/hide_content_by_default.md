@@ -1,13 +1,7 @@
----
-layout: default
-title: JavaScript-SDK PayWall - hide by default
-permalink: /sdks/javascript/hide_content_by_default
----
-
-# PayWall - hide content by default
-
-The full page with all content is rendered by default and the content section is hidden by CSS and only an upselling window or anything else defined 
-is shown. The plenigo JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS 
+The content will be placed in an HTML element that is hidden. After the user was verified to be allowed to see the content the content will be made visible
+by the plenigo JavaScript-SDK. The user is still able to access the content in the HTML sources.
+   
+The plenigo JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS 
 style that hides the content is removed and the up selling window is hidden. To integrate the JavaScript SDK add the following line to your
 template/html. The **COMPANY_ID** variable must be replaced with the actual company id.
 

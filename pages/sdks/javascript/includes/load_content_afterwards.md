@@ -1,11 +1,6 @@
----
-layout: default
-title: JavaScript-SDK PayWall - load content afterwards
-permalink: /sdks/javascript/load_content_afterwards
----
-
-# PayWall - load content afterwards
-
+The content to be protected isn't on the site at all. After the user was verified to be allowed to see the content the content will be loaded by another URL.
+If the user disables JavaScript or blocks the plenigo JavaScript-SDK he will not be able to see the content. It is also not visible in the HTML sources.
+   
 The page is only rendered with a teaser and an up selling window or anything else defined. The plenigo JavaScript checks if the user has all rights 
 necessary to see the content and if the content is accessible it loads the complete article snippet from another URL not visible to the user. 
 To integrate the JavaScript SDK add the following line to your template/html. The **COMPANY_ID** variable must be replaced with the actual company id.
