@@ -27,7 +27,7 @@ The cookie itself is called _plenigo_view_
 
 Base information:
 
-* The decrypted data is formatted the following way {value}|{value}|{value}...
+* The decrypted data is formatted the following way {value}\|{value}\|{value}...
 * The encryption method used is AES/CTR/NoPadding 128 bit with the following initialization vector: _7a134cc376d05cf6bc116e1e53c8801e_. The encrypted byte string is converted to a hexadecimal string.
 * Key for encryption is a MD5 hash of the company id (not the company secret!) that can be retrieved from the company administration area.
 
@@ -119,6 +119,7 @@ if you create a product dynamically on the fly by every checkout. Non plenigo ma
 managed over the plenigo merchant backend.
 
 1. Parameters plenigo managed product:
+
     |Parameter|Mandatory|Description|
     |:--------|:--------|:----------|
     |pi|Yes|plenigo product id of the product in the plenigo merchant backend|
@@ -138,6 +139,7 @@ managed over the plenigo merchant backend.
     |si|No|Unique id of the price segment to use - the price segment passed here will be used no matter of user country or anything else|
     |pa|No|Flag indicating if the customers billing address should be pre filled with the name and first name saved by the personal user data|
 2. Parameters foreign product:
+
     |Parameter|Mandatory|Description|
     |:--------|:--------|:----------|
     |pi|Yes|Your unique product id for this product|
