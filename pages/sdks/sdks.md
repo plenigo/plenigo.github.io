@@ -12,7 +12,7 @@ plenigo offers SDKs for different programming languages. These SDKs only encapsu
 
    Supports PHP versions up from PHP 5.5.
    
-2. [Java-SDK](https://github.com/plenigo/plenigo_java_sdk/wiki)
+2. [Java-SDK](/sdks/java)
 
    Supports Java versions up from 7.0.
    
