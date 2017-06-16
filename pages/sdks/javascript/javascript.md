@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Client side JavaScript-SDK
+title: plenigo Client side JavaScript-SDK
 permalink: /sdks/javascript
 ---
 
