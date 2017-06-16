@@ -12,17 +12,17 @@ The plenigo JavaScript-SDK offers the possibility to implement the plenigo funct
 
 If you plan to use the PayWall functionality of plenigo you have to choose between three different use cases:
 
-1. Hide content afterwards
+### Hide content afterwards
 
-   {% include_relative includes/hide_content_afterwards.md %}
+{% include_relative includes/hide_content_afterwards.md %}
    
-2. Hide content by default
+### Hide content by default
 
-   {% include_relative includes/hide_content_by_default.md %}
+{% include_relative includes/hide_content_by_default.md %}
    
-3. Load content afterwards
+### Load content afterwards
    
-   {% include_relative includes/load_content_afterwards.md %}
+{% include_relative includes/load_content_afterwards.md %}
    
 ## Snippets functionality
 
