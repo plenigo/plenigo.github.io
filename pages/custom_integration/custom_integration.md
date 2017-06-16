@@ -119,7 +119,7 @@ The encrypted payment data can include the following parameter. The mandatory pa
 if you create a product dynamically on the fly by every checkout. Non plenigo managed products can only be one time purchases. Subscriptions must be
 managed over the plenigo merchant backend.
 
-1. Parameters plenigo managed product:
+1. Parameters plenigo managed product
 
     |Parameter|Mandatory|Description|
     |:--------|:--------|:----------|
@@ -139,7 +139,7 @@ managed over the plenigo merchant backend.
     |pir|No|Product id to overwrite the plenigo product id with. Only usable in combination with the `om`-Flag|
     |si|No|Unique id of the price segment to use - the price segment passed here will be used no matter of user country or anything else|
     |pa|No|Flag indicating if the customers billing address should be pre filled with the name and first name saved by the personal user data|
-2. Parameters foreign product:
+2. Parameters foreign product
 
     |Parameter|Mandatory|Description|
     |:--------|:--------|:----------|
@@ -156,7 +156,6 @@ managed over the plenigo merchant backend.
     |pa|No|Flag indicating if the customers billing address should be pre filled with the name and first name saved by the personal user data|
     
 Available product type identifier:
-
 * `EBOOK`
 * `DIGITALNEWSPAPER`
 * `DOWNLOAD`
