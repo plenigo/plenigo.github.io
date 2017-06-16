@@ -21,3 +21,7 @@ developed are designed and implemented mainly for that purpose.
 ## External user management
    
 {% include_relative includes/external_user_management.md %}
+
+## Checkout
+   
+{% include_relative includes/checkout.md %}

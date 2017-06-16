@@ -14,7 +14,7 @@ Depending on which type of product you want to checkout, there is a different am
 
 If the product is managed by the plenigo and was configured in the plenigo website, only the product id is required for checkout.
 
-By using the \plenigo\builders\CheckoutSnippetBuilder class, you can create snippets easily by filling out the \plenigo\models\ProductBase class with the required information.
+By using the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 ```php
 // creating a Plenigo-managed product
@@ -45,11 +45,11 @@ $plenigoCheckoutCode = $checkout->build();
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Buy this Product</a>';
 ```
 
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the checkout flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a JavaScript event(such as onclick) and it will start the checkout flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
 
 ### Subscription renewal
 
-If the product correspond to the subscription renewal, there is a flag in the **Product** object. This way you can create a subscription renewal button in your site easily setting this flag:
+If the product correspond to the subscription renewal, there is a flag in the _Product_ object. This way you can create a subscription renewal button in your site easily setting this flag:
 
 ```php
 // creating a Plenigo-managed product
@@ -83,7 +83,7 @@ echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your sub
 
 For a more secure way to communicate with the server you can generate a cross-site request forgery token so that when the user is redirected to the page, you can ensure that the redirect comes from the website you requested it to, below there are examples of how to generate the snippet.
 
-You can use the \plenigo\services\TokenService::createCsrfToken() method to generate a token.
+You can use the `\plenigo\services\TokenService::createCsrfToken()` method to generate a token.
 
 ```php
 // creating a Plenigo-managed product
@@ -99,6 +99,7 @@ echo '<a href="#" onclick="'.$snippet.'return false;">Buy this Product</a>';
 ```
 
 ## Checkout combined with OAuth2
+
 ```php
 // creating a Plenigo-managed product
 $product = new \plenigo\models\ProductBase('PLENIGO_ITEM_ID');
