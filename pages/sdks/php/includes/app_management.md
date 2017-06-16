@@ -17,6 +17,7 @@ As a company, you have to add this using the plenigo management interface, throu
 You can use the `\plenigo\services\AppManagement#requestAppToken` method for this purpose, followed by the `\plenigo\services\AppManagement#requestAppId` method:
 
 ```php
+<?php
 //2. Request an access token
 //This object is used to request the token, you specificy the customer id, the product and the description
 $appAccessToken = AppManagementService::requestAppToken("customerId", "productId", "Tablet Access");
@@ -44,6 +45,7 @@ Also companies can use their own secret instead of the application id to call th
 ***
 
 ```php
+<?php
 //With the customer application id you can query product information, in the example below, we are requesting to see
 //if an user has bought a product.
 //This returns a boolean that will tell you if the user did buy the product(true) or not(false).
@@ -56,6 +58,7 @@ As a company or a third party, you can request the current applications that you
 In order to do this, you can use the `\plenigo\services\AppManagement#getCustomerApps` method, an example is provided below:
 
 ```php
+<?php
 //This method will return a list of customer application access information
 $appsData = AppManagementService::getCustomerApps("customerId");
 ```
@@ -67,6 +70,7 @@ As a company, if you would like to remove a customer application id, you can do 
 In order to do this, you must use the `\plenigo\services\AppManagement#deleteCustomerApp` method, an example is provided below:
 
 ```php
+<?php
 //As long as this method does not return an exception, this will delete the customer app id for the specific //customer
 AppManagementService::deleteCustomerApp("customerId", "customerAppId");
 ```

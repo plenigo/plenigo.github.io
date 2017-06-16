@@ -6,6 +6,7 @@ To register an external user into the plenigo system you shoul use the method \p
 If you try to register a user twice you will get the user id returned that was created during the first registration process.
 
 ```php
+<?php
 /**
  * Registers a new user bound to the company that registers the user.
  *
@@ -26,6 +27,7 @@ If you try to register a user twice you will get the user id returned that was c
 It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes. 
 
 ```php
+<?php
 /**
  * Change email address of an existing user.
  *
@@ -43,6 +45,7 @@ It is very important for the plenigo system to know the correct email address of
 To indicate a successful login to the plenigo system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed e.g. to the `build()`-method of the `\plenigo\builders\CheckoutSnippetBuilder`. 
 
 ```php
+<?php
 /**
  * Create a login token for an existing user.
  *
@@ -57,6 +60,7 @@ To indicate a successful login to the plenigo system you need to create a so cal
 Example for using the login token in combination with the checkout.
 
 ```php
+<?php
 //1. Configure the Plenigo Manager as usual
 //2. Get the customer id
 $loginToken = UserManagementService::createLoginToken($customerId);
@@ -82,6 +86,7 @@ To use these snippet on your site you have to include the [plenigo JavaScript SD
 With this functionality the company can provide several access ids to a given customer. This is useful if the company has internal systems for billing, CRM, customer engagement, etc. With this data entered, you can use any of these Ids to check for access to products below.
 
 ```php
+<?php
 //1. Configure the Plenigo Manager as ususal
 //2. Get the customer id
 
@@ -99,6 +104,7 @@ UserManagementService::importCustomerAccess($customerId, $isExternal, $customerI
 Good for product listings. To check if a customer has bought a product follow these steps:
 
 ```php
+<?php
 //1. Configure the Plenigo Manager as ususal
 //2. Get the customer id
 //3. Get the product id

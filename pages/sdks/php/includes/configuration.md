@@ -4,6 +4,7 @@ In order to configure the SDK, you must do the following:
 You must require and call `\plenigo\PlenigoManager::configure()` method.
 
 ```php
+<?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
 //define constants:
@@ -32,6 +33,7 @@ If you want to test your integration without doing real production transactions 
 You can also pass a third parameter of the `\plenigo\PlenigoManager::configure()` method to configure the test flag.
 
 ```php
+<?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
 //define constants:

@@ -24,12 +24,14 @@ In order to user the snippets with the PHP SDK there are a couple of requisites:
 In order to use the class `PlenigoSnippetBuilder` you will have to include it in your use clause:
 
 ```php
+<?php
 use plenigo\builders\PlenigoSnippetBuilder;
 ```
 
 Before instantiate it we should include and instantiate a configuration object to provide to the builder's constructor method:
 
 ```php
+<?php
 use plenigo\models\SnippetConfig;
 
 (...)

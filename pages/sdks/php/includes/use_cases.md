@@ -5,6 +5,7 @@ In a case where you need to handle if a user has bought a product, it can be don
 #### Server logic
 
 ```php
+<?php
 //the product id that the user wants to buy, remember that there are
 //limits for the amount of characters
 $pid = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_ENCODED);
@@ -63,6 +64,7 @@ try {
 To get this information you must do part of the Single Sign On until you finish the Login Flow part, after this the user will be redirected to the url you specified in the login request, you can use this code in the servlet or controller that will receive this request in order to obtain user information.
 
 ```php
+<?php
 $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_SPECIAL_CHARS);
 //this url must be registered in plenigo
 $redirectUrl = "https://example.com/given_path";

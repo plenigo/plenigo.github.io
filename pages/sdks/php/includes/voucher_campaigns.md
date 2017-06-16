@@ -41,6 +41,7 @@ You can create a campaign programmatically by calling the `VoucherService::gener
 | $channels     | optional     | array(string)         | Array of channel names (string[]) |
 
 ```php
+<?php
 $name = "New e-book release campaign"; // The name of the campaign
 $prodId = "my_product_id"; // You (free) product id
 $funnels = array(
@@ -71,6 +72,7 @@ Once you got the voucher code you can redeem it using the `CheckoutService::rede
 > IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful
 
 ```php
+<?php
 $customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
 $result = CheckoutService::redeemVoucher($ytVouchers[0], $customerId, false);
 
@@ -93,6 +95,7 @@ Similarly if you want to allow the purchase of the free product previously assig
 > IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful
 
 ```php
+<?php
 $prodId = "my_product_id"; // Your free product ID
 $customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
 $result = CheckoutService::buyFreeProduct($prodId, $customerId, false);

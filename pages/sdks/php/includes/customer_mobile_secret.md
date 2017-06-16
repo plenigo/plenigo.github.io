@@ -17,6 +17,7 @@ As a company, you have to add this using the plenigo management interface, throu
 You can use the com.plenigo.sdk.services.MobileService#createMobileSecret method for this purpose:
 
 ```php
+<?php
 //2. Create a mobile secret, the object com.plenigo.sdk.models.MobileSecretInfo contains
 //the necessary information to request the customer id of the customer, the second parameter
 //is the size of the mobile secret, the minimum is 6 and max is 40
@@ -38,6 +39,7 @@ Also companies can use their own secret instead of the application id to call th
 ***
 
 ```php
+<?php
 //We must configure the plenigo manager so that it contains the company id and the application id that the //company provided, please note that application id is the one provided above in the first step
 PlenigoManager::configure("applicationIdOrSecret","companyId");
 
@@ -51,6 +53,7 @@ As a company you can request the mobile secret of a specific customer.
 In order to do this, you can use the `\plenigo\services\MobileService#getMobileSecret` method, an example is provided below:
 
 ```php
+<?php
 //This method will return the mobile secret information of the specified customer
 $mobileSecretInfo = MobileService::getMobileSecret("customerId");
 ```
@@ -62,6 +65,7 @@ As a company, if you would like to remove a mobile secret of a customer, you can
 In order to do this, you must use the `\plenigo\services\MobileService#deleteMobileSecret` method, an example is provided below:
 
 ```php
+<?php
 //As long as this method does not return an exception, this will delete the mobile secret for the specific customer
 MobileService::deleteMobileSecret("customerId");
 ```

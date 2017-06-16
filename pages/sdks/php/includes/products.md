@@ -7,6 +7,7 @@ The only thing you have to do is pass the product id to a service method, exampl
 You can use the `\plenigo\services\UserService::hasUserBought` method for this purpose.
 
 ```php
+<?php
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 ```
 
@@ -36,6 +37,7 @@ $productId can be an array of several IDs, then the method will indicate that ac
 This returns an array with the following information:
 
 ```php
+<?php
 print_r($accessInformation) // should look like this
 //Array (
 //    [accessGranted] => true
@@ -59,12 +61,14 @@ The user, company and secret data will be obtained from the current logged in us
 You can use the `\plenigo\services\UserService::getProductsBought()` method for this purpose.
 
 ```php
+<?php
 $listUserBought = \plenigo\services\UserService::getProductsBought();
 ```
 
 This returns an associative array with two main sub-arrays, "singleProducts" and "subscriptions":
 
 ```php
+<?php
 array (
   singleProducts' => array (
     0 => array(
@@ -97,6 +101,7 @@ This method allows to check if the entire PayWall has been disabled from the Ple
 You can use the `\plenigo\services\UserService::isPaywallEnabled()` method for this purpose.
 
 ```php
+<?php
 $payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
 ```
 
@@ -109,6 +114,7 @@ In order to get product information you need the product ID, you can get it in t
 To get the information related to this product you can use the `\plenigo\services\ProductService::getProductData` method, which requires the product id and returns a \plenigo\models\ProductData object.
 
 ```php
+<?php
 $productId = "QFURxFv0098893021041";
 $productData = ProductService::getProductData(productId);
 //do something with the product data object
@@ -121,6 +127,7 @@ In order to list all products for a company, you can call the product listing se
 To get the information of the products you can use the `\plenigo\services\ProductService::getProductList` method, which requires the page size and optional last id and returns an associative array as shown below.
 
 ```php
+<?php
 print_r($productList) // should look like this
 //Array (
 //    [totalElements] => 1
@@ -144,6 +151,7 @@ In order to list all products with detailed product information for a company, y
 To get the information of the products you can use the `\plenigo\services\ProductService::getProductListWithDetails` method, which requires the page size and the page number and returns an associative array as shown below.
 
 ```php
+<?php
 print_r($productList) // should look like this
 //Array (
 //    [totalElements] => 1
@@ -168,6 +176,7 @@ In order to list all categories for a company, you can call the category listing
 To get the information of the categories you can use the `\plenigo\services\ProductService::getCategoryList` method, which requires the page size and page number and returns an associative array as shown below.
 
 ```php
+<?php
 //range from 10...100
 $pageSize = 10;// No last ID means to query the first page
 $catList = ProductService::getCategoryList($pageSize);

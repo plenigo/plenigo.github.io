@@ -17,6 +17,7 @@ If the product is managed by the plenigo and was configured in the plenigo websi
 By using the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 ```php
+<?php
 // creating a Plenigo-managed product
 $product = new \plenigo\models\ProductBase('item-123');
 
@@ -32,6 +33,7 @@ echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Buy this Produ
 For these products, you have to specify more information such as tax, description, currency, etc. Below there are examples.
 
 ```php
+<?php
 //creating the product ($productId, $productTitle, $price, $currency)
 $product = new \plenigo\models\ProductBase('item-123', 'the best product',15.00,'USD');
 
@@ -52,6 +54,7 @@ Both of these examples will create a snippet that can be used in a JavaScript ev
 If the product correspond to the subscription renewal, there is a flag in the _Product_ object. This way you can create a subscription renewal button in your site easily setting this flag:
 
 ```php
+<?php
 // creating a Plenigo-managed product
 $product = new \plenigo\models\ProductBase('item-123');
 // setting the subscription renewal flag
@@ -69,6 +72,7 @@ echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your sub
 If you want to create a button/link to the "Failed Payments" listing for the customer you can do it by creating a special product object like this:
 
 ```php
+<?php
 // creating special product object for "Failed Payments"
 $product = \plenigo\models\ProductBase::buildFailedPaymentProduct();
     
@@ -86,6 +90,7 @@ For a more secure way to communicate with the server you can generate a cross-si
 You can use the `\plenigo\services\TokenService::createCsrfToken()` method to generate a token.
 
 ```php
+<?php
 // creating a Plenigo-managed product
 $product = new \plenigo\models\ProductBase('PLENIGO_ITEM_ID');
 // generating a random CSRF Token
@@ -101,6 +106,7 @@ echo '<a href="#" onclick="'.$snippet.'return false;">Buy this Product</a>';
 ## Checkout combined with OAuth2
 
 ```php
+<?php
 // creating a Plenigo-managed product
 $product = new \plenigo\models\ProductBase('PLENIGO_ITEM_ID');
 // generating a random CSRF Token
@@ -119,6 +125,7 @@ echo '<a href="#" onclick="'.$snippet.'return false;">Buy this Product</a>';
 If you want the checkout process to show a registration screen as the first screen instead of the login screen (when no login token is provided. See: [Customer Administration](https://github.com/plenigo/plenigo_php_sdk/wiki/UserManagement)) you can pass a thid parameter to the build() function.
 
 ```php
+<?php
 // creating a product
 $product = new \plenigo\models\ProductBase('PLENIGO_ITEM_ID');
 // other settings like CSRF token, etc

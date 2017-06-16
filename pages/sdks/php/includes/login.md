@@ -9,6 +9,7 @@ This is the simplest way to login, below there are examples of how to generate t
 You can use the `\plenigo\builders\LoginSnippetBuilder` class to build the snippet.
 
 ```php
+<?php
 $builder = new \plenigo\builders\LoginSnippetBuilder();
 //This will generate the login snippet of the following format:
 //plenigo.login();
@@ -36,6 +37,7 @@ In order to create the snippet you must fill a \plenigo\models\LoginConfig objec
 |dataAccessScope|The data access scope permission that you need from the user, the \plenigo\models\AccessScope enum contains all the available values|
 
 ```php
+<?php
 $redirectUrl = "https://example.com/given_path";
 $config = new \plenigo\models\LoginConfig($redirectUrl,\plenigo\models\AccessScope::PROFILE);
 $builder = new  \plenigo\builders\LoginSnippetBuilder($config);
@@ -52,6 +54,7 @@ For a more secure way to communicate with the server you can generate a cross-si
 You can use the `\plenigo\services\TokenService class to generate a token.
 
 ```php
+<?php
 $code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
 //generating a random CSRF Token
 $csrfToken = TokenService::createCsrfToken();
@@ -85,6 +88,7 @@ With this you can get an access token which can be used to access information wi
 You must call the `\plenigo\services\TokenService.getAccessToken` method, all you have to provide is the code you got when the user was redirected and provide the redirect url that you specified when the user was going to login.
 
 ```php
+<?php
 $code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
 //this url must be registered in plenigo
 $redirectUrl = "https://example.com/given_path";
@@ -107,6 +111,7 @@ With this information you can access user data, a simple example of getting the 
 You can retrieve user data using the `\plenigo\services\UserService::getUserData()` method.
 
 ```php
+<?php
 //.....from the last PHP example
 $data = TokenService::getAccessToken($code,$redirectUrl);
 

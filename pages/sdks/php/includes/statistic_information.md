@@ -21,14 +21,15 @@ The `CompanyService::getUserList()` method receives two parameters
 Both parameters are optional with default values, but setting these parameters is strongly recommended. In order to get page 2 and the rest, just maintain the same page size and the the value of `$page` to a zero-based page number (ie: `1` for page 2, etc.).
 
 ```php
-    $pageNumber = 0; // First page
-    $pageSize = 30;  // 30 results per page
+<?php
+$pageNumber = 0; // First page
+$pageSize = 30;  // 30 results per page
 
-    try {
-         $userList = CompanyService::getUserList($pageNumber, $pageSize);
-    } catch (PlenigoException e) {
-        // Error Handling here
-    }
+try {
+     $userList = CompanyService::getUserList($pageNumber, $pageSize);
+} catch (PlenigoException e) {
+    // Error Handling here
+}
 ```
 
 **NOTE:** The method will not fail for page and size values that are out of range, instead, the values are going to be clamped to the limits established above.
@@ -44,13 +45,14 @@ The `CompanyService::getUserByIds()` method receives a single parameter
 | $userIds    | A string containing a comma-separated list of Customer IDs to get information from |
 
 ```php
-    $ids = "XXXC9XXVZX6J, QTYYW6EBDXXV, XXXVBX3SN2EI, RRZ1XX3WRPV5"; // Out special Customers
+<?php
+$ids = "XXXC9XXVZX6J, QTYYW6EBDXXV, XXXVBX3SN2EI, RRZ1XX3WRPV5"; // Out special Customers
 
-    try {
-         $userList = CompanyService::getUserList($ids);
-    } catch (PlenigoException e) {
-        // Error Handling here
-    }
+try {
+     $userList = CompanyService::getUserList($ids);
+} catch (PlenigoException e) {
+    // Error Handling here
+}
 ```
 
 **NOTE:** These Customer Ids can be obtained by logging in to our company dashboard, and searching by several filters.
@@ -73,14 +75,15 @@ The `CompanyService::getFailedPayments()` method receives five parameters
 `$page` and `$size` parameters are optional with default values, but setting these parameters is strongly recommended. In order to get page 2 and the rest, just maintain the same page size and the the value of `$page` to a zero-based page number (ie: `1` for page 2, etc.).
 
 ```php
-    $pageNumber = 0; // First page
-    $pageSize = 30;  // 30 results per page
+<?php
+$pageNumber = 0; // First page
+$pageSize = 30;  // 30 results per page
 
-    try {
-         $failedPaymentList = CompanyService::getFailedPayments('2016-01-01', '2016-04-01', 'FAILED', $pageNumber, $pageSize);
-    } catch (PlenigoException e) {
-        // Error Handling here
-    }
+try {
+     $failedPaymentList = CompanyService::getFailedPayments('2016-01-01', '2016-04-01', 'FAILED', $pageNumber, $pageSize);
+} catch (PlenigoException e) {
+    // Error Handling here
+}
 ```
 
 **NOTE:** The method will not fail for page and size values that are out of range, instead, the values are going to be clamped to the limits established above.
@@ -102,14 +105,15 @@ The `CompanyService::getOrders()` method receives five parameters
 `$page` and `$size` parameters are optional with default values, but setting these parameters is strongly recommended. In order to get page 2 and the rest, just maintain the same page size and the the value of `$page` to a zero-based page number (ie: `1` for page 2, etc.).
 
 ```php
-    $pageNumber = 0; // First page
-    $pageSize = 30;  // 30 results per page
+<?php
+$pageNumber = 0; // First page
+$pageSize = 30;  // 30 results per page
 
-    try {
-         $orderList = CompanyService::getOrders('2016-01-01', '2016-04-01', FALSE, $pageNumber, $pageSize);
-    } catch (PlenigoException e) {
-        // Error Handling here
-    }
+try {
+     $orderList = CompanyService::getOrders('2016-01-01', '2016-04-01', FALSE, $pageNumber, $pageSize);
+} catch (PlenigoException e) {
+    // Error Handling here
+}
 ```
 
 #### Get a paginated list of subscriptions
@@ -128,15 +132,15 @@ The `CompanyService::getSubscriptions()` method receives five parameters
 `$page` and `$size` parameters are optional with default values, but setting these parameters is strongly recommended. In order to get page 2 and the rest, just maintain the same page size and the the value of `$page` to a zero-based page number (ie: `1` for page 2, etc.).
 
 ```php
-    $pageNumber = 0; // First page
-    $pageSize = 30;  // 30 results per page
+<?php
+$pageNumber = 0; // First page
+$pageSize = 30;  // 30 results per page
 
-    try {
-         $subscriptionList = CompanyService::getSubscriptions('2016-01-01', '2016-04-01', FALSE, $pageNumber,
-$pageSize);
-    } catch (PlenigoException e) {
-        // Error Handling here
-    }
+try {
+     $subscriptionList = CompanyService::getSubscriptions('2016-01-01', '2016-04-01', FALSE, $pageNumber, $pageSize);
+} catch (PlenigoException e) {
+    // Error Handling here
+}
 ```
 
 **NOTE:** The method will not fail for page and size values that are out of range, instead, the values are going to be clamped to the limits established above.
@@ -147,16 +151,17 @@ $pageSize);
 The result of above methods will be a composition (`CompanyUserList`, `FailedPaymentList` or `OrderList`) object that also has paging information. The actual element array returned by the `getElements()` methods are `CompanyUser`, `FailedPayment` or `Order` objects.
 
 ```php
-    $userListPage = CompanyService::getUserList($pageNumber, $pageSize); // from the sample avobe
+<?php
+$userListPage = CompanyService::getUserList($pageNumber, $pageSize); // from the sample avobe
 
-    $totalUsers = $userListPage->getTotalElements(); // Returns the number of total users in the company (or in your id list)
-    $currentPage = $userListPage->getPageNumber(); // Zero-based page number
-    $pageSize = $userListPage->getSize(); // Returned for convenience
+$totalUsers = $userListPage->getTotalElements(); // Returns the number of total users in the company (or in your id list)
+$currentPage = $userListPage->getPageNumber(); // Zero-based page number
+$pageSize = $userListPage->getSize(); // Returned for convenience
 
-    $users = $userListPage->getElements(); // The actual CompanyUser objects
+$users = $userListPage->getElements(); // The actual CompanyUser objects
 
-    foreach ($users as $user) {
-        $email = $user->getEmail(); // get the User's email address
-        // (other data includes name, firstName, gender, country, etc.)
-    }
+foreach ($users as $user) {
+    $email = $user->getEmail(); // get the User's email address
+    // (other data includes name, firstName, gender, country, etc.)
+}
 ```
