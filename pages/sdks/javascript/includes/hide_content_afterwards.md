@@ -57,7 +57,7 @@ A complete example page where you only need to insert your data. This example as
         <div id="sourceId" style="display:none;">
             <p>
                 You don't have the right to see this content! Sry!
-                <button onclick="plenigo.checkout('YOUR_CHECKOUT_CODE_FROM_THE_PLENIGO_PRODUCT_PAGE')">
+                <button onclick="plenigo.checkout({paymentData: 'CHECKOUT_STRING'})">
                     Buy now
                 </button>
                 <button onclick="plenigo.login();">

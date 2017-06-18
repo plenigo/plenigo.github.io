@@ -133,3 +133,56 @@ This function indicates if the user is logged in.
  */
 plenigo.isUserLoggedIn();
 ```
+
+### Usage examples
+
+Following are a few examples of the usage for JavaScript-SDK.
+
+#### JavaScript only checkout
+
+The JavaScript only checkout can be used on LandingPages or something similar. This way you can integrate plenigo easily
+on pages where you don't have direct control over the server side code execution.
+
+To get a working example you have to replace some variables. Variables to are starting and ending with a dollar sign, e.g.
+`$COMPANY_ID$` and described in a comment.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Greatest product ever!</title>
+    
+        // Replace $COMPANY_ID$ with the company id from the plenigo merchant backend. 
+        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js"
+            data-disable-metered="true">
+        </script>
+        
+        <script type="application/javascript">
+            // Replace $CHECKOUT_STRING$ with the checkout string of the product that you can retrieve 
+            // from the product overview page in the plenigo backend.
+            // Replace $TARGET_URL$ with the url the checkout should redirect after being finished. Could be
+            // a thank you page.
+            var checkoutConfig = {
+                paymentData: "$CHECKOUT_STRING$",
+                startWithRegistration: "true",
+                sourceUrl: null,
+                targetUrl: "$TARGET_URL$",
+                affiliateId: null,
+                elementId: null
+            }
+        </script>
+    </head>
+    <body>
+        <h2>The greatest product ever available</h2>
+        
+        
+        <p>
+            This is your chance to buy the best product ever available!
+            
+            <button onclick="plenigo.checkout(checkoutConfig); return false;">
+                Buy now
+            </button>
+        </p>
+    </body>
+</html>
+```
