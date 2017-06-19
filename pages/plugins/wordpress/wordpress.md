@@ -12,3 +12,8 @@ This way all the functionality that is available in the plenigo PHP-SDK can also
 ## Installation 
 
 The plenigo Wordpress plugin is a standardised Wordpress plugin that can be found in the plugins section.
+
+You only have to log in into your Wordpress go to 'Add New' in the menu 'Plugins' and search for 'plenigo'. In the search result click 'Install Now'.
+
+![plugin_section](/images/wp_install_plenigo.png)
+
