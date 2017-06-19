@@ -45,9 +45,13 @@ header {
     left: 3%;
     width: 14%;
     top: 17px;
-    max-width: 200px
+    max-width: 200px !important
   }
 }
 footer {
   background-position: center 0;
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
 }
