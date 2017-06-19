@@ -19,7 +19,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: plenigo developer information
+title: developer
 description: > # this means to ignore newlines until "baseurl:"
    Manage your subscriptions and/or users with one of plenigo's APIs.
    You can choose one of our ready out-of-the-box SKDs or implement your own solution with the help our APIs.
