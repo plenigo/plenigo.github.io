@@ -59,4 +59,11 @@ header {
 }
 footer {
   background-position: center 0;  
+  div {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
 }
