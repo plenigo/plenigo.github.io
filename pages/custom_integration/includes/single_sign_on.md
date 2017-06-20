@@ -145,7 +145,7 @@ The first step depends if a CSRF token was provided or not. If yes the CSRF requ
 Java example
 ```java
 // Ensure that there is no request forgery going on, and that the user sending us this connect request is the user that was supposed to.
-if (!request.queryParams("state").equals(
+if (!request.queryParams("state").equals(savedState)) {
     // show error to the user (HttpStatus code 401)
 }
 ```
