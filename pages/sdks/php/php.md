@@ -50,6 +50,10 @@ developed are designed and implemented mainly for that purpose.
    
 {% include_relative includes/statistic_information.md %}
 
+## Manager users access rights
+   
+{% include_relative includes/user_access_rights.md %}
+
 ## Error handling
    
 {% include_relative includes/error_handling.md %}
