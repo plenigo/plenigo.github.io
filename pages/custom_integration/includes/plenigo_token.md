@@ -10,9 +10,9 @@ The JWT itself contains the following payload
 |exp|Validity time for the JWT. We recommend the current timestamp plus 5 minutes|
 |companyId|Your company id from the plenigo merchant backend|
 
-Following an example in VB.NET:
+Following an example in C#:
 
-```vb
+```c#
 class Plenigo 
 { 
     public static string CreatePlenigoToken()
