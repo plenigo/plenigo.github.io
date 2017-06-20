@@ -55,7 +55,7 @@ Now let's see what is going on with UserB
 
 #### Using OAuth 2.0 to use plenigo as SSO provider
 
-plenigo APIs use the []OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) for authentication and authorization. plenigo supports common OAuth 2.0 scenarios such as those for web server, installed, and client-side applications.
+plenigo APIs use the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) for authentication and authorization. plenigo supports common OAuth 2.0 scenarios such as those for web server, installed, and client-side applications.
 
 OAuth 2.0 is a relatively simple protocol. To begin, a customer must obtain OAuth 2.0 credentials from the company dashboard. Then the different log in features the Javascript SDK offers can be used in combination with the server side SDKs.
 
