@@ -13,25 +13,28 @@ The JWT itself contains the following payload
 Following an example in .NET
 
 ```c#
-public static string CreatePlenigoToken()
-{
-    var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-    var now = Math.Round((DateTime.UtcNow - unixEpoch).TotalSeconds);
-    var payload = new Dictionary<string, object>()
+class Plenigo 
+{ 
+    public static string CreatePlenigoToken()
     {
-        { "jti", System.Guid.NewGuid().ToString()},
-        { "aud", "plenigo"},
-        { "exp",    Math.Floor((now + 5 * 60 * 1000) / 1000)},
-        { "companyId", " CKE6LAEPDw4vkWV36JrU"}
-    };
-
-    var secretKey = "secret";
-    string token = JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256);
-    return token;
+        var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        var now = Math.Round((DateTime.UtcNow - unixEpoch).TotalSeconds);
+        var payload = new Dictionary<string, object>()
+        {
+            { "jti", System.Guid.NewGuid().ToString()},
+            { "aud", "plenigo"},
+            { "exp",    Math.Floor((now + 5 * 60 * 1000) / 1000)},
+            { "companyId", " CKE6LAEPDw4vkWV36JrU"}
+        };
+    
+        var secretKey = "secret";
+        string token = JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256);
+        return token;
+    }
 }
 
 WebClient client = new WebClient();
-client.Headers.Add("plenigoToken",PlenigoUtils.CreatePlenigoToken());
+client.Headers.Add("plenigoToken", Plenigo.CreatePlenigoToken());
 
 // call API function
 ```
