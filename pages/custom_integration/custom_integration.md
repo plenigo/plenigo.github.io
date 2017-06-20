@@ -10,6 +10,12 @@ If you are not able to use one of the existing SDKs you can also implement the f
 
 There are some additional things you have to implement besides the API to use the full feature set of plenigo.
 
+> plenigo relies heavily on correct date times so make sure your servers time is up to date. Running NTP is strongly recommended.
+
+## Plenigo Token
+
+{% include_relative includes/plenigo_token.md %}
+
 ## Metered Views
 
 {% include_relative includes/metered_views.md %}

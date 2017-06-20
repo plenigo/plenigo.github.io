@@ -9,6 +9,8 @@ permalink: /sdks/php
 Integrating plenigo to handle your digital content sales simplifies the process of checkout and sales management. This page is meant to be a guide for 
 developers that want to use the SDK instead of accessing the API, with it you will reduce development, maintenance and test time since all the utilities 
 developed are designed and implemented mainly for that purpose.
+
+> plenigo relies heavily on correct date times so make sure your servers time is up to date. Running NTP is strongly recommended.
  
 ## Configuration
 
