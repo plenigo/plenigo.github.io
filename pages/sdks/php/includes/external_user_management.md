@@ -33,12 +33,13 @@ It is very important for the plenigo system to know the correct email address of
  *
  * @param string $customerId Customer id of the user to change email address for
  * @param string $email New email address of user
+ * @param bool $useExternalCustomerId Flag indicating if customer id sent is the external customer id
  *
  * @return bool TRUE Email address changed
  *
  * @throws PlenigoException In case of communication errors or invalid parameters
  */
-\plenigo\services\UserManagementService::changeEmail($customerId, $email)
+\plenigo\services\UserManagementService::changeEmail($customerId, $email, $useExternalCustomerId = false)
 ```
 
 ### Create login token for an external user
@@ -50,12 +51,13 @@ To indicate a successful login to the plenigo system you need to create a so cal
  * Create a login token for an existing user.
  *
  * @param string $customerId Customer id of the user to create login token for
+ * @param bool $useExternalCustomerId Flag indicating if customer id sent is the external customer id
  *
  * @return string One time token used to create a valid user session
  *
  * @throws PlenigoException In case of communication errors or invalid parameters
 */
-\plenigo\services\UserManagementService::createLoginToken($customerId)
+\plenigo\services\UserManagementService::createLoginToken($customerId, $useExternalCustomerId = false)
 ```
 Example for using the login token in combination with the checkout.
 
