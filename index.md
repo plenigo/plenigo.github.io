@@ -9,3 +9,5 @@ layout: default
 [Plugins](/plugins)
 
 [Custom integration](/custom_integration)
+
+[Public API](https://api.plenigo.com)
