@@ -1,0 +1,62 @@
+#title: Tactile theme
+#description: Tactile is a theme for GitHub Pages.
+#show_downloads: true
+#google_analytics:
+#theme: 
+
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: developer
+description: > # this means to ignore newlines until "baseurl:"
+   Manage your subscriptions and/or users with one of plenigo's APIs.
+   You can choose one of our ready out-of-the-box SKDs or implement your own solution with the help our APIs.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://developer.plenigo.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: plenigo
+github_username:  plenigo
+
+# Build settings
+markdown: kramdown
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
+highlighter: rouge
+
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
+kramdown:
+  input:          GFM
+  # https://github.com/jekyll/jekyll/pull/4090
+  syntax_highlighter: rouge
+
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+theme: jekyll-theme-tactile
+gems:
+#  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+

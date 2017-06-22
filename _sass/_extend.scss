@@ -1,0 +1,74 @@
+.inner {
+  width: 100%;  
+  
+  & > section {
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+  }
+  
+  h3 {
+    color: #000;
+  }
+  
+  li {
+    list-style-position: inside;
+  }
+  a, a:link, a:visited, a:active {
+    color: #16aeb9;
+  }
+  table {
+    margin: 25px 0;
+    th {
+      text-align: center !important;
+      padding: 3px
+    }
+    td {
+      padding: 10px;
+      vertical-align: middle;
+    }
+  }
+}
+header {
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.18);
+  padding-top: 20px;
+  margin-bottom: 30px;
+  
+  h1 {
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 20%
+  }
+  img#logo {
+    position: absolute;
+    left: 3%;
+    width: 14%;
+    bottom: 1%;
+    max-width: 200px !important
+  }
+  div {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+
+  }
+
+}
+footer {
+  background-position: center 0;  
+  div {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+pre, pre code {
+  // font-family: Monaco, monospace;
+font-family: 'Inconsolata', monospace;
+  //   font-family: 'Source Code Pro', monospace;
+}
