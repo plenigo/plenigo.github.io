@@ -34,3 +34,29 @@ To remove a user's access to one or multiple products use the method `\plenigo\s
  */
 \plenigo\services\AccessService::removeUserAccess($customerId, $useExternalCustomerId, $productIds)
 ```
+
+### Example
+
+```php
+<?php
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+
+use \plenigo\services\AccessService;
+
+// define constants:
+$secret = 'SECRET';
+$companyId = 'COMPANY_ID';
+
+// one time configuration of the PlenigoManager-Singleton 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// .... some code that creates a user, checks login state, or something else
+
+// we assume the user is a user not managed by plenigo for the rest of this example
+// this user will be granted endless access to two products that are not managed by plenigo
+// in real life your customer id and product ids will most likly be dynamic
+AccessService::grantUserAccess('MY_CUSTOMER_ONE', true, null, array('productOne', 'productTwo')); 
+ 
+// no we are going to remove the access rights of a customer for a product
+AccessService::removeUserAccess('MY_CUSTOMER_ONE', true, array('productThree'));
+```
