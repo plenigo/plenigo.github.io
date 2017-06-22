@@ -134,6 +134,17 @@ This function indicates if the user is logged in.
 plenigo.isUserLoggedIn();
 ```
 
+### Reset layer opened detection - reset detection to prevent double opened login and checkout layers
+
+Reset the detection for preventing double opened login and checkout layers.
+
+```javascript
+/**
+ * Resets the SDKs detection to prevent double opened login and checkout layers.
+ */
+plenigo.resetLayerOpenedDetection();
+```
+
 ### Usage examples
 
 Following are a few examples of the usage for JavaScript-SDK.
