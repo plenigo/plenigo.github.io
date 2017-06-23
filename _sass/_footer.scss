@@ -18,5 +18,9 @@ footer .footer {
     padding-left: 0;
     padding-right: 0;
   }
+  
+  .col-md-4 li:first-child {
+    height: 35px;
+  }
 
 }
