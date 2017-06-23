@@ -1,8 +1,19 @@
 
+footer {
+  background-position: center 0;  
+  div.footer {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
 footer .footer {
+  
   ul, li {
     list-style: none;
   }
-
 
 }
