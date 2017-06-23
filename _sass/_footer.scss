@@ -1,6 +1,7 @@
 
 footer {
   background-position: center 0;  
+  
   div.footer {    
     max-width: 1600px;
     width: 80%;
@@ -14,6 +15,8 @@ footer .footer {
   
   ul, li {
     list-style: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 
 }
