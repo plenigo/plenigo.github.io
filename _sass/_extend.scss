@@ -38,11 +38,13 @@
   }
   blockquote:before {
     content: "!";
-    display: none;
+    display: block;
     position: absolute;
     top: -4px;
     left: 0;
     font-size: 3em;
+    width: 4px;
+    height: 30px;
     
   }
   table {
