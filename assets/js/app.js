@@ -66,7 +66,7 @@
             onSite.find("a").removeClass("in-viewport");
             onSite.find("a").each(function () {
                 var a = $(this);
-                if ( inViewport($(a.attr("href"))) ) {
+                if ( $.inViewport($(a.attr("href"))) ) {
                     a.addClass("in-viewport");
                 }
             });
