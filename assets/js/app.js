@@ -57,7 +57,7 @@
             // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
 
             if ($(this).is("h1")) {
-                return true;
+                // return true;
             }
 
             var li = $('<li><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
