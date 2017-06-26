@@ -10,6 +10,7 @@
         nav = $("#navigation"),
         content = $("#main_content"),
         onSite = $("#onSite"),
+        sc = 0,
         createToc = function(contents_selector, target_selector){
         var prePos = 0,
             numOfSections = [],
@@ -20,7 +21,6 @@
         $(contents_selector).find(':header').each(function(){
             var position = parseInt(this.nodeName.charAt(1)),
                 i;
-
 
             if (prePos < position) {
                 numOfSections[position - 1] = 1;
@@ -79,9 +79,13 @@
        event.preventDefault();
     });
 
-
-
     window.setInterval(function () {
+        if (sc === body[0].scrollTop) {
+            return;
+        }
+
+        sc = body[0].scrollTop;
+
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
             nav.css("height", $(window).height());
