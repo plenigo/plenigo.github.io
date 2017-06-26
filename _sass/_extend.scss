@@ -12,8 +12,17 @@
     color: #000;
   }
   
-  li {
-    list-style-position: inside;
+  ol > li {
+    list-style-position: outside;
+  }
+  ul > li {
+    list-style: none;
+  }
+  ol, ul {
+    padding-top: 25px;
+  }
+  ol {
+    padding-left: 50px;
   }
   a, a:link, a:visited, a:active {
     color: #16aeb9;
