@@ -65,4 +65,12 @@
        event.preventDefault();
     });
 
+    window.setInterval(function () {
+        if ($("body")[0].scrollTop > 100) {
+            $("body").addClass("scroll");
+        } else {
+            $("body").removeClass("scroll");
+        }
+    }, 500);
+
 }(jQuery));
