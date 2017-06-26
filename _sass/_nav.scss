@@ -47,7 +47,6 @@
 
 .menu-open {
 
-
   #navigation {
 
     left: 0;
@@ -62,4 +61,8 @@
     width: 70%;
   }
 
+}
+
+.scroll .inner #navigation {
+  position: fixed;
 }
