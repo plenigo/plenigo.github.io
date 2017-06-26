@@ -16,7 +16,11 @@
     list-style-position: outside;
   }
   ul > li {
-    list-style: none;
+//    list-style: none;
+    list-style-position: inside;
+    list-style: disc;
+    padding-left: 0;
+    margin-left: 20px;
   }
   ol, ul {
     padding-top: 25px;
