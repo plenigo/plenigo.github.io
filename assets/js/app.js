@@ -46,6 +46,8 @@
             var secName = '',
                 title = '';
 
+            console.log($(this));
+
             for (i=1; i<position; i++) {
                 var sec = numOfSections[i];
                 title +=(sec + '.');
