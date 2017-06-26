@@ -14,6 +14,8 @@
         var ul = null;
         $(contents_selector).find(':header').each(function(){
             var position = parseInt(this.nodeName.charAt(1));
+
+
             if (prePos < position) {
                 numOfSections[position - 1] = 1;
                 prePos = position;
@@ -34,13 +36,17 @@
             }
             var secName = '';
             var title = '';
-            for (var i=0; i<position; i++) {
+            for (var i=1; i<position; i++) {
                 var sec = numOfSections[i];
                 title +=(sec + '.');
                 secName += (sec + '_');
             }
             title += ( ' ' + $(this).text() );
             // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
+
+            if ($(this).is("h1")) {
+                return true;
+            }
 
             var li = $('<li><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
             ul.append(li);
