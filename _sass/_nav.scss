@@ -23,6 +23,7 @@
 
   a.in-viewport {
     color: #aaa;
+    font-style: italic;
   }
 
   li {
@@ -73,7 +74,12 @@
 
   #navWrapper {
     height: 100%;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    & > div {
+      height: 100%;
+      overflow-y: scroll;
+      width: 101%;
+    }
   }
 
 }
