@@ -40,7 +40,7 @@
                 secName += (sec + '_');
             }
             title += ( ' ' + $(this).text() );
-            $(this).html('<a name="s'+ secName + '">' + title + '</a>');
+            // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
 
             var li = $('<li><a href="#s' + secName + '">' + title + '</a></li>');
             ul.append(li);
@@ -49,7 +49,7 @@
         $(target_selector).replaceWith(toc);
     };
 
-    createToc($(".inner"), $("#onSite"));
+    createToc($("#main_content"), $("#onSite"));
 
 
 }(jQuery));
