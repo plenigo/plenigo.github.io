@@ -1,0 +1,35 @@
+
+footer {
+  background-position: center 0;  
+  
+  div.footer {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+footer .footer {
+  
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .col-md-4 li:first-child {
+    height: 35px;
+  }
+  
+  #enp-footer-logo {
+    width: 100%;
+    background: transparent url('/assets/images/plenigo Logo RZ.png') no-repeat top right;
+    min-height: 200px;
+    display: block;
+    background-size: contain;
+  
+  }
+
+}

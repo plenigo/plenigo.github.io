@@ -19,19 +19,39 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: plenigo developer Website
-email: admins@plenigo.com
+title: developer
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+   Manage your subscriptions and/or users with one of plenigo's APIs.
+   You can choose one of our ready out-of-the-box SKDs or implement your own solution with the help our APIs.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://develop.plenigo.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://developer.plenigo.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: plenigo
 github_username:  plenigo
 
 # Build settings
 markdown: kramdown
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
+highlighter: rouge
+
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
+kramdown:
+  input:          GFM
+  # https://github.com/jekyll/jekyll/pull/4090
+  syntax_highlighter: rouge
+
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    #line_numbers: true # bad idea, spans don't need linenos and would inherit this option
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
 theme: jekyll-theme-tactile
 gems:
 #  - jekyll-feed

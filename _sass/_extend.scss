@@ -1,0 +1,110 @@
+.inner {
+  width: 100%;  
+  
+  & > section {
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+  }
+  
+  h3 {
+    color: #000;
+  }
+  
+  ol > li {
+    list-style-position: outside;
+  }
+  ul > li {
+//    list-style: none;
+    list-style-position: inside;
+    list-style: disc;
+    padding-left: 0;
+    margin-left: 20px;
+  }
+  ol, ul {
+    margin-top: 25px;
+  }
+  ol {
+    padding-left: 50px;
+  }
+  a, a:link, a:visited, a:active {
+    color: #16aeb9;
+  }
+  blockquote {
+    font-style: italic;
+    font-size: 1em;
+    position: relative;
+    border: none;
+    margin-top: 25px;
+    &:hover {
+      background: #ebebeb;
+    }
+    &:before {
+    content: "!";
+    display: block;
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    font-size: 3em;
+    width: 4px;
+    height: 30px;
+    font-style: normal;
+    color: #16aeb9;
+    }
+  }
+  table {
+    margin: 25px 0;
+    th {
+      text-align: center !important;
+      padding: 3px
+    }
+    td {
+      padding: 10px;
+      vertical-align: middle;
+    }
+    tr:hover td {
+      background: #ebebeb;
+    }
+  }
+}
+header {
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.18);
+  padding-top: 20px;
+  margin-bottom: 30px;
+  
+  h1 {
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 20%
+  }
+  img#logo {
+    position: absolute;
+    left: 3%;
+    width: 14%;
+    bottom: 1%;
+    max-width: 200px !important
+  }
+  div {    
+    max-width: 1600px;
+    width: 80%;
+    min-width: 320px;
+    margin: 0 auto;
+    position: relative;
+
+  }
+
+}
+#main_content {
+  min-height: 550px;
+}
+
+header img#logo {
+  left: 0
+}
+
+pre, pre code {
+  // font-family: Monaco, monospace;
+font-family: 'Inconsolata', monospace;
+  //   font-family: 'Source Code Pro', monospace;
+}
