@@ -35,16 +35,18 @@
     font-style: italic;
     font-size: 1em;
     position: relative;
+    border: none
   }
   blockquote:before {
     content: "!";
     display: block;
     position: absolute;
-    top: -4px;
+    top: -25px;
     left: 0;
     font-size: 3em;
     width: 4px;
     height: 30px;
+    font-style: normal;
     
   }
   table {
