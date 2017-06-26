@@ -13,37 +13,6 @@
 
   <body>
     <div id="container">
-        <div id="navigation">
-
-            <nav id="main">
-                <ul>
-                    <li>
-                        <a href="/workflows">Workflows</a>
-                    </li>
-                    <li>
-                        <a href="/sdks">SDKs</a>
-                    </li>
-                    <li>
-                        <a href="/plugins">Plugins</a>
-                    </li>
-                    <li>
-                        <a href="/custom_integration">Custom Integration</a>
-                    </li>
-                    <li>
-                        <a href="https://api.plenigo.com/">Public API</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <hr>
-
-            <nav id="onSite">
-
-            </nav>
-
-            <a href="" id="navHandle">&#9776;</a>
-            
-        </div>
       <div class="inner">
 
         <header>
@@ -54,6 +23,38 @@
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
           </div>
         </header>
+
+      <nav id="navigation">
+
+          <div id="mainNav">
+              <ul>
+                  <li>
+                      <a href="/workflows">Workflows</a>
+                  </li>
+                  <li>
+                      <a href="/sdks">SDKs</a>
+                  </li>
+                  <li>
+                      <a href="/plugins">Plugins</a>
+                  </li>
+                  <li>
+                      <a href="/custom_integration">Custom Integration</a>
+                  </li>
+                  <li>
+                      <a href="https://api.plenigo.com/">Public API</a>
+                  </li>
+              </ul>
+          </div>
+
+          <hr>
+
+          <div id="onSite">
+
+          </div>
+
+          <a href="" id="navHandle">&#9776;</a>
+
+      </nav>
 
         <section id="main_content">
           {{ content }}

@@ -42,7 +42,7 @@
             title += ( ' ' + $(this).text() );
             // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
 
-            var li = $('<li><a href="#s' + $(this).attr("id") + '">' + title + '</a></li>');
+            var li = $('<li><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
             ul.append(li);
             parent = li;
         });
@@ -50,7 +50,6 @@
     };
 
     createToc($("#main_content"), $("#onSite"));
-
 
     $("#navHandle").click(function () {
        $("body").toggleClass("menu-open");

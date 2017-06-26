@@ -1,11 +1,15 @@
+.inner > section {
+  transition: margin .5s;
+}
 #navigation {
 
   position: absolute;
   width: 200px;
   left: -200px;
-  top: 0;
+  //top: 0;
   background: #273A49;
   color: #eee;
+  transition: left .5s;
 
   a, a:active, a:visited {
     color: #eee;
@@ -13,20 +17,38 @@
 
   li {
     list-style: none;
+    padding-left: 0;
+  }
+  ul {
+
   }
 
   #navHandle {
-    top: 25px;
-    right: 0;
+    top: 150px;
+    right: -30px;
     color: #fff;
-    background: #fff;
+    background: #273A49;
     display: block;
     position: absolute;
+    width: 35px;
+    text-align: right;
+    padding: 5px 10px;
+    border-radius: 0 10px 10px 0;
   }
 
+}
+
+.menu-open {
 
 
+  #navigation {
 
+    left: 0;
 
+  }
+
+  .inner > section {
+    margin-left: 225px;
+  }
 
 }
