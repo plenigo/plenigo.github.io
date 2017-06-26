@@ -58,9 +58,10 @@
         $(target_selector).html(toc);
     },
         body = $("body"),
-        nav = $("#navigation");
+        nav = $("#navigation"),
+        content = $("#main_content");
 
-    createToc($("#main_content"), $("#onSite"));
+    createToc(content, $("#onSite"));
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
@@ -70,7 +71,7 @@
     window.setInterval(function () {
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
-            nav.css("height", body.height());
+            nav.css("height", $(window).height());
         } else {
             body.removeClass("scroll");
         }
