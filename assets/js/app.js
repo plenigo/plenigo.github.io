@@ -7,13 +7,15 @@
 
     // https://gist.github.com/yuanying/455571
     var createToc = function(contents_selector, target_selector){
-        var prePos = 0;
-        var numOfSections = [];
-        var parent = $('<div>');
-        var toc = parent;
-        var ul = null;
+        var prePos = 0,
+            numOfSections = [],
+            parent = $('<div>'),
+            toc = parent,
+            ul = null;
+
         $(contents_selector).find(':header').each(function(){
-            var position = parseInt(this.nodeName.charAt(1));
+            var position = parseInt(this.nodeName.charAt(1)),
+                i;
 
 
             if (prePos < position) {
@@ -29,14 +31,15 @@
                 numOfSections[position - 1] += 1;
                 prePos = position;
 
-                for (var i=0; i<gapPosition; i++) {
+                for (i=0; i<gapPosition; i++) {
                     parent = $(ul.parent().get(0));
                     ul = $(parent.parent().get(0));
                 }
             }
-            var secName = '';
-            var title = '';
-            for (var i=1; i<position; i++) {
+            var secName = '',
+                title = '';
+
+            for (i=1; i<position; i++) {
                 var sec = numOfSections[i];
                 title +=(sec + '.');
                 secName += (sec + '_');
