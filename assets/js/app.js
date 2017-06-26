@@ -56,20 +56,23 @@
             parent = li;
         });
         $(target_selector).html(toc);
-    };
+    },
+        body = $("body"),
+        nav = $("#navigation");
 
     createToc($("#main_content"), $("#onSite"));
 
     $("#navHandle").click(function (event) {
-       $("body").toggleClass("menu-open");
+       body.toggleClass("menu-open");
        event.preventDefault();
     });
 
     window.setInterval(function () {
-        if ($("body")[0].scrollTop > 100) {
-            $("body").addClass("scroll");
+        if (body[0].scrollTop > 100) {
+            body.addClass("scroll");
+            nav.css("height", body.height());
         } else {
-            $("body").removeClass("scroll");
+            body.removeClass("scroll");
         }
     }, 500);
 

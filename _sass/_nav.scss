@@ -10,7 +10,7 @@
   //top: 0;
   background: #273A49;
   color: #eee;
-  transition: left .5s;
+  transition: left .5s, top .5s;
   z-index: 1;
   padding-right: 25px;
   padding-top: 15px;
@@ -65,4 +65,5 @@
 
 .scroll .inner #navigation {
   position: fixed;
+  top: 0;
 }
