@@ -51,8 +51,9 @@
 
     createToc($("#main_content"), $("#onSite"));
 
-    $("#navHandle").click(function () {
+    $("#navHandle").click(function (event) {
        $("body").toggleClass("menu-open");
+       event.preventDefault();
     });
 
 }(jQuery));
