@@ -5,6 +5,9 @@
 
 (function ($) {
 
+    $.extend(verge);
+
+
     // https://gist.github.com/yuanying/455571
     var body = $("body"),
         nav = $("#navigation"),
@@ -95,4 +98,4 @@
         }
     }, 500);
 
-}(jQuery));
+}(jQuery, verge));
