@@ -4,12 +4,24 @@
   width: 200px;
   left: -200px;
   top: 0;
+  background: #273A49;
+  color: #eee;
+
+  a, a:active, a:visited {
+    color: #eee;
+  }
+
+  li {
+    list-style: none;
+  }
 
   #navHandle {
     top: 25px;
     right: 0;
     color: #fff;
     background: #fff;
+    display: block;
+    position: absolute;
   }
 
 

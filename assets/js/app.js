@@ -42,14 +42,18 @@
             title += ( ' ' + $(this).text() );
             // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
 
-            var li = $('<li><a href="#s' + secName + '">' + title + '</a></li>');
+            var li = $('<li><a href="#s' + $(this).attr("id") + '">' + title + '</a></li>');
             ul.append(li);
             parent = li;
         });
-        $(target_selector).replaceWith(toc);
+        $(target_selector).html(toc);
     };
 
     createToc($("#main_content"), $("#onSite"));
 
+
+    $("#navHandle").click(function () {
+       $("body").toggleClass("menu-open");
+    });
 
 }(jQuery));
