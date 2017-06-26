@@ -6,7 +6,11 @@
 (function ($) {
 
     // https://gist.github.com/yuanying/455571
-    var createToc = function(contents_selector, target_selector){
+    var body = $("body"),
+        nav = $("#navigation"),
+        content = $("#main_content"),
+        onSite = $("#onSite"),
+        createToc = function(contents_selector, target_selector){
         var prePos = 0,
             numOfSections = [],
             parent = $('<div>'),
@@ -54,24 +58,34 @@
             var li = $('<li><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
             ul.append(li);
             parent = li;
-        });
-        $(target_selector).html(toc);
-    },
-        body = $("body"),
-        nav = $("#navigation"),
-        content = $("#main_content");
 
-    createToc(content, $("#onSite"));
+            });
+            $(target_selector).html(toc);
+        },
+        amIOn = function () {
+            onSite.find("a").removeClass("in-viewport");
+            onSite.find("a").each(function () {
+                var a = $(this);
+                if ( inViewport($(a.attr("href"))) ) {
+                    a.addClass("in-viewport");
+                }
+            });
+        };
+
+    createToc(content, onSite);
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
        event.preventDefault();
     });
 
+
+
     window.setInterval(function () {
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
             nav.css("height", $(window).height());
+            amIOn();
         } else {
             body.removeClass("scroll");
         }
