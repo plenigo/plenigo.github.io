@@ -39,7 +39,7 @@
     padding-left: 15px;
 
     li.header1 {
-      counter-increment: unset;
+      counter-increment: none;
 
       &:before {
         content: '';
