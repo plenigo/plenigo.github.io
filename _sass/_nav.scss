@@ -46,7 +46,7 @@
         content: counters(item, ".") " "; counter-increment: item
       }
 
-      &.header1 {
+      &.header1:before {
         content: "";
       }
 
