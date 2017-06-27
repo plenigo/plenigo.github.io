@@ -29,18 +29,36 @@
 
   li {
     list-style: none;
-    padding-left: 0;
-
-    &:before {
-      content: counters(item, ".") " "; counter-increment: item
-    }
-
   }
+
+
   ol {
     margin-top: 5px;
     margin-bottom: 0;
-    counter-reset: item
+    counter-reset: item;
+    padding-left: 15px;
+
+    li {
+      list-style: none;
+      padding-left: 0;
+
+      &:before {
+        content: counters(item, ".") " "; counter-increment: item
+      }
+
+    }
+
   }
+
+  #onSite ol:first-child {
+    padding-left: 0;
+    & > li {
+      &:before {
+        content: "";
+      }
+    }
+  }
+
 
   #navHandle {
     top: 10px;

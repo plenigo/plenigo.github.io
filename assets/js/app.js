@@ -46,14 +46,14 @@
             var secName = '',
                 title = '';
 
-            console.log($(this));
+            // for (i=1; i<position; i++) {
+            //     var sec = numOfSections[i];
+            //     title +=(sec + '.');
+            //     secName += (sec + '_');
+            // }
 
-            for (i=1; i<position; i++) {
-                var sec = numOfSections[i];
-                title +=(sec + '.');
-                secName += (sec + '_');
-            }
-            title += ( ' ' + $(this).text() );
+            title = ( $(this).text() );
+
             // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
 
             var li = $('<li><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
