@@ -94,7 +94,7 @@
         }
 
         if ($.inViewport(footer)) {
-            nav.css("height", $(window).height() - footer.height())
+            nav.css("height", $(window).height() - footer.outerHeight())
         }
 
     }, 500);
