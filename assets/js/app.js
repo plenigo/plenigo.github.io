@@ -12,6 +12,8 @@
         nav = $("#navigation"),
         content = $("#main_content"),
         onSite = $("#onSite"),
+        footer = $("footer"),
+        header = $("header"),
         sc = 0,
         createToc = function(contents_selector, target_selector){
         var prePos = 0,
@@ -69,6 +71,7 @@
 
     nav.css("max-height", $(window).height());
 
+    content.css("min-height", $(window).height() - (footer.height() + header.height()));
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
@@ -89,6 +92,11 @@
         } else {
             body.removeClass("scroll");
         }
+
+        if ($.inViewport(footer)) {
+            nav.css("height", $(window).height() - footer.height())
+        }
+
     }, 500);
 
 }(jQuery, verge));
