@@ -71,7 +71,7 @@
 
     nav.css("max-height", $(window).height());
 
-    content.css("min-height", $(window).height() - (footer.height() + header.height()));
+    content.css("min-height", $(window).height() - (footer.outerHeight() + header.outerHeight()));
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
