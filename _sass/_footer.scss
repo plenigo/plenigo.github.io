@@ -1,6 +1,9 @@
 
 footer {
   background-position: center 0;  
+    position: relative;
+    z-index: 1;
+    background: #fff;
   
   div.footer {    
     max-width: 1600px;
