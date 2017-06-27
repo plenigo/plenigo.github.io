@@ -7,7 +7,6 @@
 
     $.extend(verge);
 
-
     // https://gist.github.com/yuanying/455571
     var body = $("body"),
         nav = $("#navigation"),
@@ -68,7 +67,8 @@
 
     createToc(content, onSite);
 
-    nav.css("height", $(window).height());
+    // nav.css("height", $(window).height());
+
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
@@ -84,7 +84,7 @@
 
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
-            nav.css("height", $(window).height());
+            // nav.css("height", $(window).height());
             amIOn();
         } else {
             body.removeClass("scroll");
