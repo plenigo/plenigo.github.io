@@ -50,10 +50,17 @@
         li {
           list-style: none;
           padding-left: 0;
+          position: relative;
 
           &:before {
-            content: counters(item, ".") " ";
-            counter-increment: item
+            content: counters(item,".") " ";
+            counter-increment: item;
+            font-size: .8em;
+            position: absolute;
+            left: -43px;
+            width: 38px;
+            text-align: right;
+            top: 3px;
           }
 
         }
