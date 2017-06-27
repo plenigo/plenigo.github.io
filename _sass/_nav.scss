@@ -38,21 +38,24 @@
     counter-reset: item;
     padding-left: 15px;
 
-    .header1 li {
-      list-style: none;
-      padding-left: 0;
+    li.header1 {
+      counter-increment: unset;
 
       &:before {
-        content: counters(item, ".") " "; counter-increment: item
+        content: '';
       }
 
-      //&.header1:before {
-      //  content: "";
-      //  counter-increment: none;
-      //}
+      li {
+        list-style: none;
+        padding-left: 0;
 
+        &:before {
+          content: counters(item, ".") " ";
+          counter-increment: item
+        }
+
+      }
     }
-
   }
 
 
