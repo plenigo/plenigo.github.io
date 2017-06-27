@@ -31,32 +31,26 @@
     list-style: none;
   }
 
+ li.header {
+    ol {
+      margin-top: 5px;
+      margin-bottom: 0;
+      counter-reset: item;
+      padding-left: 15px;
 
-  ol {
-    margin-top: 5px;
-    margin-bottom: 0;
-    counter-reset: item;
-    padding-left: 15px;
+        li {
+          list-style: none;
+          padding-left: 0;
 
-    li.header1 {
-      counter-increment: none;
+          &:before {
+            content: counters(item, ".") " ";
+            counter-increment: item
+          }
 
-      &:before {
-        content: '';
-      }
-
-      li {
-        list-style: none;
-        padding-left: 0;
-
-        &:before {
-          content: counters(item, ".") " ";
-          counter-increment: item
         }
-
       }
     }
-  }
+
 
 
   #navHandle {
