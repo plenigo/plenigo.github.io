@@ -29,7 +29,7 @@
                 numOfSections[position - 1] = 1;
                 prePos = position;
 
-                ul = $('<ul>');
+                ul = $('<ol/>');
                 parent.append(ul);
             } else if ( prePos == position ) {
                 numOfSections[position - 1] += 1;
@@ -74,6 +74,8 @@
         };
 
     createToc(content, onSite);
+
+    nav.css("height", $(window).height());
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
