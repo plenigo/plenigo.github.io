@@ -38,7 +38,7 @@
     counter-reset: item;
     padding-left: 15px;
 
-    li {
+    .header1 li {
       list-style: none;
       padding-left: 0;
 
@@ -46,10 +46,10 @@
         content: counters(item, ".") " "; counter-increment: item
       }
 
-      &.header1:before {
-        content: "";
-        counter-increment: none;
-      }
+      //&.header1:before {
+      //  content: "";
+      //  counter-increment: none;
+      //}
 
     }
 
