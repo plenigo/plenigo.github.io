@@ -30,10 +30,16 @@
   li {
     list-style: none;
     padding-left: 0;
+
+    &:before {
+      content: counters(item, ".") " "; counter-increment: item
+    }
+
   }
-  ul {
+  ol {
     margin-top: 5px;
     margin-bottom: 0;
+    counter-reset: item
   }
 
   #navHandle {
