@@ -84,7 +84,7 @@
 
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
-            nav.css("max-height", $(window).height());
+            nav.css("height", $(window).height());
             amIOn();
         } else {
             body.removeClass("scroll");
