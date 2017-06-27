@@ -23,19 +23,21 @@
 
         $(contents_selector).find(':header').each(function(){
             var position = parseInt(this.nodeName.charAt(1)),
+                gapPosition,
                 i;
 
             if (prePos < position) {
-                numOfSections[position - 1] = 1;
+                // numOfSections[position - 1] = 1;
                 prePos = position;
 
                 ul = $('<ol/>');
+
                 parent.append(ul);
-            } else if ( prePos == position ) {
-                numOfSections[position - 1] += 1;
+            } else if ( prePos === position ) {
+                // numOfSections[position - 1] += 1;
             } else if (prePos > position){
-                var gapPosition = prePos - position;
-                numOfSections[position - 1] += 1;
+                gapPosition = prePos - position;
+                // numOfSections[position - 1] += 1;
                 prePos = position;
 
                 for (i=0; i<gapPosition; i++) {
@@ -43,21 +45,12 @@
                     ul = $(parent.parent().get(0));
                 }
             }
-            var secName = '',
-                title = '';
 
-            // for (i=1; i<position; i++) {
-            //     var sec = numOfSections[i];
-            //     title +=(sec + '.');
-            //     secName += (sec + '_');
-            // }
+            var title = ( $(this).text() ),
+                li = $('<li class="header' + position + '"><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
 
-            title = ( $(this).text() );
-
-            // $(this).html('<a name="s'+ secName + '">' + title + '</a>');
-
-            var li = $('<li class="header' + position + '"><a href="#' + $(this).attr("id") + '">' + title + '</a></li>');
             ul.append(li);
+
             parent = li;
 
             });

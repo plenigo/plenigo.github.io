@@ -1,5 +1,5 @@
 ***
-#### Checkout process includes login
+### Checkout process includes login
 
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. 
 ***
