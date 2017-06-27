@@ -67,7 +67,7 @@
 
     createToc(content, onSite);
 
-    // nav.css("height", $(window).height());
+    nav.css("max-height", $(window).height());
 
 
     $("#navHandle").click(function (event) {
@@ -84,7 +84,7 @@
 
         if (body[0].scrollTop > 100) {
             body.addClass("scroll");
-            // nav.css("height", $(window).height());
+            nav.css("max-height", $(window).height());
             amIOn();
         } else {
             body.removeClass("scroll");
