@@ -13,22 +13,24 @@ There are additional configuration options. This options are added as attributes
 
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
-|<code>data-disable-metered</code>|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
-|<code>data-hide-metered-counter</code>|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
-|<code>data-lang</code>|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
-|<code>data-client-paywall</code>|Yes|true|Must be set to enabled client side PayWall.|
-|<code>data-test-mode</code>|No|true/false|Flag indicating if test mode should be used.|
-|<code>data-paywall-type</code>|Yes|url|Indicates the client side PayWall type.|
-|<code>data-paywall-base-url</code>|Yes|base URL to find real content|Base URL to find real content for. To access the content the product id will be hashed with MD5 and added to the paywall-base-url.|
-|<code>data-paywall-target-element-id</code>|Yes|id of the element to add the content to.|id of the element to add the content to.|
-|<code>data-paywall-external-content-id</code>|Yes|id of the external content|The MD5 hash of this value will identify the external content.|
-|<code>data-paywall-registration-element-id</code>|Yes, if two two phase metered is planed|id of the element containing the registration/login form.|id of the element containing the registration/login form.|
-|<code>data-product-id</code>|Yes|product id of the product on this page.|Product id that identifies the product that is sold on this page.|
-|<code>data-login-status</code>|No|function to call after user status change.|Function that should be called if user status changed. The only argument passed is the status as boolean value.|
-|<code>data-oauth2-access-code</code>|No|function to call after OAuth2 was successful.|Function that should be called if OAuth2 is done. The only argument passed is the access code.|
-|<code>data-original-site-url</code>|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
-|<code>data-metered-description-url</code>|No|metered description url|Link to a page that describes the metered model.|
-|<code>data-profile-security-label</code>|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
+|data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
+|data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
+|data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
+|data-client-paywall|Yes|true|Must be set to enabled client side PayWall.|
+|data-test-mode|No|true/false|Flag indicating if test mode should be used.|
+|data-paywall-type|Yes|url|Indicates the client side PayWall type.|
+|data-paywall-base-url|Yes|base URL to find real content|Base URL to find real content for. To access the content the product id will be hashed with MD5 and added to the paywall-base-url.|
+|data-paywall-target-element-id|Yes|id of the element to add the content to.|id of the element to add the content to.|
+|data-paywall-external-content-id|Yes|id of the external content|The MD5 hash of this value will identify the external content.|
+|data-paywall-registration-element-id|Yes, if two two phase metered is planed|id of the element containing the registration/login form.|id of the element containing the registration/login form.|
+|data-product-id|Yes|product id of the product on this page.|Product id that identifies the product that is sold on this page.|
+|data-login-status|No|function to call after user status change.|Function that should be called if user status changed. The only argument passed is the status as boolean value.|
+|data-oauth2-access-code|No|function to call after OAuth2 was successful.|Function that should be called if OAuth2 is done. The only argument passed is the access code.|
+|data-payment-check|No|function to call to check if the user has bought the product. This method is only called if the user is logged in successfully and the check should be done.|
+|data-login-status|No|function called to indicate if a user is logged in or not. The only argument passed is a boolean value.|
+|data-original-site-url|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
+|data-metered-description-url|No|metered description url|Link to a page that describes the metered model.|
+|data-profile-security-label|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
 
 Example snippet for the JavaScript to include if you use the client side PayWall and load the content from another url if user has not bought the product.
 
