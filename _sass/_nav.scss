@@ -20,11 +20,13 @@
   a, a:active, a:visited {
     color: #eee;
     font-size: .85em;
+    transition: opacity .5s;
   }
 
   a.in-viewport {
-    color: #aaa;
+    //color: #aaa;
     font-style: italic;
+    opacity: .7;
   }
 
   li {
@@ -55,12 +57,13 @@
           &:before {
             content: counters(item,".") " ";
             counter-increment: item;
-            font-size: .8em;
+            font-size: .7em;
             position: absolute;
-            left: -43px;
-            width: 38px;
+            left: -55px;
+            width: 50px;
             text-align: right;
-            top: 3px;
+            top: 6px;
+            opacity: .7;
           }
 
         }
