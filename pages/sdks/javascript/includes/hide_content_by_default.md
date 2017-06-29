@@ -25,6 +25,8 @@ There are additional configuration options. This options are added as attributes
 |data-product-id|Yes|product id of the product on this page.|Product id that identifies the product that is sold on this page.|
 |data-login-status|No|function to call after user status change.|Function that should be called if user status changed. The only argument passed is the status as boolean value.|
 |data-oauth2-access-code|No|function to call after OAuth2 was successful.|Function that should be called if OAuth2 is done. The only argument passed is the access code.|
+|data-payment-check|No|function to call to check if the user has bought the product. This method is only called if the user is logged in successfully and the check should be done.|
+|data-login-status|No|function called to indicate if a user is logged in or not. The only argument passed is a boolean value.|
 |data-original-site-url|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
 |data-metered-description-url|No|metered description url|Link to a page that describes the metered model.|
 |data-profile-security-label|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
