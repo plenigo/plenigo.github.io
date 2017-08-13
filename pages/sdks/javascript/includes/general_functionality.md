@@ -93,6 +93,7 @@ The following tables describes the configuration object. Non mandatory parameter
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
+
 |Name|Description|
 |:---|:----------|
 |Id|Email address of the user|
@@ -127,6 +128,7 @@ The following tables describes the configuration object. Non mandatory parameter
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
+
 |Name|Description|
 |:---|:----------|
 |Id|Email address of the user|
