@@ -17,7 +17,7 @@ $companyId = 'COMPANY_ID';
 
 In this call we are using two parameters:
 
-|nam        | description                                                            |
+|name       | description                                                            |
 |:----------|:-----------------------------------------------------------------------|
 |$secret    | It is a String that represents the secret key for your specific company|
 |$companyId | It is a String that represents the company ID used                     |
