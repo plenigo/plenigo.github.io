@@ -1,3 +1,4 @@
+
 The [checkout functionality of the JavaScript-SDK](/sdks/javascript#checkout---start-a-plenigo-checkout) request an encrypted and signed string as `paymentData` value.
 This string can be received from the product management page of the plenigo merchant backend or be generated on the fly. The encrypted string itself can handle
 different configurations so it is suggested to generate it on the server side.

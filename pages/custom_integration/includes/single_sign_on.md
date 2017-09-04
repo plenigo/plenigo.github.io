@@ -1,3 +1,5 @@
+Single sign-on (SSO) is a session and user authentication service that permits a user to use one set of login credentials (e.g., name and password) to access multiple applications. The service authenticates the end user for all the applications the user has been given rights to and eliminates further prompts when the user switches applications during the same session. On the back end, SSO is helpful for logging user activities as well as monitoring user accounts.
+
 There are two different ways to implement SSO with plenigo:
 
 * OAuth2 (recommended)
@@ -5,7 +7,7 @@ There are two different ways to implement SSO with plenigo:
 
 ### OAuth2
 
-#### What is OAuth 2.0
+#### Definition OAuth 2.0 
 
 OAuth is an [open standard](https://en.wikipedia.org/wiki/Open_standard) for [authorization](https://en.wikipedia.org/wiki/Authorization). OAuth provides client applications a 'secure delegated access' to server resources on behalf of a resource owner. 
 It specifies a process for resource owners to authorize third-party access to their server resources without sharing their credentials. Designed specifically 
@@ -17,6 +19,29 @@ with the approval of the resource owner, or end-user. The client then uses the a
 * OAuth 2.0 allows you to access resources from other services in a defined way, e.g. retrieve user profile data without the need to request them from the user
 * OAuth 2.0 doesn't replace your own user management
 
+#### General  OAuth 2.0 Workflow
+```text
+    1.Authorization Request: A Client Application must first obtain authorization from the Resource Owner before it can access a protected resource.
+    2.Grant Request: The Client Application then exchanges the access grant for an access token.
+    3.Access Token: Lastly, the Client Application accesses the protected resource by presenting the access token to the resource server.
++--------+                               +---------------+
+|        |--(1)- Authorization Request ->|   Resource    |
+|        |                               |     Owner     |
+|        |<-(1.1)-- Authorization Grant ---|               |
+|        |                               +---------------+
+|        |
+|        |                               +---------------+
+|        |--(2)-- Authorization Grant -->| Authorization |
+| Client |                               |     Server    |
+|        |<-(2.1)----- Access Token -------|               |
+|        |                               +---------------+
+|        |
+|        |                               +---------------+
+|        |--(3)----- Access Token ------>|    Resource   |
+|        |                               |     Server    |
+|        |<-(3.1)--- Protected Resource ---|               |
++--------+                               +---------------+
+```
 #### Example usage for OAuth 2.0 with plenigo
 
 In the following example we assume that a  plenigo client called "Merchant" is using the plenigo OAuth 2.0 interfaces. To concentrate on the actual logic, 
@@ -51,9 +76,15 @@ Now let's see what is going on with UserB
    > Any old refresh tokens will be invalid from this point on.
    
 6. With the access token Merchant requests the user profile of the user from the plenigo API
+
+```text
+   https://api.s-devops.com/#!/user/getUserProfile
+```
+
 7. Merchant now compares the customerId of plenigo with the ones it has within its user database and will find it, because UserB was there before. So the login is finished now. (Of course you could check if user data has changed and update them if necessary)
 
-#### Using OAuth 2.0 to use plenigo as SSO provider
+#### Using OAuth 2.0 to use plenigo as SSO 
+
 
 plenigo APIs use the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) for authentication and authorization. plenigo supports common OAuth 2.0 scenarios such as those for web server, installed, and client-side applications.
 
@@ -68,10 +99,6 @@ There are two possible ways to start the user authentication
 2. Implementing a javascript snippet that starts a login process at plenigo
 
 ##### Start user authentication
-
-###### Checkout Process
-
-This case is already handled by the implementation of the checkout process with the SSO flag and we won't go into any more details here.
 
 ###### Login Process
 
@@ -101,6 +128,8 @@ state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in x
 session['state'] = state
 ```
 
+###### Plenigo Login
+
 After the optional CSRF token creation, the SDKs should offer the functionality to create the following Javascript snippet
 
 ```javascript
@@ -114,6 +143,23 @@ The three parameters to use can partially be filled automatically and some has t
 |REDIRECT_URI|The URL to be redirected to after successful login to finish up the server side workflow. The given URL (or at least the starting part) must be registered in the plenigo backend. Otherwise an error is returned.|
 |SCOPE|Currently the only supported scope is profile. But more will come so this should be set by the customer.|
 |STATE|The state is the CSRF. During the management of the CSRF by the SDK this should be provided by the SDK.|
+ Javascript Example
+```javascript
+     var config = {
+         ssoRedirectURL: 'http://redirectUrl.com',
+         scope: 'profile'
+     };
+     plenigo.login(config);
+```
+Python Example
+ 
+Go Example
+  
+Examples for php and java are in the following links:
+ 
+-[Login Java SDK](/sdks/java##Login)
+
+-[Login PHP SDK](/sdks/php##Login)
 
 After the user finished the login process and accepts the company to be authorized to access his data, he will be redirected to the given target URL.
 

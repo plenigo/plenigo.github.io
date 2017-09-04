@@ -10,7 +10,9 @@ The JWT itself contains the following payload
 |exp|Validity time for the JWT. We recommend the current timestamp plus 5 minutes|
 |companyId|Your company id from the plenigo merchant backend|
 
-Following an example in C#:
+Test
+
+**C#**
 
 ```c#
 class Plenigo 
@@ -38,3 +40,29 @@ client.Headers.Add("plenigoToken", Plenigo.CreatePlenigoToken());
 
 // call API function
 ```
+**GO**
+
+```go
+import(
+   jwt "github.com/dgrijalva/jwt-go"
+   "github.com/satori/go.uuid"
+   "time"
+)
+
+func generateToken(companyId string, companySecret string) string {
+   token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+      "companyId": companyId,
+      "exp":       time.Now().Add(time.Minute * time.Duration(5)).Unix(),
+      "aud":       "plenigo",
+      "jti":       uuid.NewV4(),
+   })
+   
+   // Sign and get the complete encoded token as a string using the company secret
+   tokenString, err := token.SignedString([]byte(companySecret))
+
+   if err != nil {
+      // handle error
+   }
+}
+```
+
