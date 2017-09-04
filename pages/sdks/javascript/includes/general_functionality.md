@@ -91,6 +91,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |origin|string|No|Yes|Origin parameter after a successful login.|
 |testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
 |productIds|string|No|Yes|If set plenigo checks if the customer has bought one of the products passed here. The product ids must be comma separated. A detailed explanation follows bellow.|
+|notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
@@ -127,6 +128,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |origin|string|No|Yes|Origin parameter after a successful login.|
 |testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
 |productIds|string|No|Yes|If set plenigo checks if the customer has bought one of the products passed here. The product ids must be comma separated. A detailed explanation follows bellow.|
+|notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
