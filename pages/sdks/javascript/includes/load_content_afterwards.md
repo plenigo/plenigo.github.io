@@ -30,7 +30,7 @@ There are additional configuration options. This options are added as attributes
 |data-original-site-url|No|original site url|Original site url to detect if some kind of webproxy is used and prevent the user to access the site in this case.|
 |data-metered-description-url|No|metered description url|Link to a page that describes the metered model.|
 |data-profile-security-label|No|true/false|Do not show a security label around the profile snippets if rendered on a non https site.|
-|data-data-disable-redirect|No|true/false|Flag indicating if there should be a redirect after the user has logged in or bought something.|
+|data-disable-redirect|No|true/false|Flag indicating if there should be a redirect after the user has logged in or bought something.|
 
 Example snippet for the JavaScript to include if you use the client side PayWall and load the content from another url if user has not bought the product.
 
