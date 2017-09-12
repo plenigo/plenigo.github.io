@@ -14,6 +14,7 @@
         onSite = $("#onSite"),
         footer = $("footer"),
         header = $("header"),
+        win = $(window),
         sc = 0,
         createToc = function(contents_selector, target_selector){
         var prePos = 0,
@@ -69,36 +70,33 @@
 
     createToc(content, onSite);
 
-    nav.css("max-height", $(window).height());
+    nav.css("max-height", win.height());
 
-    content.css("min-height", $(window).height() - (footer.outerHeight() + header.outerHeight()));
+    content.css("min-height", win.height() - (footer.outerHeight() + header.outerHeight()));
 
     $("#navHandle").click(function (event) {
        body.toggleClass("menu-open");
        event.preventDefault();
     });
     
-    console.log("there");
-
     window.setInterval(function () {
-        if (sc === body[0].scrollTop) {
-            console.log("ret");
+        var offset = win.scrollTop();
+        if (sc === offset) {
             return;
         }
 
-        console.log("scrolled");
-        sc = body[0].scrollTop;
+        sc = offset;
 
-        if (body[0].scrollTop > 100) {
+        if (offset > 100) {
             body.addClass("scroll");
-            nav.css("height", $(window).height());
+            nav.css("height", win.height());
             amIOn();
         } else {
             body.removeClass("scroll");
         }
 
         if ($.inViewport(footer)) {
-            nav.css("height", $(window).height() - footer.outerHeight())
+            nav.css("height", win.height() - footer.outerHeight())
         }
 
     }, 500);
