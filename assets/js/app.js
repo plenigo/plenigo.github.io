@@ -77,6 +77,8 @@
        body.toggleClass("menu-open");
        event.preventDefault();
     });
+    
+    console.log("there");
 
     window.setInterval(function () {
         if (sc === body[0].scrollTop) {
