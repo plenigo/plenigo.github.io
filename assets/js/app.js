@@ -80,9 +80,11 @@
 
     window.setInterval(function () {
         if (sc === body[0].scrollTop) {
+            console.log("ret");
             return;
         }
 
+        console.log("scrolled");
         sc = body[0].scrollTop;
 
         if (body[0].scrollTop > 100) {
