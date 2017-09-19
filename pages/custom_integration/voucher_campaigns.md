@@ -1,10 +1,17 @@
-# Create loyalty campaigns by giving vouchers as giveaways
+---
+layout: default
+title: voucher campaigns
+permalink: /voucher_campaigns
+---
+# Vocher Campagins
+
+## Create loyalty campaigns by giving vouchers as giveaways
 
 As a company if you want to give free access to customers you can generate a voucher campaign (by creating voucher Ids that can be redeemed as a free purchase of a product.
 
 Vouchers are numbered and limited in nature (up to 10 thousand per channel) but if you are looking for an unlimited free giveaway, you can create and allow purchase of a free (as in $0-. price) product.
 
-#### Campaigns 
+### Campaigns 
 
 Campaigns are a set of channels with an amount of vouchers generated for each channel. Campaigns contain a name and a date range when that campaign will be active. After the expiration date or before the start date, the vouchers will not be able to be redeemed. Some examples:
 
@@ -13,7 +20,7 @@ Campaigns are a set of channels with an amount of vouchers generated for each ch
 * “New advertising push”
 * “New branding acquisition”
 
-#### Channels
+### Channels
 
 Channels are a way to funnel your customers in order to measure statistics on the redemption of vouchers. You can name the channel anything you want and assign that channel to a product when creating the campaign. Some examples:
 
@@ -22,18 +29,18 @@ Channels are a way to funnel your customers in order to measure statistics on th
 * “Mobile users”
 * “People at the mall in downtown New Jersey
 
-### Creating a voucher
+## Creating a voucher
 
 A voucher can be used to put a “tag” on a free product purchase. Also, if you only provide the purchase though Voucher Redemption, it means that when the voucher Ids are redeemed, then there is no more purchases left for the product.
 
 
-#### Implementation with SDKs
+### Implementation with SDKs
 
-**Java**
+#### Java
 SDK coden
 
 
-**PHP**
+#### PHP
 
 You can create a campaign programmatically by calling the `VoucherService::generateCampaign()` method with these parameters:
 
@@ -52,37 +59,41 @@ You can create a campaign programmatically by calling the `VoucherService::gener
 <?php
 $name = "New e-book release campaign"; // The name of the campaign
 $prodId = "my_product_id"; // You (free) product id
+$startDate = "2001-01-01";  // Your start date
+$expirationDate = "2090-12-31"; // Your expiration date
+$type = 'MULTI'; 
+$amount = 50;
 $funnels = array(
   "YouTube channel users",
   "Facebook lurkers",
   "Newsletter readers"
 ); // Channel names
 $amount = 100; // vouchers per channel
-$result = VoucherService::generateCampaign($name, $prodId, '2001-01-01', '2090-12-31', "MULTI", 100, $funnels);
-
+$result = VoucherService::generateCampaign($name, $prodId, $startDate, $expirationDate, $type, $amount, $funnels);
 // $result of type \plenigo\models\CampaignResponse
 $channels = $result->getChannelVouchers();
 $channelYT = $channels[0]; // "Youtube channel users" object of type \plenigo\models\ChannelVouchers
-$ytVouchers = $channelYT->getIds(); // array of strings with 100 voucher ids
+$ytVouchers = $channelYT->getIds(); // array of strings with 50 voucher ids
 ```
 
-#### Implementation without SDKs
+### Implementation without SDKs
 
 Another possibility to create a voucher - can be a direct call to our REST API:
 
 * [Create a voucher](https://api.plenigo.com/#!/voucher/createVoucher)
 
 
-### Redeeming a voucher 
+## Redeeming a voucher 
 
 
-#### Implementation with SDKs
+### Implementation with SDKs
 
-**Java**
+#### Java
+
 SDK coden
 
+#### PHP
 
-**PHP**
 Once you got the voucher code you can redeem it using the `CheckoutService::redeemVoucher()` with these parameters:
 
 
@@ -94,26 +105,31 @@ Once you got the voucher code you can redeem it using the `CheckoutService::rede
 
 ```php
 <?php
-$customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
-$result = CheckoutService::redeemVoucher($ytVouchers[0], $customerId, false);
+$voucherCode = "X1XZ-6HNJ-78KI"; // the voucher code from the plenigo backend
+$customerId = "12345"; // the customer id from the plenigo backend
+$externalUserManagement = false;
+$result = CheckoutService::redeemVoucher($voucherCode, $customerId, $externalUserManagement);
 
 if($result){
   // Profit!
 }
 ```
 
-#### Implementation without SDKs
+### Implementation without SDKs
+
 asf
 
-### ´Buying´ a free product
+## ´Buying´ a free product
 
 Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
 
 
-**Java**
+### Implementation with SDKs
+
+#### Java
 SDK coden
 
-**PHP**
+#### PHP
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -125,15 +141,16 @@ SDK coden
 
 ```php
 <?php
-$prodId = "my_product_id"; // Your free product ID
+$productId = "123456"; // Your free product ID 
 $customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
-$result = CheckoutService::buyFreeProduct($prodId, $customerId, false);
+$result = CheckoutService::buyFreeProduct($productId, $customerId, false);
 
 if($result){
   // Profit!
 }
 ```
 
+### Implementation without SDKs
 
 
 

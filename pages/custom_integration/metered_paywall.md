@@ -1,23 +1,29 @@
-### MV
+---
+layout: default
+title: Metered views
+permalink: /metered_paywall
+---
+
+# Metered views 
 Plenigo makes it simple to add a paywall to your system. First of all you have to enable the paywall. Therefore you have to login in the merchant backend with your credentials.
 Navigate to "Paywall" -> "Settings". Here you must activate the paywall. Furthermore you can disable and enable the paywall with the timing.
 
-#### Workflow metered views 
+## Workflow metered views 
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-With SDKS
+**With SDKS**
 
-(A) + (B): [Java SDK](https://api.plenigo.com/#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
+(A) + (B): [Java SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
-Without plenigo SDKS
+**Without plenigo SDKS**
 
-(A) Check with plenigo API -> [Paywall state](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
+(A) Check with plenigo API -> [Paywall state](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
 (B)
 
 
-#### Implementation with SDKs
+### Implementation with SDKS
 
 ##### Java
 
@@ -46,11 +52,16 @@ else {
         showPaywall();
      }
 ```
-#### Implementation without SDKs
+### Implementation without plengio SDKS
 
-### Cookie decryption
+If you are using a programming language that is not supported by one of our SDKS you have to do the following steps.
 
-The metered view cookie is encrypted to prevent easy manipulation. The encryption will not prevent manipulation completely but needs a deeper technical understanding.
+1. Cookie decryption
+2. Cookie content
+
+#### Cookie decryption
+
+The metered view cookie is decrypted to prevent easy manipulation. The encryption will not prevent manipulation completely but needs a deeper technical understanding.
 The cookie itself is called _plenigo_view_
 
 Base information:
@@ -71,7 +82,7 @@ decrypt("AES", "AES/CTR/NoPadding", Hex.decode(COMPANY_ID_MD5_VALUE), Hex.decode
 |COOKIE_DATA|Complete cookie data string.|
 |IV_STRING|Always _7a134cc376d05cf6bc116e1e53c8801e_|
 
-### Cookie content
+#### Cookie content
 
 After decryption the following string will be presented:
 `browserId|activated|freeViews|viewsTaken|limitReached|countOnlyUniqueViews|ignoreSearchEngines|ignoreSocialMedia|articlesVisited|freeViewsAfterLogin|viewsTakenAfterLogin|limitReachedAfterLogin|startTime|meteredPeriod|startWithFirstDay|cookieCreationTime
