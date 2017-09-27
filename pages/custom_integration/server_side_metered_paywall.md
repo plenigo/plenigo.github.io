@@ -26,7 +26,7 @@ Without plenigo SDKS
 
 ## Implementation with SDKs
 
-The idea behind metered view functionality is demonstrated with the following pseudo code examples.
+The idea behind metered view functionality is demonstrated with the following pseudo code examples. If you do not know how to get the product id from the plenigo backend click the following link: [Get product id]()
 
 ### Java
 
@@ -40,7 +40,7 @@ You can use the `com.plenigo.sdk.services.MeterService#hasFreeViews` method for 
 // We fill the request object with the appropriate get object and we get the Cookie header this way
 String cookieHeader = request.getHeader("Cookie");
 // Replaxe my_product_id with the product id from the plenigo backend
-String productId = "my_product_id";
+String productId = "RgKUHT78563989856641";
 // This method returns true if the user has free views.
 boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader, requestQueryString);
 if (hasFreeViews) {
@@ -64,7 +64,7 @@ protected void handlePaywall(HttpServletRequest request, HttpServletResponse res
     //We fill the request object with the appropriate get object and we get the Cookie header this way
     String cookieHeader = request.getHeader("Cookie");
     // Replace my_product_id with the product it from the plenigo backend  
-    String productId = "my_product_id"; 
+    String productId = "RgKUHT78563989856641"; 
     //This method returns true if the user has free views.
     boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader);
     //This method returns true if the user has already bought the product.
@@ -142,7 +142,7 @@ Use case for implementing plenigo metered paywall.
 ```php
 <?php
       // Replace my_product_id with the product it from the plenigo backend  
-      $productId ="my_product_id";
+      $productId ="RgKUHT78563989856641";
       $returnPage = "news.php";
       //This method returns true if the user has already bought the
       //product

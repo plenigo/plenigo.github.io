@@ -10,45 +10,46 @@ permalink: /configure_environment
 
 > Please keep in mind that you need to include the plenigo JavaScript-SDK in every HTML page you would like to use plenigo functionality. The necessary information can be found in the JavaScript documentation.
 
-
 ### Implementation with SDKS
+
+#### Java
 
 In order to configure the SDK, you have to execute the following steps.
 
-##### Java
+1. Get the company secret and id from the plenigo backend
+
+![Company data](/assets/images/ci/company_data.png)
+
+2. Configure your environment 
+
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| companyId     | yes     | string         | The secret key for your specific company(Plenigo Backend-> Settings->Company data) |
+| companyId     | yes     | string         | The secret key for your specific company (Plenigo Backend-> Settings->Company data) |
 | secret     | yes     | string         | The company ID of your specific company (Plenigo Backend-> Settings->Company data) |
 
 In order to configure the SDK, you must do the following: You must require and call `com.plenigo.sdk.PlenigoManager#configure ` method.
 
 ```java
-//Replace the secret and the company id with the correct ones you get from the plenigo backend.(Settings -> Company data)
-String companyId = "COMPANY_ID";
-String secret = "SECRET";
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; //the company id of your specific company 
+String secret = "RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj"; //the secret key of your specific company
 PlenigoManager.get().configure(secret, companyId );
 ```
-##### PHP
+#### PHP
 
 In order to configure the SDK, you must do the following: You must require and call `\plenigo\PlenigoManager::configure()` method.
 
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $companyId     | yes     | string         | It is a String that represents the secret key for your specific company |
-| $secret     | yes     | string         | It is a String that represents the company ID used |
+| $companyId     | yes     | string         | The secret key for your specific company(Plenigo Backend-> Settings->Company data) |
+| $secret     | yes     | string         |  The company ID of your specific company (Plenigo Backend-> Settings->Company data) |
 
 ```php
-//Replace the secret and the company id with the correct ones you get from the plenigo backend.(Settings -> Company data)
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-
-//define constants:
-$companyId = 'COMPANY_ID';
-$secret = 'SECRET';
-
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
 //configure plenigo:
 \plenigo\PlenigoManager::configure($secret, $companyId);
 ?>
@@ -71,7 +72,7 @@ The JWT itself contains the following payload
 |companyId|Your company id from the plenigo merchant backend|
 
 
-##### C#
+#### C#
 
 ```c#
 class Plenigo 
@@ -85,7 +86,7 @@ class Plenigo
             { "jti", System.Guid.NewGuid().ToString()},
             { "aud", "plenigo"},
             { "exp",    Math.Floor((now + 5 * 60 * 1000) / 1000)},
-            { "companyId", "COMPANY_ID"}
+            { "companyId", "12NuCmdZUTRRkQiCqP2Q"}
         };
     
         var secretKey = "secret";
@@ -99,7 +100,7 @@ client.Headers.Add("plenigoToken", Plenigo.CreatePlenigoToken());
 
 // call API function
 ```
-##### GO
+#### GO
 
 ```go
 import(
@@ -110,7 +111,7 @@ import(
 
 func generateToken(companyId string, companySecret string) string {
    token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-      "companyId": companyId,
+      "companyId": "12NuCmdZUTRRkQiCqP2Q",
       "exp":       time.Now().Add(time.Minute * time.Duration(5)).Unix(),
       "aud":       "plenigo",
       "jti":       uuid.NewV4(),

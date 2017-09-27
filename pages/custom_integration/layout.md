@@ -1,11 +1,12 @@
 ---
 layout: default
+title: Getting started!
+permalink: /layout
 ---
+# Getting started
 
-# Plenigo developer documentation
-
-Use the documentation on this site to learn how to implement plenigo services. Choose the solution that bests suits your needs from the Featured documentation or select All Docs to find a specific document.
-
+If you want to beginn implementing plenigo into your system first of all you have to configure your environment. After that you can choose the solution that bests suits your needs from the documentation.
+ 
 [1. Configure your environment](/configure_environment)
 
 [2. Login](/login)
@@ -17,7 +18,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
 [3.2 Server side paywall](/server_side_paywall)
 
 [3.2.1 Server side metered paywall](/server_side_metered_paywall)
-
+    
 [3.3  Checkout]()
 
 [3.3.1 Checkout with plenigo manged Products](/checkout_plenigo_managed_products)
@@ -37,9 +38,3 @@ Use the documentation on this site to learn how to implement plenigo services. C
 [8. Customer Mobile Secret](/customer_mobile_secret)
 
 [9. Company information](/company_information)
-
-[Public API](https://api.plenigo.com)
-
-[SDKS](/sdks)
-
-[Plugins](/plugins)

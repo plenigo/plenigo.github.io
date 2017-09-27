@@ -3,7 +3,14 @@ layout: default
 title: voucher campaigns
 permalink: /voucher_campaigns
 ---
-# Vocher Campagins
+# Voucher Campaigns
+
+It is possible to create vouchers for specific customer.
+
+* [Create loyalty campaigns by giving vouchers as giveaways ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Creating a Voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Reedimg a voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* ['Buying a free product'?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
 ## Create loyalty campaigns by giving vouchers as giveaways
 
@@ -38,7 +45,6 @@ A voucher can be used to put a “tag” on a free product purchase. Also, if yo
 
 #### Java
 SDK coden
-
 
 #### PHP
 
@@ -82,9 +88,7 @@ Another possibility to create a voucher - can be a direct call to our REST API:
 
 * [Create a voucher](https://api.plenigo.com/#!/voucher/createVoucher)
 
-
 ## Redeeming a voucher 
-
 
 ### Implementation with SDKs
 
@@ -95,7 +99,6 @@ SDK coden
 #### PHP
 
 Once you got the voucher code you can redeem it using the `CheckoutService::redeemVoucher()` with these parameters:
-
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -114,15 +117,9 @@ if($result){
   // Profit!
 }
 ```
-
-### Implementation without SDKs
-
-asf
-
 ## ´Buying´ a free product
 
 Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
-
 
 ### Implementation with SDKs
 
@@ -152,5 +149,6 @@ if($result){
 
 ### Implementation without SDKs
 
+Another possibility to create a voucher - can be a direct call to our REST API:
 
-
+* ['Buying' a free product](https://api.plenigo.com/#!/checkout/checkoutFreeProduct)

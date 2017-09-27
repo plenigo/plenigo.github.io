@@ -19,7 +19,7 @@ with the approval of the resource owner, or end-user. The client then uses the a
 * OAuth 2.0 allows you to access resources from other services in a defined way, e.g. retrieve user profile data without the need to request them from the user
 * OAuth 2.0 doesn't replace your own user management
 
-#### General  OAuth 2.0 Workflow
+#### General OAuth 2.0 Workflow
 ```text
     1.Authorization Request: A Client Application must first obtain authorization from the Resource Owner before it can access a protected resource.
     2.Grant Request: The Client Application then exchanges the access grant for an access token.

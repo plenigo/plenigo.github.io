@@ -15,19 +15,19 @@ It is possible to use your own registration and login process and only login use
 * [Giving a customer more access ids ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Add external user id ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-### Register an external user
+## Register an external user
 
 To register an external user into the plenigo system you should use the `com.plenigo.sdk.services.UserManagementService#registerUser` for java and for php `\plenigo\services\UserManagementService::registerUser`. This method returns you the plenigo-user-id of the external user in the plenigo system. This user id will only be used for internal references. In the whole checkout process the user will only see the id you passed as external user id parameter to the method.
 
-#### General Workflow external user management 
+## General Workflow external user management 
 
 ![General Workflow External User Management](/assets/images/ci/ExternalUser.png)
 
 (A) Register external user in the plenigo system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
-#### Implementation with SDKs  
+### Implementation with SDKs  
 
-##### Java
+#### Java
 
 For Java you can use the `com.plenigo.sdk.services.UserManagementService#registerUser` method for this purpose:
 
@@ -40,15 +40,15 @@ For Java you can use the `com.plenigo.sdk.services.UserManagementService#registe
 | name       | yes   | string        | The name of the new user|
 
 ```java
-String email = "testAddNewUser@mail.com"; // The email address of the customer
-String language = "en"; // The langauge
-long externalUserId = "12345"; // The external customer id e.g "12345"
-String firstName = "new"; // The first name of the customer 
-String name = "user"; // The name of the customer
+String email = "testAddNewUser@mail.com"; //The email address of the customer
+String language = "en"; //The langauge
+long externalUserId = "12345"; //The external customer id e.g "12345"
+String firstName = "new"; //The first name of the customer 
+String name = "user"; //The name of the customer
 String registerUser = UserManagementService.registerUser(email, language, externalUserId, firstName, name); // Returns true if customer was registrated otherwise false.
 ```
 
-##### PHP
+#### PHP
 
 For PHP you can use the `com.plenigo.sdk.services.UserManagementService::registerUser` method for this purpose:
 
@@ -62,29 +62,27 @@ For PHP you can use the `com.plenigo.sdk.services.UserManagementService::registe
    
 ```php
 <?php
-$email = "testAddNewUser@mail.com"; // The email address of the customer
-$language = "en"; // The langauge
-$externalUserId = "12345"; // The external customer id e.g "12345"
-$firstName = "new"; // The first name of the customer 
-$name = "user"; // The name of the customer
+$email = "testAddNewUser@mail.com"; //The email address of the customer
+$language = "en"; //The langauge
+$externalUserId = "12345"; //The external customer id e.g "12345"
+$firstName = "new"; //The first name of the customer 
+$name = "user"; //The name of the customer
 $registerUser = UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name );
-
 ```
 
-
-#### Implementation without SDKs 
+### Implementation without SDKs 
 
 Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
-### Change email address of an existing user
+## Change email address of an existing user
 
 It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
 
-#### Implementation with SDKs
+### Implementation with SDKs
 
-##### Java
+#### Java
 
 For Java you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` method for this purpose.
 
@@ -95,13 +93,13 @@ For Java you can use the `com.plenigo.sdk.services.UserManagementService#changeE
 | useExternalCustomerId     | yes     | boolean         | The external customer id|
 
 ```java
-String customerId = "12345" // The customer id of the user to change email address for
-String email =  "testChangeEMail@mail.com"; // The new email address for that customer
+String customerId = "12345" //The customer id of the user to change email address for
+String email =  "testChangeEMail@mail.com"; //The new email address for that customer
 boolean useExternalCustomerId = false;
 boolean changeEmail = UserManagementService.changeEmail(String customerId, String email, useExternalCustomerId);
 //changeEmail will be TRUE if the email address was changed successfully
 ```
-##### PHP
+#### PHP
 
 For PHP you can use the `com.plenigo.sdk.services.UserManagementService::changeEmail` method for this purpose:
 
@@ -120,20 +118,19 @@ $useExternalCustomerId = false;
 $changeEmail = \plenigo\services\UserManagementService::changeEmail($customerId, $email, $useExternalCustomerId);
 //$changeEmail will be TRUE if the email address was changed successfully
 ```
-#### Implementation without SDKs
+### Implementation without SDKs
 
 Another possibility to change an email address of an existing user - can be a direct call to our REST API:
 
 * [Change email address of an existing user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
-### Create login token for an external user
+## Create login token for an external user
 
-To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This login token is valid for 5 minutes and can be passed e.g. to the build()-method of the \plenigo\builders\CheckoutSnippetBuilder.
+To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This login token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
 
+### Implementation with SDKs
 
-#### Implementation with SDKs
-
-##### Java
+#### Java
 
 For Java you can use the `com.plenigo.sdk.services.UserManagementService#createLoginToken` method for this purpose.
 
@@ -146,7 +143,7 @@ For Java you can use the `com.plenigo.sdk.services.UserManagementService#createL
 String loginToken = UserManagementService.createLoginToken(String customerId, String useExternalCustomerId);
 ```
 
-##### PHP
+#### PHP
 
 For PHP you can use the `com.plenigo.sdk.services.UserManagementService::createLoginToken` method for this purpose.
 
@@ -158,15 +155,15 @@ For PHP you can use the `com.plenigo.sdk.services.UserManagementService::createL
 ```php
 $loginToken = \plenigo\services\UserManagementService::createLoginToken($customerId, $useExternalCustomerId)
 ```
-#### Implementation without SDKs 
+### Implementation without SDKs 
 
 Another possibility to create login token - can be a direct call to our REST API:
 
 * [Create login token](https://api.plenigo.com/#!/external_user_management/createLoginToken)
 
-### Create multiple login tokens for external users 
+## Create multiple login tokens for external users 
 
-#### Implementation without SDKs 
+### Implementation without SDKs 
 
 Java
 
@@ -178,20 +175,19 @@ PHP
 ```php
 SDK fehlt coden
 ```
-#### Implementation with SDKs
+### Implementation with SDKs
 
 Another possibility to create multiple login tokens - can be a direct call to our REST API:
 
 * [Create multiple token](https://api.plenigo.com/#!/external_user_management/createMultipleLoginTokens)
 
-### Giving a customer more access ids
-
+## Giving a customer more access ids
 
 With this functionality the company can provide several access ids to a given customer. This is useful if the company has internal systems for billing, CRM, customer engagement, etc. With this data entered, you can use any of these Ids to check for access to products below.
 
-#### Implementation with SDKs
+### Implementation with SDKs
 
-##### Java
+#### Java
 
 For Java you can use the `com.plenigo.sdk.services.UserManagementService#importCustomerAccess` method for this purpose.
 
@@ -205,7 +201,7 @@ Java sdk Folgt
 | $useExternalCustomerId     | yes     | boolean         | The external customer id|
 | $customerIds     | yes     | String         | Array of one of four customer access ids |
 
-##### PHP
+#### PHP
 
 For PHP you can use the `com.plenigo.sdk.services.UserManagementService::importCustomerAccess` method for this purpose.
 
@@ -220,18 +216,18 @@ For PHP you can use the `com.plenigo.sdk.services.UserManagementService::importC
 $importCustomerAccess = UserManagementService::importCustomerAccess($customerId, $isExternal, $customerIds);
 //$importCustomerAccess will be TRUE if the customer access added successfully
 ```
-### Add external user id
+## Add external user id
 
 Add an external user id to a user that doesn't have one yet. This functionality is only available for companies with closed user groups.
 
-#### Implementation with SDKs
+### Implementation with SDKs
 
-##### Java
+#### Java
 
 ```java
 
 ```
-##### PHP
+#### PHP
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -241,12 +237,13 @@ Add an external user id to a user that doesn't have one yet. This functionality 
 
 ```php
 <?php
-$addExternalCustomerId = UserManagementService::addExternalCustomerId($customerId, $externalCustomerId);
+$addExternalCustomerId = UserManagementService::
+
+($customerId, $externalCustomerId);
 //$addExternalCustomerId will be TRUE if the user is added successfully
 ```
-#### Implementation with SDKs
+### Implementation with SDKs
 
 Another possibility to add external user id - can be a direct call to our REST API:
 
 * [Add external user id](https://api.plenigo.com/#!/external_user_management/createMultipleLoginTokens)
-

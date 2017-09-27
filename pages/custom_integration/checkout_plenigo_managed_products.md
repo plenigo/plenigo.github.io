@@ -4,7 +4,8 @@ title: Checkout with plenigo managed products
 permalink: /checkout_plenigo_managed_products
 ---
 # Checkout with plenigo managed products 
-If the product is managed by the plenigo and was configured in the plenigo website, only the product id is required for checkout.
+If the product is managed by plenigo and was configured in the plenigo website, only the product id is required for checkout.
+If you do not know how to get the product id from the plenigo backend click the following link: [Get product id]()
 
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. 
 Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
@@ -30,18 +31,21 @@ If you want to do a checkout with external products click the following link : [
 
 ### Java     
 
-By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the com.plenigo.sdk.models.Product class with the required information:
+By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information:
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product id from the plenigo backend |
+| productId     | yes     | string         | The [product id]() from the plenigo backend |
 
 ```java
-String productId = "my_product_id";
-Product product = new Product(productId);
-CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
-String snippet = snippetBuilder.build();
+public static void checkoutPlenigoManagedProducts(String productId) {
+    //The product id from the plenigo backend
+    Product product = new Product(productId);
+    //Creating the checkout snippet for this product
+    CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
+    //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
+    String snippet = snippetBuilder.build();
+}
 ```
 #### Use case Java
 
@@ -53,9 +57,8 @@ Use case for implementing checkout with plenigo managed products.
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     //We fill the request object with the appropriate get object and we get the Cookie header this way
     String cookieHeader = request.getHeader("Cookie");
-    // Replace my_product_id with the product it from the plenigo backend  
-    String productId = "my_product_id"; 
-    //we fill the id with the correct product
+    //The product id from the plenigo backend  
+    String productId = "RgKUHT78563989856641"; 
     //This method returns true if the user has free views.
     try{ 
         boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader);
@@ -64,16 +67,14 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
         String returnPage = "news.jsp";
         //If the user has bought the product or has no more free views, metering should be disabled
         boolean disableMeter = hasBought || !hasFreeViews;
-            if (!isNewsPaid) {
-            Product prodToChkOut = new Product(productId);
-            //Since he has not bought the product, we need to build the checkout snippet so that he can
-            //do the flow on the plenigo site and buy
-            String snippet = new CheckoutSnippetBuilder(prodToChkOut).build();
+            if (!isNewsPaid) {  
+            // Here you have to call the checkoutExternalProducts method 
+            checkoutPlenigoManagedProducts(productId)
             //Set all the attributes that you are going to need, the snippet is a url that opens a dialog
             //initiating the checkout process
             request.setAttribute("checkoutSnippet", snippet);
          }
-    //The company is required for the javascript SDK
+    //The company id is required for the javascript SDK
     request.setAttribute("id", productId);
     //If he has already bought the product, we do not need to create a checkout snippet, we
     //only need the companyId and an indicator that the product has been already paid
@@ -115,31 +116,74 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 </html>
 ```
 
-
 ### PHP
 
 By using the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product id from the plenigo backend |
+| $productId     | yes     | string         | The [product id]() from the plenigo backend |
 
 ```php
 <?php
-$productId = "my_prdocut_id";
-$product = new \plenigo\models\ProductBase($productId);
-// creating the checkout snippet for this product
-$checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
-$plenigoCheckoutCode = $checkout->build();
-// now we can use this snippet in a link or button
-echo '<a href="#" onclick
-="'.$plenigoCheckoutCode.'return false;">Buy this Product</a>';
+public static function checkoutPlenigoManagedProducts ($productId){
+    //The product if from the plenigo backend
+    $product = new \plenigo\models\ProductBase($productId);
+    //Creating the checkout snippet for this product
+    $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
+    //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
+    $plenigoCheckoutCode = $checkout->build();
+}
 ```
 #### Use case PHP
 
 ##### Server logic
 
+```php
+<?php
+//the product id that the user wants to buy, remember that there are
+//limits for the amount of characters
+$pid = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_ENCODED);
+$companyId = PlenigoManager::get()->getCompanyId();
+//we fill the id with the correct product
+$returnPage = "news.php";
+try {
+    //This method returns true if the user has already bought the
+    //product.
+    $isNewsPaid = UserService::hasUserBought($pid);
+    if ($isNewsPaid === FALSE) {
+        $productId = 'RgKUHT78563989856641';
+        // Here you have to call the checkoutExternalProducts method 
+        //Since he has not bought the product, we need to build the checkout snippet so that he can
+        //do the flow on the plenigo site and buy
+        checkoutPlenigoManagedProducts($productId);
+    }
+}catch(PlenigoException $exc){
+    //error handling for PlenigoExceptions
+    $returnPage = "error.php";
+}
+```
 ##### Page logic
+
+```html
+<html>
+<head>
+    <title><?php echo $pid; ?></title>
+    <!-- import the Plenigo Javascript SDK -->
+    <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/<?php echo $companyId; ?>/plenigo_sdk.min.js"></script>
+</head>
+<body>
+    <?php if($isNewsPaid){ ?>
+        <p>This is the news content</p>
+    <?php }else{ ?>
+        <p>Information about message that has to be paid here.</p>
+        <button onclick="<?php echo $snippet; ?>">
+            You must buy this news in order to watch the content
+        </button>
+    <?php } ?>
+</body>
+</html>
+```
 
 ## Checkout without SDKs
 
@@ -148,12 +192,13 @@ If you are using a programming language that is not supported by one of our SDKs
 ## Failed Payments
 
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this:
+
 ### Implementation with SDKs
 
 #### Java
 
 ```java
-//just create a checkout snippet with a no args build
+//Just create a checkout snippet with a no args build
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
 //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
@@ -163,15 +208,14 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
-// creating special product object for "Failed Payments"
+//Creating special product object for "Failed Payments"
 $product = \plenigo\models\ProductBase::buildFailedPaymentProduct();
-    
-// creating the checkout snippet
+//Creating the checkout snippet for this product
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
+//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 $plenigoCheckoutCode = $checkout->build();
 // now we can use this snippet in a link or button
-echo 
-'<a href="#" onclick="'.$plenigoCheckoutCode.'return false;" >Renew your subscription</a>';
+echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
 
 
@@ -182,29 +226,62 @@ If the product correspond to the subscription renewal, there is a flag in the Pr
 ### Implementation with SDKs
 
 #### Java
+
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
+| productId     | yes     | string         | The [product id]() from the plenigo backend |
+
+
 ```java
-//Replace "my_product_id" with the product id from the plenigo backend
-Product product = new Product("my_product_id");
- 
+//The product id of the product
+Product product = new Product("RgKUHT78563989856641");
 //set the renewal flag
 product.setSubscriptionRenewal(true);
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
- 
 //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 
 #### PHP
+
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
+| $productId     | yes     | string         | The [product id]() from the plenigo backend |
+
 ```php
 <?php
-// creating a Plenigo-managed product
-$product = new \plenigo\models\ProductBase('item-123');
+$productId = 'RgKUHT78563989856641';
+$product = new \plenigo\models\ProductBase($productId);
 // setting the subscription renewal flag
 $product->setSubscriptionRenewal(true);
-    
 // creating the checkout snippet for this product
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
 // now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
+```
+
+## Override product price
+
+This is used when you want to replace the regular price of a plenigo managed product for another one of your liking:
+
+### Implementation with SDKs
+
+#### Java 
+
+```java
+// The product id of the product
+String productId = "RgKUHT78563989856641";
+// The price of the product
+double price = 25.00; 
+Product product = new Product(productId, price);
+//set the override mode
+CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product).withOverrideMode();
+//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
+String snippet = snippetBuilder.build();
+```
+#### PHP
+
+```
+fehlt
 ```
