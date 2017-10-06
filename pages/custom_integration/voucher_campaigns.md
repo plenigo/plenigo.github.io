@@ -9,7 +9,7 @@ It is possible to create vouchers for specific customer.
 
 * [Create loyalty campaigns by giving vouchers as giveaways ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Creating a Voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Reedimg a voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Redeeming a voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * ['Buying a free product'?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
 ## Create loyalty campaigns by giving vouchers as giveaways
@@ -63,23 +63,23 @@ You can create a campaign programmatically by calling the `VoucherService::gener
 
 ```php
 <?php
-$name = "New e-book release campaign"; // The name of the campaign
-$prodId = "my_product_id"; // You (free) product id
-$startDate = "2001-01-01";  // Your start date
-$expirationDate = "2090-12-31"; // Your expiration date
-$type = 'MULTI'; 
-$amount = 50;
+$name = "Test campagin "; //The name of the campaign
+$prodId = "RgKUHT78563989856641"; //The (free) product id
+$startDate = "2001-01-01";  //The start date
+$expirationDate = "2090-12-31"; //The expiration date
+$type = 'MULTI';  //The type of the voucher
+$amount = 50; //The amount of the voucher
 $funnels = array(
   "YouTube channel users",
   "Facebook lurkers",
   "Newsletter readers"
-); // Channel names
+); //Channel names
 $amount = 100; // vouchers per channel
 $result = VoucherService::generateCampaign($name, $prodId, $startDate, $expirationDate, $type, $amount, $funnels);
-// $result of type \plenigo\models\CampaignResponse
+//$result of type \plenigo\models\CampaignResponse
 $channels = $result->getChannelVouchers();
-$channelYT = $channels[0]; // "Youtube channel users" object of type \plenigo\models\ChannelVouchers
-$ytVouchers = $channelYT->getIds(); // array of strings with 50 voucher ids
+$channelYT = $channels[0]; //"Youtube channel users" object of type \plenigo\models\ChannelVouchers
+$ytVouchers = $channelYT->getIds(); //Array of strings with 50 voucher ids
 ```
 
 ### Implementation without SDKs
@@ -138,7 +138,7 @@ SDK coden
 
 ```php
 <?php
-$productId = "123456"; // Your free product ID 
+$productId = "RgKUHT78563989856641"; // Your free product ID 
 $customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
 $result = CheckoutService::buyFreeProduct($productId, $customerId, false);
 

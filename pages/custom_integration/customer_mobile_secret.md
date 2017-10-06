@@ -16,7 +16,7 @@ permalink: /customer_mobile_secret
 
 #### Java
 
-You can use the `com.plenigo.sdk.services.MobileService#createMobileSecret` method for this purpose:
+You can use `com.plenigo.sdk.services.MobilService#createMobilSecret` method, which returns a `com.plenigo.sdk.models.MobileSecretInfo` object.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -24,11 +24,20 @@ You can use the `com.plenigo.sdk.services.MobileService#createMobileSecret` meth
 | size     | yes     | int         | The size of the mobile secret the minimum is 6 and max is 40  |
 
 ```java
-String customerId = "12345";
-int customerId = 6;
+String customerId = "RgKUHT78563989856641";
+int size = 6;
 //This method returns the object com.plenigo.sdk.models.MobileSecretInfo 
 //This object contains the email address of the customer and the mobile secret  
 MobileSecretInfo mobileSecretInfo = MobileService.createMobileSecret(customerId, size);
+```
+
+Returned MobilSecretInfo object:
+
+```text
+{
+  "email": "test+968267249454239@plenigo.com",
+  "mobileAppSecret": "965979"
+}
 ```
 
 #### PHP
@@ -42,11 +51,19 @@ You can use the `com.plenigo.sdk.services.MobileService::createMobileSecret` met
 
 ```php
 <?php
-$customerId = '12345';
+$customerId = 'RgKUHT78563989856641';
 $size = 6 ;
 //This method returns the object com.plenigo.sdk.models.MobileSecretInfo 
 //This object contains the email address of the customer and the mobile secrets  
 $mobileSecretInfo = MobileService::createMobileSecret($customerId, $size);
+```
+
+Returned MobilSecretInfo object:
+```text
+{
+  "email": "test+968267249454239@plenigo.com",
+  "mobileAppSecret": "965979"
+}
 ```
 
 ### Implementation without SDKs
@@ -70,10 +87,17 @@ You can use the `com.plenigo.sdk.services.MobileService#verifyMobileSecret` meth
 | mobileSecret     | yes     | int         | The mobile secret |
 
 ```java
-String email = "testSuccessfullUserMobileIsCorrect@test.com"; 
-String mobileSecret = "TESTTESTEST";
+String email = "test+968267249454239@plenigo.com"; 
+String mobileSecret = "965979";
 //This method returns the customer id given the mobile secret
 String customerId = MobileService.verifyMobileSecret(email,mobileSecret);
+```
+
+Returned customerId:
+```text
+{
+  "customerId": "319842"
+}
 ```
 
 #### PHP
@@ -84,6 +108,21 @@ You can use the `com.plenigo.sdk.services.MobileService#verifyMobileSecret` meth
 |:--------|:-------|:---------|:----------|
 | $email     | yes     | string         | The email address of the customer |
 | $mobileSecret     | yes     | int         | The mobile secret |
+
+```php
+<?php
+$customerId = 'RgKUHT78563989856641';
+$size = 6 ;
+//This method returns the customer id given the mobile secret
+$mobileSecretInfo = MobileService::verifyMobileSecret($customerId, $size);
+```
+
+Returned customerId:
+```text
+{
+  "customerId": "319842"
+}
+```
 
 ### Implementation without SDKs
 
@@ -106,12 +145,19 @@ You can use the `com.plenigo.sdk.services.MobileService#getMobileSecret` method 
 | customerId     | yes     | string         | The customer id |
 
 ```java
-String customerId = "12345";
+String customerId = "RgKUHT78563989856641";
 //This method returns the object com.plenigo.sdk.models.MobileSecretInfo 
 //This object contains the email address of the customer and the mobile secret  
 MobileSecretInfo mobileSecretInfo = MobileService.getMobileSecret(customerId);
 ```
+Returned MobilSecretInfo object:
 
+```text
+{
+  "email": "test+968267249454239@plenigo.com",
+  "mobileAppSecret": "965979"
+}
+```
 #### PHP
 
 You can use the `com.plenigo.sdk.services.MobileService::getMobileSecret` method for this purpose:
@@ -122,10 +168,19 @@ You can use the `com.plenigo.sdk.services.MobileService::getMobileSecret` method
 
 ```php
 <?php
-$customerId = "12345";
+$customerId = "RgKUHT78563989856641";
 //This method returns the object com.plenigo.sdk.models.MobileSecretInfo 
 //This object contains the email address of the customer and the mobile secret
 $mobileSecretInfo = MobileService::getMobileSecret($customerId);
+```
+
+Returned MobilSecretInfo object:
+
+```text
+{
+  "email": "test+968267249454239@plenigo.com",
+  "mobileAppSecret": "965979"
+}
 ```
 
 ### Implementation without SDKs
@@ -147,7 +202,7 @@ As a company you cam remove a moible secret of a customer.
 | $customerId     | yes     | string         | The customer id |
 
 ```java
-String customerId = "12345";
+String customerId = "RgKUHT78563989856641";
 //This method returns true if the mobile secret was deleted otherwise false.
 boolean test = MobileService.deleteMobileSercet(customerId);
 ```
@@ -161,6 +216,7 @@ boolean test = MobileService.deleteMobileSercet(customerId);
 ```php
 <?php
 //This method returns true if the mobile secret was deleted otherwise false.
+$customerId = 'RgKUHT78563989856641';
 $test = MobileService::deleteMobileSecret($customerId);
 ```
 

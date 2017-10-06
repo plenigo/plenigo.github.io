@@ -9,9 +9,18 @@
 body {
   font-family: 'Ubuntu', sans-serif;
   background: #fff;
-  color: #333;
+  color: black;
 
 }
 #container {
   background: none;
 }
+
+#test{
+  color: red;
+}
+
+a:hover{
+    color : #16aeb9  !important;
+  }
+

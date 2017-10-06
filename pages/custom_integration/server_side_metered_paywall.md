@@ -131,11 +131,9 @@ if($hasUserBought) {
     }
 ```
 
-
 #### Use case PHP
 
 Use case for implementing plenigo metered paywall.
-
 
 ##### Server logic
 

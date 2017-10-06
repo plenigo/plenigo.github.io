@@ -1,112 +1,47 @@
 ---
 layout: default
-title: App Management
-permalink: /app_management
+title: manage user access rights
+permalink: /manage user access rights
 ---
-# App Management
+# Manage user access rights
 
-App Management allows a third party to access information for a specific product.
+Manage user access rights allows you to add access right for products to a user.
 
-* [Allow a third party access to an information ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Has user bought a product ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Grant access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Remove grant access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Query customer application ids ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Remove an application id for a customer ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-## Allow a third party to access customer information for a specific product(only companies can do this)
-
-As a company, if you want to register a third party so that they can query product access of a specific customer, you can do this using the sdk. 
+## Grant access rights
 
 ### Implementation with SDKs
 
 #### Java
 
-For Java integration you can use `com.plenigo.sdk.services.AppManagement#requestAppToken` method, which returns a `com.plenigo.sdk.models.AppAccessToken` object.
+For Java integration you can use method.
 
-Followed by the `com.plenigo.sdk.services.AppManagement#requestAppToken` method, which returns a  `com.plenigo.sdk.services.AppAccessData` object:
-
-1: Configure an application id
-
-As a company, you have to add this using the plenigo management interface, through the account menu, inside the extended settings tab.
-
-![Configure an application id ](/assets/images/ci/app_id.png)
-
-
-2/3:  Request an access token and a customer application access
-
-|Parameter|Required|Value type|Description|
-|:--------|:-------|:---------|:----------|
-| customerId     | yes     | string         | The customer id |
-| productId     | yes     | string         | The id of the product |
-| description     | yes     | string         | The description of the product |
-
-```java
-String customerId = "56202510"; //The customer id
-String productId "RgKUHT78563989856641"; //The product id of the product
-String description = "test"; //The description of the product
-AppAccessToken apptoken = new AppAccessToken(customerId, productId, description);
-//1. Request an access token
-//This method returns a com.plenigo.sdk.models.AppAccessToken object 
-AppAccessToken appAccessToken = AppManagementService.requestAppToken(apptoken);
-```
-
-Returned AppAccessToken object:
-```text
-{
-  "customerId": "56202510",
-  "token": "6176437516",
-  "description": "test"
-}
-```
-
-```java
-//2. Request a customer application access with the AppTokenData object
-//Once you have the access token, you can use this to request a customer application id for the third party
-String customerId = "56202510"; //The customer id 
-String accessToken = "6176437516" //The access token
-//This method returns a com.plenigo.sdk.models.AppAccessData object 
-AppAccessData appAccessData = AppManagementService.requestAppId(customerId, accessToken);
-```
-
-Returned AppAccessData object:
-
-```text
-{
-  "customerId": "56202510",
-  "description": "test",
-  "customerAppId": "uJuVuT6M2dAiteGZaTEaTe7894eut6p4qMJyPglv",
-  "productId": "RgKUHT78563989856641"
-}
-```
-Once you have the application access data, you can give this information to the third party and they can reuse this as many times as they would like. There is a limit of how many customer application ids you can request, but you can configure that in the company management interface of plenigo. 
+ 
 
 
 #### PHP
 
-For PHP integration you can use `plenigo\services\AppManagement#requestAppToken` method, which returns a `plenigo\models\AppAccessToken` object.
-
-Followed by thee `plenigo\services\AppManagement#requestAppToken` method, which returns a  `plenigo\models\AppAccessData` object:
-
-1: Configure an application id
-
-As a company, you have to add this using the plenigo management interface, through the account menu, inside the extended settings tab(Settings->Apps).
-
-![Configure an application id ](/assets/images/ci/app_id.png)
-
-2/3:  Request an access token and a customer application access
+For PHP integration you can use `plenigo\services\AccessService::grantUserAccess` method.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| customerId     | yes     | string         | The customer id |
-| productId     | yes     | string         | The id of the product |
-| description     | yes     | string         | The description of the product |
+| $customerId     | yes     | string         | The customer id |
+| $useExternalCustomerId     | yes     | string         | The external customer id |
+| $startTime     | yes     | string         | The start time |
+| $endTime     | yes     | string         | The end time |
+| $products     | yes     | string         | The product ids |
 
 ```php
 <?php
 $customerId = '56202510'; //The customer id 
+$useExternalCustomerId = 'true';//The external customer id
+$startTime = '2019-09-09'; //The start time
+$endTime = '2021-09-09'; //The end time
 $productId = 'RgKUHT78563989856641'; //The product id 
-$description = 'test'; //The description of the product
-//1. Request an access token
-//This method returns a plenigo\services\AppAccessToken object 
 $appAccessToken = AppManagementService::requestAppToken($customerId, $productId , $description);
 ```
 

@@ -12,8 +12,6 @@ Plenigo’s checkout flow is done in their own site, and it can easily be starte
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
-If you want to do a checkout with external products click the following link : [Checkout with external products ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
-
 ## Workflow Checkout with plenigo managed products 
 
 ![General Workflow Checkout with  plenigo managed products](/assets/images/ci/Checkout .png)
@@ -31,7 +29,7 @@ If you want to do a checkout with external products click the following link : [
 
 ### Java     
 
-By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information:
+For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -39,11 +37,11 @@ By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can cr
 
 ```java
 public static void checkoutPlenigoManagedProducts(String productId) {
-    //The product id from the plenigo backend
+    //1.Step: The product id from the plenigo backend
     Product product = new Product(productId);
-    //Creating the checkout snippet for this product
+    
+    //2.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
     CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-    //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
     String snippet = snippetBuilder.build();
 }
 ```
@@ -118,7 +116,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 ### PHP
 
-By using the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
+For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -127,12 +125,12 @@ By using the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create sn
 ```php
 <?php
 public static function checkoutPlenigoManagedProducts ($productId){
-    //The product if from the plenigo backend
+    //1.Step: The product if from the plenigo backend
     $product = new \plenigo\models\ProductBase($productId);
-    //Creating the checkout snippet for this product
+    
+    //2.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
     $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
-    //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
-    $plenigoCheckoutCode = $checkout->build();
+        $plenigoCheckoutCode = $checkout->build();
 }
 ```
 #### Use case PHP
@@ -191,16 +189,22 @@ If you are using a programming language that is not supported by one of our SDKs
 
 ## Failed Payments
 
-If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this:
+If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
 ### Implementation with SDKs
 
 #### Java
 
+For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class.
+
 ```java
-//Just create a checkout snippet with a no args build
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: Just create a checkout snippet with a no args build. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 
@@ -208,13 +212,19 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
-//Creating special product object for "Failed Payments"
+//1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+//2.Step: Creating special product object for "Failed Payments"
 $product = \plenigo\models\ProductBase::buildFailedPaymentProduct();
-//Creating the checkout snippet for this product
+
+//3.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 $plenigoCheckoutCode = $checkout->build();
-// now we can use this snippet in a link or button
+
+/45.Step: Now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
 
@@ -233,12 +243,17 @@ If the product correspond to the subscription renewal, there is a flag in the Pr
 
 
 ```java
-//The product id of the product
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: The product id of the product
 Product product = new Product("RgKUHT78563989856641");
-//set the renewal flag
+
+//3.Step: Set the renewal flag.
 product.setSubscriptionRenewal(true);
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 
@@ -250,14 +265,23 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
+//1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+//2.Step: Set the product id
 $productId = 'RgKUHT78563989856641';
 $product = new \plenigo\models\ProductBase($productId);
-// setting the subscription renewal flag
+
+//3.Step: Set the subscription renewal flag
 $product->setSubscriptionRenewal(true);
-// creating the checkout snippet for this product
+
+//4.Step_ Creating the checkout snippet for this product
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
-// now we can use this snippet in a link or button
+
+//5.Step: Now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
 
@@ -270,14 +294,20 @@ This is used when you want to replace the regular price of a plenigo managed pro
 #### Java 
 
 ```java
-// The product id of the product
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: The product id of the product from the plenigo backend.
 String productId = "RgKUHT78563989856641";
-// The price of the product
+
+//3.Step: The price of the product
 double price = 25.00; 
 Product product = new Product(productId, price);
-//set the override mode
+
+//4.Step: Set the override mode.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product).withOverrideMode();
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 #### PHP
@@ -285,3 +315,4 @@ String snippet = snippetBuilder.build();
 ```
 fehlt
 ```
+

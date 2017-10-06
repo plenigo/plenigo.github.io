@@ -11,8 +11,6 @@ Plenigo’s checkout flow is done in their own site, and it can easily be starte
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
-If you want to do a checkout with plenigo managed products click the following link : [Checkout with external products ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
-
 ## Workflow Checkout with external products 
 
 ![Workflow external products ](/assets/images/ci/CheckoutExternProduct.png)
@@ -40,9 +38,11 @@ By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can cr
 
 ```java
 public static void checkoutExternalProducts(BigDecimal price, String description, String id, String currency, BigDecimal taxPercentage) {
+    //1.Step: Set product
     Product product = new Product(price, description, id, currency, taxPercentage);
+    
+    //2.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
     CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-    //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
     String snippet = snippetBuilder.build();
 }
 ```
@@ -77,7 +77,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
          if (!isNewsPaid) {
               BigDecimal price = 5.00;
               String description = "testDescription";
-              String id = "12345";
+              String id = "RgKUHT563289910";
               String currency = "USD";
               BigDecimal taxPercentage = 28.00;
               // Here you have to call the checkoutExternalProducts method 
@@ -178,7 +178,7 @@ try {
     //product.
     $isNewsPaid = UserService::hasUserBought($pid);
     if ($isNewsPaid === FALSE) {
-        $productId = '12345';
+        $productId = 'RgKUHT563289910';
         $productTitle = 'testTitle';
         $price = 15.00; //the price of the product 
         $currency = //the currency of the price 
@@ -231,9 +231,13 @@ If you want to create a button/link to the “Failed Payments” listing for the
 | productId     | yes     | string         | The product id from the plenigo backend |
 
 ```java
-//just create a checkout snippet with a no args build
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: Create a checkout snippet with a no args build.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 
@@ -245,13 +249,20 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
-// creating special product object for "Failed Payments"
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+//1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+//2.Step: Creating special product object for "Failed Payments"
 $product = \plenigo\models\ProductBase::buildFailedPaymentProduct();
     
-// creating the checkout snippet
+//3.Step: Creating the checkout snippet
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
-// now we can use this snippet in a link or button
+
+//4.Step: Now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
 
@@ -268,12 +279,19 @@ If the product correspond to the subscription renewal, there is a flag in the Pr
 | $productId     | yes     | string         | The product id from the plenigo backend |
 
 ```java
-//Replace "my_product_id" with the product id from the plenigo backend
-Product product = new Product("12345");
-//set the renewal flag
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: Set the external product id
+Product product = new Product("RgKUHT563289910");
+
+//3.Step: Set the renewal flag
 product.setSubscriptionRenewal(true);
+
+//4.Step: Creating the checkout snippet:The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-//The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
 
@@ -285,13 +303,22 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
-// creating a Plenigo-managed product
-$product = new \plenigo\models\ProductBase('12345');
-// setting the subscription renewal flag
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+//1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+//2.Step: Create a Plenigo-managed product
+$product = new \plenigo\models\ProductBase('RgKUHT563289910');
+
+//3.Step: Set the subscription renewal flag
 $product->setSubscriptionRenewal(true);
-// creating the checkout snippet for this product
+
+//4.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
-// now we can use this snippet in a link or button
+
+//5.Step: Now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```

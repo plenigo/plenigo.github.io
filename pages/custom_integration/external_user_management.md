@@ -40,11 +40,18 @@ For Java you can use the `com.plenigo.sdk.services.UserManagementService#registe
 | name       | yes   | string        | The name of the new user|
 
 ```java
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: Register an external user
 String email = "testAddNewUser@mail.com"; //The email address of the customer
 String language = "en"; //The langauge
-long externalUserId = "12345"; //The external customer id e.g "12345"
+long externalUserId = "A1BKAFZZ3H0H"; //The external customer id e.g "A1BKAFZZ3H0H"
 String firstName = "new"; //The first name of the customer 
 String name = "user"; //The name of the customer
+//This method returns true if the external user was registrated successfully otherwise it will return false.
 String registerUser = UserManagementService.registerUser(email, language, externalUserId, firstName, name); // Returns true if customer was registrated otherwise false.
 ```
 
@@ -75,54 +82,6 @@ $registerUser = UserManagementService::registerUser($email, $language , $externa
 Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
-
-## Change email address of an existing user
-
-It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
-
-### Implementation with SDKs
-
-#### Java
-
-For Java you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` method for this purpose.
-
-|Parameter|Required|Value type|Description|
-|:--------|:-------|:---------|:----------|
-| customerId     | yes     | string         | The customer id |
-| email     | yes     | string         | The new email address for that customer |
-| useExternalCustomerId     | yes     | boolean         | The external customer id|
-
-```java
-String customerId = "12345" //The customer id of the user to change email address for
-String email =  "testChangeEMail@mail.com"; //The new email address for that customer
-boolean useExternalCustomerId = false;
-boolean changeEmail = UserManagementService.changeEmail(String customerId, String email, useExternalCustomerId);
-//changeEmail will be TRUE if the email address was changed successfully
-```
-#### PHP
-
-For PHP you can use the `com.plenigo.sdk.services.UserManagementService::changeEmail` method for this purpose:
-
-|Parameter|Required|Value type|Description|
-|:--------|:-------|:---------|:----------|
-| $customerId     | yes     | string         | The customer id |
-| $email     | yes     | string         | The new email address for that customer |
-| $useExternalCustomerId     | yes     | boolean         | The external customer id|
-
-
-```php
-<?php
-$customerId = "12345";
-$email = "testChangeEMail@mail.com";
-$useExternalCustomerId = false;
-$changeEmail = \plenigo\services\UserManagementService::changeEmail($customerId, $email, $useExternalCustomerId);
-//$changeEmail will be TRUE if the email address was changed successfully
-```
-### Implementation without SDKs
-
-Another possibility to change an email address of an existing user - can be a direct call to our REST API:
-
-* [Change email address of an existing user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
 ## Create login token for an external user
 
@@ -161,25 +120,60 @@ Another possibility to create login token - can be a direct call to our REST API
 
 * [Create login token](https://api.plenigo.com/#!/external_user_management/createLoginToken)
 
-## Create multiple login tokens for external users 
+## Change email address of an existing user
 
-### Implementation without SDKs 
+It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
 
-Java
-
-```java
-SDK fehlt coden
-```
-
-PHP
-```php
-SDK fehlt coden
-```
 ### Implementation with SDKs
 
-Another possibility to create multiple login tokens - can be a direct call to our REST API:
+#### Java
 
-* [Create multiple token](https://api.plenigo.com/#!/external_user_management/createMultipleLoginTokens)
+For Java you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` method for this purpose.
+
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
+| customerId     | yes     | string         | The customer id |
+| email     | yes     | string         | The new email address for that customer |
+| useExternalCustomerId     | yes     | boolean         | The external customer id|
+
+```java
+//1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+//2.Step: Change email address of an existing user
+String customerId = "12345" //The customer id of the user to change email address for
+String email =  "testChangeEMail@mail.com"; //The new email address for that customer
+//This method returns true if the email was changed successfully otherwise it will return false.
+boolean useExternalCustomerId = false;
+boolean changeEmail = UserManagementService.changeEmail(String customerId, String email, useExternalCustomerId);
+```
+#### PHP
+
+For PHP you can use the `com.plenigo.sdk.services.UserManagementService::changeEmail` method for this purpose:
+
+|Parameter|Required|Value type|Description|
+|:--------|:-------|:---------|:----------|
+| $customerId     | yes     | string         | The customer id |
+| $email     | yes     | string         | The new email address for that customer |
+| $useExternalCustomerId     | yes     | boolean         | The external customer id|
+
+
+```php
+<?php
+$customerId = "12345";
+$email = "testChangeEMail@mail.com";
+$useExternalCustomerId = false;
+$changeEmail = \plenigo\services\UserManagementService::changeEmail($customerId, $email, $useExternalCustomerId);
+//$changeEmail will be TRUE if the email address was changed successfully
+```
+### Implementation without SDKs
+
+Another possibility to change an email address of an existing user - can be a direct call to our REST API:
+
+* [Change email address of an existing user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
+
 
 ## Giving a customer more access ids
 
