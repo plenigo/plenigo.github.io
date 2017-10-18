@@ -40,7 +40,6 @@ Channels are a way to funnel your customers in order to measure statistics on th
 
 A voucher can be used to put a “tag” on a free product purchase. Also, if you only provide the purchase though Voucher Redemption, it means that when the voucher Ids are redeemed, then there is no more purchases left for the product.
 
-
 ### Implementation with SDKs
 
 #### Java
@@ -63,23 +62,30 @@ You can create a campaign programmatically by calling the `VoucherService::gener
 
 ```php
 <?php
-$name = "Test campagin "; //The name of the campaign
-$prodId = "RgKUHT78563989856641"; //The (free) product id
-$startDate = "2001-01-01";  //The start date
-$expirationDate = "2090-12-31"; //The expiration date
-$type = 'MULTI';  //The type of the voucher
-$amount = 50; //The amount of the voucher
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend. 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: Creating the voucher.
+$name = "Test campagin "; // The name of the campaign.
+$prodId = "RgKUHT78563989856641"; // The (free) product id.
+$startDate = "2001-01-01";  // The start date.
+$expirationDate = "2090-12-31"; // The expiration date.
+$type = 'MULTI';  // The type of the voucher.
+$amount = 50; // The amount of the voucher.
 $funnels = array(
   "YouTube channel users",
   "Facebook lurkers",
   "Newsletter readers"
-); //Channel names
-$amount = 100; // vouchers per channel
+); // Channel names
+$amount = 100; // Vouchers per channel.
 $result = VoucherService::generateCampaign($name, $prodId, $startDate, $expirationDate, $type, $amount, $funnels);
-//$result of type \plenigo\models\CampaignResponse
+// $result of type \plenigo\models\CampaignResponse.
 $channels = $result->getChannelVouchers();
-$channelYT = $channels[0]; //"Youtube channel users" object of type \plenigo\models\ChannelVouchers
-$ytVouchers = $channelYT->getIds(); //Array of strings with 50 voucher ids
+$channelYT = $channels[0]; // "Youtube channel users" object of type \plenigo\models\ChannelVouchers.
+$ytVouchers = $channelYT->getIds(); // Array of strings with 50 voucher ids.
 ```
 
 ### Implementation without SDKs
@@ -108,8 +114,15 @@ Once you got the voucher code you can redeem it using the `CheckoutService::rede
 
 ```php
 <?php
-$voucherCode = "X1XZ-6HNJ-78KI"; // the voucher code from the plenigo backend
-$customerId = "12345"; // the customer id from the plenigo backend
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend. 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step : Redeem a voucher.
+$voucherCode = "X1XZ-6HNJ-78KI"; // The voucher code from the plenigo backend.
+$customerId = "12345"; // The customer id from the plenigo backend.
 $externalUserManagement = false;
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $externalUserManagement);
 
@@ -134,12 +147,19 @@ SDK coden
 | $customerId     | yes     | string         | The customer id you can get from the `UserService::getCustomerInfo()` method. |
 | $externalUserid     | no     | boolean         | TRUE to specify you are using [[external user management|UserManagement]] |
 
-!!! IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful
+!!! IMPORTANT: as with all the methods in the SDK, errors are handled as Exceptions. This method will return TRUE if the purchase was successful.
 
 ```php
 <?php
-$productId = "RgKUHT78563989856641"; // Your free product ID 
-$customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: 'Buying' a free product.
+$productId = "RgKUHT78563989856641"; // Your free product ID. 
+$customerId = "my_customer_id"; // You can obtain it from the currently logged in user or external customer management.
 $result = CheckoutService::buyFreeProduct($productId, $customerId, false);
 
 if($result){

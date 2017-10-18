@@ -21,7 +21,7 @@ This is the simplest way to login, below there are examples of how to generate t
 You can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` class to build the snippet:
 
 ```java
-LoginSnippetBuilder snippetBuilder = new  com.plenigo.sdk.builders.LoginSnippetBuilder();
+LoginSnippetBuilder snippetBuilder = new LoginSnippetBuilder();
 String snippet = snippetBuilder.build(); //This will generate the login snippet of the following format: plenigo.login();
 ```
 #### PHP

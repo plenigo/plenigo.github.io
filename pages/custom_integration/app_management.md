@@ -40,12 +40,16 @@ As a company, you have to add this using the plenigo management interface, throu
 | description     | yes     | string         | The description of the product |
 
 ```java
-String customerId = "56202510"; //The customer id
-String productId "RgKUHT78563989856641"; //The product id of the product
-String description = "test"; //The description of the product
+// 1.Step: Configure the Java SDK.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2. Step: 3. Request an access token.
+String customerId = "56202510";  // The customer id from the plenigo backend.
+String productId "RgKUHT78563989856641"; // The product id from the plenigo backend.
+String description = "test"; // The description of the product.
 AppAccessToken apptoken = new AppAccessToken(customerId, productId, description);
-//1. Request an access token
-//This method returns a com.plenigo.sdk.models.AppAccessToken object 
 AppAccessToken appAccessToken = AppManagementService.requestAppToken(apptoken);
 ```
 
@@ -59,11 +63,11 @@ Returned AppAccessToken object:
 ```
 
 ```java
-//2. Request a customer application access with the AppTokenData object
-//Once you have the access token, you can use this to request a customer application id for the third party
-String customerId = "56202510"; //The customer id 
-String accessToken = "6176437516" //The access token
-//This method returns a com.plenigo.sdk.models.AppAccessData object 
+// 4.Step: Request a customer application access with the AppTokenData object.
+// Once you have the access token, you can use this to request a customer application id for the third party.
+String customerId = "56202510"; // The product id from the plenigo backend.
+String accessToken = "6176437516" // The access token.
+// This method returns a com.plenigo.sdk.models.AppAccessData object.
 AppAccessData appAccessData = AppManagementService.requestAppId(customerId, accessToken);
 ```
 
@@ -102,11 +106,17 @@ As a company, you have to add this using the plenigo management interface, throu
 
 ```php
 <?php
-$customerId = '56202510'; //The customer id 
-$productId = 'RgKUHT78563989856641'; //The product id 
-$description = 'test'; //The description of the product
-//1. Request an access token
-//This method returns a plenigo\services\AppAccessToken object 
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: Request an access token.
+$customerId = '56202510'; // The customer id from the plenigo backend.
+$productId = 'RgKUHT78563989856641'; // The product id from the plenigo backend.
+$description = 'test'; // The description of the product.
+// This method returns a plenigo\services\AppAccessToken object.
 $appAccessToken = AppManagementService::requestAppToken($customerId, $productId , $description);
 ```
 
@@ -121,10 +131,10 @@ Returned AppAccessToken object:
 
 ```php
 <?php
-$customerId = '56202510'; //The customer id 
-$productId = 'RgKUHT78563989856641'; //The product id 
-//2. Request a customer application access with the AppTokenData object
-//This method returns a plenigo\services\AppAccessData object 
+// 3. Step: Request a customer application access with the AppTokenData object.
+$customerId = '56202510'; // The customer id from the plenigo backend. 
+$productId = 'RgKUHT78563989856641'; // The product id from the plenigo backend.
+// This method returns a plenigo\services\AppAccessData object.
 $appAccessData = AppManagementService::requestAppId($customerId, $productId);
 ```
 
@@ -162,13 +172,18 @@ For Java integration you can use the `com.plenigo.sdk.services.AppManagementServ
 | description     | yes     | string         | The description of the product |
 
 ```java
-String customerId = "56202510"; //The customer id
-String productId = "RgKUHT78563989856641"; //The product id of the product
-String customerAppId "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95" //The customer App ID 
+// 1.Step: Configure the Java SDK.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2.Step: Check if user has bought product.
+String customerId = "56202510"; // The customer id from the plengio backend.
+String productId = "RgKUHT78563989856641"; // The product id of the product from the plenigo backend.
+String customerAppId "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95" // The customer App ID.
 ProductAccessRequest productAccessRequest = new ProductAccessRequest(customerId, productId, customerAppId); 
-//With the customer application id you can query product information, in the example below, we are requesting to see
-//if an user has bought a product.
-//This returns a boolean that will tell you if the user did buy the product(true) or not(false).
+// With the customer application id you can query product information.
+// This returns a boolean that will tell you if the user did buy the product(true) or not(false).
 ProductAccessRequest request = AppManagementService.hasUserBought(productAccessRequest);
 ```
 
@@ -184,12 +199,17 @@ For PHP integration you can use the `plenigo\services\AppManagementService::hasU
 
 ```php
 <?php
-$customerId = '56202510'; //The customer id
-$productId = 'RgKUHT78563989856641'; //The product id
-$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; //The customer app id
-//With the customer application id you can query product information, in the example below, we are requesting to see
-//if an user has bought a product.
-//This returns a boolean that will tell you if the user did buy the product(true) or not(false).
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+$customerId = '56202510'; // The customer id from the plenigo backend.
+$productId = 'RgKUHT78563989856641'; // The product id from the plenigo backend.
+$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; // The customer app id.
+// With the customer application id you can query product information.
+// This returns a boolean that will tell you if the user did buy the product(true) or not(false).
 $hasUserBought = AppManagementService::hasUserBought($customerId, $productId, $customerAppId);
 ```
 ### Implementation without SDKs
@@ -214,8 +234,14 @@ For Java integration you can use the `com.plenigo.sdk.services.AppManagement#get
 | customerId     | yes     | string         | The customer id |
 
 ```java
-String customerId ="56202510"; //The customer id 
-//This method returns a list plenigo\services\AppAccessData objects 
+// 1.Step: Configure the Java SDK.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2.Step: Query customer application ids.
+String customerId ="56202510"; // The customer id from the plenigo backend.
+// This method returns a list plenigo\services\AppAccessData objects 
 List<AppAccessData> appTokenData = AppManagementService.getCustomerApps(new CustomerAppRequest(customerId));
 ```
 
@@ -228,7 +254,8 @@ You can use the `plenigo\services\AppManagement::getCustomerApps` method, an exa
 
 ```php
 <?php
-//This method returns a list plenigo\services\AppAccessData objects 
+
+// This method returns a list of  plenigo\services\AppAccessData objects 
 $customerId = "56202510"; //The customer id 
 $appsData = AppManagementService::getCustomerApps("customerId");
 ```
@@ -255,9 +282,15 @@ For Java integration you can use the `com.plenigo.sdk.services.AppManagement.del
 | customerAppId     | yes     | string         | The customer app id |
 
 ```java
-String customerId = "56202510"; //The customer id 
-String customerAppId = "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95"; //The customer app id
-//This method does not return an exception, this will delete the customer app id for the specific //customer
+// 1.Step: Configure the Java SDK
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; //Replace this with your secret from the plenigo backend.
+String companyId = "g4evZZUXvhaLVHYoie2Z"; //Replace this with your company id from the plenigo backend.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2.Step: Delete the customer app.
+String customerId = "56202510"; // The customer id from the plenigo backend.
+String customerAppId = "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95"; // The customer app id
+// This method does not return an exception, this will delete the customer app id for the specific customer.
 AppManagementService.deleteCustomerApp(new DeleteAppIdRequest(customerId, customerAppId);
 ```
 
@@ -272,9 +305,16 @@ For PHP integration you can use the `plenigo\services\AppManagement::deleteCusto
 
 ```php
 <?php
-$customerId = '56202510'; //The customer id
-$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; //The customer app id 
-//This method does not return an exception, this will delete the customer app id for the specific //customer
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: Delete the customer app.
+$customerId = '56202510'; // The customer id from the plenigo backend.
+$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; // The customer app id.
+// This method does not return an exception, this will delete the customer app id for the specific customer.
 AppManagementService::deleteCustomerApp($customerId, $customerAppId);
 ```
 ### Implementation without SDKs

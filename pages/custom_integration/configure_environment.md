@@ -31,8 +31,8 @@ In order to configure the SDK, you have to execute the following steps.
 In order to configure the SDK, you must do the following: You must require and call `com.plenigo.sdk.PlenigoManager#configure ` method.
 
 ```java
-String companyId = "12NuCmdZUTRRkQiCqP2Q"; //the company id of your specific company 
-String secret = "RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj"; //the secret key of your specific company
+String companyId = "12NuCmdZUTRRkQiCqP2Q";  // Replace this with your company id from the plenigo backend. 
+String secret = "RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj";  // Replace this with your secret from the plenigo backend. 
 PlenigoManager.get().configure(secret, companyId );
 ```
 #### PHP
@@ -48,8 +48,8 @@ In order to configure the SDK, you must do the following: You must require and c
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; //the company id of your specific company 
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //the secret key of your specific company 
+$companyId = '12NuCmdZUTRRkQiCqP2Q';  // Replace this with your company id from the plenigo backend. 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj';  // Replace this with your secret from the plenigo backend. 
 //configure plenigo:
 \plenigo\PlenigoManager::configure($secret, $companyId);
 ?>

@@ -21,11 +21,11 @@ Use the documentation on this site to learn how to implement plenigo services. C
                 </div>
                 <hr>
                  <div class="post-preview">
-                      <a href="voucher_campaigns" >
+                      <a href="paywall" >
                            <h2 class="post-title">
                            Metered views
                            </h2>
-                           <a href="voucher_campaigns" style="color: grey"> 
+                           <a href="paywall" style="color: grey"> 
                            Integrating the metered views flow. Client side paywall, Server side paywall, Server side metered paywall.
                            </a>
                       </a>
@@ -90,13 +90,25 @@ Use the documentation on this site to learn how to implement plenigo services. C
                             App management
                             </h2>
                             <a href="app_management" style="color: grey"> 
-                            Integrating the app management flow.Has user bought my product, Allow a third party to access information for a specific information, Query customer application ids and Remove customer applications ids. 
+                            Integrating the app management flow. Has user bought my product, Allow a third party to access information for a specific information, Query customer application ids and Remove customer applications ids. 
                        </a>
                  </a>
-                </div>                      
+                </div>
+                <hr>                   
+                <div class="post-preview">
+                        <a href="manage_user_access_rights"  >
+                             <h2 class="post-title">
+                             Manage user access rights
+                             </h2>
+                             <a href="manage_user_access_rights" style="color: grey"> 
+                             Integrating the grant user access rights flow. Grant access rights, Remove grant access rights, Query customer application ids and Remove an application id for a customer.  
+                        </a>
+                       </a>
+                      </div>   
+                </div>        
+</div>   
 </div>
-</div>
-</div>
+
 
 ***
 [View complete documentation](complete_documentation)
