@@ -55,7 +55,7 @@ if ($user === false) {
  
 ### Reactivate user
 
-To reactive a blocked user account after 3 failed login attempts, one have to use the login method.   
+To reactive a blocked user account after 3 failed login attempts, one have to use the [login method](/sdks/php#login).   
 
 
 
