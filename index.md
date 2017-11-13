@@ -37,7 +37,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                             Checkout with plenigo managed products
                         </h2>
                         <a href="checkout_plenigo_managed_products" style="color:grey"> 
-                        Integrating the plenigo checkout flow. Checkout with plenigo managed products, Failed payments, Subscription renewal and Override mode.</a>
+                        Use the checkout snippet builder to sell plenigo managed products easily. </a>
                     </a>
                 </div>
                   <hr>
@@ -47,7 +47,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                     Checkout with external products
                         </h2>
                     <a href="checkout_external_products" style="color:grey"> 
-                    Integrating the plenigo checkout flow. Checkout with plenigo external products, Failed payments, Subscription renewal and Override mode.</a>
+                     Use the checkout snippet builder to sell external managed products easily. </a>
                     </a>
                 </div>
                 <hr>
@@ -57,7 +57,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                           Products
                          </h2>
                          <a href="products" style="color:grey"> 
-                         Integrating the plenigo product flow. Check if an user has bought a product, Obtain a list of bought products, Is the paywall enabeld, Get product information, Get a product list, Get category information, Get category list.
+                         Use the product service in order to check if an user has bought a product or get information about the product.
                          </a>
                     </a>
                 </div>
@@ -68,8 +68,8 @@ Use the documentation on this site to learn how to implement plenigo services. C
                            External user management
                            </h2>
                            <a href="external_user_management" style="color: grey"> 
-                           Integrating the external user management flow. Register an external user, Create a login token for an external user, Giving a customer more access ids and add external user ids.
-                           </a>
+                           Use the external user management to register external user to your company.
+                          </a>
                       </a>
                  </div>
                  <hr>
@@ -79,8 +79,8 @@ Use the documentation on this site to learn how to implement plenigo services. C
                            Voucher campaigns
                            </h2>
                            <a href="voucher_campaigns" style="color: grey"> 
-                           Integrating the external user management flow. Creating a voucher, Redeeming a voucher and 'Buying' a free product.
-                      </a>
+                            Use the voucher service to create vouchers and 'Buying' a free product.
+                           </a>
                  </a>
                  </div>
                  <hr>
@@ -101,11 +101,21 @@ Use the documentation on this site to learn how to implement plenigo services. C
                              Manage user access rights
                              </h2>
                              <a href="manage_user_access_rights" style="color: grey"> 
-                             Integrating the grant user access rights flow. Grant access rights, Remove grant access rights, Query customer application ids and Remove an application id for a customer.  
+                             Use the user management service to grant or remove access user product access.
                         </a>
                        </a>
-                      </div>   
                 </div>        
+                <hr>                   
+                <div class="post-preview">
+                        <a href="company_information"  >
+                             <h2 class="post-title">
+                            Company information
+                             </h2>
+                             <a href="company_information" style="color: grey"> 
+                             Get structured information in order to show it or use it at your site/app.</a>
+                       </a>
+                 </div>   
+                </div>  
 </div>   
 </div>
 

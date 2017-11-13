@@ -51,23 +51,23 @@ Example snippet for the JavaScript to include if you use the client side PayWall
 
 ![Enable paywall](/assets/images/ci/demo_paywall.png)
 
-A complete example page where you only need to insert your data. You only have to insert the company id(e.g.82NuEoiTnbERkEqRaW0P), the product id(e.g. aitnVIz1503443609941) and the live string which belongs to that product.
+A complete example page where you only need to insert your data. You only have to insert the company id(e.g.12NuCmdZUTRRkQiCqP2Q), the product id(e.g. aitnVIz1503443609941) and the live string which belongs to that product.
 This example assumes you are running in test mode with metered views enabled.
  
 ```html
 <!DOCTYPE html>
-<html>
-        <!--
+<html>  <!--
         Let's use concrete values:
-        data-product-id = e.g. "aitnVIz1503443609941"
+        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+        data-product-id = e.g. "EgLUrT56328991046641"
         -->
     <head>
         <title> New York City Reimagines How It Works </title>
-        <script type="application/javascript" src="https://static.s-devops.com/static_resources/javascript/82NuEoiTnbERkEqRaW0P/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="false" >
+        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="false" >
 	</script>
 <script type="application/javascript">
 //The Live-String from the product from the plenigo backend.
-var paymentDataString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
+var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
 </script>
     </head>
     <body>
@@ -84,7 +84,7 @@ var paymentDataString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c
             <p>
                 <h2> Do you want to read this article ?</h2>
     		<span> Please buy a subscription</span>
-                <button onclick="plenigo.checkout({paymentData:paymentDataString})">
+                <button onclick="plenigo.checkout({paymentData: checkoutString})">
                     Buy now
                 </button>
             </p>
@@ -136,30 +136,51 @@ A complete example page where you only need to insert your data. This example as
 ```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>A great news page </title>
-        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-test-mode="true" data-disable-metered="true"> </script>
-    </head>
-    <body>
-        <h2>This is the content area</h2>
-        
-        <div id="targetId">
-            <p>
-                You don't have the right to see this content! Sry!
-                <button onclick="plenigo.checkout({paymentData: 'CHECKOUT_STRING'})">
-                    Buy now
-                </button>
-                <button onclick="plenigo.login();">
-                    Login
-                </button>
-            </p>
-        </div>
-        <div id="sourceId" style="display:none;">
-            <p>
-                This is the content you waited for!
-            </p>
-        </div>
-    </body>
+   <!--
+      Let's use concrete values:
+      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+      data-product-id = e.g. "EgLUrT56328991046641"
+      -->
+   <head>
+      <title>New York City Reimagines How It Works</title>
+      <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="false"> </script>
+      <script type="application/javascript">
+         //The Live-String from the product from the plenigo backend.
+         var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
+      </script>
+   </head>
+   <body>
+      <h2>New York City Reimagines How It Works</h2>
+      <div id="targetId">
+         <p>
+         <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from
+            Duke University in environmental management.Now Ms. Spaulding is in New York, where she was recently hired by the city?s Sanitation Department. Her duties, naturally, involve garbage, but not in 		the traditional sense: Ms. Spaulding is trying to help sell residents of the nation?s largest city on its ambitious composting effort.
+            In that respect, her job is like thousands of others added in recent years that are slowly changing the day-to-day face of government service. 
+         </p>
+         <h2>Do you want to read this article ?</h2>
+         <span> Please buy a subscription</span>
+         <button onclick="plenigo.checkout({paymentData: checkoutString})">
+         Buy now
+         </button>
+         </p>
+      </div>
+      <div id="sourceId" style="display:none;">
+         <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
+            Duke University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's
+            Sanitation Department. Her duties, naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
+            the nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others
+            added in recent years that are slowly changing the day-to-day face of government service.
+            There are now nearly 294,000 full-time city employees, more than at any point in the city?s history. The growth
+            under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly
+            every city agency now employs more workers than it did in 2014, when the mayor took office.
+            The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
+            Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
+            pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn.
+         </p>
+      </div>
+   </body>
 </html>
 ```
 ### Load content afterwards
@@ -209,38 +230,40 @@ A complete example page where you only need to insert your data. This example as
 ```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>A great news page </title>
-    
-        <!--
-        The following configuration will load the content from the following url after
-        the user has bought YOUR_DOMAIN_URL/MD5(YOUR_IDENTIFIER_FOR_THIS_CONTENT).
-        Let's use concrete values
-        data-paywall-base-url="http://example.com" (has to be the same domain like the page)
-        data-paywall-external-content-id="great-article-number-one"
-        would produce the following url
-        http://example.com/a0048edd23a9aa85e37c248bd28f270b
-        -->
-        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"
-                data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
-                data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT">
-        </script>
-    </head>
-    <body>
-        <h2>This is the content area</h2>
-        
-        <div id="targetId">
-            <p>
-                You don't have the right to see this content! Sry!
-                <button onclick="plenigo.checkout({paymentData: 'CHECKOUT_STRING'})">
-                    Buy now
-                </button>
-                <button onclick="plenigo.login();">
-                    Login
-                </button>
-            </p>
-        </div>
-    </body>
+   <!--
+      The following configuration will load the content from the following url after
+      the user has bought YOUR_DOMAIN_URL/MD5(YOUR_IDENTIFIER_FOR_THIS_CONTENT).
+      Let's use concrete values
+      data-paywall-base-url="http://example.com" (has to be the same domain like the page)
+      data-paywall-external-content-id="great-article-number-one"
+      would produce the following url: http://example.com/a0048edd23a9aa85e37c248bd28f270b
+      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+      data-product-id = e.g. "EgLUrT56328991046641"
+      -->
+   <head>
+      <title>New York City Reimagines How It Works</title>
+      <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+         data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
+         data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT"></script>
+      <script type="application/javascript">
+         //The Live-String from the product from the plenigo backend.
+         var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
+      </script>
+   </head>
+   <body>
+      <h2>
+         New York City Reimagines How It Works
+      </h2>
+      <div id="targetId">
+         <p>
+         <h2>Do you want to read this article ?</h2>
+         <span>Please buy a subscription</span>
+         <button onclick="plenigo.checkout({paymentData: checkoutString})">
+         Buy now
+         </button>
+         </p>
+      </div>
+   </body>
 </html>
 ```
 
@@ -261,7 +284,7 @@ For Java integration yoi can use the `com.plenigo.sdk.services.UserService#hasUs
 ```java
 String cookieHeader = request.getHeader("Cookie");
 // The_product_id from the plenigo backend.
-String productId = "ABdYNfn5024845321458";
+String productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
 if (hasUserBought) {
@@ -281,65 +304,84 @@ Use case for implementing plenigo paywall.
 #### Server logic
 
 ```java
-protected void handlePaywall(HttpServletRequest request, Model model, String productId) throws PlenigoException, InvalidDataException {
-   String cookieHeader = request.getHeader("Cookie");
-   boolean isHasUserBought;
-   productId = "ABdYNfn5024845321458";
-   isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
-   if (isHasUserBought) {
-       model.addAttribute("userPaid", true);
-       model.addAttribute("showPaywall", false);
-   } else {
-       model.addAttribute("userPaid", false);
-       Product product = new Product(productId);
-       CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
-       String checkoutCode = builder.build();
-       model.addAttribute("checkoutCode", checkoutCode);
-       model.addAttribute("showPaywall", true);
-   }
+@Controller
+public class Paywall {
+
+    @PostConstruct
+    public void config() {
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+    
+    public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
+        String cookieHeader = request.getHeader("Cookie");
+        boolean isHasUserBought;
+        // The product id  from the plenigo backend.
+        String productId = "EgLUrT56328991046641";
+        // This method returns true if the user has already bought the product.
+        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
+        model.addAttribute("showPaywall", false);
+        if (!isHasUserBought) {
+            Product product = new Product(productId);
+            // Since he has not bought the product, we need to build the
+            // checkout snippet so that he can do the flow on the plenigo
+            // site and buy.
+            CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
+            String checkoutCode = builder.build();
+            model.addAttribute("checkoutCode", checkoutCode);
+            model.addAttribute("showPaywall", true);
+        }
+    }
 }
 ```
 
 #### Page logic
 ```html
+<!DOCTYPE html>
 <html>
-<head>
-    <title>New York City Reimagines How It Works</title>
-    <!-- import the Plenigo Javascript SDK -->
-    <script type="application/javascript"
-            src="https://www.plenigo.com/static_resources/javascript/${companyId}/plenigo_sdk.min.js"
-            data-disable-metered="true"></script>
-</head>
-<body>
-<article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
-   Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from Duke
-   University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department.
-   Her duties,naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of the
-   nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others added in
-   recent years that are slowly changing the day-to-day face of government service.
-</article>
-<#if showPaywall>
-<h2>Do you want to read this article ?</h2>
-<span>Please buy a subscription</span>
-<button onclick="${checkoutCode}">Buy now</button>
-<#else>
-<article>There are now nearly 294,000 full-time city employees, more than at any point in the city's history. The growth under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly every city agency now employs more workers than it did in 2014, when the mayor took office. The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R. Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn. A report from Moody's earlier this year heralded the diversity in the city?s economy, but noted that the city's debt service,
-pension and retiree health care costs were growing rapidly. Increasing headcount brings added costs with it in the future, said Nick Samuels, a senior credit officer and the author of the report.
-Keeping up with that over time will require additional economic growth. Carol Kellermann, the president of the nonprofit Citizens Budget Commission, a fiscal watchdog group, questioned Mr. de Blasio's decision to rapidly grow the city's head count during flush times, saying that it made it more likely that new rounds of painful layoffs could be necessary in the city's future.
-You don't have to keep adding people every year, she said. You could manage what you have and use the staff that you have to run programs. Find a way to do the things you want to do with the existing work force.
-</article>
-</body>
+   <!--
+      Let's use concrete values
+      data-paywall-base-url="http://example.com" (has to be the same domain like the page)
+      data-paywall-external-content-id="great-article-number-one"
+      would produce the following url: http://example.com/a0048edd23a9aa85e37c248bd28f270b
+      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+      data-product-id = e.g. "aitnVIz1503443609941"
+   -->
+   <head>
+      <title>New York City Reimagines How It Works</title>
+      <script type="application/javascript"
+         src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+         data-disable-metered="true"></script>
+   </head>
+   <body>
+      <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+         Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from Duke
+         University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department.
+         Her duties,naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of the
+         nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others added in
+         recent years that are slowly changing the day-to-day face of government service.
+      </p>
+      <#if showPaywall>
+      <h2>Do you want to read this article ?</h2>
+      <span>Please buy a subscription</span>
+      <button onclick="${checkoutCode}">Buy now</button>
+      <#else>
+      <p>There are now nearly 294,000 full-time city employees, more than at any point in the city's history. The growth under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly every city agency now employs more workers than it did in 2014, when the mayor took office. The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R. Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn. A report from Moody's earlier this year heralded the diversity in the city?s economy, but noted that the city's debt service,
+         pension and retiree health care costs were growing rapidly. Increasing headcount brings added costs with it in the future, said Nick Samuels, a senior credit officer and the author of the report.
+         Keeping up with that over time will require additional economic growth. Carol Kellermann, the president of the nonprofit Citizens Budget Commission, a fiscal watchdog group, questioned Mr. de Blasio's decision to rapidly grow the city's head count during flush times, saying that it made it more likely that new rounds of painful layoffs could be necessary in the city's future.
+         You don't have to keep adding people every year, she said. You could manage what you have and use the staff that you have to run programs. Find a way to do the things you want to do with the existing work force.
+      </p>
+   </body>
 </html>
 ```
 ### PHP
 
 For PHP integration can use the `\plenigo\services\UserService::hasUserBought` method for this purpose.
 
-
 ```php
 <?php
 // The_product_id from the plenigo backend.
-$productId = 'ABdYNfn5024845321458';
+$productId = 'EgLUrT56328991046641';
 // This method returns true if the user has already bought the product.
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 if($hasUserBought) {
@@ -348,7 +390,6 @@ if($hasUserBought) {
         showPaywall();
     }
 ```
-
 
 ### Use case PHP
 
@@ -364,15 +405,15 @@ use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
-// The secret(e.g.RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj) and the company(e.g. 12NuCmdZUTRRkQiCqP2Q) id from the plengio backend.
-\plenigo\PlenigoManager::configure("RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", false);
+
+//Configure the PHP SDK: The secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id(e.g. 12NuCmdZUTRRkQiCqP2Q) from the plengio backend.
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", false);
 // The_product_id from the plenigo backend.
-$productId = "qEHYw8h4350004381941";
-$snippet = "";
+$productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
-    $product = new \plenigo\models\ProductBase($productId);
+    $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
     // checkout snippet so that he can do the flow on the plenigo
     // site and buy.
@@ -385,12 +426,13 @@ if ($hasUserBought === FALSE) {
 #### Page logic
 
 ```php
+<!DOCTYPE html>
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
     <!-- import the Plenigo Javascript SDK -->
     <script type="application/javascript"
-            src="https://static.s-devops.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
             data-disable-metered="true"></script>
 </head>
 <body>
@@ -419,6 +461,7 @@ if ($hasUserBought === FALSE) {
 ```
 
 ## Server Side Metered Paywall
+A soft paywall(metered views)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 
 The first thing you have to do is enabling the metered paywall in the plenigo backend (Paywall-> Metered Settings).
 After you have done this you can continue with the following step.
@@ -448,14 +491,14 @@ The idea behind metered view functionality is demonstrated with the following ps
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
 | cookieHeader     | yes     | string         | The cookie header |
-| requestQueryString     | yes     | string         | The url query string |
+| productId     | yes     | string         | The product id from the plenigo backend string |
 
 For Java integration you  can use the `com.plenigo.sdk.services.MeterService#hasFreeViews` method for this purpose.
 ```java
 // We fill the request object with the appropriate get object and we get the Cookie header this way
 String cookieHeader = request.getHeader("Cookie");
 // Replace my_product_id with the product id from the plenigo backend
-String productId = "RgKUHT78563989856641";
+String productId = "EgLUrT56328991046641";
 // This method returns true if the user has free views.
 boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader, productId);
 if (hasFreeViews) {
@@ -473,18 +516,27 @@ Use case for implementing plenigo metered paywall.
 
 
 ```java
-protected void handlePaywall(HttpServletRequest request, Model model, String productId) throws PlenigoException, InvalidDataException {
+public class MeteredPaywall {
+
+    @PostConstruct
+    public void config() {
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+   
+    protected void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        if (isHasUserBought) {
-            model.addAttribute("userPaid", true);
-            model.addAttribute("showPaywall", false);
-        } else {
-            model.addAttribute("userPaid", false);
+        String productId = "EgLUrT56328991046641";
+        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
+        model.addAttribute("showPaywall", false);
+        if (!isHasUserBought) {
             boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader, null);
-            if (hasFreeViews) {
-                model.addAttribute("showPaywall", false);
-            } else {
+            if (!hasFreeViews) {
+                Product product = new Product(productId);
+                // Since he has not bought the product, we need to build the
+                // checkout snippet so that he can do the flow on the plenigo
+                // site and buy.
                 Product product = new Product(productId);
                 CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
                 String checkoutCode = builder.build();
@@ -493,30 +545,35 @@ protected void handlePaywall(HttpServletRequest request, Model model, String pro
             }
         }
     }
+}
+
 ```
 
 #### Page logic
 ```html
+<!DOCTYPE html>
 <html>
-    <head>
+<head>
         <title>New York City Reimagines How It Works</title>
-        <!-- import the Plenigo Javascript SDK -->
+        <!-- import the Plenigo Javascript SDK
+               Let's use concrete values:
+               company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+        -->               
         <script type="application/javascript"
-                //The company id (e.g. 82NuEoiTnbERkEqRaW0P)
-                src="https://www.s-devops.com/static_resources/javascript/82NuEoiTnbERkEqRaW0P/plenigo_sdk.min.js"></script>
-    </head>
-    <body>
+                src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"></script>
+</head>
+<body>
     <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
         Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from
         Duke University in environmental management.Now Ms. Spaulding is in New York, where she was recently hired by the city?s Sanitation Department. Her duties, naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of the nation?s largest city on its ambitious composting effort.
         In that respect, her job is like thousands of others added in recent years that are slowly changing the day-to-day face of government service. 
     </article>
-        <#if showPaywall>
-        <h2>Do you want to read this article ?</h2>
-        <span>Please buy a subscription</span>
-        <button onclick="${checkoutCode}">Buy now</button>
-        <#else>
-        <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+    <#if showPaywall>
+    <h2>Do you want to read this article ?</h2>
+    <span>Please buy a subscription</span>
+    <button onclick="${checkoutCode}">Buy now</button>
+    <#else>
+    <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
              Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
              Duke University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's
              Sanitation Department. Her duties, naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
@@ -528,8 +585,8 @@ protected void handlePaywall(HttpServletRequest request, Model model, String pro
              The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
              Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
              pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn.
-        </article>
-    </body>
+    </article>
+</body>
 </html>
 ```
 ### PHP
@@ -561,16 +618,15 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 use plenigo\services\MeterService;
 
-// The secret(e.g.RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj) and the company(e.g. 82NuEoiTnbERkEqRaW0P) id from the plengio backend.
-\plenigo\PlenigoManager::configure("RYsDfmNzTWcQiY8PpLtwzNP8LHsV78TngrY5SSvj", "82NuEoiTnbERkEqRaW0P", false);
+// The secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company(e.g. 12NuCmdZUTRRkQiCqP2Q) id from the plengio backend.
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", false);
 // The_product_id from the plenigo backend.
-$productId = "aitnVIz1503443609941";
-$snippet = "";
+$productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
 $hasFreeViews = MeterService::hasFreeViews();
 if (!$hasUserBought || !$hasFreeViews) {
-    $product = new \plenigo\models\ProductBase($productId);
+    $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
     // checkout snippet so that he can do the flow on the plenigo
     // site and buy.
@@ -583,12 +639,13 @@ if (!$hasUserBought || !$hasFreeViews) {
 ##### Page logic
 
 ```php
+<!DOCTYPE html>
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
     <!-- import the Plenigo Javascript SDK -->
     <script type="application/javascript"
-            src="https://static.s-devops.com/static_resources/javascript/82NuEoiTnbERkEqRaW0P/plenigo_sdk.min.js">
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js">
     </script>
 </head>
 <body>

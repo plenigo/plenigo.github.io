@@ -44,7 +44,7 @@ with the approval of the resource owner, or end-user. The client then uses the a
 ```
 #### Example usage for OAuth 2.0 with plenigo
 
-In the following example we assume that a  plenigo client called "Merchant" is using the plenigo OAuth 2.0 interfaces. To concentrate on the actual logic, 
+In the following example we assume that a plenigo client called "Merchant" is using the plenigo OAuth 2.0 interfaces. To concentrate on the actual logic, 
 there will be no concrete programming languages included. Please consult the SDK documentations for that case.
 
 We are starting with the following scenario:
@@ -76,11 +76,6 @@ Now let's see what is going on with UserB
    > Any old refresh tokens will be invalid from this point on.
    
 6. With the access token Merchant requests the user profile of the user from the plenigo API
-
-```text
-   https://api.s-devops.com/#!/user/getUserProfile
-```
-
 7. Merchant now compares the customerId of plenigo with the ones it has within its user database and will find it, because UserB was there before. So the login is finished now. (Of course you could check if user data has changed and update them if necessary)
 
 #### Using OAuth 2.0 to use plenigo as SSO 

@@ -5,7 +5,6 @@ permalink: /checkout_plenigo_managed_products
 ---
 # Checkout with plenigo managed products 
 If the product is managed by plenigo and was configured in the plenigo website, only the product id is required for checkout.
-If you do not know how to get the product id from the plenigo backend click the following link: [Get product id]()
 
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. 
 Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
@@ -14,7 +13,7 @@ If you are using a programming language that is not supported by one of our SDKs
 
 ## Workflow Checkout with plenigo managed products 
 
-![General Workflow Checkout with  plenigo managed products](/assets/images/ci/Checkout .png)
+![General Workflow Checkout with plenigo managed products](/assets/images/ci/Checkout .png)
 
 (A) Create plenigo iFrame: If you want to create a registration and login page click the following link -> [Create plenigo iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
@@ -24,11 +23,10 @@ If you are using a programming language that is not supported by one of our SDKs
  
 (D) Create plenigo iFrame checkout: If you want create a plenigo iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/custom_integration#encrypted-checkout-string),
                                     [Start plenigo checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
-                                    
+                                   
 ## Checkout with SDKs  
 
 ### Java     
-
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
 
 |Parameter|Required|Value type|Description|
@@ -36,81 +34,93 @@ For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetB
 | productId     | yes     | string         | The product id from the plenigo backend |
 
 ```java
-public static void checkoutPlenigoManagedProducts(String productId) {
-    // 1.Step: The product id from the plenigo backend.
-    Product product = new Product(productId);
-    
-    // 2.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
-    CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-    String snippet = snippetBuilder.build();
-}
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2.Step: Set the product id from the plenigo backend.
+String productId = "EgLUrT56328991046641"; 
+Product product = new Product(productId);
+
+// 3.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
+CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
+String snippet = snippetBuilder.build();
 ```
 #### Use case Java
 
 Use case for implementing checkout with plenigo managed products.
 
-##### Server logic
+#### Server logic
 
 ```java
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // We fill the request object with the appropriate get object and we get the Cookie header this way.
+@Controller
+public class Paywall {
+
+    @PostConstruct
+    public void config() {
+        // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+    
+    public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
-        // The product id from the plenigo backend.
-        String productId = "RgKUHT78563989856641";
-        // This method returns true if the user has free views.
-        try {
-            boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader);
-            // This method returns true if the user has already bought the product.
-            boolean isNewsPaid = UserService.hasUserBought(id, cookieHeader);
-            String returnPage = "news.jsp";
-            // If the user has bought the product or has no more free views, metering should be disabled.
-            boolean disableMeter = hasBought || !hasFreeViews;
-            if (!isNewsPaid) {
-                // Here you have to call the checkoutExternalProducts method. 
-                checkoutPlenigoManagedProducts(productId)
-                // Set all the attributes that you are going to need, the snippet is a url that opens a dialog.
-                // Initiating the checkout process.
-                request.setAttribute("checkoutSnippet", snippet);
-            }
-            // The company id is required for the javascript SDK.
-            request.setAttribute("id", productId);
-            // If he has already bought the product, we do not need to create a checkout snippet, we
-            // only need the companyId and an indicator that the product has been already paid.
-            request.setAttribute("companyId", PlenigoManager.get().getCompanyId());
-            request.setAttribute("isPaid", isNewsPaid);
-        } catch (PlenigoException pe) {
-            // Error handling for PlenigoException.
-            returnPage = "error.jsp";
+        boolean isHasUserBought;
+        // 2.Step: The product id  from the plenigo backend.
+        String productId = "EgLUrT56328991046641";
+        // 3.Step: This method returns true if the user has already bought the product.
+        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
+        model.addAttribute("showPaywall", false);
+        if (!isHasUserBought) {
+            Product product = new Product(productId);
+            // Since he has not bought the product, we need to build the
+            // checkout snippet so that he can do the flow on the plenigo
+            // site and buy.
+            CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
+            String checkoutCode = builder.build();
+            model.addAttribute("checkoutCode", checkoutCode);
+            model.addAttribute("showPaywall", true);
         }
-        RequestDispatcher rd = request.getRequestDispatcher(returnPage);
-        rd.forward(request, response);
     }
 }
 ```
 
-##### Page logic
+#### Page logic
 
 ```html
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>${id}</title>
-    <!-- import the Plenigo Javascript SDK -->
- <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/${companyId}/plenigo_sdk.min.js" data-disable-metered="${disableMeter}"></script>
-</head>
-<body>
-<c:choose>
-    //Display all the content if the user paid, else provide a button where the user can start the checkout flow
-    <c:when test="${isPaid}">
-        <p>This is the news content</p>
-    </c:when>
-    <c:otherwise>
-        <p>Information about message that has to be paid here.</p>
-        <button onclick="${checkoutSnippet}">You must buy this news in order to watch the content</button>
-    </c:otherwise>
-</c:choose>
-</body>
+   <!--
+      Let's use concrete values:
+      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+   -->
+   <head>
+      <title>New York City Reimagines How It Works</title>
+      <script type="application/javascript"
+         src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+         data-disable-metered="true"></script>
+   </head>
+   <body>
+      <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+         Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from Duke
+         University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department.
+         Her duties,naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of the
+         nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others added in
+         recent years that are slowly changing the day-to-day face of government service.
+      </p>
+      <#if showPaywall>
+      <h2>Do you want to read this article ?</h2>
+      <span>Please buy a subscription</span>
+      <button onclick="${checkoutCode}">Buy now</button>
+      <#else>
+      <p>There are now nearly 294,000 full-time city employees, more than at any point in the city's history. The growth under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly every city agency now employs more workers than it did in 2014, when the mayor took office.
+         The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R. Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn. 
+         A report from Moody's earlier this year heralded the diversity in the city's economy, but noted that the city's debt service,
+         pension and retiree health care costs were growing rapidly. Increasing headcount brings added costs with it in the future, said Nick Samuels, a senior credit officer and the author of the report.
+         Keeping up with that over time will require additional economic growth. Carol Kellermann, the president of the nonprofit Citizens Budget Commission, a fiscal watchdog group, questioned Mr. de Blasio's decision to rapidly grow the city's head count during flush times, saying that it made it more likely that new rounds of painful layoffs could be necessary in the city's future.
+         You don't have to keep adding people every year, she said. You could manage what you have and use the staff that you have to run programs. Find a way to do the things you want to do with the existing work force.
+      </p>
+   </body>
 </html>
 ```
 
@@ -124,61 +134,96 @@ For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` c
 
 ```php
 <?php
-    public static function checkoutPlenigoManagedProducts($productId) {
-        // 1.Step: The product if from the plenigo backend.
-        $product = new \plenigo\models\ProductBase($productId);
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-        // 2.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
-        $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
-        $plenigoCheckoutCode = $checkout -> build();
-    }
+// 1.Step: Configure the PHP SDK.The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company. 
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company. 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: The product id from the plenigo backend.
+$productId = 'EgLUrT56328991046641';
+$product = new \plenigo\models\ProductBase($productId);
+
+// 3.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
+$checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
+$plenigoCheckoutCode = $checkout -> build();
 ```
 #### Use case PHP
 
-##### Server logic
+Use case for implementing checkout with plenigo managed products.
+
+#### Server logic
 
 ```php
 <?php
-$pid = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_ENCODED);
-$companyId = PlenigoManager::get()->getCompanyId();
-// We fill the id with the correct product id from the plenigo backend.
-$returnPage = "news.php";
-try
-    {
-        // This method returns true if the user has already bought the product.
-        $isNewsPaid = UserService::hasUserBought ($pid);
-        if ($isNewsPaid === FALSE) {
-            $productId = 'RgKUHT78563989856641';
-            // Here you have to call the checkoutExternalProducts method. 
-            // Since he has not bought the product, we need to build the checkout snippet so that he can
-            // do the flow on the plenigo site and buy.
-            checkoutPlenigoManagedProducts($productId);
-        }
-    } catch(PlenigoException $exc)
-    {
-        // Error handling for PlenigoExceptions.
-        $returnPage = "error.php";
-    }
+require_once __DIR__ . '/plenigo/Plenigo.php';
+
+use plenigo\builders\CheckoutSnippetBuilder;
+use plenigo\models\ProductId;
+use plenigo\services\UserService;
+
+// 1.Step: Configure the PHP SDK: The secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id(e.g. 12NuCmdZUTRRkQiCqP2Q) from the plengio backend.
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+
+// 2.Step: The product_id from the plenigo backend.
+$productId = "EgLUrT56328991046641";
+
+// 3.Step: This method returns true if the user has already bought the product.
+$hasUserBought = UserService::hasUserBought($productId);
+if ($hasUserBought === FALSE) {
+    $product = new ProductBase($productId);
+    // Since he has not bought the product, we need to build the
+    // checkout snippet so that he can do the flow on the plenigo
+    // site and buy.********
+    $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
 }
+?>
 ```
-##### Page logic
+#### Page logic
+
+Use case for checkout with plenigo managed products.
 
 ```html
+<!DOCTYPE html>
 <html>
 <head>
-    <title><?php echo $pid; ?></title>
-    <!-- import the Plenigo Javascript SDK -->
-    <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/<?php echo $companyId; ?>/plenigo_sdk.min.js"></script>
+    <title> New York City Reimagines How It Works  </title>
+     <!--
+         Let's use concrete values
+         company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+     -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
 </head>
 <body>
-    <?php if($isNewsPaid){ ?>
-        <p>This is the news content</p>
-    <?php }else{ ?>
-        <p>Information about message that has to be paid here.</p>
-        <button onclick="<?php echo $snippet; ?>">
-            You must buy this news in order to watch the content
-        </button>
-    <?php } ?>
+<?php if (!$hasUserBought ) { ?>
+    <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+        Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
+        Duke University in environmental management.</p>
+    </article>
+    <h2> Do you want to read this article ?</h2>
+    <span> Please buy a subscription</span>
+    <button onclick="<?php echo $snippet ?>"> Buy now</button>
+<?php } else { ?>
+    <article>
+        <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
+            Duke University in environmental management.
+            Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department. Her duties,
+            naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
+            the nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others
+            added in recent years that are slowly changing the day-to-day face of government service.
+            There are now nearly 294,000 full-time city employees, more than at any point in the city?s history. The growth
+            under  Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly
+            every city agency now employs more workers than it did in 2014, when the mayor took office.
+            The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
+            Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
+            pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic
+            downturn.</p>
+    </article>
+<?php } ?>
 </body>
 </html>
 ```
@@ -187,38 +232,80 @@ try
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
-## Failed Payments
+## Failed Payments with SDKs
 
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
-### Implementation with SDKs
-
-#### Java
+### Java
 
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class.
 
 ```java
-// 1.Step: Configure the Java SDK
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj";  // The secret key of your specific company.
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Just create a checkout snippet with a no args build. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
 String snippet = snippetBuilder.build();
 ```
+#### Use case Java
 
-#### PHP
+Use case for implementing failed payments.
 
+#### Server logic
+```java
+public class FailedPayments {
+
+    @PostConstruct
+    public void config() {
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+
+    public void createFailedPayment(Model model) throws PlenigoException {
+        CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
+        String snippet = snippetBuilder.build();
+        model.addAttribute("checkoutCode", snippet);
+    }
+}
+```
+
+#### Page logic 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title> New York City Reimagines How It Works  </title>
+    <!--
+        Let's use concrete values
+        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+    -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<a href="#" onclick="${checkoutCode}> return false;">Renew your subscription</a>';
+</body>
+</html>
+```
+
+### PHP
+
+For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 ```php
 <?php
-// 1.Step: Configure the PHP SDK.
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company. 
 $companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company. 
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Creating special product object for "Failed Payments".
-$product = \plenigo\models\ProductBase::buildFailedPaymentProduct();
+$product = ProductBase::buildFailedPaymentProduct();
 
 // 3.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
@@ -227,37 +314,119 @@ $plenigoCheckoutCode = $checkout->build();
 // 4.Step: Now we can use this snippet in a link or button.
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
+#### Use case PHP
 
+Use case for implementing failed payments.
 
-## Subscription renewal
+#### Server logic
+
+```php
+<?php
+require_once __DIR__ . '/plenigo/Plenigo.php';
+
+use plenigo\builders\CheckoutSnippetBuilder;
+use plenigo\models\ProductBase;
+
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+
+// 2.Step: Creating special product object for "Failed Payments".
+$product = ProductBase::buildFailedPaymentProduct();
+
+// 3.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
+$checkout = new CheckoutSnippetBuilder($product);
+$plenigoCheckoutCode = $checkout->build();
+?>
+```
+
+#### Page logic
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title> New York City Reimagines How It Works  </title>
+    <!--
+        Let's use concrete values
+        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+    -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<a href="#" onclick="<?php echo $plenigoCheckoutCode ?> return false;">Renew your subscription</a>';
+</body>
+</html>
+```
+
+## Subscription renewal with SDKs
 
 If the product correspond to the subscription renewal, there is a flag in the Product object. This way you can create a subscription renewal button in your site easily setting this flag:
 
-### Implementation with SDKs
-
-#### Java
-
-|Parameter|Required|Value type|Description|
-|:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product id from the plenigo backend |
-
+### Java
 
 ```java
-// 1.Step: Configure the Java SDK.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: The product id of the product.
-Product product = new Product("RgKUHT78563989856641");
+// 2.Step: The product id of the product from the plenigo backend.
+Product product = new Product("EgLUrT56328991046641");
 
 // 3.Step: Set the renewal flag.
 product.setSubscriptionRenewal(true);
+
+// 4.Step: Creating the checkout snippet:The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 String snippet = snippetBuilder.build();
 ```
+#### Use case Java
 
-#### PHP
+Use case for implementing Subscription renewal.
+
+#### Server logic
+```java
+public class SubscriptionRenewal {
+
+    @PostConstruct
+    public void config() {
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+
+    public void createFailedPayment(Model model) throws PlenigoException {
+        CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
+        Product product = new Product("EgLUrT56328991046641");
+        product.setSubscriptionRenewal(true);
+        String snippet = snippetBuilder.build();
+        model.addAttribute("checkoutCode", snippet);
+    }
+}
+
+```
+
+#### Page logic
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title> New York City Reimagines How It Works  </title>
+    <!--
+        Let's use concrete values
+        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+    -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<a href="#" onclick="${checkoutCode}> return false;">Renew your subscription</a>';
+</body>
+</html>
+```
+### PHP
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -265,13 +434,45 @@ String snippet = snippetBuilder.build();
 
 ```php
 <?php
-// 1.Step: Configure the PHP SDK.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend. 
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Set the product id.
-$productId = 'RgKUHT78563989856641';
+$productId = 'EgLUrT56328991046641';
+$product = new \plenigo\models\ProductBase($productId);
+
+// 3.Step: Set the subscription renewal flag.
+$product->setSubscriptionRenewal(true);
+
+// 4.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
+$checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
+$plenigoCheckoutCode = $checkout->build();
+
+// 5.Step: Now we can use this snippet in a link or button.
+echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
+```
+#### Use case PHP
+
+Use case for implementing subscription renewal.
+
+#### Server logic
+
+```php
+<?php
+require_once __DIR__ . '/plenigo/Plenigo.php';
+
+use plenigo\builders\CheckoutSnippetBuilder;
+use plenigo\models\ProductBase;
+
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+
+// 2.Step: The_product_id from the plenigo backend.
+$productId = 'EgLUrT56328991046641';
 $product = new \plenigo\models\ProductBase($productId);
 
 // 3.Step: Set the subscription renewal flag.
@@ -280,27 +481,41 @@ $product->setSubscriptionRenewal(true);
 // 4.Step_ Creating the checkout snippet for this product.
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
-
-// 5.Step: Now we can use this snippet in a link or button.
-echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
+?>
 ```
+#### Page logic
 
-## Override product price
+```html
+<html>
+<head>
+    <title> New York City Reimagines How It Works  </title>
+    <!--
+        Let's use concrete values
+        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+    -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<a href="#" onclick="<?php echo $plenigoCheckoutCode ?> return false;">Renew your subscription</a>';
+</body>
+</html>
+```
+## Override product price with SDKs
 
 This is used when you want to replace the regular price of a plenigo managed product for another one of your liking:
 
-### Implementation with SDKs
-
-#### Java 
+### Java 
 
 ```java
-// 1.Step: Configure the Java SDK.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: The product id of the product from the plenigo backend.
-String productId = "RgKUHT78563989856641";
+String productId = "EgLUrT56328991046641";
 
 // 3.Step: The price of the product.
 double price = 25.00; 
@@ -310,129 +525,92 @@ Product product = new Product(productId, price);
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product).withOverrideMode();
 String snippet = snippetBuilder.build();
 ```
-#### PHP
+#### Use case Java
+
+Use case for implementing subscription renewal.
+
+#### Server logic
+
+```java
+@Controller
+public class Paywall {
+
+    @PostConstruct
+    public void config() {
+        // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+    }
+    
+    public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
+        String cookieHeader = request.getHeader("Cookie");
+        boolean isHasUserBought;
+        // 2.Step: The product id  from the plenigo backend.
+        String productId = "EgLUrT56328991046641";
+        double newPrice = 25.00;
+        // 3.Step: This method returns true if the user has already bought the product.
+        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
+        model.addAttribute("showPaywall", false);
+        if (!isHasUserBought) {
+            Product product = new Product(productId, newPrice);
+            // Since he has not bought the product, we need to build the
+            // checkout snippet so that he can do the flow on the plenigo
+            // site and buy.
+            CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product).withOverrideMode();
+            String checkoutCode = builder.build();
+            model.addAttribute("checkoutCode", checkoutCode);
+            model.addAttribute("showPaywall", true);
+        }
+    }
+}
+```
+
+#### Page logic
+
+```html
+<!DOCTYPE html>
+<html>
+   <!--
+      Let's use concrete values:
+      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+   -->
+   <head>
+      <title>New York City Reimagines How It Works</title>
+      <script type="application/javascript"
+         src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+         data-disable-metered="true"></script>
+   </head>
+   <body>
+      <p>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+         Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from Duke
+         University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department.
+         Her duties,naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of the
+         nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others added in
+         recent years that are slowly changing the day-to-day face of government service.
+      </p>
+      <#if showPaywall>
+      <h2>Do you want to read this article ?</h2>
+      <span>Please buy a subscription</span>
+      <button onclick="${checkoutCode}">Buy now</button>
+      <#else>
+      <p>There are now nearly 294,000 full-time city employees, more than at any point in the city's history. The growth under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly every city agency now employs more workers than it did in 2014, when the mayor took office.
+         The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R. Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn. 
+         A report from Moody's earlier this year heralded the diversity in the city's economy, but noted that the city's debt service,
+         pension and retiree health care costs were growing rapidly. Increasing headcount brings added costs with it in the future, said Nick Samuels, a senior credit officer and the author of the report.
+         Keeping up with that over time will require additional economic growth. Carol Kellermann, the president of the nonprofit Citizens Budget Commission, a fiscal watchdog group, questioned Mr. de Blasio's decision to rapidly grow the city's head count during flush times, saying that it made it more likely that new rounds of painful layoffs could be necessary in the city's future.
+         You don't have to keep adding people every year, she said. You could manage what you have and use the staff that you have to run programs. Find a way to do the things you want to do with the existing work force.
+      </p>
+   </body>
+</html>
+
+```
+### PHP
+
+#### Use case PHP
+
+#### Server logic
+
+#### Page logic
 
 ```
 fehlt
-```
-## Login Token
-
-This is used when you want to provide access a specific user that he can do a checkout.
-
-### Implementation with SDKs
-
-#### Java
-
-```java
-// 1.Step: Configure the Java SDK.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-PlenigoManager.get().configure(secret, companyId );
-
-
-// 2.Step: Set the product id.
-Product product = new Product("RgKUHT78563989856641"); // Replace this with the product from the plenigo backend.
-
-// 3.Step: Register an user and create a login token to use in the checkout.
-String userId = UserManagementService.registerUser("email@example.com");
-String loginToken = UserManagementService.createLoginToken(userId);
-
-// 4.Step: Add the login token to the checkout snippet builder.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
-snippetBuilder.withLoginToken(loginToken);
-```
-
-## Using CSRF Token
-
-### Implementation with SDKs
-
-#### Java
-
-For Java integration you can use the `com.plenigo.sdk.services.TokenService#createCsrfToken()` method to generate a token.
-
-```java
-// 1.Step: Configure the Java SDK.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-PlenigoManager.get().configure(secret, companyId );
-
-// 2.Step : Generate a random CSRF token.
-String csrfToken = TokenService.createCsrfToken();
-
-// 3.Step: Create and Configure the snipped builder.
-CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
-String snippet = snippetBuilder.withCSRFToken(csrfToken).build(); 
-```
-
-#### PHP
-
-```php
-<?php
-// 1.Step: Configure the PHP SDK.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
-\plenigo\PlenigoManager::configure($secret, $companyId);
-
-// 2.Step: The product id of the product from the plenigo backend.
-$product = new \plenigo\models\ProductBase('RgKUHT78563989856641');
-
-// 3.Step: Generate a random CSRF Token.
-$csrfToken = TokenService::createCsrfToken();
-
-// 4.Step: Create and Configure the snippet builder.
-$builder = new CheckoutSnippetBuilder($product);
-$snippet = $builder->build(array('csrfToken'=>$csrfToken));
-
-// 5.Step: Now we can use this snippet in a link or button.
-echo '<a href="#" onclick="'.$snippet.'return false;">Buy this Product</a>'; 
-```
-
-## Checkout combined with OAUTH2
-
-### Implementation with SDKs
-
-#### Java
-
-```java
-// 1.Step: Configure the Java SDK.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-PlenigoManager.get().configure(secret, companyId );
-
-// 2.Step: Create a plenigo managed product.
-Product product = new Product("RgKUHT78563989856641"); // Replace this with the product id from the plenigo backend.
-CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-
-// 3.Step: Generate a random CSRF Token.
-String csrfToken = TokenService.createCsrfToken();
-
-// 4.Step: Adding URL (Thismust be registered within plenigo prior to being used.)
-String redirectUrl = "http//thisisanexample.com";
-
-// 5.Step: The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
-String snippet = snippetBuilder.withCSRFToken(csrfToken).withSSO(redirectUrl).build();
-```
-
-#### PHP
-
-```php
-<?php
-// 1.Step: Configure the PHP SDK.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
-\plenigo\PlenigoManager::configure($secret, $companyId);
-
-// 2.Step: Create a plenigo managed product.
-$product = new \plenigo\models\ProductBase('RgKUHT78563989856641'); // Replace this with the product id from the plenigo backend.
-
-// 3.Step: Generate a random CSRF Token.
-$csrfToken = TokenService::createCsrfToken();
-
-// 4.Step: Create and Configure the snippet builder.
-$builder = new CheckoutSnippetBuilder($product);
-
-// 5.Step: Adding an OAUTH2 redirect URL.
-$snippet = $builder->build(array('csrfToken'=>$csrfToken, 'oauth2RedirectUrl'=>'http//thisisanexample.com'));
-
-// 6.Step: Now we can use this snippets in a link or button.
-echo '<a href="#" onclick="'.$snippet.'return false;">Buy this Product</a>';
 ```
