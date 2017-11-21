@@ -15,12 +15,13 @@ If you try to register a user twice you will get the user id returned that was c
  * @param int $externalUserId An integer number that represents the user in the external system
  * @param string $firstName A given name for the new user
  * @param string $name A las name for the new user
+ * @param boolean $withPasswordReset flag indicating if user should get an email with a one time password
  *
  * @return string Id of the created customer.
  *
  * @throws PlenigoException In case of communication errors or invalid parameters.
  */
-\plenigo\services\UserManagementService::registerUser($email, $language = "en", $externalUserId = null, $firstName = null, $name = null)
+\plenigo\services\UserManagementService::registerUser($email, $language = "en", $externalUserId = null, $firstName = null, $name = null, $withPasswordReset = false)
 ```
 
 ###  Change email address of an existing user
