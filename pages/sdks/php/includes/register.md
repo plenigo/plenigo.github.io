@@ -20,6 +20,9 @@ $snippet = $builder->build();
 // use the parameter to wrap the Javascript-Object with a <script>-tag
 $config = $builder->writeOptions(true);
 
+// display the javascript configuration
+echo $config;
+
 // now we can use this snippet in a link or button
 echo '<a href="#" onclick="'.$snippet.'return false;">Register</a>';
 ```
