@@ -20,6 +20,10 @@ developed are designed and implemented mainly for that purpose.
    
 {% include_relative includes/login.md %}
 
+## Register
+   
+{% include_relative includes/register.md %}
+
 ## External user management
    
 {% include_relative includes/external_user_management.md %}
