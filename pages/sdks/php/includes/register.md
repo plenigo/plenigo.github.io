@@ -112,6 +112,7 @@ echo $twig->render('template.twig', array(
 ));
 ```
 your twig-template:
+{% raw %}
 ```html
 ...
 <head>
@@ -127,3 +128,4 @@ your twig-template:
 </body>
 
 ```
+{% endraw %}
