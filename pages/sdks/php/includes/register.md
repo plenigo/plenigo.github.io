@@ -99,8 +99,6 @@ $builder = new  \plenigo\builders\RegisterSnippetBuilder(array(
 
 $snippet = $builder->build();
 
-// this generates a Javascript-Snippet with configuration-Object inside
-// one have to call it before the register-link is displayed
 // use the parameter to wrap the Javascript-Object with a <script>-tag
 $config = $builder->writeOptions(false);
 
