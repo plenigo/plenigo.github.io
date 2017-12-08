@@ -126,60 +126,11 @@ $useExternalUserId = false; // The external user id.
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $useExternalUserId);
 ```
 
-#### Use case Java
-
-Use case for creating and redeeming a voucher.
-
-#### Server logic 
-
-```php
-<?php
-require_once __DIR__ . '/plenigo/Plenigo.php';
-
-use plenigo\builders\CheckoutSnippetBuilder;
-use plenigo\models\ProductId;
-use plenigo\services\UserService;
-use plenigo\services\CheckoutService;
-
-// 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
-
-// 2.Step: Redeem the voucher.
-$productId = "EgLUrT56328991046641";
-$voucherCode = "R7R2-ZLJX-LDKD"; // The voucher code from the plenigo backend.
-$customerId = "YDZKV7DPBH0Z"; // The customer id from the plenigo backend.
-$externalUserId = false; // The external user id.
-$result = CheckoutService::redeemVoucher($voucherCode, $customerId, $externalUserId);
-
-// This method returns true if the user has already bought the product.
-$hasUserBought = UserService::hasUserBought($productId);
-if ($hasUserBought === FALSE) {
-    // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
-    // site and buy.
-    $prodToChkOut = new ProductId($productId);
-    $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
-}
-?>
-```
-
-#### Page logic
-
-```html
-
-```
 
 ## ´Buying´ a free product with SDKs
 
 Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
 
-### Java
-
-#### Use case Java
-
-#### Server logic
-
-#### Page logic
 
 ### PHP
 
@@ -203,102 +154,6 @@ $productId = "EgLUrT56328991046641"; // The free product id. (Price of the produ
 $customerId = "12345"; // You can obtain it from the currently logged in user or external customer management.
 $useExternalUserId = false; // The external user id.
 $result = CheckoutService::buyFreeProduct($productId, $customerId, $useExternalUserId);
-```
-
-#### Use case PHP
-
-Use case for implementing 'Buying' a free product. 
-
-#### Server logic
-
-```php
-<?php
-require_once __DIR__ . '/plenigo/Plenigo.php';
-
-use plenigo\builders\CheckoutSnippetBuilder;
-use plenigo\models\ProductId;
-use plenigo\services\UserService;
-use plenigo\services\CheckoutService;
-use plenigo\services\VoucherService;
-
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
-
-// 2.Step: Generate and redeem the voucher.
-$name = "Test campaign"; // The name of the campaign.
-$productId = "EgLUrT56328991046641"; // The free product id. (Price of the product 0.00).
-$startDate = '2017-11-03'; // The start date.
-$expirationDate = "2090-12-31"; // The expiration date.
-$type = 'SINGLE'; // The voucher type, it can be 'SINGLE' or 'MULTI'.
-$amount = 100; // The amount of the voucher.
-$funnels = array(
-    "Test channel 1",
-    "Test channel 2",
-    "Test channel 3"
-);
-
-// 3.Step: Redeem a voucher.
-$result = VoucherService::generateCampaign($name, $productId, $startDate , $expirationDate, $type, $amount, $funnels);
-$channels = $result->getChannelVouchers(); 
-$channelYT = $channels[0]; // Test channel 1.
-$ytVouchers = $channelYT->getIds(); // Array of strings with 100 voucher ids.
-$customerId = "12345";  
-$useExternalUserId = true; // The external user id.
-$test = CheckoutService::redeemVoucher($ytVouchers[0], $customerId, true);
-$hasUserBought = UserService::hasUserBought($productId);
-
-// This method returns true if the user has already bought the product.
-if ($hasUserBought === FALSE) {
-    $prodToChkOut = new ProductId($productId);
-    // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
-    // site and buy.
-    $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
-}
-?>
-```
-#### Page logic
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title> New York City Reimagines How It Works  </title>
-    <!--
-         Let's use concrete values
-         company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
-    -->    <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
-    </script>
-</head>
-<body>
-<?php if (!$hasUserBought ) { ?>
-    <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
-            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from
-            Duke University in environmental management.
-    </article>
-    <h2> Do you want to read this article ?</h2>
-    <span> Please buy a subscription</span>
-    <button onclick="<?php echo $snippet ?>"> Buy now</button>
-<?php } else { ?>
-    <article>
-            After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
-            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
-            Duke University in environmental management.
-            Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department. Her duties,
-            naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
-            the nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others
-            added in recent years that are slowly changing the day-to-day face of government service.
-            There are now nearly 294,000 full-time city employees, more than at any point in the city?s history. The growth
-            under  Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly
-            every city agency now employs more workers than it did in 2014, when the mayor took office.
-            The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
-            Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
-            pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn.
-    </article>
-<?php } ?>
-</body>
-</html>
 ```
 
 ## 'Buying' a free product without SDKs

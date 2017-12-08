@@ -57,7 +57,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                           Products
                          </h2>
                          <a href="products" style="color:grey"> 
-                         Use the product service in order to check if an user has bought a product or get information about the product.
+                         Use the product service in order to check if an user has bought a product or get information about the producttr.
                          </a>
                     </a>
                 </div>

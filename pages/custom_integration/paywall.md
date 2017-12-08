@@ -461,7 +461,7 @@ if ($hasUserBought === FALSE) {
 ```
 
 ## Server Side Metered Paywall
-A soft paywall(metered views)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
+A soft paywall(metered paywall)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 
 The first thing you have to do is enabling the metered paywall in the plenigo backend (Paywall-> Metered Settings).
 After you have done this you can continue with the following step.
@@ -470,7 +470,7 @@ After you have done this you can continue with the following step.
 2. User has free views -> Show article
 3. User has no free views -> Show paywall 
 
-### Workflow metered views
+### Workflow metered paywall
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 

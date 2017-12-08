@@ -10,17 +10,21 @@ Plenigo offers you different possibilities for login.
 * [Standard Login](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Single sign on](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-## Standard Login 
+## Standard Login with SDKs
 
 This is the simplest way to login, below there are examples of how to generate the snippet.
 
-### Implementation with SDKS
+### Java
 
-#### Java
-
-For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` class to build the snippet:
+For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` method for this purpose:
 
 ```java
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // // The secret key of your specific company. 
+String companyId = "12NuCmdZUTRRkQiCqP2Q"; // // The company id of your specific company.
+PlenigoManager.get().configure(secret, companyId );
+
+// 2.Step: Create the login snippet.
 LoginSnippetBuilder snippetBuilder = new LoginSnippetBuilder();
 // This will generate the login snippet of the following format: plenigo.login();
 String snippet = snippetBuilder.build();
@@ -29,15 +33,15 @@ String snippet = snippetBuilder.build();
 
 Use case for implementing plenigo standard login.
 
-Server logic 
+#### Server logic 
 
 ```java
 public class StandardLogin {
 
     @PostConstruct
     public void config() {
-        // Configure the Java SDK (e.g. secret:RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-        PlenigoManager.get().configure("RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
     }
 
     /**
@@ -68,15 +72,17 @@ public class StandardLogin {
     }
 }
 ```
-Page logic
+#### Page logic
 
 ```html
 <html>
 <head>
     <title> New York City Reimagines How It Works  </title>
-    <!-- import the Plenigo Javascript SDK -->
-    <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/51NuCmdTHINRkQqCqP2Q/plenigo_sdk.min.js" data-lang="en">
+        <!-- import the Plenigo Javascript SDK
+               Let's use concrete values:
+               company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+        -->          <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
     </script>
 </head>
 <body>
@@ -88,12 +94,20 @@ Page logic
 </html>
 ```
 
-#### PHP
+### PHP
 
-For PHP integration you can use the `\plenigo\builders\LoginSnippetBuilder` class to build the snippet.
+For PHP integration you can use the `\plenigo\builders\LoginSnippetBuilder` method for this purpose:
 
 ```php
 <?php
+<?php
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
+$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company. 
+\plenigo\PlenigoManager::configure($secret, $companyId);
+
+// 2.Step: Create the login snippet.
 $builder = new \plenigo\builders\LoginSnippetBuilder();
 //This will generate the login snippet of the following format:
 //plenigo.login();
@@ -108,12 +122,15 @@ Use case for implementing plenigo standard login.
 
 ```php
 <?php
-require_once __DIR__ . '/plenigo/Plenigo.php';
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
 use plenigo\builders\LoginSnippetBuilder;
 
-\plenigo\PlenigoManager::configure("RYsDfmNzTWcQiY8PpLtwzNP8LHsV78TngrY5SSvj", "51NuCmdTHINRkQqCqP2Q", true, "https://api.s-devops.com", "http://www.s-devops.com");
-// This method returns true if the user has already bought the product.
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+
+
+// 2.Step: Create the login snippet.
 $builder = new LoginSnippetBuilder();
 // This will generate the login snippet of the following format:
 // plenigo.login();
@@ -127,9 +144,11 @@ $isLoggedIn = \plenigo\services\UserService::isLoggedIn()
 <html>
 <head>
     <title> New York City Reimagines How It Works  </title>
-    <!-- import the Plenigo Javascript SDK -->
-    <script type="application/javascript"
-            src="https://static.s-devops.com/static_resources/javascript/51NuCmdTHINRkQqCqP2Q/plenigo_sdk.min.js" data-lang="en">
+        <!-- import the Plenigo Javascript SDK
+               Let's use concrete values:
+               company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+        -->            <script type="application/javascript"
+            src="https://static.s-devops.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
     </script>
 </head>
 <body>
@@ -144,7 +163,7 @@ $isLoggedIn = \plenigo\services\UserService::isLoggedIn()
 
 This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
 
-### Implementation without plenigo SDKs
+### Standard Login without plenigo SDKs
 
 ## SSO
 
@@ -243,7 +262,7 @@ There are two possible ways to start the user authentication
 1. During a checkout process by providing the SSO flag
 2. Implementing a javascript snippet that starts a login process at plenigo
 
-#### Start user authentication
+### Start user authentication
 
 #### Login Process
 
@@ -298,16 +317,7 @@ Javascript Example
      };
      plenigo.login(config);
 ```
-Python Example
- 
-Go Example
   
-Examples for php and java are in the following links:
- 
--[Login Java SDK](/sdks/java##Login)
-
--[Login PHP SDK](/sdks/php##Login)
-
 After the user finished the login process and accepts the company to be authorized to access his data, he will be redirected to the given target URL.
 
 In case of an error the given redirect URL is called with the following parameters.
@@ -318,7 +328,7 @@ https://example.com/given_path?error=ERROR_NAME&error_description=ERROR_DESCRIPT
 
 The possible values for error can be found in the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) specification.
 
-###### Get access token
+### Get access token
 
 After the login process or checkout process including login finished the redirect URL will be called and look the following way.
 
@@ -396,7 +406,7 @@ In case of an error the the following parameters are returned.
 
 The possible values for error can be found in the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) specification.
 
-##### Refresh access token
+#### Refresh access token
 
 With the help of the refresh token received during the request of an access token a new access token can be requested if the current access token times out.
 
