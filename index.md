@@ -55,7 +55,7 @@ Use the documentation on this site to learn how to implement plenigo services.
                     Checkout with external products
                         </h2>
                     <a href="checkout_external_products" style="color:grey"> 
-                     Use the checkout functionality to sell external managed products easily. </a>
+                     Use the checkout functionality to sell external managed products. </a>
                     </a>
                 </div>
                 <hr>
