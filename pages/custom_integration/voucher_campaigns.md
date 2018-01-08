@@ -5,12 +5,12 @@ permalink: /voucher_campaigns
 ---
 # Voucher Campaigns
 
-It is possible to create vouchers for specific customer.
+Create vouchers for specific customers.
 
-* [Create loyalty campaigns by giving vouchers as giveaways ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Creating a Voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Redeeming a voucher ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* ['Buying' a free product ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Create loyalty campaigns by giving vouchers as giveaways ?](https://plenigo.github.io/voucher_campaigns#create-loyalty-campaigns-by-giving-vouchers-as-giveaways)
+* [Creating a Voucher ?](https://plenigo.github.io//voucher_campaigns#creating-a-voucher)
+* [Redeeming a voucher ?](https://plenigo.github.io/voucher_campaigns#redeeming-a-voucher)
+* ['Buying' a free product ?](https://plenigo.github.io/voucher_campaigns#buying-a-free-product-with-sdks)
 
 ## Create loyalty campaigns by giving vouchers as giveaways
 
@@ -36,13 +36,10 @@ Channels are a way to funnel your customers in order to measure statistics on th
 * “Mobile users”
 * “People at the mall in downtown New Jersey
 
-## Creating a voucher with SDKs
+## Creating a voucher 
 
 A voucher can be used to put a “tag” on a free product purchase. Also, if you only provide the purchase though Voucher Redemption, it means that when the voucher Ids are redeemed, then there is no more purchases left for the product.
 
-### Java
-
-SDK coden
 
 ### PHP
 
@@ -88,17 +85,14 @@ $channelYT = $channels[0]; // Test channel 1
 $ytVouchers = $channelYT->getIds(); // Array of strings with 100 voucher ids.
 ```
 
-## Creating a voucher without SDKs
+## Creating a voucher 
 
 Another possibility to create a voucher - can be a direct call to our REST API:
 
 * [Create a voucher](https://api.plenigo.com/#!/voucher/createVoucher)
 
-## Redeeming a voucher with SDKs
-
-### Java
-
-SDK coden
+## Redeeming a voucher 
+After you have created a voucher you can redeem it.
 
 ### PHP
 
@@ -126,9 +120,10 @@ $useExternalUserId = false; // The external user id.
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $useExternalUserId);
 ```
 
-#### Use case Java
+#### Use case PHP
 
-Use case for creating and redeeming a voucher.
+
+Use case for creating and redeeming a voucher. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic 
 
@@ -142,10 +137,10 @@ use plenigo\services\UserService;
 use plenigo\services\CheckoutService;
 
 // 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", true);
 
 // 2.Step: Redeem the voucher.
-$productId = "EgLUrT56328991046641";
+$productId = "EgLUrT56328991046641"; // The product id from the plenigo backend.
 $voucherCode = "R7R2-ZLJX-LDKD"; // The voucher code from the plenigo backend.
 $customerId = "YDZKV7DPBH0Z"; // The customer id from the plenigo backend.
 $externalUserId = false; // The external user id.
@@ -165,21 +160,51 @@ if ($hasUserBought === FALSE) {
 
 #### Page logic
 
-```html
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
 
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title> The title of the product  </title>
+    <!--
+         Let's use concrete values
+         company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+    -->    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<?php if (!$hasUserBought ) { ?>
+    <p> The description of the product </p>
+    <button onclick="<?php echo $snippet ?>"> Buy now</button>
+<?php } else { ?>
+   <p> Thank you for your order </p>
+<?php } ?>
+</body>
+</html>
 ```
 
 ## ´Buying´ a free product with SDKs
 
 Similarly if you want to allow the purchase of the free product previously assigned to a campaign, you can do so by using the `CheckoutService::buyFreeProduct()` with these parameters:
 
-### Java
-
-#### Use case Java
-
-#### Server logic
-
-#### Page logic
 
 ### PHP
 
@@ -207,7 +232,8 @@ $result = CheckoutService::buyFreeProduct($productId, $customerId, $useExternalU
 
 #### Use case PHP
 
-Use case for implementing 'Buying' a free product. 
+
+Use case for implementing 'Buying' a free product. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic
 
@@ -226,7 +252,7 @@ use plenigo\services\VoucherService;
 
 // 2.Step: Generate and redeem the voucher.
 $name = "Test campaign"; // The name of the campaign.
-$productId = "EgLUrT56328991046641"; // The free product id. (Price of the product 0.00).
+$productId = "EgLUrT56328991046641"; // The free product id. (Price of the product must be 0.00).
 $startDate = '2017-11-03'; // The start date.
 $expirationDate = "2090-12-31"; // The expiration date.
 $type = 'SINGLE'; // The voucher type, it can be 'SINGLE' or 'MULTI'.
@@ -259,6 +285,24 @@ if ($hasUserBought === FALSE) {
 ```
 #### Page logic
 
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -273,29 +317,10 @@ if ($hasUserBought === FALSE) {
 </head>
 <body>
 <?php if (!$hasUserBought ) { ?>
-    <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
-            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master's degree from
-            Duke University in environmental management.
-    </article>
-    <h2> Do you want to read this article ?</h2>
-    <span> Please buy a subscription</span>
+    <p> The description of the product </p>
     <button onclick="<?php echo $snippet ?>"> Buy now</button>
 <?php } else { ?>
-    <article>
-            After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
-            Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
-            Duke University in environmental management.
-            Now Ms. Spaulding is in New York, where she was recently hired by the city's Sanitation Department. Her duties,
-            naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
-            the nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others
-            added in recent years that are slowly changing the day-to-day face of government service.
-            There are now nearly 294,000 full-time city employees, more than at any point in the city?s history. The growth
-            under  Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly
-            every city agency now employs more workers than it did in 2014, when the mayor took office.
-            The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
-            Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
-            pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn.
-    </article>
+   <p> Thank you for your order </p>
 <?php } ?>
 </body>
 </html>

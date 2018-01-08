@@ -5,12 +5,14 @@ permalink: /paywall
 ---
 # Paywall
 Paywalls are systems designed to monetize online and other digital information by preventing visitors from accessing web sites and similar content providers without having a paid subscription.  Online news and sports web sites are the most frequent users of paywalls, with some sites implementing hard paywalls while others deploy soft paywalls. A hard paywall's content restrictions are much more stringent than a soft paywall, allowing either no access or minimal access to free content.  A soft paywall(metered views), on the other hand, provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
-
-If you plan to use the PayWall functionality of plenigo you have to choose between three different use cases:
-
 ## Client Side paywall 
+**The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).** 
 
-If you want to use a client side paywall you have to do the following steps:
+After you have done this you can use the PayWall functionality of plenigo. You have to choose between three different use cases:
+* [Hide content afterwards](https://plenigo.github.io/sdks/javascript#hide-content-afterwards)
+* [Hide content by default](https://plenigo.github.io/sdks/javascript#hide-content-by-default)
+* [Load content afterwards](https://plenigo.github.io/sdks/javascript#hide-content-afterwards)
+
 
 ### Hide content afterwards
 The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content. If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK she can access the whole page without any restrictions.
@@ -49,24 +51,54 @@ Example snippet for the JavaScript to include if you use the client side PayWall
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="product"></script>
 ```
 
+#### Use case 
+This is a complete example page where you only need to insert your data. 
+
 ![Enable paywall](/assets/images/ci/demo_paywall.png)
 
-A complete example page where you only need to insert your data. You only have to insert the company id(e.g.12NuCmdZUTRRkQiCqP2Q), the product id(e.g. aitnVIz1503443609941) and the live string which belongs to that product.
-This example assumes you are running in test mode with metered views enabled.
- 
+You only have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the product id(e.g. aitnVIz1503443609941) and the checkout string which belongs to that product. This example assumes you are running in test mode with metered views enabled.
+
+#### Page logic
+
+In the Page you have to replace the **company id** and the **product ID** in the Javascript declaration, e.g. if you have the following link: 
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="productID"></script>
+```
+You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the corresponding id of your company and the **productID (e.g. aitnVIz1503443609941)** for the corresponding id of the product. After replacing these things it should look like this:
+
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="aitnVIz1503443609941"></script>
+```
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
+
+
 ```html
 <!DOCTYPE html>
 <html>  <!--
         Let's use concrete values:
-        company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
-        data-product-id = e.g. "EgLUrT56328991046641"
+        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        data-product-id = e.g. "aitnVIz0982443600981"
+        checkoutString = "cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd"
         -->
     <head>
         <title> New York City Reimagines How It Works </title>
-        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="false" >
+        <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz0982443600981" data-test-mode="true" >
 	</script>
 <script type="application/javascript">
-//The Live-String from the product from the plenigo backend.
+//The Live-String of the product from the plenigo backend.
 var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
 </script>
     </head>
@@ -130,20 +162,56 @@ Example snippet for the JavaScript to include if you use the client side PayWall
 ```html
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="page-content" data-paywall-target-element-id="upselling-teaser" data-product-id="productId"></script>
 ```
+#### Use case 
+This is a complete example page where you only need to insert your data.
 
-A complete example page where you only need to insert your data. This example assumes you are running in test mode with metered views enabled.
+![Enable paywall](/assets/images/ci/demo_paywall.png)
+
+
+#### Page logic
+
+
+In the Page you have to replace the **company id** and the **product ID** in the Javascript declaration, e.g. if you have the following link: 
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="productId" data-test-mode="true"> </script>
+```
+You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the corresponding id of your company and the **productID (e.g. aitnVIz1503443609941)** for the corresponding id of the product. After replacing these things it should look like this:
+
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="true"> </script>
+```
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
 
 ```html
 <!DOCTYPE html>
 <html>
    <!--
       Let's use concrete values:
-      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
       data-product-id = e.g. "EgLUrT56328991046641"
+      checkoutString = "cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd"
+
       -->
    <head>
       <title>New York City Reimagines How It Works</title>
-      <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-test-mode="false"> </script>
+      <script 
+      type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
+      data-client-paywall="true" data-paywall-type="show" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" 
+      data-product-id="aitnVIz0982443600981" data-test-mode="false">
+      </script>
       <script type="application/javascript">
          //The Live-String from the product from the plenigo backend.
          var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
@@ -225,7 +293,46 @@ Example snippet for the JavaScript to include if you use the client side PayWall
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="http://example.com" data-paywall-target-element-id="targetId" data-product-id="productId" data-paywall-external-content-id="externalContentId" data-disable-metered="true" ></script>
 ```
 
-A complete example page where you only need to insert your data. This example assumes you are running in test mode with metered views enabled.
+#### Use case 
+This is a complete example page where you only need to insert your data.
+
+![Enable paywall](/assets/images/ci/demo_paywall.png)
+
+
+#### Page logic
+
+In the Page you have to replace the **company id** ,**product ID**, the **Your_Domain_URL**  and **YOUR_IDENTIFIER_FOR_THIS_CONTENT** in the Javascript declaration, e.g. if you have the following link: 
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"
+                data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
+                data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT">
+</script>
+```
+You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the corresponding id of your company and the **productID (e.g. aitnVIz1503443609941)** for the corresponding id of the product. After replacing these things it should look like this:
+In this example we do not replace the **data-paywall-external-content-id** and the **data-paywall-base-url**. After replacing these things it should look like this:
+
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
+                data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
+                data-paywall-target-element-id="targetId" data-product-id="aitnVIz1503443609941" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT">
+</script>
+
+``` 
+ 
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
 
 ```html
 <!DOCTYPE html>
@@ -233,18 +340,18 @@ A complete example page where you only need to insert your data. This example as
    <!--
       The following configuration will load the content from the following url after
       the user has bought YOUR_DOMAIN_URL/MD5(YOUR_IDENTIFIER_FOR_THIS_CONTENT).
-      Let's use concrete values
+      Let's use concrete values:
       data-paywall-base-url="http://example.com" (has to be the same domain like the page)
       data-paywall-external-content-id="great-article-number-one"
       would produce the following url: http://example.com/a0048edd23a9aa85e37c248bd28f270b
-      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
       data-product-id = e.g. "EgLUrT56328991046641"
       -->
    <head>
       <title>New York City Reimagines How It Works</title>
-      <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+      <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
          data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
-         data-paywall-target-element-id="targetId" data-product-id="YOUR_PRODUCT_ID" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT"></script>
+         data-paywall-target-element-id="targetId" data-product-id="EgLUrT56328991046641" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT"></script>
       <script type="application/javascript">
          //The Live-String from the product from the plenigo backend.
          var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
@@ -252,7 +359,18 @@ A complete example page where you only need to insert your data. This example as
    </head>
    <body>
       <h2>
-         New York City Reimagines How It Works
+         After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
+         Leanne Spaulding landed a job at a Virginia-based trade association, working her way to a master?s degree from
+         Duke University in environmental management. Now Ms. Spaulding is in New York, where she was recently hired by the city's
+         Sanitation Department. Her duties, naturally, involve garbage, but not in the traditional sense: Ms. Spaulding is trying to help sell residents of
+         the nation's largest city on its ambitious composting effort. In that respect, her job is like thousands of others
+         added in recent years that are slowly changing the day-to-day face of government service.
+         There are now nearly 294,000 full-time city employees, more than at any point in the city?s history. The growth
+         under Mayor Bill de Blasio comes at a time of record revenues in a booming city, and has been across the board; nearly
+         every city agency now employs more workers than it did in 2014, when the mayor took office.
+         The hiring has allowed the de Blasio administration to restaff agencies that were cut back by Mayor Michael R.
+         Bloomberg after the economic downturn of 2008. But Mr. de Blasio has gone far further, expanding the work force beyond its
+         pre-recession peak, a costly investment that is not without risk: the city could be vulnerable to an economic downturn.
       </h2>
       <div id="targetId">
          <p>
@@ -280,7 +398,7 @@ After you have done this you can continue with the following step.
 
 #### Java
 
-For Java integration yoi can use the `com.plenigo.sdk.services.UserService#hasUserBought` method for this purpose.
+For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUserBought` method for this purpose.
 ```java
 String cookieHeader = request.getHeader("Cookie");
 // The_product_id from the plenigo backend.
@@ -294,14 +412,17 @@ if (hasUserBought) {
 }
 ```
 
-### Use case Java
+### Use case 
 
-Use case for implementing plenigo paywall.
+This is a complete example page where you only need to insert your data. 
 
 ![Enable paywall](/assets/images/ci/demo_paywall.png)
 
 
 #### Server logic
+
+
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). After that you can implement the plenigo paywall.
 
 ```java
 @Controller
@@ -309,15 +430,15 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+        // Configure the Java SDK (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+        PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
         // The product id  from the plenigo backend.
-        String productId = "EgLUrT56328991046641";
+        String productId = "aitnVIz1503443609941";
         // This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
         model.addAttribute("showPaywall", false);
@@ -336,21 +457,34 @@ public class Paywall {
 ```
 
 #### Page logic
+
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
+
+2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment is successful the user will be redirect to the article page (in this example the user can read the whole article).
+
 ```html
 <!DOCTYPE html>
 <html>
    <!--
-      Let's use concrete values
-      data-paywall-base-url="http://example.com" (has to be the same domain like the page)
-      data-paywall-external-content-id="great-article-number-one"
-      would produce the following url: http://example.com/a0048edd23a9aa85e37c248bd28f270b
-      company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
-      data-product-id = e.g. "aitnVIz1503443609941"
+      Let's use concrete values:
+      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
    <head>
       <title>New York City Reimagines How It Works</title>
       <script type="application/javascript"
-         src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+         src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
          data-disable-metered="true"></script>
    </head>
    <body>
@@ -391,11 +525,12 @@ if($hasUserBought) {
     }
 ```
 
-### Use case PHP
+### Use case 
 
-Use case for implementing plenigo paywall.
+
 
 #### Server logic
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
 
 ```php
 <?php
@@ -406,8 +541,8 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
 
-//Configure the PHP SDK: The secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id(e.g. 12NuCmdZUTRRkQiCqP2Q) from the plengio backend.
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", false);
+//Configure the PHP SDK: The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+\plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", true);
 // The_product_id from the plenigo backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
@@ -425,6 +560,24 @@ if ($hasUserBought === FALSE) {
 
 #### Page logic
 
+
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
+
+2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment is successful the user will be redirect to the article page (in this example the user can read the whole article).
+
+
 ```php
 <!DOCTYPE html>
 <html>
@@ -432,7 +585,7 @@ if ($hasUserBought === FALSE) {
     <title>New York City Reimagines How It Works</title>
     <!-- import the Plenigo Javascript SDK -->
     <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
             data-disable-metered="true"></script>
 </head>
 <body>
@@ -484,7 +637,8 @@ Without plenigo SDKS
 
 ### Implementation with SDKs
 
-The idea behind metered view functionality is demonstrated with the following pseudo code examples. If you do not know how to get the product id from the plenigo backend click the following link: [Get product id]()
+The idea behind metered view functionality is demonstrated with the following pseudo code examples.
+
 
 #### Java
 
@@ -508,11 +662,12 @@ if (hasFreeViews) {
     }
 ```
 
-#### Use case Java
+#### Use case 
 
 Use case for implementing plenigo metered paywall.
 
 #### Server logic
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
 
 
 ```java
@@ -520,13 +675,14 @@ public class MeteredPaywall {
 
     @PostConstruct
     public void config() {
-        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+        // Configure the Java SDK (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+        PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q");
     }
    
     protected void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
+        // The product id from the plenigo backend.
         String productId = "EgLUrT56328991046641";
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
         model.addAttribute("showPaywall", false);
@@ -550,6 +706,24 @@ public class MeteredPaywall {
 ```
 
 #### Page logic
+
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
+
+2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment is successful the user will be redirect to the article page (in this example the user can read the whole article).
+
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -557,10 +731,10 @@ public class MeteredPaywall {
         <title>New York City Reimagines How It Works</title>
         <!-- import the Plenigo Javascript SDK
                Let's use concrete values:
-               company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
+               company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->               
         <script type="application/javascript"
-                src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js"></script>
+                src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"></script>
 </head>
 <body>
     <article>After serving a tour in the sticky rice and fruit fields of northeast Thailand for the Peace Corps,
@@ -603,11 +777,13 @@ if($hasFreeViews) {
     }
 ```
 
-#### Use case PHP
+#### Use case 
 
 Use case for implementing plenigo metered paywall.
 
 ##### Server logic
+
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
 
 ```php
 <?php
@@ -618,8 +794,8 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 use plenigo\services\MeterService;
 
-// The secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company(e.g. 12NuCmdZUTRRkQiCqP2Q) id from the plengio backend.
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", false);
+// The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company(e.g. 23NuCmdPoiRRkQiCqP9Q) id from the plengio backend.
+\plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", false);
 // The_product_id from the plenigo backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
@@ -637,6 +813,22 @@ if (!$hasUserBought || !$hasFreeViews) {
 ```
 
 ##### Page logic
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
+
+2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment is successful the user will be redirect to the article page (in this example the user can read the whole article).
+
 
 ```php
 <!DOCTYPE html>
@@ -645,7 +837,7 @@ if (!$hasUserBought || !$hasFreeViews) {
     <title>New York City Reimagines How It Works</title>
     <!-- import the Plenigo Javascript SDK -->
     <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js">
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js">
     </script>
 </head>
 <body>

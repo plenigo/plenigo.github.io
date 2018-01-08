@@ -5,7 +5,7 @@ permalink: /manage_user_access_rights
 ---
 # Manage user access rights
 
-Manage user access rights allows you to add access right for products to a user.
+Manage user access rights allows you to add or delete access rights to one or multiple products.
 
 * [Grant access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Remove access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
@@ -13,8 +13,6 @@ Manage user access rights allows you to add access right for products to a user.
 ## Grant user product access to an existing user with SDKs
 
 Grant a user access to one or multiple products.
-
-### Java
 
 ### PHP
 
@@ -55,8 +53,6 @@ Another possibility to allow a third party access to information - can be a dire
 ## Remove access rights with SDKs
 
 Remove user' s access to one or multiple products.
-
-### Java
 
 
 ### PHP

@@ -4,30 +4,22 @@ title: products
 permalink: /products
 ---
 
-# 4.Products
+# Products
+Here you can get information about the product.
+* [Check if an user bought a product ?](https://plenigo.github.io/products#check-if-an-user-has-bought-a-product)
+* [Get list of bought products and subscriptions ?](https://plenigo.github.io/products#obtain-a-list-of-bought-products-and-subscriptions)
+* [Get product information?](https://plenigo.github.io/products#get-product-information)
+* [Get product list ?](https://plenigo.github.io/products#get-product-list)
+* [Get category list ?](https://plenigo.github.io/products#get-category-list)
+* [Is paywall enabled ?](https://plenigo.github.io/products#is-the-paywall-enabled)
 
-If the product is managed by plenigo and was configured in the plenigo website you can get information about that.
+## Check if an user has bought a product
 
-* [Check if an user bought a product ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get list of bought products and subscriptions ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Is paywall enabled ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get product information?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get product list ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get category list ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
 
-## 4.1 Check if an user has bought a product
 
-To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below.
+###  Java
  
-### 4.1.2 Implementation with SDKs
-
-#### 4.1.2.1 Java
- 
-1. Login with plenigo follow this link: [Login with plenigo](https://api.plenigo.com/#!/user/hasBoughtProduct)
-2. Get the product id from the plengio backend
-
-![Workflow external products ](/assets/images/ci/product_id.png)
-
 For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUserBought` method for this purpose:
 
 |Parameter|Required|Value type|Description|
@@ -37,32 +29,104 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUs
 
 
 ```java
-//1. Step: Configure the Java SDK
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2. Step: Get the product id from the plenigo backend.
-// We fill the request object with the appropriate get object and we get the Cookie header this way
+// We fill the request object with the appropriate get object and we get the Cookie header this way.
 javax.servlet.http.HttpServletRequest request = null;
-String productId = "RgKUHT56328991046641";
+String productId = "aitnVIz1503443609941";
 String cookieHeader = request.getHeader("Cookie");
 
-// This returns a boolean that will tell you if the user did buy the product(true) or not (false).
+// 3.Step: This returns a boolean that will tell you if the user did buy the product(true) or not (false).
 boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
 ```
 This will return false too if the cookie has expired. This will return true always if the Paywall isn’t enabled, see below. 
 
+#### Use case
 
-#### 4.1.2.1 PHP
-
-1. Login with plenigo follow this link: [Login with plenigo](https://api.plenigo.com/#!/user/hasBoughtProduct)
-2. Get the product id and the customer id from the plengio backend
-
-![Workflow external products ](/assets/images/ci/customer_id.png)
+Use case for checking if a user has bought a product. Therefore you need the product id. This use case is made with the Spring MVC.
 
 
-For PHP integration you can use the `\plenigo\services\UserService::hasBoughtProductWithProducts` method for this purpose.
+#### Server logic
+In order to check if an user has bought a product you have to do some prerequisites. 
+
+**Prerequisites**
+1. Configure the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+2. Create a product in the plenigo backend. In every checkout you need the id for the corresponding product.
+
+
+```java
+@Controller
+public class Paywall {
+
+    @PostConstruct
+    public void config() {
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
+    }
+    
+    public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
+        String cookieHeader = request.getHeader("Cookie");
+        boolean isHasUserBought;
+        // 2.Step: The product id  from the plenigo backend.
+        String productId = "aitnVIz1503443609941";
+        // 3.Step: This method returns true if the user has already bought the product.
+        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
+        model.addAttribute("showPaywall", false);
+        if (!isHasUserBought) {
+            Product product = new Product(productId);
+            // Since he has not bought the product, we need to build the
+            // checkout snippet so that he can do the flow on the plenigo
+            // site and buy.
+            CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
+            String checkoutCode = builder.build();
+            model.addAttribute("checkoutCode", checkoutCode);
+            model.addAttribute("showPaywall", true);
+        }
+    }
+}
+```
+#### Page logic
+
+
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+```html
+<!DOCTYPE html>
+<html>
+   <!--import the Plenigo Javascript SDK
+      Let's use concrete values:
+      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+   -->
+   <head>
+      <title> The title of the article </title>
+      <script type="application/javascript"
+         src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
+      </script>
+   </head>
+   <body>
+      <p> The description of your product.
+      </p>
+      <#if showPaywall>
+      <button onclick="${checkoutCode}">Buy now</button>
+      <#else>
+      <p> Thank you for your order.  </p>
+   </body>
+</html>
+```
+
+####  PHP
+
+For PHP integration you can use the `\plenigo\services\UserService::hasBoughtProduct` method for this purpose.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -72,35 +136,117 @@ For PHP integration you can use the `\plenigo\services\UserService::hasBoughtPro
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1. Step: Configure the PHP SDK
-$secret = 'BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL';
-$companyId = 'g4evZZUXvhaLVHYoie2Z';
+
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2. Step: Get the product id from the plenigo backend.
-$productId = 'RgKUHT56328991046641';
-$customerId = '56212412';
+$productId = 'aitnVIz1503443609941';
 
 // This returns a boolean that will tell you if the user did buy the product(true) or not (false).
-$hasUserBought = \plenigo\services\UserService::hasUserBought($productId, $customerId);
+$hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 ```
 "$productId can be an array of several IDs, then the method will return true if ANY of the provided products has been bought.
 
 This will return false too if the cookie has expired. This will return true always if the Paywall isn’t enabled, see below. 
 
-### 4.1.3 Implementation without plenigo SDKs
+#### Use case
+This is an example for using the hasUserBought function. Therefore we use the checkout snippet. The checkout snippets identifies if the user is logged in or not. After the login, we check if the user has bought the product.  
+
+#### Server logic
+
+**Prerequisites**
+1. Configure the [PHP SDK](https://plenigo.github.io/sdks/php#configuration).
+2. Create a product in the plenigo backend. In every checkout you need the id for the corresponding product.
+
+```php
+<?php
+require_once __DIR__ . '/plenigo/Plenigo.php';
+
+use plenigo\models\ProductBase;
+use plenigo\services\UserService;
+use plenigo\builders\CheckoutSnippetBuilder;
+
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
+
+// 2.Step: Set the product.
+// Creating the product ($productId, $productTitle, $price, $currency).
+$product = new ProductBase('123456', 'the best product',15.00,'USD');
+
+//  3.Step: Type of the product that defines the taxes.
+$product->setType(ProductBase::TYPE_EBOOK);
+
+// 4.Step: This method returns true if the user has already bought the product.
+$hasUserBought = UserService::hasUserBought($product->getId());
+if ($hasUserBought === FALSE) {
+    // Since he has not bought the product, we need to build the
+    // checkout snippet so that he can do the flow on the plenigo site and buy.   
+$checkout = new CheckoutSnippetBuilder($product);
+$plenigoCheckoutCode = $checkout->build();
+}
+?>
+
+```
+
+#### Page logic
+
+In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+By clicking on the “Buy now” button the Checkout flow will start.
+
+**Checkout flow from plenigo:**
+
+1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
+  
+2. If the user **has bought** the product he will be redirected to the article page. 
+
+   If the user **has not bought** the product a payment screen will appear. There the user has to choose a payment method for the product.
+
+3. After the payment was successful the user will be redirect to the article page 
+
+
+```html
+<html>
+<head>
+    <title> The title of the article </title>
+    <!--
+        Let's use concrete values:
+        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+    -->
+    <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
+            data-lang="en">
+    </script>
+</head>
+<body>
+<?php if (!$hasUserBought) { ?>
+    <p> The description of the article </p>
+    <button onclick="<?php echo $snippet ?>"> Buy now</button>
+<?php } else { ?>
+    <p> Thank you for order </p>
+<?php } ?>
+</body>
+</html>
+```
+###  Implementation without plenigo SDKs
 
 Another possiblity to check if the user has bought the product - can be a direct call to our REST API:
 [Has user bought request](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-## 4.2 Obtain a list of bought products and subscriptions
+##  Obtain a list of bought products and subscriptions
 
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
 The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK.
 
-### 4.2.1 Implementation with SDKs
+###  Implementation with SDKs
 
-#### 4.2.1.1 Java 
+####  Java 
 For Java integration you can use the `com.plenigo.sdk.services.UserService#getProductsBought` method for this purpose.
 
 |Parameter|Required|Value type|Description|
@@ -108,9 +254,9 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#getPr
 | cookieHeader     | yes     | string         | The cookie  header |
 
 ```java
-// 1.Step: Configure the Java SDK
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get the list of bought products and subscriptions.
@@ -122,7 +268,7 @@ String cookieHeader = request.getHeader("Cookie");
 ProductsBought productsBought = UserService.getProductsBought(cookieHeader);
 ```
 
-Returned ProductData object:
+The returned  ProductData object look like this example:
 
 ```text
 {
@@ -143,16 +289,16 @@ Returned ProductData object:
 }
 ```
 
-#### 4.2.1.2 PHP 
+####  PHP 
 
 For PHP integration can use the `\plenigo\services\UserService::getProductsBought()` method for this purpose.
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; //Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get the list of bought products and subscriptions.
@@ -181,62 +327,62 @@ array (
 )
 ```
 
-### 4.2.3 Implementation without plenigo SDKs
+###  Implementation without plenigo SDKs
 
 Another possibility to check if the user has bought products - can be a direct call to our REST API:
 [Has user bought products and subscriptions request](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-## 4.3 Is the Paywall enabled 
+##  Is the Paywall enabled 
 
 If you want to know if your paywall is enabled you can have a look at the plenigo backend.
 
 ![Enable paywall](/assets/images/ci/paywall.png)
 
-### 4.3.1 Implementation with SDKs
+###  Implementation with SDKs
 
-#### 4.3.1.1 Java
+#### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserService#isPaywallEnabled()` method for this purpose.
 
 ```java
-// 1. Step: Configure the Java SDK
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // The secret key of your specific company.
+String companyId = "g4evZZUXvhaLVHYoie2Z";// The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
-// 2. Check if the paywall is enabled
+// 2. Check if the paywall is enabled.
 // This method returns true if the paywall is enabeld otherwise it will return false.
 boolean isPayWallEnabled = UserService.isPaywallEnabled();
 ```
 
-#### 4.3.1.2 PHP
+####  PHP
 
 For PHP integration you can use the `plenigo\services\UserService::isPaywallEnabled()` method for this purpose.
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
-// 2.Step: Check if paywall is enabled
+// 2.Step: Check if paywall is enabled.
 // This method returns true if the paywall is enabeld otherwise it will return false.
 $payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
 ```
-### 4.3.2 Implementation without plenigo SDKs
+### Implementation without plenigo SDKs
 
 Another possibility to check if the paywall is enabled - can be a direct call to our REST API:
 [Is the paywall enabeld request](https://api.s-devops.com/#!/paywall/isPaywallEnabledt)
 
-## 4.4 Get product information
+## Get product information
 
 In order to get product information you can call the product listing service.
 
-### 4.4.1 Implementation with SDKs
+### Implementation 
 
-#### 4.4.1.1 Java
+####  Java
 
 For Java integration you can use the `com.plenigo.sdk.services.ProductService#getProductData` method for this purpose and returns a `com.plenigo.sdk.models.ProductData` object:
 
@@ -245,13 +391,13 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | productId     | yes     | string         |  The product id from the plenigo backend  |
 
 ```java
-// 1.Step: Configure the Java SDK
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The secret key of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: Get product information
-String productId = "RgKUHT56328991046641"; // The product id from the plenigo backend.
+// 2.Step: Get product information.
+String productId = "aitnVIz1503443609941"; // The product id from the plenigo backend.
 // This method returns a com.plenigo.sdk.models.ProductsBought object with the required data.
 ProductData productData = ProductService.getProductData(productId);
 // The title of the product.
@@ -264,7 +410,7 @@ double price = productData.getPrice();
 String currency = productData.getCurrency();
 ```
 
-Returned ProductData object:
+The returned  ProductData object look like this example:
 ```text
   ProductData:
   title: Test Product
@@ -272,7 +418,7 @@ Returned ProductData object:
   price: 18,99 EUR
 ```
 
-#### 4.4.1.2 PHP
+#### PHP
 
 For PHP integration you can use the `\plenigo\services\ProductService::getProductData` method for this purpose and this returns a `\plenigo\models\ProductData` object:
 
@@ -283,13 +429,13 @@ For PHP integration you can use the `\plenigo\services\ProductService::getProduc
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj';  // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get product information
-$productId = "RgKUHT56328991046641"; // Replace this with your product id from the plenigo backend.
+$productId = "aitnVIz1503443609941"; // Replace this with the product id from the plenigo backend.
 // This method will return a ProductData object.
 $productData = ProductService::getProductData(productId);
 // The tile of the product.
@@ -302,7 +448,7 @@ $price = $productData->getPrice();
 $currency = $productData->getCurrency();
 ```
 
-Returned ProductData object:
+The returned  ProductData object look like this example:
 ```text
 ProductData:
 title: Test Product
@@ -310,17 +456,17 @@ id: RgKUHT78563989856641
 price: 18,99 EUR
 ```
 
-### 4.4.2 Implementation without plenigo SDKs
+### Implementation without plenigo SDKs
 
 Another possibility to get product information - can be a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
 
-## 4.6 Get product list
+##  Get product list
 
 In order to list all products for a company, you can call the product listing service.
 
-### 4.6.1 Implementation with SDKs  
+###  Implementation with SDKs  
 
-#### 4.6.1.1 Java
+####  Java
 
 For Java integration you can use the `com.plenigo.sdk.services.ProductService#getProductList` method for this purpose and this returns a `com.plenigo.sdk.models.ProductInfo` object:
 
@@ -330,9 +476,9 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Get a product list 
@@ -356,16 +502,16 @@ description: Test
 
 ```
 
-#### 4.6.1.2 PHP
+#### PHP
 
 For PHP integration you can use the `\plenigo\services\ProductService::getProductList` method for this purpose and this returns a `\plenigo\models\ProductInfo` object:
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; //Replace this with your company id from the plenigo backend.
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get a product list.
@@ -374,7 +520,7 @@ $productList = \plenigo\services\UserService::getProductsList();
 // The ProductInfo objects are equal as in the Java example.
 ```
 
-### 4.6.2 Implementation without plenigo SDKs 
+### Implementation without plenigo SDKs 
 
 Another possibility to get product list - can be a direct call to our REST API:
 
@@ -396,9 +542,9 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService:ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK
-String companyId = "g4evZZUXvhaLVHYoie2Z"; // Replace this with your company id from the plenigo backend.
-String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // Replace this with your secret from the plenigo backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get category list
@@ -408,7 +554,7 @@ int page = 0;
 PagedList<CategoryInfo> categoryList = ProductService.getCategoryList(pageSize, page); 
 
 ```
-Returned CategoryInfo object:
+The returned  ProductData object look like this example:
 
 ```text
 {
@@ -426,6 +572,7 @@ Returned CategoryInfo object:
     }
 }
 ```
+The category ids in the plenigo backend looks like this example:
 ![Enable paywall](/assets/images/ci/category.png)
 
 #### PHP
@@ -439,9 +586,9 @@ To get information of the categories you can use the `\plenigo\services\ProductS
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // Replace this with your company id from the plenigo backend. 
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj'; // Replace this with your secret from the plenigo backend. 
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get category list

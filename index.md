@@ -4,7 +4,15 @@ layout: default
 
 # Plenigo developer documentation
 
-Use the documentation on this site to learn how to implement plenigo services. Choose the solution that bests suits your needs from the Featured documentation or select All Docs to find a specific document.
+Use the documentation on this site to learn how to implement plenigo services. 
+
+[Public API](https://api.plenigo.com)
+
+[SDKS](/sdks)
+
+[Plugins](/plugins)
+
+
 
 <div class="container">
         <div class="row">
@@ -12,10 +20,10 @@ Use the documentation on this site to learn how to implement plenigo services. C
                 <div class="post-preview">
                     <a href="login">
                         <h2 class="post-title">
-                            Login
+                            Registration and Login 
                         </h2>
                         <a href="login" style="color:grey"> 
-                        Integrating the plenigo login flow. Standard login and Single Sign on (OAuth2).
+                        Use the plenigo registration and login process.
                         </a>
                     </a>
                 </div>
@@ -23,10 +31,10 @@ Use the documentation on this site to learn how to implement plenigo services. C
                  <div class="post-preview">
                       <a href="paywall" >
                            <h2 class="post-title">
-                           Metered views
+                           Paywall
                            </h2>
                            <a href="paywall" style="color: grey"> 
-                           Integrating the metered views flow. Client side paywall, Server side paywall, Server side metered paywall.
+                           Integrate the plenigo paywall to get money for your digital content.
                            </a>
                       </a>
                  </div>
@@ -37,7 +45,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                             Checkout with plenigo managed products
                         </h2>
                         <a href="checkout_plenigo_managed_products" style="color:grey"> 
-                        Use the checkout snippet builder to sell plenigo managed products easily. </a>
+                        Use the checkout functionality to sell Subscpritons and Single Products, which are created in the plenigo backend.  </a>
                     </a>
                 </div>
                   <hr>
@@ -47,7 +55,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                     Checkout with external products
                         </h2>
                     <a href="checkout_external_products" style="color:grey"> 
-                     Use the checkout snippet builder to sell external managed products easily. </a>
+                     Use the checkout functionality to sell external managed products easily. </a>
                     </a>
                 </div>
                 <hr>
@@ -57,7 +65,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                           Products
                          </h2>
                          <a href="products" style="color:grey"> 
-                         Use the product service in order to check if an user has bought a product or get information about the producttr.
+                         Use the product service in order to check if an user has bought a product or get information about the product.
                          </a>
                     </a>
                 </div>
@@ -79,8 +87,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                            Voucher campaigns
                            </h2>
                            <a href="voucher_campaigns" style="color: grey"> 
-                            Use the voucher service to create vouchers and 'Buying' a free product.
-                           </a>
+                            Generate a voucher to give customers free access to products</a>
                  </a>
                  </div>
                  <hr>
@@ -90,7 +97,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                             App management
                             </h2>
                             <a href="app_management" style="color: grey"> 
-                            Integrating the app management flow. Has user bought my product, Allow a third party to access information for a specific information, Query customer application ids and Remove customer applications ids. 
+                    Allow a third party to access customer information for a specific product.
                        </a>
                  </a>
                 </div>
@@ -101,7 +108,7 @@ Use the documentation on this site to learn how to implement plenigo services. C
                              Manage user access rights
                              </h2>
                              <a href="manage_user_access_rights" style="color: grey"> 
-                             Use the user management service to grant or remove access user product access.
+                             Add or delete access rights for products to a user.
                         </a>
                        </a>
                 </div>        
@@ -115,16 +122,13 @@ Use the documentation on this site to learn how to implement plenigo services. C
                              Get structured information in order to show it or use it at your site/app.</a>
                        </a>
                  </div>   
-                </div>  
-</div>   
-</div>
+                <hr>                   
+                 <div class="post-preview">
+                                        <a href="page_snippets"  >
+                                             <h2 class="post-title">
+                                            Web page snippets
+                                             </h2>
+                                             <a href="page_snippets" style="color: grey"> 
+                                              Integrate your site with predefined views of your plenigo customers.
+                                           </a>
 
-
-***
-[View complete documentation](complete_documentation)
-
-[Public API](https://api.plenigo.com)
-
-[SDKS](/sdks)
-
-[Plugins](/plugins)

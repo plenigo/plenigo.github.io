@@ -6,7 +6,7 @@ permalink: /external_user_management
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”.
+It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
 
 * [Register an external user ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
 * [Create a login token for an external user ? ](https://api.plenigo.com/#!/user/hasBoughtProduct)
@@ -21,7 +21,8 @@ It is possible to use your own registration and login process and only login use
 
 (A) Register external user in the plenigo system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
-## Register an external user with SDKs  
+## Register an external user 
+First of all you have to register the user in the plenigo system.
 
 ### Java
 
@@ -36,7 +37,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | name       | yes   | string        | The name of the new customer|
 
 ```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
 String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
@@ -68,7 +69,7 @@ For PHP integration you can use the `plenigo\services\UserManagementService::reg
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The company id of your specific company. 
 $companyId = '12NuCmdZUTRRkQiCqP2Q'; // The secret key of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -81,7 +82,7 @@ $firstName = "new"; // The first name of the customer.
 $name = "user"; // The name of the customer.
 
 // 3.Step: This method returns true if the external user was registrated successfully otherwise, it will return false.
-$registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name );
+$registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name);
 ```
 
 ## Implementation without SDKs 
@@ -105,21 +106,21 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerId     | yes     | boolean         | The external customer id|
 
 ```java
-// 1.Step: Configure the PHP SDK.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
 String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Fill the data for the createLoginToken() method.
 String customerId = "56202510"; // The customer id.
-String useExternalCustomerId = ""; 
+String useExternalCustomerId = "12345";  // The external customer id.
 
 // 3.Step: This method returns a login token for the customer.
 String loginToken = UserManagementService.createLoginToken(String customerId, String useExternalCustomerId);
 ```
-#### Use case Java
+#### Use case 
 
-Use case for registrating and creating a login token for a checkout.
+Use case for external user management with a checkout. 
 
 #### Server logic
 
@@ -143,7 +144,7 @@ For PHP integration you can use the `plenigo\services\UserManagementService::cre
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
 $companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -169,7 +170,7 @@ use plenigo\models\ProductBase;
 use plenigo\services\UserManagementService;
 use plenigo\builders\CheckoutSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK.The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 \plenigo\PlenigoManager::configure("Tiiqfmpb9XuQUcnAcRdQhQZYq0inmiaSRv4zTFCm", "6hpZhjEgxMa9dAJFDxab");
 
 // 2.Step: The product id.
@@ -188,14 +189,18 @@ $userId = UserManagementService::registerUser($email, $language, $externalUserId
 
 // 5.Step: Add login token to this user.
 $loginToken = UserManagementService::createLoginToken($userId);
+
+// Setttings e.g. using CSRF Token
 $settings = array();
 
 // 6.Step: Add the login token to the checkout snippet builder.
 $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 ?>
-
 ```
+
 #### Page logic 
+In the Page logic you have to replace the company id (e.g. 23NuCmdPoiRRkQiCqP9Q). By clicking on the “Special offer for you" Button the Checkout flow  will start. The user has to choose a payment method to  the product. After a successful payment the user will be redirected to the article page.
+
 
 ```html
 <html>
@@ -203,7 +208,7 @@ $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
     <title> Title of the product </title>
     <!-- import the Plenigo Javascript SDK -->
     <script type="application/javascript"
-            src="https://static.s-devops.com/static_resources/javascript/6hpZhjEgxMa9dAJFDxab/plenigo_sdk.min.js"
+            src="https://static.s-devops.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
             data-lang="en">
     </script>
 </head>
@@ -236,9 +241,9 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerId     | yes     | boolean         | The external customer id|
 
 ```java
-// 1.Step: Configure the Java SDK.
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj";  // The secret key of your specific company.
-String companyId = "12NuCmdZUTRRkQiCqP2Q";  // The company id of your specific company.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Fill the data for changeEmail() mehtod.
@@ -263,9 +268,9 @@ For PHP integration you can use the `plenigo\services\UserManagementService::cha
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK.
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Fill the data for the changeEmail() method.
@@ -312,9 +317,9 @@ For PHP integration you can use the `plenigo\services\UserManagementService::imp
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK.
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Fill the data for the importCustomerAccess() method.
@@ -349,9 +354,9 @@ For PHP integration you can use the `plenigo\services\UserManagementService::add
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK.
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Fill the data for the addExternalCustomerId() method.

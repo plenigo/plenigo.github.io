@@ -8,14 +8,13 @@ permalink: /company_information
 
 Company Service allows you to get structured information about your company's customers in order to show it or use it at your site/app.
 
-* [Get a paginated list of customers ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get users by the user ids ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get orders ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get failed payments ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get incoming payments ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Get invoices ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Get a paginated list of customers ?](https://plenigo.github.io/company_information#get-a-paginated-list-of-customers)
+* [Get users by the user ids ?](https://plenigo.github.io/company_information#get-users-by-user-ids)
+* [Get failed payments ?](https://plenigo.github.io/company_information#get-failed-payments)
+* [Get orders ?](https://plenigo.github.io/company_information#get-orders)
+* [Get subscriptions ?](https://plenigo.github.io/company_information#get-subscriptions)
 
-## Get a paginated list of customers with SDKs
+## Get a paginated list of customers 
 
 In order to get a paginated list of customers, you can call the company listing service. It will return a paginated list of company users.
 
@@ -74,7 +73,7 @@ Another possibility to get a paginated list of customers - can be a direct call 
 * [Get paginated list of customers](https://api.plenigo.com/#!/company/getCompanyUsers)
 
 
-## Get users by user ids with SDKs
+## Get users by user ids 
 
 In order to get all users by user ids, you can call the company listing service. It will return a paginated list of company users.
 
@@ -131,13 +130,10 @@ Another possibility to get by user ids - can be a direct call to our REST API:
 
 * [Get user by id](https://api.plenigo.com/#!/company/getCompanyUsersFromUserIds)
 
-## Get failed payments with SDKs 
+## Get failed payments  
 
 In order to get a paginated list of failed payments, you can call the company listing service. It will return a paginated list of failed payments.
 
-### Java 
-
-SDK feht
 
 ### PHP
 
@@ -180,13 +176,10 @@ Another possibility to get a paginated list of customers - can be a direct call 
 
 * [Add external user id](https://api.plenigo.com/#!/company/getCompanyFailedPayments)
 
-## Get orders with SDKs
+## Get orders 
 
 In order to get a paginated list of orders, you can call the company listing service. It will return a paginated list of orders.
 
-### Java 
-
-SDK feht
 
 ### PHP
 
@@ -230,13 +223,10 @@ Another possibility to get a paginated list of orders - can be a direct call to 
 * [Get orders](https://api.plenigo.com/#!/order/getOrders)
 
 
-## Get subscriptions with SDKs
+## Get subscriptions 
 
 In order to get a paginated list of subscriptions, you can call the company listing service. It will return a paginated list of subscriptions.
 
-### Java
-
-SDK fehlt
 
 ### PHP
 
@@ -280,29 +270,3 @@ try {
 Another possibility to get a paginated list of subscriptions - can be a direct call to our REST API:
 
 * [Get subscriptions ](https://api.plenigo.com/#!/subscription/getSubscriptions)
-
-## Get incoming payments with SDKs
-
-In order to get incoming payments , you can call the company listing service. It will return a paginated list of incoming payments.
-
-### Java
-
-### PHP
-
-## Get incoming payments without SDKs
-
-Another possibility to get a paginated list of incoming payments - can be a direct call to our REST API:
-
-* [Incoming payments](https://api.plenigo.com/#!/incoming_payments/getIncomingPayments)
-
-## Get invoices with SDKs
-
-### Java
-
-### PHP
-
-## Get invoices without SDKs
-
-Another possibility to get a paginated list of invoices - can be a direct call to our REST API:
-
-* [Get invoices](https://api.plenigo.com/#!/invoices/getInvoices)
