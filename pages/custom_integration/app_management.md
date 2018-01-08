@@ -7,12 +7,12 @@ permalink: /app_management
 
 App Management allows a third party to access information for a specific product.
 
-* [Allow a third party access to an information ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Has user bought a product ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Query customer application ids ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Remove an application id for a customer ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management#allow-a-third-party-to-access-customer-information-for-a-specific-product)
+* [Has user bought a product ?](https://plenigo.github.io/app_management#check-if-an-user-has-bought-a-product)
+* [Query customer application ids ?](https://plenigo.github.io/app_management#query-customer-application-ids)
+* [Remove an application id for a customer ?](https://plenigo.github.io/app_management#remove-an-application-id-for-a-customer)
 
-## Allow a third party to access customer information for a specific product(only companies can do this) with SDKs
+## Allow a third party to access customer information for a specific product
 
 As a company, if you want to register a third party so that they can query product access of a specific customer, you can do this using the sdk. 
 
@@ -147,14 +147,13 @@ Returned AppAccessData object:
 Once you have the application access data, you can give this information to the third party and they can reuse this as many times as they would like.
 There is a limit of how many customer application ids you can request, but you can configure that in the company management interface of plenigo.
 
-## Allow a third party to access customer information for a specific product(only companies can do this) without SDKs
+## Allow a third party to access customer information for a specific product without SDKs
 
 Another possibility to allow a third party access to information - can be a direct call to our REST API:
 
 * [Get all customer apps](https://api.plenigo.com/#!/app_management/getCustomerApps)
 
-## Check if an user has bought a product (companies and third parties can do this) with SDKs
-
+## Check if an user has bought a product 
 ### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagementService#hasUserBought` method for this purpose:
@@ -214,7 +213,7 @@ Another possibility to get category information - can be a direct call to our RE
 
 * [Check if customer has bought product ](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
 
-## Query customer application ids (companies and third parties can do this) with SDKs
+## Query customer application ids 
 
 As a company or a third party, you can request the current applications that you have registered for a specific customer(As a third party, you must configure the application id in the plenigo manager to do this, for more information see the “Sample usage of customer application id for third parties” in this wiki).
 
@@ -255,13 +254,13 @@ $customerId = "56202510"; //The customer id
 $appsData = AppManagementService::getCustomerApps("customerId");
 ```
 
-## Query customer application ids (companies and third parties can do this) without SDKs
+## Query customer application ids without SDKs
 
 Another possibility to query customer application ids - can be a direct call to our REST API:
 
 * [Get all customer apps](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
 
-## Remove an application id for a customer(only companies can do this) with SDKs
+## Remove an application id for a customer
 
 As a company, if you would like to remove a customer application id, you can do this with the Application management service.
 
