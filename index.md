@@ -87,7 +87,7 @@ Use the documentation on this site to learn how to implement plenigo services.
                            Voucher campaigns
                            </h2>
                            <a href="voucher_campaigns" style="color: grey"> 
-                            Generate a voucher to give customers free access to products</a>
+                            Generate a voucher to give customers free access to products.</a>
                  </a>
                  </div>
                  <hr>
