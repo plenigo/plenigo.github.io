@@ -14,7 +14,7 @@ Plenigo offers you a simple registration functionality.
 ### JavaScript
 
 
-For JavaScript integration you  have to use the `plenigo.registration()` method for this purpose:
+For JavaScript integration you  have to use the `plenigo.registration()` method in order to do a registration with plenigo.
 
 
 In the Page you have to replace the **COMPANY_ID** in the Javascript declaration, e.g. if you have the following link: 
@@ -45,7 +45,7 @@ By clicking on the "Registration" Button the Registration flow will start:
 **Note:** You can configure the `plenigo.registration()` method:  [Plenigo Registration](https://plenigo.github.io/sdks/javascript#registration---open-the-plenigo-registration-window)
 
 ```html
-html>
+<html>
 <head>
     <title> The title  </title>
         <!-- import the Plenigo Javascript SDK
@@ -72,12 +72,25 @@ Plenigo offers you different possibilities for login.
 
 This is the simplest way to login, below there are examples of how to generate the snippet.
 
-Javascript
+### Javascript
 
+```html
+<html>
+<head>
+    <title> The title  </title>
+        <!-- import the Plenigo Javascript SDK
+               Let's use concrete values:
+               company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        -->          <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body>
+<button onclick="plenigo.login()">Registration</button>
+</body>
+</html>
 ```
-
-```
-
+**Note:** You can configure the `plenigo.registration()` method:  [Plenigo login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 
 ## Single Sign On

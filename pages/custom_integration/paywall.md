@@ -15,9 +15,9 @@ After you have done this you can use the PayWall functionality of plenigo. You h
 
 
 ### Hide content afterwards
-The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content. If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK she can access the whole page without any restrictions.
+The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content. If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK it can access the whole page without any restrictions.
 
-The plenigo JavaScript checks if the user has all rights necessary to see the content and if not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
+The plenigo JavaScript checks if the user has all  necessary rights to see the content and if not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
 
 ```javascript
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="product"  data-disable-metered="true"></script>
@@ -135,7 +135,7 @@ The plenigo JavaScript checks if the user has all rights necessary to see the co
 ```javascript
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-disable-metered="true"></script>
 ```
-There are additional configuration options. This options are added as attributes to the JavaScript tag.
+There are additional configuration options. These options are added as attributes to the JavaScript tag.
 
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|

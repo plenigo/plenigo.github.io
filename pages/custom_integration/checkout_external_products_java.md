@@ -63,7 +63,10 @@ This is a complete example page where you only need to replace the company id(e.
 This example assumes you are running in test mode.
 
 #### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). 
+
+**Prerequisites**
+1. Configure the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
 
 ```java
 @Controller
@@ -146,14 +149,14 @@ By clicking on the “Buy now” button the Checkout flow will start.
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 
-## Failed Payments with SDKs
+## Failed Payments 
 
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
 
 ### Java
 
-For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class for this purpose:
+For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class in order to get the failed payments.
 
 ```java
 // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
@@ -170,14 +173,17 @@ String snippet = snippetBuilder.build();
 Use case for implementing failed payments.
 
 #### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+
+**Prerequisites**
+1. Configure the [Java SDK](https://plenigo.github.io/java/php#configuration).
+2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
 
 ```java
 public class FailedPayments {
 
     @PostConstruct
     public void config() {
-        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
         PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 

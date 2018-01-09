@@ -12,7 +12,7 @@ There are 2 different possibilities to implement the external user management fu
 
    Use our Java SDK to implement the external user management functionality.
    
-2. [Implement the checkout with external products with the PHP SDK](/checkout_external_products_php)
+2. [Implement the checkout with external products with the PHP SDK](/external_user_management_php)
 
    Use our PHP SDK to implement the external user management functionality.
    

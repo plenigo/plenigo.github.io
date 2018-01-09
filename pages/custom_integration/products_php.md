@@ -23,8 +23,8 @@ For PHP integration you can use the `\plenigo\services\UserService::hasBoughtPro
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $productId     | yes     | string         | The product id from the plenigo backend |
-| $customerId     | yes     | string         | The customer id you can get from the plenigo backend. |
+| $productId     | yes     | string         | The product ID from the plenigo backend |
+| $customerId     | yes     | string         | The customer ID you can get from the plenigo backend. |
 
 ```php
 <?php
@@ -40,7 +40,7 @@ $productId = 'aitnVIz1503443609941';
 // This returns a boolean that will tell you if the user did buy the product(true) or not (false).
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 ```
-"$productId can be an array of several IDs, then the method will return true if ANY of the provided products has been bought.
+"$productId can be an array of several IDs, then the method will return true if any of the provided products has been bought.
 
 This will return false too if the cookie has expired. This will return true always if the Paywall isn’t enabled, see below. 
 
