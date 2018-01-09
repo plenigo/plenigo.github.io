@@ -10,12 +10,13 @@ To grant a user access to one or multiple products use the method `\plenigo\serv
  *
  * @param string $customerId The Customer ID
  * @param boolean $useExternalCustomerId flag indicating if customer id is an external customer id
+ * @param \DateTime $startTime time when access should start
  * @param \DateTime $endTime time when access should end
  * @param array $productIds ids of the products to grant customer access to
  *
  * @throws PlenigoException
 */
-\plenigo\services\AccessService::grantUserAccess($customerId, $useExternalCustomerId, $endTime, $productIds)
+\plenigo\services\AccessService::grantUserAccess($customerId, $useExternalCustomerId, $startTime, $endTime, $productIds)
 ```
 
 ### Remove access rights

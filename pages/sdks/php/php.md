@@ -20,6 +20,10 @@ developed are designed and implemented mainly for that purpose.
    
 {% include_relative includes/login.md %}
 
+## Register
+   
+{% include_relative includes/register.md %}
+
 ## External user management
    
 {% include_relative includes/external_user_management.md %}
@@ -52,9 +56,13 @@ developed are designed and implemented mainly for that purpose.
    
 {% include_relative includes/statistic_information.md %}
 
-## Manager users access rights
+## Manage users access rights
    
 {% include_relative includes/user_access_rights.md %}
+
+## verify User's Login
+
+{% include_relative includes/verify_user_login.md %}
 
 ## Error handling
    

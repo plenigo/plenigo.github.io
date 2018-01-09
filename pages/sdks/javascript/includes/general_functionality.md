@@ -91,6 +91,7 @@ The following tables describes the configuration object. Non mandatory parameter
 |origin|string|No|Yes|Origin parameter after a successful login.|
 |testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
 |productIds|string|No|Yes|If set plenigo checks if the customer has bought one of the products passed here. The product ids must be comma separated. A detailed explanation follows bellow.|
+|notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
@@ -123,10 +124,12 @@ The following tables describes the configuration object. Non mandatory parameter
 |state|string|No|No|CSRF token for the [OAuth2](https://tools.ietf.org/html/rfc6749) process to use. This way you can verify the request source.|
 |elementId|string|No|No|If you want to start the login in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
 |targetUrl|string|No|No|Url redirect customer to after a successful login process. _Will only be used if ssoRedirectUrl is not set._|
+|loginIdentifier|boolean|No|No|If set the registration mask supports a merge of a new email address with an existing customer without valid email address.|
 |partnerLogin|boolean|No|Yes|Flag indicating if it is a partner login. _Cannot be used in combination with OAuth2._|
 |origin|string|No|Yes|Origin parameter after a successful login.|
 |testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
 |productIds|string|No|Yes|If set plenigo checks if the customer has bought one of the products passed here. The product ids must be comma separated. A detailed explanation follows bellow.|
+|notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
 
 If the "productIds" parameter is passed the targetUrl will only be called if the customer has successfully bought a product. Otherwise the user will stay on the current page.
 If the user has bought a product the target url will be called with the following additional parameters.
