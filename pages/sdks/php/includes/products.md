@@ -8,6 +8,19 @@ You can use the `\plenigo\services\UserService::hasUserBought` method for this p
 
 ```php
 <?php
+    /**
+    * Checks if the user can access a product. If there is an error response from the API this will
+    * throw am {@link \plenigo\PlenigoException}, in the case of BAD_REQUEST types, the exception will contain
+    * an array of \plenigo\models\ErrorDetail.
+    *
+    * @param mixed $productId The ID (or array of IDs) of the product to be queried against the user
+    * @param string $customerId (optional) The customer ID if its not logged in
+    * @param boolean $useExternalCustomerId (optional) Flag indicating if customer id sent is the external customer id
+    *
+    * @return bool TRUE if the user in the cookie has bought the product and the session is not expired, false otherwise
+    *
+    * @throws \plenigo\PlenigoException whenever an error happens
+    */
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 ```
 
@@ -22,14 +35,73 @@ This will return false too if the cookie has expired.
 This will return true always if the Paywall isn't enabled, see below. 
 ***
 
+#### Check product access without login
+
+If you want to check the user access right without login, you can simply add the plenigo customerID as 2nd parameter:
+```php
+<?php
+    /**
+    * Checks if the user can access a product. If there is an error response from the API this will
+    * throw am {@link \plenigo\PlenigoException}, in the case of BAD_REQUEST types, the exception will contain
+    * an array of \plenigo\models\ErrorDetail.
+    *
+    * @param mixed $productId The ID (or array of IDs) of the product to be queried against the user
+    * @param string $customerId (optional) The customer ID if its not logged in
+    * @param boolean $useExternalCustomerId (optional) Flag indicating if customer id sent is the external customer id
+    *
+    * @return bool TRUE if the user in the cookie has bought the product and the session is not expired, false otherwise
+    *
+    * @throws \plenigo\PlenigoException whenever an error happens
+    */
+$hasUserBought = \plenigo\services\UserService::hasUserBought($productId, $customerID);
+```
+
+#### Check product access with external user
+
+If you want to check the user access right with an external customerID, you have to set the 3rd parameter useExternalUserId to true:
+```php
+<?php
+    /**
+    * Checks if the user can access a product. If there is an error response from the API this will
+    * throw am {@link \plenigo\PlenigoException}, in the case of BAD_REQUEST types, the exception will contain
+    * an array of \plenigo\models\ErrorDetail.
+    *
+    * @param mixed $productId The ID (or array of IDs) of the product to be queried against the user
+    * @param string $customerId (optional) The customer ID if its not logged in
+    * @param boolean $useExternalCustomerId (optional) Flag indicating if customer id sent is the external customer id
+    *
+    * @return bool TRUE if the user in the cookie has bought the product and the session is not expired, false otherwise
+    *
+    * @throws \plenigo\PlenigoException whenever an error happens
+    */
+$hasUserBought = \plenigo\services\UserService::hasUserBought($productId, $customerID, true);
+```
+
+
+
 ### Check if an user has bought a product and get back product information
 
 If you want to detect if a user has bought a product and get detailed information about the product bought you can check it with the method below
 
 You can use the \plenigo\services\UserService::hasBoughtProductWithProducts method for this purpose.
-
+```php
+<?php
+    /**
+     * Checks if the user can access a product and return detail information about that product. Multiple products can be requested by passing an array
+     * to productId. If multiple products are passed to the productId field all products the user has bought are returned.If there is an error response
+     * from the API this will throw am {@link \plenigo\PlenigoException}, in the case of BAD_REQUEST types, the exception will contain
+     * an array of \plenigo\models\ErrorDetail.
+     *
+     * @param mixed $productId The ID (or array of IDs) of the product to be queried against the user
+     * @param string $customerId The customer ID if its not logged in
+     * @param boolean $useExternalCustomerId Flag indicating if customer id sent is the external customer id
+     *
+     * @return array
+     *
+     * @throws \plenigo\PlenigoException whenever an error happens
+     */
     $accessInformation = \plenigo\services\UserService::hasBoughtProductWithProducts($productId);
-
+```
 ***
 $productId can be an array of several IDs, then the method will indicate that access is granted if ANY of the provided products has been bought 
 ***
@@ -38,7 +110,7 @@ This returns an array with the following information:
 
 ```php
 <?php
-print_r($accessInformation) // should look like this
+print_r($accessInformation); // should look like this
 //Array (
 //    [accessGranted] => true
 //    [userProducts] => Array (
@@ -62,7 +134,19 @@ You can use the `\plenigo\services\UserService::getProductsBought()` method for 
 
 ```php
 <?php
-$listUserBought = \plenigo\services\UserService::getProductsBought();
+
+   /**
+     * <p>Retrieves the product and subscriptions list for the current (logged in)
+     * user, then returns it as an associative array with this syntax</p>
+     *
+     * @param string $pCustId (optional) The customer ID if its not logged in
+     * @param boolean $useExternalCustomerId (optional) Flag indicating if customer id sent is the external customer id
+     * @return array The associative array containing the bought products/subscriptions or an empty array
+     * @throws PlenigoException If the compay ID and/or the Secret key is rejected
+     */
+    
+   $listUserBought = \plenigo\services\UserService::getProductsBought();
+   
 ```
 
 This returns an associative array with two main sub-arrays, "singleProducts" and "subscriptions":
@@ -70,14 +154,14 @@ This returns an associative array with two main sub-arrays, "singleProducts" and
 ```php
 <?php
 array (
-  singleProducts' => array (
+  'singleProducts' => array (
     0 => array(
       'productId' => 'xxxx',
       'title' => 'prod title',
       'buyDate' => 'YYYY-MM-DD HH:mm:ss +0100',
     ),
   ),
-  subscriptions => array (
+  'subscriptions' => array (
     0 => array(
       'productId' => 'yyyyyy',
       'title' => 'Subscription title',
@@ -85,7 +169,7 @@ array (
       'endDate' => 'YYYY-MM-DD HH:mm:ss +0100',
     ),
   ),
-)
+);
 ```
 
 ***
@@ -102,7 +186,7 @@ You can use the `\plenigo\services\UserService::isPaywallEnabled()` method for t
 
 ```php
 <?php
-$payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
+    $payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
 ```
 
 This returns a boolean that will tell you if the paywall is enabled (true) or not (false).
@@ -115,8 +199,8 @@ To get the information related to this product you can use the `\plenigo\service
 
 ```php
 <?php
-$productId = "QFURxFv0098893021041";
-$productData = ProductService::getProductData(productId);
+    $productId = "QFURxFv0098893021041";
+    $productData = ProductService::getProductData($productId);
 //do something with the product data object
 ```
 
@@ -128,7 +212,7 @@ To get the information of the products you can use the `\plenigo\services\Produc
 
 ```php
 <?php
-print_r($productList) // should look like this
+print_r($productList); // should look like this
 //Array (
 //    [totalElements] => 1
 //    [size] => 10
@@ -152,7 +236,7 @@ To get the information of the products you can use the `\plenigo\services\Produc
 
 ```php
 <?php
-print_r($productList) // should look like this
+print_r($productList); // should look like this
 //Array (
 //    [totalElements] => 1
 //    [size] => 10
@@ -180,7 +264,7 @@ To get the information of the categories you can use the `\plenigo\services\Prod
 //range from 10...100
 $pageSize = 10;// No last ID means to query the first page
 $catList = ProductService::getCategoryList($pageSize);
-print_r($catList) // should look like this
+print_r($catList); // should look like this
 //Array (
 //    [totalElements] => 1
 //    [size] => 10
