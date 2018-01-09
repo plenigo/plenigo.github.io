@@ -31,6 +31,7 @@ For PHP integration you can use the `\plenigo\services\UserService::hasBoughtPro
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
 // 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
@@ -202,9 +203,9 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 // This method returns true if the paywall is enabeld otherwise it will return false.
 $payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
 ```
-### Implementation without plenigo SDKs
+### Implementation without plenigo SDK
 
-Another possibility to check if the paywall is enabled - can be a direct call to our REST API:
+Another possibility to check if the paywall is enabled - is a direct call to our REST API:
 [Is the paywall enabeld request](https://api.s-devops.com/#!/paywall/isPaywallEnabledt)
 
 ## Get product information
@@ -228,7 +229,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get product information
-$productId = "aitnVIz1503443609941"; // Replace this with the product id from the plenigo backend.
+$productId = "aitnVIz1503443609941"; // Replace this with the product ID from the plenigo backend.
 // This method will return a ProductData object.
 $productData = ProductService::getProductData(productId);
 // The tile of the product.
@@ -251,7 +252,7 @@ price: 18,99 EUR
 
 ### Implementation without plenigo SDK
 
-Another possibility to get product information - can be a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
+Another possibility to get product information - is a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
 
 ##  Get product list
 
@@ -275,9 +276,9 @@ $productList = \plenigo\services\UserService::getProductsList();
 // The ProductInfo objects are equal as in the Java example.
 ```
 
-### Implementation without plenigo SDKs 
+### Implementation without plenigo SDK
 
-Another possibility to get product list - can be a direct call to our REST API:
+Another possibility to get product list - is a direct call to our REST API:
 
 * [Get product list request](https://api.plenigo.com/#!/product/getProductsWithFullDetails)
 
@@ -311,4 +312,4 @@ $catList = ProductService::getCategoryList($pageSize);
 
 ### Implementation without plenigo SDK
 
-Another possibility to get a category list - can be a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)
+Another possibility to get a category list - is a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)

@@ -6,7 +6,7 @@ permalink: /external_user_management_java
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
+It is possible to use your own registration and login process and only login users into plenigo via so called “Login Token”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
 
 * [Register an external user ?](https://plenigo.github.io/external_user_management_java#register-an-external-user)
 * [Create a Login Token for an external user ? ](https://plenigo.github.io/external_user_management_java#create-login-token)
@@ -36,8 +36,8 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 
 ```java
 // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
-String companyID = "12NuCmdZUTRRkQiCqP2Q"; // The company ID of your specific company. 
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
+String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
 
 // 2.Step: Fill in the data for the registerUser() method.
@@ -53,7 +53,7 @@ String registerUser = UserManagementService.registerUser(email, language, extern
 
 ## Implementation without SDK 
 
-Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
+Another possibility to register an external user into the plenigo system - is a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
@@ -73,8 +73,8 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 
 ```java
 // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
-String companyID = "12NuCmdZUTRRkQiCqP2Q"; // The company ID of your specific company. 
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
+String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
 
 // 2.Step: Fill in the data for the createLoginToken() method.
@@ -154,7 +154,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID    | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyID );
@@ -169,6 +169,6 @@ boolean changeEmail = UserManagementService.changeEmail(String customerID, Strin
 
 ### Implementation without SDK
 
-Another possibility to change an email address of an existing user - can be a direct call to our REST API:
+Another possibility to change an email address of an existing user - is a direct call to our REST API:
 
 * [Change email address of an existing user](https://api.plenigo.com/#!/external_user_management/changeExternalUserEmail)

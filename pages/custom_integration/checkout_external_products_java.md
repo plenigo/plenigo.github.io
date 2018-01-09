@@ -39,9 +39,9 @@ For Java integration you can use the `com.plenigo.sdk.builders.CheckoutSnippetBu
 | taxPercentage       | yes   | double        | The tax percentage of the product |
 
 ```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // // The secret key of your specific company. 
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Set the product.
@@ -74,14 +74,14 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+        // 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode (true).
         PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // 2.Step: The product id  from the plenigo backend.
+        // 2.Step: The product ID  from the plenigo backend.
         String productId = "EgLUrT56328991046641";
         // 3.Step: This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -89,7 +89,7 @@ public class Paywall {
         if (!isHasUserBought) {
             double price = 12.99; // The price of the product.
             String description = "Test"; // The description of the product.
-            String productId = "123456"; // The product id of the product.
+            String productId = "123456"; // The product ID of the product.
             String currency = "USD"; // The currency.
             // Price of the product, description, id, currency and  the tax percentage (28% in this case) of tax that should be calculated for this product
             Product product = new Product(price, description, id, currency, TaxType.DOWNLOAD);
@@ -105,10 +105,10 @@ public class Paywall {
 ```
 
 #### Page logic
-In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+In the Page you have to replace the company ID in the Javascript declaration, e.g. if you have the following link: 
 **"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
 
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
 **"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
 
 By clicking on the “Buy now” button the Checkout flow will start.
@@ -126,7 +126,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
    <!--
       Let's use concrete values:
-      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+      company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
    <head>
       <title> The title of the article </title>
@@ -159,9 +159,9 @@ If you want to create a button/link to the “Failed Payments” listing for the
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class in order to get the failed payments.
 
 ```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj";  // The secret key of your specific company.
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Just create a checkout snippet with a no args build. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
@@ -183,7 +183,7 @@ public class FailedPayments {
 
     @PostConstruct
     public void config() {
-        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+        // 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
         PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 
@@ -206,7 +206,7 @@ In the Page logic you have to replace the company id (e.g. 23NuCmdPoiRRkQiCqP9Q)
     <title>Title of the product </title>
     <!--
         Let's use concrete values
-        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
     -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">

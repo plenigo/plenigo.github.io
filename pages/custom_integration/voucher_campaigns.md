@@ -59,14 +59,14 @@ You can create a campaign programmatically by calling the `VoucherService::gener
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Creating the voucher.
 $name = "Test campaign "; // The name of the campaign.
-$prodId = "EgLUrT56328991046641";  // The free product id. (Price of the product 0.00).                             
+$prodId = "EgLUrT56321245687421";  // The free product id. (Price of the product 0.00).                             
 $startDate = "2001-01-01";  // The start date.
 $expirationDate = "2090-12-31"; // The expiration date.
 $type = 'MULTI';  // The voucher type, it can be 'SINGLE' or 'MULTI'.
@@ -108,14 +108,14 @@ Once you got the voucher code you can redeem it using the `CheckoutService::rede
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step : Redeem the voucher.
 $voucherCode = "X1XZ-12DF-74ZI"; // The voucher code from the plenigo backend.
-$customerId = "EgLUrT56328991046641"; // The customer id from the plenigo backend.
+$customerId = "EgLUrT56321245687421"; // The customer id from the plenigo backend.
 $useExternalUserId = false; // The external user id.
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $useExternalUserId);
 ```
@@ -137,11 +137,11 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 use plenigo\services\CheckoutService;
 
-// 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q", true);
+// 1.Step: Configure the PHP SDK. The secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: Redeem the voucher.
-$productId = "EgLUrT56328991046641"; // The product id from the plenigo backend.
+$productId = "EgLUrT56321245687421"; // The product id from the plenigo backend.
 $voucherCode = "R7R2-ZLJX-LDKD"; // The voucher code from the plenigo backend.
 $customerId = "YDZKV7DPBH0Z"; // The customer id from the plenigo backend.
 $externalUserId = false; // The external user id.
@@ -188,7 +188,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
          Let's use concrete values
          company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
     -->    <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
     </script>
 </head>
 <body>
@@ -219,13 +219,13 @@ Similarly if you want to allow the purchase of the free product previously assig
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj';  // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: 'Buying' a free product.
-$productId = "EgLUrT56328991046641"; // The free product id. (Price of the product 0.00)
+$productId = "EgLUrT56321245687421"; // The free product id. (Price of the product 0.00)
 $customerId = "12345"; // You can obtain it from the currently logged in user or external customer management.
 $useExternalUserId = false; // The external user id.
 $result = CheckoutService::buyFreeProduct($productId, $customerId, $useExternalUserId);
@@ -249,12 +249,12 @@ use plenigo\services\UserService;
 use plenigo\services\CheckoutService;
 use plenigo\services\VoucherService;
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:12NuCmdZUTRRkQiCqP2Q).
-\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "12NuCmdZUTRRkQiCqP2Q");
+// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+\plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q");
 
 // 2.Step: Generate and redeem the voucher.
 $name = "Test campaign"; // The name of the campaign.
-$productId = "EgLUrT56328991046641"; // The free product id. (Price of the product must be 0.00).
+$productId = "EgLUrT56321245687421"; // The free product id. (Price of the product must be 0.00).
 $startDate = '2017-11-03'; // The start date.
 $expirationDate = "2090-12-31"; // The expiration date.
 $type = 'SINGLE'; // The voucher type, it can be 'SINGLE' or 'MULTI'.
@@ -314,7 +314,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
          Let's use concrete values
          company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
     -->    <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/12NuCmdZUTRRkQiCqP2Q/plenigo_sdk.min.js" data-lang="en">
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
     </script>
 </head>
 <body>

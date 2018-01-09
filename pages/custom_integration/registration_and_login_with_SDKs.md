@@ -14,7 +14,7 @@ Plenigo offers you a simple registration functionality.
 ### JavaScript
 
 
-For JavaScript integration you  have to use the `plenigo.registration()` method for this purpose:
+For JavaScript integration you  have to use the `plenigo.registration()` method in order to do a registration with plenigo.
 
 
 In the Page you have to replace the **COMPANY_ID** in the Javascript declaration, e.g. if you have the following link: 

@@ -195,7 +195,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#isPay
 ```java
 // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // The secret key of your specific company.
-String companyId = "g4evZZUXvhaLVHYoie2Z";// The company ID of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q";// The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2. Check if the paywall is enabled.

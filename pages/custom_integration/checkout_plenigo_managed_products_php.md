@@ -251,9 +251,9 @@ For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` c
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
-$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Creating special product object for "Failed Payments".
@@ -338,7 +338,7 @@ require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
