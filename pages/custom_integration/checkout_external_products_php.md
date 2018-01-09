@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Checkout with external products
-permalink: /checkout_external_products
+title: Checkout with external products PHP
+permalink: /checkout_external_products_php
 ---
 # Checkout with external products 
 A checkout with external products is just possible for single products. Therefore you have to specify more information such as tax, description, currency, etc..
@@ -24,122 +24,6 @@ It is not necessary to be logged in to use this snippet, the checkout flow is sm
 
 If the product is not managed by plenigo, you have to specify more information such as tax, description, currency, etc..
 
-
-### Java     
-
-For Java integration you can use the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
-
-
-|Parameter|Required|Value type|Description|
-|:--------|:-------|:---------|:----------|
-| price     | yes     | double         | The price of the product |
-| description     | yes     | string         | The description of the product |
-| id       | yes   | string        | The id of the product
-| currency    | yes     | string         | The currency of the product |
-| taxPercentage       | yes   | double        | The tax percentage of the product |
-
-```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
-String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // // The secret key of your specific company. 
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // // The company id of your specific company.
-PlenigoManager.get().configure(secret, companyId );
-
-// 2.Step: Set the product.
-double price = 12.99; // The price of the product.
-String description = "Test"; // The description of the product.
-String productId = "123456"; // The product id of the product.
-String currency = "USD"; // The currency.
-Product product = new Product(price, description, id, currency, TaxType.DOWNLOAD);
-    
-// 3.Step: Creating the checkout snippet for this product.The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
-CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
-String snippet = snippetBuilder.build();
-```
-#### Use case 
-
-Use case for implementing checkout with external products(Single Products) including plenigo login.
-
-This is a complete example page where you only need to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q ) and the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj).
-This example assumes you are running in test mode.
-
-#### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). 
-
-```java
-@Controller
-public class Paywall {
-
-    @PostConstruct
-    public void config() {
-        // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
-        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
-    }
-    
-    public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
-        String cookieHeader = request.getHeader("Cookie");
-        boolean isHasUserBought;
-        // 2.Step: The product id  from the plenigo backend.
-        String productId = "EgLUrT56328991046641";
-        // 3.Step: This method returns true if the user has already bought the product.
-        isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
-        model.addAttribute("showPaywall", false);
-        if (!isHasUserBought) {
-            double price = 12.99; // The price of the product.
-            String description = "Test"; // The description of the product.
-            String productId = "123456"; // The product id of the product.
-            String currency = "USD"; // The currency.
-            // Price of the product, description, id, currency and  the tax percentage (28% in this case) of tax that should be calculated for this product
-            Product product = new Product(price, description, id, currency, TaxType.DOWNLOAD);
-            // Since he has not bought the product, we need to build the
-            // checkout snippet so that he can do the flow on the plenigo site and buy.
-            CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
-            String checkoutCode = builder.build();
-            model.addAttribute("checkoutCode", checkoutCode);
-            model.addAttribute("showBuyButton", true);
-        }
-    }
-}
-```
-
-#### Page logic
-In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
-
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
-
-By clicking on the “Buy now” button the Checkout flow will start.
-
-**Checkout flow from plenigo:**
-
-1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
-
-2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
-
-3. After the payment is successful the user will be redirect to the article page (in this example the user can read the whole article).
-
-```html
-<!DOCTYPE html>
-<html>
-   <!--
-      Let's use concrete values:
-      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
-   -->
-   <head>
-      <title> The title of the article </title>
-      <script type="application/javascript"
-         src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
-    </script>
-   </head>
-   <body>
-      <p> The description of the article </p>
-      <#if showBuyButton>
-      <button onclick="${checkoutCode}">Buy now</button>
-      <#else>
-      <p>  Thank you for order </p>
-   </body>
-</html>
-```
 
 ### PHP
 
@@ -247,10 +131,10 @@ $plenigoCheckoutCode = $checkout->build();
 If you want to do a checkout without the login functionality of plenigo you have to do the following steps. First of all you have to register the external user into the plenigo system. After you have done this you have to create a Login Token for this user.
 
 
-#### Use case PHP
+### Use case PHP
 Use case for implementing checkout with external products(Single Products) with external login.This example assumes you are running in test mode.
 
-##### Server logic
+#### Server logic
 The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration).
 
 ```php
@@ -287,7 +171,7 @@ $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 }
 ?>
 ```
-##### Page logic
+#### Page logic
 
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
 **"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
@@ -331,7 +215,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </html>
 ```
 
-## Checkout without SDKs
+## Checkout without SDK
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
@@ -340,67 +224,6 @@ If you are using a programming language that is not supported by one of our SDKs
 
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
-
-### Java
-
-For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class for this purpose:
-
-```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj";  // The secret key of your specific company.
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
-PlenigoManager.get().configure(secret, companyId );
-
-// 2.Step: Just create a checkout snippet with a no args build. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
-CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
-String snippet = snippetBuilder.build();
-```
-#### Use case 
-
-Use case for implementing failed payments.
-
-#### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
-
-```java
-public class FailedPayments {
-
-    @PostConstruct
-    public void config() {
-        // Configure the Java SDK (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
-        PlenigoManager.get().configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
-    }
-
-    public void createFailedPayment(Model model) throws PlenigoException {
-        CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
-        String snippet = snippetBuilder.build();
-        model.addAttribute("checkoutCode", snippet);
-    }
-}
-```
-
-#### Page logic 
-In the Page logic you have to replace the company id (e.g. 23NuCmdPoiRRkQiCqP9Q). By clicking on the “Buy now” Button the Checkout flow from plenigo will start.
-
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Title of the product </title>
-    <!--
-        Let's use concrete values
-        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
-    -->
-    <script type="application/javascript"
-            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
-    </script>
-</head>
-<body>
-<a href="#"  onclick="${checkoutCode}> return false;"> Buy now</a>';
-</body>
-</html>
-```
 
 ### PHP
 

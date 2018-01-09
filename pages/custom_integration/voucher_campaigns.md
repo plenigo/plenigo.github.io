@@ -126,6 +126,7 @@ $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $useExternal
 Use case for creating and redeeming a voucher. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic 
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). 
 
 ```php
 <?php
@@ -232,10 +233,11 @@ $result = CheckoutService::buyFreeProduct($productId, $customerId, $useExternalU
 
 #### Use case PHP
 
-
 Use case for implementing 'Buying' a free product. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic
+
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). 
 
 ```php
 <?php

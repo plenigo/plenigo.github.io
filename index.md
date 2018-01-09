@@ -25,18 +25,18 @@ layout: default
                      <h2 class="post-title">
                      Plugins
                      </h2>
-                     <a class = "post-title" href="paywall" style="color: #16aeb9"> 
+                     <a class = "post-title" href="plugins" style="color: #16aeb9"> 
                      plenigo offers plugins for systems like Wordpress or SIX.[Read more...]
                      </a>
                      </a>
                 </div>
                 <hr>       
                 <div class="post-preview">
-                    <a href="login">
+                    <a href="registration_login_overview">
                         <h2 class="post-title">
                             Registration and Login 
                         </h2>
-                        <a  class = "post-title" href="login" style="color:#16aeb9"> 
+                        <a  class = "post-title" href="registration_login_overview" style="color:#16aeb9"> 
                         Use the plenigo registration and login process.[Read more...]
                         </a>
                     </a>
@@ -54,42 +54,42 @@ layout: default
                  </div>
                  <hr>
                 <div class="post-preview">
-                    <a href="checkout_plenigo_managed_products">
+                    <a href="checkout_plenigo_managed_products_overview">
                         <h2 class="post-title">
                             Checkout with plenigo managed products
                         </h2>
-                        <a  class = "post-title" href="checkout_plenigo_managed_products" style="color:#16aeb9"> 
+                        <a  class = "post-title" href="checkout_plenigo_managed_products_overview" style="color:#16aeb9"> 
                         Use the checkout to sell subscpritons and single products, which you have are created in the plenigo backend. [Read more...]  </a>
                     </a>
                 </div>
                   <hr>
                 <div class="post-preview">
-                    <a href="checkout_external_products">
+                    <a href="checkout_external_products_overview">
                         <h2 class="post-title">
                     Checkout with external products
                         </h2>
-                    <a href="checkout_external_products" style="color:#16aeb9"  class = "post-title" > 
+                    <a href="checkout_external_products_overview" style="color:#16aeb9"  class = "post-title" > 
                      Use the checkout functionality to sell external managed products.[Read more...] </a>
                     </a>
                 </div>
                 <hr>
                 <div class="post-preview">
-                    <a href="products">
+                    <a href="products_overview">
                          <h2 class="post-title">
                           Products
                          </h2>
-                         <a href="products" style="color:#16aeb9"  class = "post-title" > 
+                         <a href="products_overview" style="color:#16aeb9"  class = "post-title" > 
                          Use the product service in order to check if an user has bought a product or get information about the product.[Read more...]
                          </a>
                     </a>
                 </div>
                  <hr>
                  <div class="post-preview">
-                      <a href="external_user_management"  >
+                      <a href="external_user_management_overview"  >
                           <h2 class="post-title">
                            External user management
                            </h2>
-                           <a href="external_user_management" style="color: #16aeb9"  class = "post-title"> 
+                           <a href="external_user_management_overview" style="color: #16aeb9"  class = "post-title"> 
                            Use the external user management to register external user to your company.[Read more...]
                           </a>
                       </a>
@@ -128,11 +128,11 @@ layout: default
                 </div>        
                 <hr>                   
                 <div class="post-preview">
-                        <a href="company_information"  >
+                        <a href="company_information_overview"  >
                              <h2 class="post-title">
                             Company information
                              </h2>
-                             <a href="company_information" style="color: #16aeb9"  class = "post-title" > 
+                             <a href="company_information_overview" style="color: #16aeb9"  class = "post-title" > 
                              Use the company service to get structured information about your company’s customers in order to show it or use it at your site/app.[Read more...]</a>
                        </a>
                  </div>   
