@@ -74,7 +74,7 @@ Returned AppAccessData object:
 {
   "customerId": "56202510",
   "description": "test",
-  "customerAppId": "uJuVuT6M2dAiteGZaTEaTe7894eut6p4qMJyPglv",
+  "customerAppId": "ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G",
   "productId": "RgKUHT78563989856641"
 }
 ```
@@ -86,11 +86,11 @@ Once you have the application access data, you can give this information to the 
 For PHP integration you can use `plenigo\services\AppManagement#requestAppToken` in order to allow a third party access to customer information for a specific product.
 
 
-1: Configure an application id
+1: Configure an application ID
 
 As a company, you have to add this using the plenigo management interface, through the account menu, inside the extended settings tab(Settings->Apps).
 
-![Configure an application id ](/assets/images/ci/app_id.png)
+![Configure an application ID ](/assets/images/ci/app_id.png)
 
 2/3:  Request an access token and a customer application access
 
@@ -175,7 +175,7 @@ PlenigoManager.get().configure(secret, companyId );
 // 2.Step: Check if user has bought product.
 String customerId = "56202510"; // The customer ID from the plengio backend.
 String productId = "RgKUHT78563989856641"; // The product ID of the product from the plenigo backend.
-String customerAppId "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95" // The customer App ID.
+String customerAppId "ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G" // The customer App ID.
 ProductAccessRequest productAccessRequest = new ProductAccessRequest(customerId, productId, customerAppId); 
 
 // With the customer application ID you can query product information.
@@ -203,7 +203,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The secret key of your specific company
 
 $customerId = '56202510'; // The customer ID from the plenigo backend.
 $productId = 'RgKUHT78563989856641'; // The product ID from the plenigo backend.
-$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; // The customer app ID.
+$customerAppId = 'ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G'; // The customer app ID.
 
 // With the customer application ID you can query product information.
 // This returns a boolean that will tell you if the user did buy the product(true) or not(false).
@@ -217,8 +217,7 @@ Another possibility to get category information - is a direct call to our REST A
 
 ## Query customer application IDs 
 
-As a company or a third party, you can request the current applications that you have registered for a specific customer(As a third party, you must configure the application id in the plenigo manager to do this, for more information see the “Sample usage of customer application id for third parties” in this wiki).
-
+As a company or a third party, you can request the current applications that you have registered for a specific customer.
 ### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagement#getCustomerApps` method in order to query customer application IDs.
@@ -246,7 +245,7 @@ You can use the `plenigo\services\AppManagement::getCustomerApps` method for thi
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| customerId     | yes     | string         | The customer id |
+| customerId     | yes     | string         | The customer ID |
 
 ```php
 <?php
@@ -283,7 +282,7 @@ PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Delete the customer app.
 String customerId = "56202510"; // The customer id from the plenigo backend.
-String customerAppId = "3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95"; // The customer app ID
+String customerAppId = "ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G"; // The customer app ID
 // This method does not return an exception, this will delete the customer app ID for the specific customer.
 AppManagementService.deleteCustomerApp(new DeleteAppIdRequest(customerId, customerAppId);
 ```
@@ -307,7 +306,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company
 
 // 2.Step: Delete the customer app.
 $customerId = '56202510'; // The customer ID from the plenigo backend.
-$customerAppId = '3YByDayCvJ0upADCQzcQfW5ELS2TetaaHitIBt95'; // The customer app ID.
+$customerAppId = 'ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G'; // The customer app ID.
 // This method does not return an exception, this will delete the customer app id for the specific customer.
 AppManagementService::deleteCustomerApp($customerId, $customerAppId);
 ```
