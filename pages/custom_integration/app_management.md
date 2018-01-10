@@ -289,7 +289,7 @@ AppManagementService.deleteCustomerApp(new DeleteAppIdRequest(customerId, custom
 
 ### PHP
 
-For PHP integration you can use the `plenigo\services\AppManagement::deleteCustomerApp` method for this purpose:
+For PHP integration you can use the `plenigo\services\AppManagement::deleteCustomerApp` method in order to remove an application ID.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
