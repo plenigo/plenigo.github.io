@@ -1,14 +1,14 @@
 ---
 layout: default
-title: manage_user_access_rights
-permalink: /manage_user_access_rights
+title: manage_user_access_rights PHP
+permalink: /manage_user_access_rights_php
 ---
 # Manage user's access rights
 
 Manage user's access rights allow you to add or delete access rights to one or multiple products.
 
-* [Give access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Remove access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Give access rights ?](https://plenigo.github.io/manage_user_access_rights_php#give--access-rights-to-users)
+* [Remove access rights ?](https://plenigo.github.io/manage_user_access_rights_php#remove-access-rights)
 
 ## Give  access rights to user's
 

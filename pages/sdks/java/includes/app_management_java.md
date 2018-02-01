@@ -1,23 +1,21 @@
 ---
 layout: default
 title: App Management
-permalink: /app_management
+permalink: /app_management_java
 ---
 # App Management
 
 App Management allows a third party to access information for a specific product.
 
-* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management#allow-a-third-party-to-access-customer-information-for-a-specific-product)
-* [Has user bought a product ?](https://plenigo.github.io/app_management#check-if-an-user-has-bought-a-product)
-* [Query customer application Ids ?](https://plenigo.github.io/app_management#query-customer-application-ids)
-* [Remove an application ID ?](https://plenigo.github.io/app_management#remove-an-application-id-for-a-customer)
+* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management_java#allow-a-third-party-to-access-customer-information-for-a-specific-product)
+* [Has user bought a product ?](https://plenigo.github.io/app_management_java#check-if-an-user-has-bought-a-product)
+* [Query customer application Ids ?](https://plenigo.github.io/app_management_java#query-customer-application-ids)
+* [Remove an application ID ?](https://plenigo.github.io/app_management_java#remove-an-application-id)
 
 ## Allow a third party to access customer information for a specific product
 
 You can register a third party and give him access to customer information and information about specific products by using the SDK.
 
-
-### Java
 
 For Java integration you can use `com.plenigo.sdk.services.AppManagement#requestAppToken`method in order to a allow a third party access to customer information and information about specific products. 
 
@@ -90,7 +88,6 @@ Another possibility to allow a third party access to information - is a direct c
 
 ## Check if an user has bought a product 
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagementService#hasUserBought` method in order to check if an user has bought a product.
 
@@ -127,7 +124,6 @@ Another possibility to get category information - is a direct call to our REST A
 ## Query customer application IDs 
 
 You or a third party, you can request the current applications that you have registered for a specific customer.
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagement#getCustomerApps` method in order to request customer application IDs.
 
@@ -159,7 +155,6 @@ Another possibility to query customer application IDs - is a direct call to our 
 
 As a company, if you would like to remove a customer application ID, you can do this with the application management service.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagement.deleteCustomerApp` method in order to remove an application ID.
 

@@ -22,7 +22,6 @@ It is possible to use your own registration and login process and only login use
 ## Register an external user 
 First of all you have to register the user into the plenigo system.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#registerUser` in order to register the external user.
 
@@ -62,8 +61,6 @@ Another possibility to register an external user into the plenigo system - is a 
 
 To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This Login Token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
 
-### Java
-
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#createLoginToken` in order to create a Login Token.
 
 |Parameter|Required|Value type|Description|
@@ -84,7 +81,7 @@ String useExternalCustomerID = "12345";  // The external customer ID.
 // 3.Step: This method returns a Login Token for the customer.
 String loginToken = UserManagementService.createLoginToken(String customerID, String useExternalCustomerID);
 ```
-#### Use case 
+### Use case 
 
 Use case for external user management with a checkout. 
 
@@ -142,8 +139,6 @@ Another possibility to create Login Token - can be a direct call to our REST API
 
 It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
 
-
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` in order to change the e-mail address of an existing user.
 

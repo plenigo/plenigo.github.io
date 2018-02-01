@@ -25,8 +25,6 @@ It is not necessary to be logged in to use this snippet, the checkout flow is sm
 If the product is not managed by plenigo, you have to specify more information such as tax, description, currency, etc..
 
 
-### PHP
-
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 |Parameter|Required|Value type|Description|
@@ -40,9 +38,9 @@ For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` c
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Set the product.
@@ -59,7 +57,7 @@ $product->setType(ProductBase::TYPE_EBOOK);
 $checkout = new CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing checkout with external products(Single Products) including plenigo login.
 
@@ -68,7 +66,7 @@ This example assumes you are running in test mode.
 
 
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). 
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php). 
 
 ```php
 <?php
@@ -131,11 +129,11 @@ $plenigoCheckoutCode = $checkout->build();
 If you want to do a checkout without the login functionality of plenigo you have to do the following steps. First of all you have to register the external user into the plenigo system. After you have done this you have to create a Login Token for this user.
 
 
-### Use case PHP
+### Use case 
 Use case for implementing checkout with external products(Single Products) with external login.This example assumes you are running in test mode.
 
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration).
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php).
 
 ```php
 <?php
@@ -220,12 +218,10 @@ By clicking on the “Buy now” button the Checkout flow will start.
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 
-## Failed Payments with SDKs
+## Failed Payments 
 
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
-
-### PHP
 
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 

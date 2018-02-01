@@ -25,8 +25,6 @@ It is not necessary to be logged in to use this snippet, the checkout flow is sm
 If the product is not managed by plenigo, you have to specify more information such as tax, description, currency, etc..
 
 
-### Java     
-
 For Java integration you can use the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
 
 
@@ -55,7 +53,7 @@ Product product = new Product(price, description, id, currency, TaxType.DOWNLOAD
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 String snippet = snippetBuilder.build();
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing checkout with external products(Single Products) including plenigo login.
 
@@ -65,7 +63,7 @@ This example assumes you are running in test mode.
 #### Server logic
 
 **Prerequisites**
-1. Configure the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
 2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
 
 ```java
@@ -106,10 +104,16 @@ public class Paywall {
 
 #### Page logic
 In the Page you have to replace the company ID in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+```html
+ <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -154,8 +158,6 @@ If you are using a programming language that is not supported by one of our SDKs
 If you want to create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
 
-### Java
-
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class in order to get the failed payments.
 
 ```java
@@ -168,14 +170,14 @@ PlenigoManager.get().configure(secret, companyId );
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
 String snippet = snippetBuilder.build();
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing failed payments.
 
 #### Server logic
 
 **Prerequisites**
-1. Configure the [Java SDK](https://plenigo.github.io/java/php#configuration).
+1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
 2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
 
 ```java
