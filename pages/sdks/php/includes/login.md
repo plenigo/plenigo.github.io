@@ -116,7 +116,7 @@ echo $twig->render('template.twig', array(
 ));
 ```
 your twig-template:
-{% raw %}
+
 ```html
 ...
 <head>
