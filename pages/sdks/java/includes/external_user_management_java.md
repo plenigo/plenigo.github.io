@@ -6,7 +6,7 @@ permalink: /external_user_management_java
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
+It is possible to use your own registration and login process and only login users into plenigo via so called “Login Token”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
 
 * [Register an external user ?](https://plenigo.github.io/external_user_management_java#register-an-external-user)
 * [Create a Login Token for an external user ? ](https://plenigo.github.io/external_user_management_java#create-login-token)
@@ -22,7 +22,6 @@ It is possible to use your own registration and login process and only login use
 ## Register an external user 
 First of all you have to register the user into the plenigo system.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#registerUser` in order to register the external user.
 
@@ -35,9 +34,9 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | name       | yes   | string        | The name of the new customer|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company. 
-String companyID = "12NuCmdZUTRRkQiCqP2Q"; // The company ID of your specific company. 
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
+String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
 
 // 2.Step: Fill in the data for the registerUser() method.
@@ -53,7 +52,7 @@ String registerUser = UserManagementService.registerUser(email, language, extern
 
 ## Implementation without SDK 
 
-Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
+Another possibility to register an external user into the plenigo system - is a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
@@ -61,8 +60,6 @@ Another possibility to register an external user into the plenigo system - can b
 ## Create Login Token 
 
 To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This Login Token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
-
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#createLoginToken` in order to create a Login Token.
 
@@ -72,9 +69,9 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID     | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
-String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
-String companyID = "12NuCmdZUTRRkQiCqP2Q"; // The company ID of your specific company. 
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
+String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
 
 // 2.Step: Fill in the data for the createLoginToken() method.
@@ -84,7 +81,7 @@ String useExternalCustomerID = "12345";  // The external customer ID.
 // 3.Step: This method returns a Login Token for the customer.
 String loginToken = UserManagementService.createLoginToken(String customerID, String useExternalCustomerID);
 ```
-#### Use case 
+### Use case 
 
 Use case for external user management with a checkout. 
 
@@ -143,8 +140,6 @@ Another possibility to create Login Token - can be a direct call to our REST API
 It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
 
 
-### Java
-
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` in order to change the e-mail address of an existing user.
 
 |Parameter|Required|Value type|Description|
@@ -154,7 +149,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID    | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyID );
@@ -169,6 +164,6 @@ boolean changeEmail = UserManagementService.changeEmail(String customerID, Strin
 
 ### Implementation without SDK
 
-Another possibility to change an email address of an existing user - can be a direct call to our REST API:
+Another possibility to change an email address of an existing user - is a direct call to our REST API:
 
 * [Change email address of an existing user](https://api.plenigo.com/#!/external_user_management/changeExternalUserEmail)

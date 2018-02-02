@@ -6,13 +6,13 @@ permalink: /external_user_management_php
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
+It is possible to use your own registration and login process and only login users into plenigo via so called “Login Token”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
 
-* [Register an external user ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Create a login token for an external user ? ](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Change email address of an existing user ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Giving a customer more access IDs ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Add external user ID ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Register an external user ?](https://plenigo.github.io/external_user_management_php#register-an-external-user)
+* [Create a login token for an external user ? ](https://plenigo.github.io/external_user_management_php#create-login-token)
+* [Change email address of an existing user ?](https://plenigo.github.io/external_user_management_php#change-email-address-of-an-existing-user)
+* [Giving a customer more access IDs ?](https://plenigo.github.io/external_user_management_php#giving-a-customer-more-access-ids)
+* [Add external user ID ?](https://plenigo.github.io/external_user_management_php#add-external-user-id)
 
 
 ## General Workflow external user management 
@@ -58,12 +58,12 @@ $registerUser = \plenigo\services\UserManagementService::registerUser($email, $l
 
 ## Implementation without SDK
 
-Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
+Another possibility to register an external user into the plenigo system - is a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/registerExternalUser)
 
 
-## Create Login Token with SDK
+## Create Login Token 
 
 To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This login token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
 
@@ -98,6 +98,10 @@ $loginToken = \plenigo\services\UserManagementService::createLoginToken($custome
 Use case for registrating  and creating a login token for a checkout.
 
 #### Server logic
+
+**Prerequisites**
+1. Configure the [PHP SDK](https://plenigo.github.io/configuration_php).
+
 ```php
 <?php
 require_once __DIR__ . '/plenigo/Plenigo.php';
@@ -107,7 +111,7 @@ use plenigo\services\UserManagementService;
 use plenigo\builders\CheckoutSnippetBuilder;
 
 // 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
-\plenigo\PlenigoManager::configure("Tiiqfmpb9XuQUcnAcRdQhQZYq0inmiaSRv4zTFCm", "6hpZhjEgxMa9dAJFDxab");
+\plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
 
 // 2.Step: The product ID.
 $product = new ProductBase('EgLUrT56328991046641');
@@ -154,9 +158,9 @@ In the Page logic you have to replace the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q)
 </html>
 ```
 
-### Implementation without SDKs
+### Implementation without SDK
 
-Another possibility to create login token - can be a direct call to our REST API:
+Another possibility to create login token -  is a direct call to our REST API:
 
 * [Create login token](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/createLoginToken)
 
@@ -193,9 +197,9 @@ $useExternalCustomerId = false; // The use external customer ID.
 // 3.Step: $changeEmail will be TRUE if the email address was changed successfully
 $changeEmail = \plenigo\services\UserManagementService::changeEmail($customerId, $email, $useExternalCustomerID);
 ```
-### Implementation without SDKs
+### Implementation without SDK
 
-Another possibility to change an email address of an existing user - can be a direct call to our REST API:
+Another possibility to change an email address of an existing user -  is a direct call to our REST API:
 
 * [Change email address of an existing user](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/registerExternalUser)
 
@@ -262,6 +266,6 @@ $addExternalCustomerId = UserManagementService::addExternalCustomerId($customerI
 ```
 ### Implementation with SDKs
 
-Another possibility to add external user id - can be a direct call to our REST API:
+Another possibility to add external user id - is a direct call to our REST API:
 
 * [Add external user id](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/createMultipleLoginTokens)

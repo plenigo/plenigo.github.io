@@ -10,10 +10,6 @@ It is possible to use your own registration and login process and only login use
 
 #### Implementation with SDKs  
 
-**Java**
-```java
-jt
-```
 
 **PHP**
 
@@ -72,10 +68,6 @@ Another possibility to change an email address of an existing user - can be a di
 
 #### Implementation with SDKs
 
-**Java**
-```java
-in java sdk nachschauen
-```
 
 **PHP**
 

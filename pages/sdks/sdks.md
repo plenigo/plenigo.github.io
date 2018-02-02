@@ -19,3 +19,4 @@ plenigo offers SDKs for different programming languages. These SDKs only encapsu
 3. [Javascript-SDK](/sdks/javascript)
 
    The JavaScript-SDK can be used completely standalone but is always needed for every integration of plenigo.
+   

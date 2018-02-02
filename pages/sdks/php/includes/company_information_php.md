@@ -8,17 +8,16 @@ permalink: /company_information_php
 
 Company Service allows you to get structured information about your company's customers in order to show it or use it at your site/app.
 
-* [Get a paginated list of customers ?](https://plenigo.github.io/company_information#get-a-paginated-list-of-customers)
-* [Get users by the user ids ?](https://plenigo.github.io/company_information#get-users-by-user-ids)
-* [Get failed payments ?](https://plenigo.github.io/company_information#get-failed-payments)
-* [Get orders ?](https://plenigo.github.io/company_information#get-orders)
-* [Get subscriptions ?](https://plenigo.github.io/company_information#get-subscriptions)
+* [Get a paginated list of customers ?](https://plenigo.github.io/company_information_php#get-a-paginated-list-of-customers)
+* [Get users by the user ids ?](https://plenigo.github.io/company_information_php#get-users-by-user-ids)
+* [Get failed payments ?](https://plenigo.github.io/company_information_php#get-failed-payments)
+* [Get orders ?](https://plenigo.github.io/company_information_php#get-orders)
+* [Get subscriptions ?](https://plenigo.github.io/_php#company_information#get-subscriptions)
 
 ## Get a paginated list of customers 
 
 In order to get a paginated list of customers, you can call the company listing service. It will return a paginated list of company users.
 
-### PHP
 
 For PHP you can use `plenigo\services\CompanyService::getUserList()` method for this purpose:
 
@@ -28,7 +27,7 @@ For PHP you can use `plenigo\services\CompanyService::getUserList()` method for 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -45,9 +44,9 @@ try {
 ```
 **NOTE:** The method will not fail for page and size values that are out of range, instead, the values are going to be clamped to the limits established above.
 
-## Get a paginated list of customers without SDKs
+## Get a paginated list of customers without SDK
 
-Another possibility to get a paginated list of customers - can be a direct call to our REST API:
+Another possibility to get a paginated list of customers - is a direct call to our REST API:
 
 * [Get paginated list of customers](https://api.plenigo.com/#!/company/getCompanyUsers)
 
@@ -55,8 +54,6 @@ Another possibility to get a paginated list of customers - can be a direct call 
 ## Get users by user ids 
 
 In order to get all users by user ids, you can call the company listing service. It will return a paginated list of company users.
-
-### PHP
 
 For PHP integration you can use `plenigo\services\AppManagement#requestAppToken`` method for this purpose:
 
@@ -68,7 +65,7 @@ For PHP integration you can use `plenigo\services\AppManagement#requestAppToken`
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -84,7 +81,7 @@ try {
 
 **NOTE:** These Customer Ids can be obtained by logging in to our company dashboard, and searching by several filters.
 
-### Get users by user ids without SDKs
+### Get users by user ids without SDK
 
 Another possibility to get by user ids - can be a direct call to our REST API:
 
@@ -94,8 +91,6 @@ Another possibility to get by user ids - can be a direct call to our REST API:
 
 In order to get a paginated list of failed payments, you can call the company listing service. It will return a paginated list of failed payments.
 
-
-### PHP
 
 For PHP integration you can use `plenigo\services\CompanyService::getFailedPayments()` method for this purpose:
 
@@ -111,7 +106,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getFailedPayme
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -132,7 +127,7 @@ try {
 
 ### Get failed payments  without SDKs
 
-Another possibility to get a paginated list of customers - can be a direct call to our REST API:
+Another possibility to get a paginated list of customers - is a direct call to our REST API:
 
 * [Add external user id](https://api.plenigo.com/#!/company/getCompanyFailedPayments)
 
@@ -140,8 +135,6 @@ Another possibility to get a paginated list of customers - can be a direct call 
 
 In order to get a paginated list of orders, you can call the company listing service. It will return a paginated list of orders.
 
-
-### PHP
 
 For PHP integration you can use `plenigo\services\CompanyService::getOrders()` method for this purpose:
 
@@ -159,7 +152,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getOrders()` m
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -176,9 +169,9 @@ try {
 }
 ```
 
-##  Get orders without SDKs
+##  Get orders without SDK
 
-Another possibility to get a paginated list of orders - can be a direct call to our REST API:
+Another possibility to get a paginated list of orders - is a direct call to our REST API:
 
 * [Get orders](https://api.plenigo.com/#!/order/getOrders)
 
@@ -187,8 +180,6 @@ Another possibility to get a paginated list of orders - can be a direct call to 
 
 In order to get a paginated list of subscriptions, you can call the company listing service. It will return a paginated list of subscriptions.
 
-
-### PHP
 
 For PHP integration you can use `plenigo\services\CompanyService::getSubscriptions()` method for this purpose:
 
@@ -206,7 +197,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getSubscriptio
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -225,8 +216,8 @@ try {
 ```
 **NOTE:** The method will not fail for page and size values that are out of range, instead, the values are going to be clamped to the limits established above.
 
-## Get subscriptions without SDKs
+## Get subscriptions without SDK
 
-Another possibility to get a paginated list of subscriptions - can be a direct call to our REST API:
+Another possibility to get a paginated list of subscriptions - is a direct call to our REST API:
 
 * [Get subscriptions ](https://api.plenigo.com/#!/subscription/getSubscriptions)

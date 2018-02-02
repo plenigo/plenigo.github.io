@@ -33,7 +33,6 @@ In the plenigo backend you can create different types of products:
 
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
-### Java     
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
 
 |Parameter|Required|Value type|Description|
@@ -41,9 +40,9 @@ For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetB
 | productId     | yes     | string         | The product id from the plenigo backend |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Set the product id from the plenigo backend.
@@ -54,14 +53,14 @@ Product product = new Product(productId);
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 String snippet = snippetBuilder.build();
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing checkout with plenigo managed products including plenigo login. 
 
-This is a complete example page where you only need to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q ), the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
+This is a complete example page where you only need to replace the company ID(e.g.23NuCmdPoiRRkQiCqP9Q ), the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
 
 #### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/configuration_java).
 
 
 ```java
@@ -70,7 +69,7 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
@@ -98,12 +97,18 @@ public class Paywall {
 
 #### Page logic
 
-In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+In the Page you have to replace the company ID in the Javascript declaration, e.g. if you have the following link: 
 
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
+
+You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+
+```html
+ <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 By clicking on the “Buy now” button the Checkout flow will start.
 
 **Checkout flow from plenigo:**
@@ -119,7 +124,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
    <!--import the Plenigo Javascript SDK
       Let's use concrete values:
-      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+      company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
    <head>
       <title> The title of the article </title>
@@ -160,33 +165,32 @@ If you are using a programming language that is not supported by one of our SDKs
 
 If a payment gets failed form a customer you can create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class.
 
 ```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId);
 
 // 2.Step: Just create a checkout snippet with a no args build. The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE').
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder();
 String snippet = snippetBuilder.build();
 ```
-#### Use case Java
+### Use case 
 
-Use case for implementing failed payments. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
+Use case for implementing failed payments. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
 
 #### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). 
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/configuration_java). 
 
 ```java
 public class FailedPayments {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 
@@ -199,11 +203,17 @@ public class FailedPayments {
 ```
 
 #### Page logic 
-In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+In the Page you have to replace the company ID in the Javascript declaration, e.g. if you have the following link: 
 
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+```html
+<script type="application/javascript"src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+
+You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -214,7 +224,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
     <title> The title of the article  </title>
     <!--
         Let's use concrete values
-        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
     -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
@@ -230,12 +240,11 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 If the product correspond to the subscription renewal, there is a flag in the Product object. This way you can create a subscription renewal button in your site easily setting this flag:
 
-### Java
 
 ```java
-// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the Java SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company. 
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: The product id of the product from the plenigo backend.
@@ -248,21 +257,21 @@ product.setSubscriptionRenewal(true);
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 String snippet = snippetBuilder.build();
 ```
-#### Use case Java
+### Use case 
 
 Use case for implementing subscription renewal. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 
 
 #### Server logic
 
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). 
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/configuration_java). 
 
 ```java
 public class SubscriptionRenewal {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 
@@ -278,10 +287,10 @@ public class SubscriptionRenewal {
 ```
 
 #### Page logic
-In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
+In the Page you have to replace the company ID in the Javascript declaration, e.g. if you have the following link: 
 **"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
 
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
 **"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
 
 
@@ -292,7 +301,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
     <title> The title of the article  </title>
     <!--
         Let's use concrete values
-        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
     -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
@@ -309,15 +318,14 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 This is used when you want to replace the regular price of a plenigo managed product for another one of your liking:
 
-### Java 
 
 ```java
-// 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the Java SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company. 
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: The product id of the product from the plenigo backend.
+// 2.Step: The product ID of the product from the plenigo backend.
 String productId = "EgLUrT56328991046641";
 
 // 3.Step: The price of the product.

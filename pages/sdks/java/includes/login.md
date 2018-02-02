@@ -1,23 +1,89 @@
+---
+layout: default
+title: Registration and Login
+permalink: /registration_login_java
+---
+
+# Login 
+
 Whenever you want the user to login in order to do things such as retrieving user information from plenigo, you can use the SDK to generate a login snippet that will start the flow on the plenigo website.
 
 These are the following ways that you can login.
 
-### Standard
+## Standard Login
 
 This is the simplest way to login, below there are examples of how to generate the snippet.
 
-You can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` class to build the snippet:
+For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` class in order to use the standard login.
 
 ```java
 LoginSnippetBuilder snippetBuilder = new  com.plenigo.sdk.builders.LoginSnippetBuilder();
 String snippet = snippetBuilder.build(); //This will generate the login snippet of the following format: plenigo.login();
 ```
-
 This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
 
-### Single sign on (OAuth2)
+### Use case 
+This is a complete example page where you only need to insert your data. This example was done with the Spring MVC.
 
-#### Login Flow
+
+#### Server logic
+
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/configuration_java).
+
+```java
+public class StandardLogin {
+
+    @PostConstruct
+    public void config() {
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
+    }
+
+    /**
+     * Shows the login snippet.
+     *
+     * @param model the model
+     *
+     * @throws PlenigoException Handles a plenigo exception.
+     */
+    public void login(Model model) throws PlenigoException {
+        LoginSnippetBuilder loginSnippetBuilder = new LoginSnippetBuilder();
+        String builder = loginSnippetBuilder.build();
+        model.addAttribute("loginBuilder", builder);
+    }
+
+    /**
+     * Checks if the user is logged in.
+     *
+     * @param request the request
+     * @param model   the model
+     *
+     * @throws PlenigoException Handles a plenigo exception.
+     */
+    public void isLoggedIn(HttpServletRequest request, Model model) throws PlenigoException {
+        String cookieHeader = request.getHeader("Cookie");
+        boolean login = UserService.isLoggedIn(cookieHeader);
+        model.addAttribute("isLoggedIn", login);
+    }
+}
+```
+
+#### Page logic 
+
+In the page youhave to replaye **COMPANY_ID** in the JavaScript declaration, e.g. if you have the following link:
+
+```javascript
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the corresponding id of your company. After replacing these thing it should look like this:
+
+```java
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+
+## Single sign on (OAuth2)
+
+### Login Flow
 
 Whenever you want to access user information, you can use this way of login, the user will agree to share his information with you during the login flow, and then he gets redirected to the page you specified in the redirectionUri parameter, where you will receive an access code.
 
@@ -36,7 +102,7 @@ LoginConfig LoginConfig = new LoginConfig(redirectUrl, DataAccessScope.PROFILE);
 LoginSnippetBuilder snippetBuilder = new  com.plenigo.sdk.builders.LoginSnippetBuilder(LoginConfig);
 String snippet = snippetBuilder.build(); //This will generate the login snippet of the following format: plenigo.login('VAL','VAL','VAL');
 ```
-##### Using CSRF Token
+#### Using CSRF Token
 
 For a more secure way to communicate with the server you can generate a cross-site request forgery token so that when the user is redirected to the page, you can ensure that the redirect comes from the website you requested it to, below there are examples of how to generate the snippet.
 
@@ -56,7 +122,7 @@ After the user has allowed the data access scope that you need, the login flow w
 
 ![redirect shortly](https://www.plenigo.com/assets/marketing/redirect-shortly.jpeg)
 
-#### Access Code
+### Access Code
 
 If the login is not successful you will get the following URL, where you can retrieve the error name and the description.
 https://example.com/given_path?error=ERROR_NAME&error_description=ERROR_DESCRIPTION&state=CSRF_TOKEN

@@ -1,3 +1,9 @@
+---
+layout: default
+title: web page snippets 
+permalink: /web_page_snippets_php
+---
+
 ### Integrate your site with predefined views of your plenigo customers
 
 Handling login and users in plenigo is easy but sometimes can be bothersome for users to edit their profile in a site that's not yours. With snippets we can help you achieve that "white label" experience, so they can interact with plenigo without leaving your site.

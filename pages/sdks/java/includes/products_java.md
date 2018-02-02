@@ -16,14 +16,12 @@ Here you can get information about the product.
 ## Check if an user has bought a product
 
 To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
-
-###  Java
  
 For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUserBought` in order to check if an user has bought a product.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product id from the plenigo backend |
+| productId     | yes     | string         | The product ID from the plenigo backend |
 | cookieHeader     | yes     | string         | The cookie  header |
 
 
@@ -44,16 +42,16 @@ boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
 ```
 This will return false too if the cookie has expired. This will return true always if the Paywall isn’t enabled, see below. 
 
-#### Use case
+### Use case
 
-Use case for checking if a user has bought a product. Therefore you need the product id. This use case is made with the Spring MVC.
+Use case for checking if a user has bought a product. Therefore you need the product ID. This use case is made with the Spring MVC.
 
 
 #### Server logic
 In order to check if an user has bought a product you have to do some prerequisites. 
 
 **Prerequisites**
-1. Configure the [Java SDK](https://plenigo.github.io/sdks/java#configuration).
+1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
 2. Create a product in the plenigo backend. In every checkout you need the id for the corresponding product.
 
 
@@ -63,7 +61,7 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
@@ -92,10 +90,16 @@ public class Paywall {
 
 
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
 
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>```
+```
 You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -104,7 +108,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
    <!--import the Plenigo Javascript SDK
       Let's use concrete values:
-      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+      company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
    <head>
       <title> The title of the article </title>
@@ -133,7 +137,6 @@ Another possiblity to check if the user has bought the product - can be a direct
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
 The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK.
 
-### Java 
 For Java integration you can use the `com.plenigo.sdk.services.UserService#getProductsBought` method in order to get an obtain list of bought products and subscriptions.
 
 |Parameter|Required|Value type|Description|
@@ -141,7 +144,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#getPr
 | cookieHeader     | yes     | string         | The cookie  header |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -188,14 +191,13 @@ If you want to know if your paywall is enabled you can have a look at the plenig
 
 ![Enable paywall](/assets/images/ci/paywall.png)
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.UserService#isPaywallEnabled()` method in order to check if the paywall is enabled.
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // The secret key of your specific company.
-String companyId = "g4evZZUXvhaLVHYoie2Z";// The company ID of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q";// The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2. Check if the paywall is enabled.
@@ -207,21 +209,21 @@ boolean isPayWallEnabled = UserService.isPaywallEnabled();
 
 In order to get product information you can call the product listing service.
 
-###  Java
 
 For Java integration you can use the `com.plenigo.sdk.services.ProductService#getProductData` method in order to get product information.
+
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
 | productId     | yes     | string         |  The product id from the plenigo backend  |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The company ID of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The secret key of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get product information.
-String productId = "aitnVIz1503443609941"; // The product id from the plenigo backend.
+String productId = "aitnVIz1503443609941"; // The product ID from the plenigo backend.
 // This method returns a com.plenigo.sdk.models.ProductsBought object with the required data.
 ProductData productData = ProductService.getProductData(productId);
 // The title of the product.
@@ -252,8 +254,6 @@ Another possibility to get product information - can be a direct call to our RES
 
 In order to list all products for a company, you can call the product listing service.
 
-###  Java
-
 For Java integration you can use the `com.plenigo.sdk.services.ProductService#getProductList` method in order to get a product list.
 
 |Parameter|Required|Value type|Description|
@@ -262,9 +262,9 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Get a product list 
@@ -288,7 +288,7 @@ description: Test
 ```
 ### Implementation without plenigo SDK
 
-Another possibility to get product list - can be a direct call to our REST API:
+Another possibility to get product list - is a direct call to our REST API:
 
 * [Get product list request](https://api.plenigo.com/#!/product/getProductsWithFullDetails)
 
@@ -296,7 +296,6 @@ Another possibility to get product list - can be a direct call to our REST API:
 
 In order to list all categories for a company, you can call the category listing service.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.ProductService:getCategoryList` in order to get a category list.
 
@@ -306,7 +305,7 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService:ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -342,4 +341,4 @@ The category ids in the plenigo backend looks like this example:
 
 ### Implementation without plenigo SDK
 
-Another possibility to get a category list - can be a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)
+Another possibility to get a category list - is a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)

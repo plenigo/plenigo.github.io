@@ -17,8 +17,6 @@ Here you can get information about the product.
 
 To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
 
-###  PHP
-
 For PHP integration you can use the `\plenigo\services\UserService::hasBoughtProduct` method in order to check if an user has bought a product.
 
 |Parameter|Required|Value type|Description|
@@ -31,6 +29,7 @@ For PHP integration you can use the `\plenigo\services\UserService::hasBoughtPro
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
 // 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
@@ -44,13 +43,13 @@ $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
 
 This will return false too if the cookie has expired. This will return true always if the Paywall isn’t enabled, see below. 
 
-#### Use case
+### Use case
 This is an example for using the hasUserBought function. Therefore we use the checkout snippet. The checkout snippets identifies if the user is logged in or not. After the login, we check if the user has bought the product.  
 
 #### Server logic
 
 **Prerequisites**
-1. Configure the [PHP SDK](https://plenigo.github.io/sdks/php#configuration).
+1. Configure the [PHP SDK](https://plenigo.github.io/configuration_php).
 2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
 
 ```php
@@ -137,7 +136,6 @@ Another possiblity to check if the user has bought the product - can be a direct
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
 The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK.
 
-###  PHP 
 
 For PHP integration can use the `\plenigo\services\UserService::getProductsBought()` in order to get an obtain list of bought products and subscriptions.
 
@@ -186,7 +184,6 @@ If you want to know if your paywall is enabled you can have a look at the plenig
 
 ![Enable paywall](/assets/images/ci/paywall.png)
 
-###  PHP
 
 For PHP integration you can use the `plenigo\services\UserService::isPaywallEnabled()`in order to check if the paywall is enabled.
 
@@ -202,16 +199,14 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 // This method returns true if the paywall is enabeld otherwise it will return false.
 $payWallEnabled = \plenigo\services\UserService::isPaywallEnabled();
 ```
-### Implementation without plenigo SDKs
+### Implementation without plenigo SDK
 
-Another possibility to check if the paywall is enabled - can be a direct call to our REST API:
+Another possibility to check if the paywall is enabled - is a direct call to our REST API:
 [Is the paywall enabeld request](https://api.s-devops.com/#!/paywall/isPaywallEnabledt)
 
 ## Get product information
 
 In order to get product information you can call the product listing service.
-
-### PHP
 
 For PHP integration you can use the `\plenigo\services\ProductService::getProductData` method in order to get product information.
 
@@ -228,7 +223,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get product information
-$productId = "aitnVIz1503443609941"; // Replace this with the product id from the plenigo backend.
+$productId = "aitnVIz1503443609941"; // Replace this with the product ID from the plenigo backend.
 // This method will return a ProductData object.
 $productData = ProductService::getProductData(productId);
 // The tile of the product.
@@ -251,13 +246,11 @@ price: 18,99 EUR
 
 ### Implementation without plenigo SDK
 
-Another possibility to get product information - can be a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
+Another possibility to get product information - is a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
 
 ##  Get product list
 
 In order to list all products for a company, you can call the product listing service.
-
-### PHP
 
 For PHP integration you can use the `\plenigo\services\ProductService::getProductList` method in order to get a product list.
 
@@ -275,9 +268,9 @@ $productList = \plenigo\services\UserService::getProductsList();
 // The ProductInfo objects are equal as in the Java example.
 ```
 
-### Implementation without plenigo SDKs 
+### Implementation without plenigo SDK
 
-Another possibility to get product list - can be a direct call to our REST API:
+Another possibility to get product list - is a direct call to our REST API:
 
 * [Get product list request](https://api.plenigo.com/#!/product/getProductsWithFullDetails)
 
@@ -285,8 +278,6 @@ Another possibility to get product list - can be a direct call to our REST API:
 
 In order to list all categories for a company, you can call the category listing service.
 
-
-### PHP
 
 To get information of the categories you can use the `\plenigo\services\ProductService::getCategoryList` in order to get a category list.
 
@@ -311,4 +302,4 @@ $catList = ProductService::getCategoryList($pageSize);
 
 ### Implementation without plenigo SDK
 
-Another possibility to get a category list - can be a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)
+Another possibility to get a category list - is a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)

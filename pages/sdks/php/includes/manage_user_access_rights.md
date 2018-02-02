@@ -1,14 +1,14 @@
 ---
 layout: default
-title: manage_user_access_rights
-permalink: /manage_user_access_rights
+title: manage_user_access_rights PHP
+permalink: /manage_user_access_rights_php
 ---
 # Manage user's access rights
 
 Manage user's access rights allow you to add or delete access rights to one or multiple products.
 
-* [Give access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
-* [Remove access rights ?](https://api.plenigo.com/#!/user/hasBoughtProduct)
+* [Give access rights ?](https://plenigo.github.io/manage_user_access_rights_php#give--access-rights-to-users)
+* [Remove access rights ?](https://plenigo.github.io/manage_user_access_rights_php#remove-access-rights)
 
 ## Give  access rights to user's
 
@@ -16,7 +16,7 @@ By managing user's access rights you are allowed to add or delete access rights 
 
 ### PHP
 
-For PHP integration you can use `plenigo\services\AccessService::grantUserAccess` method in order to give users for this purpose:
+For PHP integration you can use `plenigo\services\AccessService::grantUserAccess` method in order to give users access rights.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -30,9 +30,9 @@ For PHP integration you can use `plenigo\services\AccessService::grantUserAccess
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company id of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Give user access.
@@ -69,9 +69,9 @@ For PHP integration you can use the `plenigo\services\AccessService::removeUserA
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK. The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
-$companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company ID of your specific company.
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Remove user access.

@@ -1,23 +1,21 @@
 ---
 layout: default
 title: App Management
-permalink: /app_management
+permalink: /app_management_java
 ---
 # App Management
 
 App Management allows a third party to access information for a specific product.
 
-* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management#allow-a-third-party-to-access-customer-information-for-a-specific-product)
-* [Has user bought a product ?](https://plenigo.github.io/app_management#check-if-an-user-has-bought-a-product)
-* [Query customer application Ids ?](https://plenigo.github.io/app_management#query-customer-application-ids)
-* [Remove an application ID ?](https://plenigo.github.io/app_management#remove-an-application-id-for-a-customer)
+* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management_java#allow-a-third-party-to-access-customer-information-for-a-specific-product)
+* [Has user bought a product ?](https://plenigo.github.io/app_management_java#check-if-an-user-has-bought-a-product)
+* [Query customer application Ids ?](https://plenigo.github.io/app_management_java#query-customer-application-ids)
+* [Remove an application ID ?](https://plenigo.github.io/app_management_java#remove-an-application-id)
 
 ## Allow a third party to access customer information for a specific product
 
 You can register a third party and give him access to customer information and information about specific products by using the SDK.
 
-
-### Java
 
 For Java integration you can use `com.plenigo.sdk.services.AppManagement#requestAppToken`method in order to a allow a third party access to customer information and information about specific products. 
 
@@ -39,7 +37,7 @@ As a company, you have to add this by using the plenigo management interface, th
 ```java
 // 1.Step: Configure the Java SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj";   // The comapny ID of your specific company from the plengigo backend.
-String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The secret key of your specific company from the plengigo backend.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The secret key of your specific company from the plengigo backend.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2. Step: 3. Request an access token.
@@ -80,7 +78,6 @@ Returned AppAccessData object:
 ```
 Once you have the application access data, you can give this information to a third party and they can reuse this as many times as they would like. There is a limit of how many customer application IDs you can request, but you can configure that in the company management interface of plenigo. 
 
-There is a limit of how many customer application ids you can request, but you can configure that in the company management interface of plenigo.
 
 ## Allow a third party to access customer information for a specific product without SDK
 
@@ -90,7 +87,6 @@ Another possibility to allow a third party access to information - is a direct c
 
 ## Check if an user has bought a product 
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagementService#hasUserBought` method in order to check if an user has bought a product.
 
@@ -120,14 +116,13 @@ ProductAccessRequest request = AppManagementService.hasUserBought(productAccessR
 
 ### Implementation without SDK
 
-Another possibility to get category information - is a direct call to our REST API:
+Another possibility to access customer to information - is a direct call to our REST API:
 
-* [Check if customer has bought a product ](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Check if customer has bought a product ](https://api.plenigo.com/#!/app_management/requestAppAccessToken)
 
 ## Query customer application IDs 
 
-You or a third party, you can request the current applications that you have registered for a specific customer.
-### Java
+You or a third party can request the current applications that you have registered for a specific customer.
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagement#getCustomerApps` method in order to request customer application IDs.
 
@@ -137,7 +132,7 @@ For Java integration you can use the `com.plenigo.sdk.services.AppManagement#get
 | customerId     | yes     | string         | The customer ID |
 
 ```java
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:12NuCmdZUTRRkQiCqP2Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company from the plenigo backend.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company from the plenigo backend.
 PlenigoManager.get().configure(secret, companyId );
@@ -153,13 +148,12 @@ List<AppAccessData> appTokenData = AppManagementService.getCustomerApps(new Cust
 
 Another possibility to query customer application IDs - is a direct call to our REST API:
 
-* [Get all customer apps](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Get all customer apps](https://api.plenigo.com/#!/app_management/getCustomerAppAccess)
 
 ## Remove an application ID
 
 As a company, if you would like to remove a customer application ID, you can do this with the application management service.
 
-### Java
 
 For Java integration you can use the `com.plenigo.sdk.services.AppManagement.deleteCustomerApp` method in order to remove an application ID.
 
@@ -185,4 +179,4 @@ AppManagementService.deleteCustomerApp(new DeleteAppIdRequest(customerId, custom
 
 Another possibility to remove an application id for a customer - is a direct call to our REST API:
 
-* [Remove application id for a customer](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Remove application id for a customer](https://api.plenigo.com/#!/app_management/deleteCustomerAppAccess)

@@ -33,7 +33,6 @@ In the plenigo backend you can create different types of products:
 
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
-### PHP
 
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
@@ -45,7 +44,7 @@ For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` c
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -58,13 +57,14 @@ $product = new \plenigo\models\ProductBase($productId);
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout -> build();
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing checkout with plenigo managed products including plenigo login. 
 
-This is a complete example page where you only need to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q ), the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
+This is a complete example page where you only need to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q ), the secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
+
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration). 
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php). 
 
 ```php
 <?php
@@ -74,7 +74,7 @@ use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: The product_id from the plenigo backend.
@@ -94,10 +94,16 @@ if ($hasUserBought === FALSE) {
 #### Page logic
 
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
 
-You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+
+You will replace COMPANY_ID for the corresponding id of your company (e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -160,16 +166,16 @@ If you want to do a checkout without the login functionality of plenigo you have
 
 ### Use case  
 Use case for implementing checkout with plenigo managed products wihout plenigo login. The only thing you have to do is creating a product in the plenigo backend.
-Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj)  and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
+Then you have to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj)  and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration).
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php).
  
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
@@ -201,10 +207,16 @@ $plenigoCheckoutCode = $checkout -> build();
 #### Page logic
 
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.s-devops.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.s-devops.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -237,23 +249,22 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </html>
 ```
 
-## Checkout without SDKs
+## Checkout without SDK
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 ## Failed Payments 
 If a payment gets failed form a customer you can create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
 
-### PHP
-
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
+
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
-$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Creating special product object for "Failed Payments".
@@ -266,13 +277,13 @@ $plenigoCheckoutCode = $checkout->build();
 // 4.Step: Now we can use this snippet in a link or button.
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Buy now </a>';
 ```
-#### Use case PHP
+### Use case 
 
 Use case for implementing failed payments. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
 
 
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration).
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php).
 
 ```php
 <?php
@@ -281,7 +292,7 @@ require_once __DIR__ . '/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q"), true;
 
 // 2.Step: Creating special product object for "Failed Payments".
@@ -296,10 +307,16 @@ $plenigoCheckoutCode = $checkout->build();
 #### Page logic
 
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
@@ -326,7 +343,6 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 If the product correspond to the subscription renewal, there is a flag in the Product object. This way you can create a subscription renewal button in your site easily setting this flag.
 
-### PHP
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
@@ -338,9 +354,9 @@ require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
-$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Set the product id.
@@ -357,11 +373,11 @@ $plenigoCheckoutCode = $checkout->build();
 // 5.Step: Now we can use this snippet in a link or button.
 echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your subscription</a>';
 ```
-#### Use case 
+### Use case 
 
 Use case for implementing checkout with plenigo managed products wihout plenigo login. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration). 
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php). 
 
 ```php
 <?php
@@ -370,10 +386,10 @@ require_once __DIR__ . '/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
-// 2.Step: The_product_id from the plenigo backend.
+// 2.Step: The_product_ID from the plenigo backend.
 $productId = 'aitnVIz1503443609941';
 $product = new ProductBase($productId);
 
@@ -387,10 +403,17 @@ $plenigoCheckoutCode = $checkout->build();
 ```
 #### Page logic
 In the Page you have to replace the company id in the Javascript declaration, e.g. if you have the following link: 
-**"https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-lang="en"> </script>
+```
 
 You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCmdPoiRRkQiCqP9Q), after replacing it should look like this: 
-**"https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"**
+
+```html
+<script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
+```
+
 
 
 ```html
@@ -399,7 +422,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
     <title> The title of the article  </title>
     <!--
         Let's use concrete values
-        company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
     -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">

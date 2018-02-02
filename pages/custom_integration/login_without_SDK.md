@@ -50,7 +50,7 @@ By clicking on the "Registration" Button the Registration flow will start:
     <title> The title  </title>
         <!-- import the Plenigo Javascript SDK
                Let's use concrete values:
-               company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+               company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->          <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
     </script>
@@ -80,7 +80,7 @@ This is the simplest way to login, below there are examples of how to generate t
     <title> The title  </title>
         <!-- import the Plenigo Javascript SDK
                Let's use concrete values:
-               company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+               company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->          <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
     </script>
