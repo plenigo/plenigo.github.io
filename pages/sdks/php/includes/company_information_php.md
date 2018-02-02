@@ -8,11 +8,11 @@ permalink: /company_information_php
 
 Company Service allows you to get structured information about your company's customers in order to show it or use it at your site/app.
 
-* [Get a paginated list of customers ?](https://plenigo.github.io/company_information#get-a-paginated-list-of-customers)
-* [Get users by the user ids ?](https://plenigo.github.io/company_information#get-users-by-user-ids)
-* [Get failed payments ?](https://plenigo.github.io/company_information#get-failed-payments)
-* [Get orders ?](https://plenigo.github.io/company_information#get-orders)
-* [Get subscriptions ?](https://plenigo.github.io/company_information#get-subscriptions)
+* [Get a paginated list of customers ?](https://plenigo.github.io/company_information_php#get-a-paginated-list-of-customers)
+* [Get users by the user ids ?](https://plenigo.github.io/company_information_php#get-users-by-user-ids)
+* [Get failed payments ?](https://plenigo.github.io/company_information_php#get-failed-payments)
+* [Get orders ?](https://plenigo.github.io/company_information_php#get-orders)
+* [Get subscriptions ?](https://plenigo.github.io/_php#company_information#get-subscriptions)
 
 ## Get a paginated list of customers 
 
@@ -27,7 +27,7 @@ For PHP you can use `plenigo\services\CompanyService::getUserList()` method for 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -65,7 +65,7 @@ For PHP integration you can use `plenigo\services\AppManagement#requestAppToken`
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -106,7 +106,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getFailedPayme
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -152,7 +152,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getOrders()` m
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -197,7 +197,7 @@ For PHP integration you can use `plenigo\services\CompanyService::getSubscriptio
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company id (e.g.:23NuCmdPoiRRkQiCqP9Q).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);

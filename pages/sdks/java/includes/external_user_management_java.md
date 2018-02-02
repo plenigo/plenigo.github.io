@@ -34,7 +34,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | name       | yes   | string        | The name of the new customer|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
 String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
@@ -69,7 +69,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID     | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
 String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
@@ -149,7 +149,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID    | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyID );

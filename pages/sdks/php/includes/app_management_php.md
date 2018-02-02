@@ -7,10 +7,10 @@ permalink: /app_management_php
 
 App Management allows a third party to access information for a specific product.
 
-* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management#allow-a-third-party-to-access-customer-information-for-a-specific-product)
-* [Has user bought a product ?](https://plenigo.github.io/app_management#check-if-an-user-has-bought-a-product)
-* [Query customer application Ids ?](https://plenigo.github.io/app_management#query-customer-application-ids)
-* [Remove an application ID ?](https://plenigo.github.io/app_management#remove-an-application-id-for-a-customer)
+* [Allow a third party access to an information ?](https:/plenigo.github.io/app_management_java#allow-a-third-party-to-access-customer-information-for-a-specific-product)
+* [Has user bought a product ?](https://plenigo.github.io/app_management_java#check-if-an-user-has-bought-a-product)
+* [Query customer application Ids ?](https://plenigo.github.io/app_management_java#query-customer-application-ids)
+* [Remove an application ID ?](https://plenigo.github.io/app_management_java#remove-an-application-id-for-a-customer)
 
 ## Allow a third party to access customer information for a specific product
 
@@ -79,7 +79,6 @@ Returned AppAccessData object:
 }
 ```
 Once you have the application access data, you can give this information to the third party and they can reuse this as many times as they would like.
-There is a limit of how many customer application ids you can request, but you can configure that in the company management interface of plenigo.
 
 ## Allow a third party to access customer information for a specific product without SDK
 
@@ -116,9 +115,9 @@ $hasUserBought = AppManagementService::hasUserBought($customerId, $productId, $c
 ```
 ### Implementation without SDK
 
-Another possibility to get category information - is a direct call to our REST API:
+Another possibility to access customer to information - is a direct call to our REST API:
 
-* [Check if customer has bought a product ](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Check if customer has bought a product ](https://api.plenigo.com/#!/app_management/requestAppAccessToken)
 
 ## Query customer application IDs 
 
@@ -142,7 +141,7 @@ $appsData = AppManagementService::getCustomerApps("customerId");
 
 Another possibility to query customer application IDs - is a direct call to our REST API:
 
-* [Get all customer apps](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Get all customer apps](https://api.plenigo.com/#!/app_management/getCustomerAppAccess)
 
 ## Remove an application ID
 
@@ -174,4 +173,4 @@ AppManagementService::deleteCustomerApp($customerId, $customerAppId);
 
 Another possibility to remove an application id for a customer - is a direct call to our REST API:
 
-* [Remove application id for a customer](https://api.plenigo.com/#!/app_management/verifyCustomerAppAccess)
+* [Remove application id for a customer](https://api.plenigo.com/#!/app_management/deleteCustomerAppAccess)

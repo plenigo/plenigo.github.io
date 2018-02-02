@@ -61,7 +61,7 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
@@ -108,7 +108,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
    <!--import the Plenigo Javascript SDK
       Let's use concrete values:
-      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
+      company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
    <head>
       <title> The title of the article </title>
@@ -144,7 +144,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#getPr
 | cookieHeader     | yes     | string         | The cookie  header |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -195,7 +195,7 @@ If you want to know if your paywall is enabled you can have a look at the plenig
 For Java integration you can use the `com.plenigo.sdk.services.UserService#isPaywallEnabled()` method in order to check if the paywall is enabled.
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";// The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -217,13 +217,13 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | productId     | yes     | string         |  The product id from the plenigo backend  |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The company ID of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The secret key of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get product information.
-String productId = "aitnVIz1503443609941"; // The product id from the plenigo backend.
+String productId = "aitnVIz1503443609941"; // The product ID from the plenigo backend.
 // This method returns a com.plenigo.sdk.models.ProductsBought object with the required data.
 ProductData productData = ProductService.getProductData(productId);
 // The title of the product.
@@ -262,9 +262,9 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
-String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific company.
+String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Get a product list 
@@ -305,7 +305,7 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService:ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific your specific company.
 PlenigoManager.get().configure(secret, companyId );

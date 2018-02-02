@@ -1,12 +1,12 @@
 ### Allow a third party to access the customer id using a mobile secret
 
-As a company, if you want to allow a third party so that they can query the customer id of a specific , you can do this using the sdk. 
+As a company, if you want to allow a third party so that they can query the customer ID of a specific , you can do this using the sdk. 
 
 There are a couple of steps that you have to do in order to do this:
 
-1. Configure an application id
+1. Configure an application ID
 2. Create a mobile secret
-3. Request the customer id
+3. Request the customer ID
 
 #### Configure an application id(only companies can do this)
 
@@ -38,10 +38,10 @@ Also companies can use their own secret instead of the application id to call th
 ***
 
 ```java
-//We must configure the plenigo manager so that it contains the company id and the application id that the //company provided, please note that application id is the one provided above in the first step
+//We must configure the plenigo manager so that it contains the company ID and the application ID that the //company provided, please note that application id is the one provided above in the first step
 PlenigoManager.get().configure("applicationIdOrSecret","companyId");
 
-//With the mobile secret information, we can request the customer id
+//With the mobile secret information, we can request the customer ID
 String customerId = MobileService.verifyMobileSecret("email", "mobileSecret");
 ```
 ## Query customer mobile secret(companies can do this)

@@ -59,9 +59,9 @@ $plenigoCheckoutCode = $checkout->build();
 ```
 ### Use case 
 
-Use case for implementing checkout with external products(Single Products) including plenigo login.
+Use case for implementing checkout with external products (Single Products) including plenigo login.
 
-This is a complete example page where you only need to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q ) and the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj).
+This is a complete example page where you only need to replace the company id (e.g.23NuCmdPoiRRkQiCqP9Q ) and the secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj).
 This example assumes you are running in test mode.
 
 
@@ -76,7 +76,7 @@ use plenigo\models\ProductBase;
 use plenigo\services\UserService;
 use plenigo\builders\CheckoutSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+// 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode (true).
 \plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: Set the product.
@@ -144,7 +144,7 @@ use plenigo\models\ProductBase;
 use plenigo\services\UserService;
 use plenigo\services\UserManagementService;
 
-// 1.Step: Configure the PHP SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode(true).
+// 1.Step: Configure the PHP SDK:  Provide the secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q) in Test Mode (true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: Set product details and the type of the product.
