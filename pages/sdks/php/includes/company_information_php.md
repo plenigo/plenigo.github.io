@@ -12,7 +12,7 @@ Company Service allows you to get structured information about your company's cu
 * [Get users by the user ids ?](https://plenigo.github.io/company_information_php#get-users-by-user-ids)
 * [Get failed payments ?](https://plenigo.github.io/company_information_php#get-failed-payments)
 * [Get orders ?](https://plenigo.github.io/company_information_php#get-orders)
-* [Get subscriptions ?](https://plenigo.github.io/_php#company_information#get-subscriptions)
+* [Get subscriptions ?](https://plenigo.github.io/company_information_php#get-subscriptions)
 
 ## Get a paginated list of customers 
 
@@ -38,7 +38,7 @@ $pageSize = 30;  // 30 results per page
 
 try {
      $userList = CompanyService::getUserList($pageNumber, $pageSize);
-} catch (PlenigoException e) {
+} catch (PlenigoException $e) {
     // Error Handling here
 }
 ```
@@ -74,7 +74,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company
 $ids = "XXXC9XXVZX6J, QTYYW6EBDXXV, XXXVBX3SN2EI, RRZ1XX3WRPV5"; // The customer ids from the plenigo backend.
 try {
      $userList = CompanyService::getUserList($ids);
-} catch (PlenigoException e) {
+} catch (PlenigoException $e) {
     // Error Handling here
 }
 ```
@@ -118,7 +118,7 @@ $page = 0; // First page
 $size = 10; // 10 results per page
 try {
      $failedPaymentList = CompanyService::getFailedPayments($start, $end, $status, $pageNumber, $pageSize);
-} catch (PlenigoException e) {
+} catch (PlenigoException $e) {
     // Error Handling here
 }
 ```
@@ -164,7 +164,7 @@ $page = 0; // First page
 $size = 30;  // 30 results per page
 try {
      $orderList = CompanyService::getOrders($start, $end , $testMode, $page, $size);
-} catch (PlenigoException e) {
+} catch (PlenigoException $e) {
     // Error Handling here
 }
 ```
@@ -210,7 +210,7 @@ $size = 30;  // 30 results per page
 
 try {
      $subscriptionList = CompanyService::getSubscriptions($start, $end, $testMode, $pageNumber, $pageSize);
-} catch (PlenigoException e) {
+} catch (PlenigoException $e) {
     // Error Handling here
 }
 ```
