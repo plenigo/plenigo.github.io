@@ -167,7 +167,6 @@ plenigo.passwordForgotten({object});
 |partnerLogin|boolean|No|Yes|Flag indicating if it is a partner login. _Cannot be used in combination with OAuth2._|
 |origin|string|No|Yes|Origin parameter after a successful login.|
 |testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
-|productIds|string|No|Yes|If set plenigo checks if the customer has bought one of the products passed here. The product ids must be comma separated. A detailed explanation follows bellow.|
 |notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
 
 ### Logout - Logout the user
