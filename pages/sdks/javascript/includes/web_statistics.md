@@ -45,7 +45,7 @@ data = {
 };
 
 // on load
-var data = { 
+data = { 
     action:"load"
     data: [],
     page: "previousStep",
