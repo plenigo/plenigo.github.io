@@ -17,6 +17,7 @@ The installation is just adding the new attribute __data-on-action__ to your ple
             data-on-action="statisticFunction">
         </script>
   ```
+ 
 You are free to name the method _statisticFunction_. It can be a method at an object, but has to be accessible or be part of the _window_ object. 
 
 ### Debugging
@@ -30,17 +31,30 @@ To debug this function simply use the _console_ function:
 ```
 On Submit this will result in the following data:
 ```javascript
-action: "submit"
-data: Array(6)
-  0: {name: "userCountry", value: "DE"}
-  1: {name: "userState", value: ""}
-  2: {name: "billingAddressNeeded", value: "false"}
-  3: {name: "paymentMethod", value: "BILLING"}
-  4: {name: "useVoucher", value: "true"}
-  5: {name: "ageVerification", value: "false"}
+// on submit
+data = {
+    action: "submit"
+    data: [
+      0: {name: "userCountry", value: "DE"}
+      1: {name: "userState", value: ""}
+      2: {name: "billingAddressNeeded", value: "false"}
+      3: {name: "paymentMethod", value: "BILLING"}
+      4: {name: "useVoucher", value: "true"}
+      5: {name: "ageVerification", value: "false"}
+      ]
+};
+
+// on load
+var data = { 
+    action:"load"
+    data: [],
+    page: "previousStep",
+    pageName: "basket"
+    };
+    
 ```
 
-
+### Example with analytics
 
 The JavaScript only checkout can be used on LandingPages or something similar. This way you can integrate plenigo easily
 on pages where you don't have direct control over the server side code execution.
@@ -56,22 +70,38 @@ To get a working example you have to replace some variables. Variables to are st
     
         // Replace $COMPANY_ID$ with the company id from the plenigo merchant backend. 
         <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js"
-            data-disable-metered="true">
+            data-disable-metered="true"
+            data-on-action="statistics.checkout">
         </script>
         
         <script type="application/javascript">
-            // Replace $CHECKOUT_STRING$ with the checkout string of the product that you can retrieve 
-            // from the product overview page in the plenigo backend.
-            // Replace $TARGET_URL$ with the url the checkout should redirect after being finished. Could be
-            // a thank you page.
-            var checkoutConfig = {
-                paymentData: "$CHECKOUT_STRING$",
-                startWithRegistration: "true",
-                sourceUrl: null,
-                targetUrl: "$TARGET_URL$",
-                affiliateId: null,
-                elementId: null
-            }
+            var statistics = {
+                checkout: function(data) {  
+                var i = 0, form = [];
+                // checks, if analytics is fully initialized
+                if (typeof ga === "undefined") {
+                    return;
+                }
+                                
+                if (data.action === "load") { 
+                    ga("send", {
+                        hitType: "pageview",
+                        page: "/checkout/" + data.pageName
+                    }); 
+                } else if (data.action === "submit") {
+                    form = data.data || form;
+                    for (i = 0; i < form.length; i++) {
+                        if (form[i].name === "paymentMethod") {
+                           ga("send", {
+                                  hitType: "event",
+                                  eventCategory: "PaymentMethod",
+                                  eventAction: form[i].name,
+                                  eventLabel: "plenigo"
+                            });     
+                        }
+                    }                    
+                }
+            };
         </script>
     </head>
     <body>
