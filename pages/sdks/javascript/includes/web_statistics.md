@@ -76,30 +76,31 @@ To get a working example you have to replace some variables. Variables to are st
         
         <script type="application/javascript">
             var statistics = {
-                checkout: function(data) {  
-                var i = 0, form = [];
-                // checks, if analytics is fully initialized
-                if (typeof ga === "undefined") {
-                    return;
-                }
-                                
-                if (data.action === "load") { 
-                    ga("send", {
-                        hitType: "pageview",
-                        page: "/checkout/" + data.pageName
-                    }); 
-                } else if (data.action === "submit") {
-                    form = data.data || form;
-                    for (i = 0; i < form.length; i++) {
-                        if (form[i].name === "paymentMethod") {
-                           ga("send", {
-                                  hitType: "event",
-                                  eventCategory: "PaymentMethod",
-                                  eventAction: form[i].name,
-                                  eventLabel: "plenigo"
-                            });     
+                checkout: function(data) {
+                    var i = 0, form = [];
+                    // checks, if analytics is fully initialized
+                    if (typeof ga === "undefined") {
+                        return;
+                    }
+
+                    if (data.action === "load") {
+                        ga("send", {
+                            hitType: "pageview",
+                            page: "/checkout/" + data.pageName
+                        });
+                    } else if (data.action === "submit") {
+                        form = data.data || form;
+                        for (i = 0; i < form.length; i++) {
+                            if (form[i].name === "paymentMethod") {
+                                ga("send", {
+                                    hitType: "event",
+                                    eventCategory: "PaymentMethod",
+                                    eventAction: form[i].name,
+                                    eventLabel: "plenigo"
+                                });
+                            }
                         }
-                    }                    
+                    }
                 }
             };
         </script>
