@@ -31,3 +31,6 @@ If you plan to use the PayWall functionality of plenigo you have to choose betwe
 ### Load content afterwards
    
 {% include_relative includes/load_content_afterwards.md %}
+
+
+{% include_relative includes/web_statistics.md %}
