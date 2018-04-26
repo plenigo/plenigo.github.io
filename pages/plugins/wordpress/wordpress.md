@@ -392,7 +392,7 @@ After you have set the price with the generated shortcode you should get a butto
 
 > Quantity only works for single products, for subscriptions it will override the price by the end of the checkout.
 
-If you would like to sell more than 1 product in a given checkout, we can provide you a way to do this with the **Max Quantity** field, in order to enable it you must choose a quantity **higher than 1**, in this example we choose 2.
+If you would like to sell more than 1 product in a given checkout, we can provide you a way to do this with the **Max Quantity** field, in order to enable it you must choose a quantity **higher than 1**, in this example we choose 5.
 
 ![Checkout generated button with max quantity](/assets/images/wp/checkout_button/checkout_button_dialog_max_quantity.png)
 
@@ -437,7 +437,7 @@ This is used to save the url in the order for customer review purposes.
 
 #### Target URL
 
-This is an URL where the user gets sent to after a successful checkout
+This is an URL where the user gets sent to after a successful checkout.
 
 #### Affiliate ID
 
@@ -545,7 +545,11 @@ There is also a bill area where you can see the bill detail and download the PDF
 
 #### Subscriptions
 
-Shows the list of subscriptions, you can see each subscription detail, change payment and cancel subscriptions as well.
+Shows the list of subscriptions
+
+![Subscriptions snippet](/assets/images/wp/snippets/subscriptions_list.png)
+
+You can see each subscription detail, change payment and cancel subscriptions as well.
 
 ![Subscription details](/assets/images/wp/snippets/subscriptions_data.png)
 
