@@ -81,6 +81,26 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en"> </script>
 ```
 
+```html
+<html>
+<head>
+    <title> The title  </title>
+        <!-- import the plenigo Javascript SDK
+               Let's use concrete values:
+               company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
+        -->          <script type="application/javascript"
+            src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-lang="en">
+    </script>
+</head>
+<body> 
+    <#if isLoggedIn>
+    <button onclick=plenigo.logout(); window.location.href="/"> Logout </button>
+    <#else>
+    <button onclick="${loginBuilder}">Login</button>
+</body>
+</html>
+```
+
 ## Single sign on (OAuth2)
 
 ### Login Flow
