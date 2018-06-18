@@ -141,6 +141,35 @@ If the user has bought a product the target url will be called with the followin
 |r|Always the value "none"|
 |c|MD5 Hash of Id, d, r, and the secret of the company the checkout is for| 
 
+
+### Forgot Password - start a forgot password process
+
+With this function you can display the forgot password window to let users change their password. It is recommended, if you imported users with an external subscription ID and without any password. 
+In these cases your customers have to set a new password.
+
+```javascript
+/**
+ * Open up password forgotten screen.
+ *
+ * @param {object} params
+ */
+
+plenigo.passwordForgotten({object});
+```
+The following tables describes the configuration object. Non mandatory parameters can be filled with _null_.
+
+|Name|Type|Mandatory|Partner only|Description|
+|:---|:---|:--------|:-----------|:----------|
+|ssoRedirectURL|string|No|No|Redirect URL for the OAuth2 login process if [OAuth2](https://tools.ietf.org/html/rfc6749) is used.|
+|scope|string|No|No|Scope of the [OAuth2](https://tools.ietf.org/html/rfc6749) login process. Currently the only available scope is _profile_|
+|state|string|No|No|CSRF token for the [OAuth2](https://tools.ietf.org/html/rfc6749) process to use. This way you can verify the request source.|
+|elementId|string|No|No|If you want to start the login in embedded mode you have to pass the id of the element the checkout iFrame should be inserted to here.|
+|targetUrl|string|No|No|Url redirect customer to after a successful login process. _Will only be used if ssoRedirectUrl is not set._|
+|partnerLogin|boolean|No|Yes|Flag indicating if it is a partner login. _Cannot be used in combination with OAuth2._|
+|origin|string|No|Yes|Origin parameter after a successful login.|
+|testMode|boolean|No|Yes|Flag indicating if access should be checked for live or test mode|
+|notCustomerUrl|string|No|Yes|Url to redirect user to after login if user has not bought any product|
+
 ### Logout - Logout the user
 
 This function deletes the user's login cookie. It doesn't have any additional functionality.
@@ -151,7 +180,7 @@ This function deletes the user's login cookie. It doesn't have any additional fu
  * 
  * @param {object} configuration              
  */
-plenigo.logout();
+plenigo.logout({object});
 ```
 
 ### Is user logged in - Indicates if the user is currently logged in
