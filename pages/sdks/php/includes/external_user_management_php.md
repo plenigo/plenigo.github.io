@@ -56,7 +56,7 @@ $firstName = "new"; // The first name of the customer.
 $name = "user"; // The name of the customer.
 
 // 3.Step: Returns the internal plenigo customer id.
-// If the user is already registered it will return the internal plenigo customer id. 
+// If the user is already registered, it will not recreate the customer, it will return the internal plenigo customer id. 
 $registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name);
 ```
 
