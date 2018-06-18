@@ -52,7 +52,8 @@ $externalUserId = "A1BKAFZZ3H0H"; // The external customer ID e.g "A1BKAFZZ3H0H"
 $firstName = "new"; // The first name of the customer. 
 $name = "user"; // The name of the customer.
 
-// 3.Step: This method returns true if the external user was registered successfully otherwise, it will return false.
+// 3.Step: Returns the internal plenigo customer id.
+// If the user is already registered it will return the internal plenigo customer id. 
 $registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name);
 ```
 
