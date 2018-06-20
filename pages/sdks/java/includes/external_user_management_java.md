@@ -46,7 +46,8 @@ String externalUserID = "A1BKAFZZ3H0H"; // The external customer ID e.g "A1BKAFZ
 String firstName = "new"; // The first name of the customer.
 String name = "user"; // The name of the customer.
 
-// Returns the customer ID.
+// 3.Step: Returns the internal plenigo customer id.
+// If the user is already registered, it will not recreate the customer, it will return the internal plenigo customer id. 
 String registerUser = UserManagementService.registerUser(email, language, externalUserID, firstName, name); 
 ```
 

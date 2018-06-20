@@ -37,7 +37,6 @@ For PHP integration you can use the `plenigo\services\UserManagementService::reg
 | $name       | yes   | string        | The name of the new customer|
    
 ```php
-
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
