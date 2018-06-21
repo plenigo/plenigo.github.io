@@ -51,10 +51,10 @@ $language = "en"; // The language.
 $externalUserId = "A1BKAFZZ3H0H"; // The external customer ID e.g "A1BKAFZZ3H0H" that the customer should have.
 $firstName = "new"; // The first name of the customer. 
 $name = "user"; // The name of the customer.
-
-// 3.Step: Returns the internal plenigo customer id.
-// If the user is already registered, it will not recreate the customer, it will return the internal plenigo customer id. 
-$registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name);
+$withPasswordReset = false; // (Parameter: True) The customer will get a one time password. With this password he can login in the application.
+$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the existing plenigo customer id.
+// (Parameter: True): If the customer is already registered it will return the http status 409.  
+$registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name, $withPasswordReset, $failByExistingEmail);
 ```
 
 ## Implementation without SDK
@@ -126,6 +126,10 @@ $language = "en"; // The language.
 $externalUserID = "12345"; // The external user ID.
 $firstName = "new"; // The first name.
 $name = "customer"; // The name.
+$withPasswordReset = false; // (Parameter: True) The customer will get a one time password. With this password he can login in the application.
+$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the  existing plenigo customer id.
+// (Parameter: True): If the customer is already registered it will return the http status 409.  
+$registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name, $withPasswordReset, $failByExistingEmail);
 $userId = UserManagementService::registerUser($email, $language, $externalUserID, $firstName, $name);
 
 // 5.Step: Add login token to this user.
