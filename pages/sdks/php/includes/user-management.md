@@ -1,7 +1,7 @@
 ### get Customers
 
 Sometimes you want to get the users with the latest changes, to sync them into your systems.
-```
+```php
 $secret = 'XXX';
 $companyId = 'XXXX';
 // Configure SDK
@@ -25,7 +25,7 @@ $users = \plenigo\services\CompanyService::getChangedUsers('-1 week');
 ### get some Customers by ID
 
 If you have some CustomerIds, you can get the user data with this method:
-```
+```php
 $secret = 'XXX';
 $companyId = 'XXXX';
 // Configure SDK
@@ -47,7 +47,7 @@ $users =  \plenigo\services\CompanyService::getUserByIds("userID1, userID2");
 
 You can change the address data:
 
-```
+```php
 $secret = 'XXX';
 $companyId = 'XXXX';
 // Configure SDK
