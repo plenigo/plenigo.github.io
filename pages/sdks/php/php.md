@@ -145,11 +145,11 @@ developed are designed and implemented mainly for that purpose.
                                            </a>
         <hr>
                   <div class="post-preview">
-                                       <a href="/error_handling_php"  >
+                                       <a href="/user_management_php"  >
                                      <h2 class="post-title">
                                     User-Management
                   </h2>
-                 <a href="/user_management" style="color: #16aeb9"  class = "post-title" > 
+                 <a href="/user_management_php" style="color: #16aeb9"  class = "post-title" > 
                     Get, add and change User Data
                  </a>
                                                   
