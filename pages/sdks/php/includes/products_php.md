@@ -185,7 +185,7 @@ If you want to know if your paywall is enabled you can have a look at the plenig
 ![Enable paywall](/assets/images/ci/paywall.png)
 
 
-For PHP integration you can use the `plenigo\services\UserService::isPaywallEnabled()`in order to check if the paywall is enabled.
+For PHP integration you can use the `\plenigo\services\UserService::isPaywallEnabled()`in order to check if the paywall is enabled.
 
 ```php
 <?php
@@ -225,7 +225,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company
 // 2.Step: Get product information
 $productId = "aitnVIz1503443609941"; // Replace this with the product ID from the plenigo backend.
 // This method will return a ProductData object.
-$productData = ProductService::getProductData(productId);
+$productData = \plenigo\services\ProductService::getProductData(productId);
 // The tile of the product.
 $title = $productData->getTitle();
 // The id of the product
@@ -264,7 +264,7 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 
 // 2.Step: Get a product list.
 // This method returns a list of the ProductInfo(productId, title, description).
-$productList = \plenigo\services\UserService::getProductsList();
+$productList = \plenigo\services\ProductService::getProductList();
 // The ProductInfo objects are equal as in the Java example.
 ```
 
