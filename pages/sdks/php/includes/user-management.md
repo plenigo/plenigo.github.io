@@ -54,17 +54,17 @@ $companyId = 'XXXX';
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 $address = [
-  "gender"=> "FEMALE",
-  "firstName" =>"Monika",
-  "name" =>"Mustermann",
-  "company" =>"Muster AG",
-  "additionalCompanyInfo" =>"We make musters",
-  "street" =>"Musterstr 7",
-  "additionalAddressInfo" =>"co. Hanns Mustermann",
-  "postCode" =>"12345",
-  "city" =>"Musterstadt",
-  "state" =>"Germany",
-  "country" =>"DE"
+  "gender"=> "FEMALE", // required
+  "firstName" =>"Monika", // required
+  "name" =>"Mustermann", // required
+  "company" =>"Muster AG", // optional
+  "additionalCompanyInfo" =>"We make musters", // optional
+  "street" =>"Musterstr 7", // optional
+  "additionalAddressInfo" =>"co. Hanns Mustermann", // optional
+  "postCode" =>"12345", // optional
+  "city" =>"Musterstadt", // optional
+  "state" =>"Germany", // optional
+  "country" =>"DE" // required, if any of addressfields is filled. Only ISO Codes allowed
 ];
 
   /**
