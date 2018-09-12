@@ -1,3 +1,8 @@
+---
+layout: default
+title: User Management PHP
+permalink: /user_management_php
+---
 ### get Customers
 
 Sometimes you want to get the users with the latest changes, to sync them into your systems.
