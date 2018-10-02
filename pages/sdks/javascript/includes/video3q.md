@@ -60,7 +60,7 @@ Just put the plenigo Jacascript call somewhere in your html. To enable video pla
                 'sticky': true,
                 'playlistbar' : true,
                 'teaserLength': 2,
-                'no-access-callback': function (par1, par2) {
+                'no-access-callback': function (productIds, videoId) {
 
                     location.href = "/video/checkout";
                 }
@@ -71,3 +71,5 @@ Just put the plenigo Jacascript call somewhere in your html. To enable video pla
 </html>
 
 ```
+
+If the customer has not bought at least one of the products given in the `productIDs` parameter, it will call call function given in `no-access-callback`. Here one can simply call a landing page, or open a dialog or simply start a plenigo checkout.
