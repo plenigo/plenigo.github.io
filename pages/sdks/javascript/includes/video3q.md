@@ -1,13 +1,13 @@
 ## Video-Player with access control
 
-Based on the 3q video player plenigo offers you a video player with access control. You may need a 3q account one can create at (3q video)[https://3q.video/de/]
+Based on the 3q video player plenigo offers you a video player with access control. You may need a 3q account one can create at [3q video](https://3q.video/de/)
 
 There one can upload multiple videos.
 
 
 ### Installation
 
-The installation is based on the 3qvideo player. All the configuration parameters you can see in their (documentation)[https://github.com/3QSDN/3q.js]
+The installation is based on the 3qvideo player. All the configuration parameters you can see in their [documentation](https://github.com/3QSDN/3q.js)
 ```javascript
         window.plenigoVideoPlayer = window.plenigoVideoPlayer || [];
 
