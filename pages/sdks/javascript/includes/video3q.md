@@ -20,7 +20,54 @@ The installation is based on the 3qvideo player. All the configuration parameter
                     location.href = "/landingpage";
                 }
             });
-            
-  ```
- 
- ### Example with full html
+          
+```
+
+### Example with full html
+
+Just put the plenigo Jacascript call somewhere in your html. To enable video player, add attribute `data-video="3q"`.
+
+```html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+</head>
+<body>
+
+    <header class="main">
+        <h1>My 1st video</h1>
+    </header>
+
+
+        <div id="video"></div>
+    
+    
+<script type="application/javascript"
+         src="https://static.s-devops.com/static_resources/javascript/qeorhgjqerjwefBwe8/plenigo_sdk.min.js" 
+        data-lang="de" 
+        data-video="3q"></script>
+
+<script>
+
+        window.plenigoVideoPlayer = window.plenigoVideoPlayer || [];
+
+            plenigoVideoPlayer.push({
+                'data-id': '5280e612-c311-11e8-ae4b-0cc47a188158',
+                'container': 'video',
+                'productIDs': 'P_WWWWQQQQ27351,P_WWWWQQQQ77286351',
+                'sticky': true,
+                'playlistbar' : true,
+                'teaserLength': 2,
+                'no-access-callback': function (par1, par2) {
+
+                    location.href = "/video/checkout";
+                }
+            });
+    </script>
+
+</body>
+</html>
+
+```
