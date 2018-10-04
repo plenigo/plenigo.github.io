@@ -45,7 +45,7 @@ Just put the plenigo Jacascript call somewhere in your html. To enable video pla
     
     
 <script type="application/javascript"
-         src="https://static.s-devops.com/static_resources/javascript/qeorhgjqerjwefBwe8/plenigo_sdk.min.js" 
+        src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js" 
         data-lang="de" 
         data-video="3q"></script>
 
