@@ -5,20 +5,17 @@ permalink: /checkout_string
 ---
 
 
-The [checkout functionality of the JavaScript-SDK](/sdks/javascript#checkout---start-a-plenigo-checkout) request an encrypted and signed string as `paymentData` value.
-This string can be received from the product management page of the plenigo merchant backend or be generated on the fly. The encrypted string itself can handle
+The [checkout functionality of the JavaScript-SDK](/sdks/javascript#checkout---start-a-plenigo-checkout) request an JWT as `paymentData` value.
+This string can be received from the product management page of the plenigo merchant backend or be generated on the fly. The JWT string itself can handle
 different configurations so it is suggested to generate it on the server side.
 
 Base information:
 
-* Decrypted data is formatted the following way {key}=>{value}&{key}=>{value}&{key}=>{value}...
-* The key to use for encryption is the MD5 hash of your company secret from the plenigo merchant backend.
-* Encryption method to use is AES/CTR/NoPadding 128 bit. The encrypted byte string is converted to a hexadecimal string
-* Initialization vector to use is 16 bit long and converted to a hexadecimal string
-* Add the initialization vector hexadecimal string to the end of the encrypted data hexadecimal string (Hex.encode(encryptedData) + Hex.encode(iv))
-* Create a HmacSHA256 checksum of the concatenated string and add it to the end of the string separated by a dot (.). The secret key to use is your company secret from the plenigo merchant backend.
+* JWT data is formatted the following way {key}=>{value}&{key}=>{value}&{key}=>{value}...
+* The key to use is your company secret from the plenigo merchant backend.
+* Hash algorithm used is HS256
 
-The encrypted payment data can include the following parameter. The mandatory parameters change if the plenigo is managed by the plenigo backend or
+The JWT data can include the following parameter. The mandatory parameters change if the plenigo is managed by the plenigo backend or
 if you create a product dynamically on the fly by every checkout. Non plenigo managed products can only be one time purchases. Subscriptions must be
 managed over the plenigo merchant backend.
 
