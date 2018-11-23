@@ -1,3 +1,8 @@
+---
+layout: default
+title: IN APP PURCHASE PHP
+permalink: /in_app_purchase_php
+---
 ### Handle In app purchases
 
 If it comes to native apps, it may be a good approach, to use native mobile API for payment for the best user experience. 
