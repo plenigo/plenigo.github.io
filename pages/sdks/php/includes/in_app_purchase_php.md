@@ -12,7 +12,7 @@ $accessRights = [];
 
 // add a new right
 $accessRights[] = [
-  'productId' => 'innAppPurchase', // id of accessright. Your Paywalls have to check against this right
+  'productId' => 'inAppPurchase', // id of accessright. Your Paywalls have to check against this right
   'receipt'   => 'ewoJInNpZ25hdHVyZSIgPSAiQXBkeEpkdE53UFUyckE1L2NuM2tJTzFPVGsyN', // receipt from any appstore
   'source'    => 'i-tunes', // Source of this purchase to determine, which API to use for validation
 ];
@@ -37,6 +37,29 @@ $accessRights[] = [
      *
      * @throws PlenigoException
      */
-    AccessService::grantUserAccessWithDetails('ZV5UDDLRWLF8', false, date('Y-m-d'), date('Y-m-d', strtotime("+4 days")), $accessRights);
+    AccessService::grantUserAccessWithDetails('ZV5UDDLRWLF8', false, date('Y-m-d'), null, $accessRights);
 ```
 
+#### Check, if access is valid
+```php
+    /**
+     * Checks if the user can access a product and return detail information about that product. Multiple products can be requested by passing an array
+     * to productId. If multiple products are passed to the productId field all products the user has bought are returned.If there is an error response
+     * from the API this will throw am {@link \plenigo\PlenigoException}, in the case of BAD_REQUEST types, the exception will contain
+     * an array of \plenigo\models\ErrorDetail.
+     *
+     * @see https://api.plenigo.com/#!/user/hasBoughtProductWithProducts
+     *
+     * @param mixed $productId The ID (or array of IDs) of the product to be queried against the user
+     * @param string $customerId The customer ID if its not logged in
+     * @param boolean $useExternalCustomerId Flag indicating if customer id sent is the external customer id
+     *
+     * @return array
+     *
+     * @throws \plenigo\PlenigoException whenever an error happens
+     */
+  $accessRights = hasBoughtProductWithProducts('inAppPurchase', 'ZV5UDDLRWLF8', false);
+
+```
+Now, if your customer comes with access right *inAppPurchase* (above example) you only know, he bought this product in an app store. But at this moment you can't know, if he should get access.
+You additional have to check the receipt you get in this example against the API of the store, the user bought this product in.
