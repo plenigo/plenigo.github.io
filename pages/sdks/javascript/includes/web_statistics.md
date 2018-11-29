@@ -50,7 +50,7 @@ data = {
     data: [],
     page: "previousStep",
     pageName: "basket",
-    product: ""
+    product: "" // will be set on the basket page
     };
     
 ```
