@@ -58,6 +58,26 @@ data = {
 
 The onAction Callback gets some data to have a better look inside of tho plenigo checkout process. Best way to know the path, your customer takes through the checkout is, tracking each page of the checkout process. This is done by only taking calls with `action === "load"`. In these cases you will miss some data and get the name of the page on pageName. Since one can easily change the product during the checkout, we will put in the productID on the `product`-parameter whenever the change of it is done. This should always be the basket page.
 
+```
+// valid pageNames are:
+basket
+payPalSummary
+payPalRedirect
+zeroPayment
+creditCardSummary
+invoiceAddress
+selectCreditCard
+invoiceAddressVerification
+enterCreditCard
+voucher
+bankAccountSummary
+enterBankAccount
+sofortUeberweisungSummary
+selectBankAccount
+sofortUeberweisungRedirect
+paymentFailed
+```
+
 ### Example with analytics
 
 To get a working example you have to replace some variables. Variables to are starting and ending with a dollar sign, e.g.
