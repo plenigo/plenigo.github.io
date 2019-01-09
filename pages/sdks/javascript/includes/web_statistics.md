@@ -54,6 +54,18 @@ data = {
     };
     
 ```
+### working with Events
+
+If your tracking javascript code should not be accassible from outside, you should use our tracking events:
+```
+document.addEventListener("plenigo.Statistic", function(e) {
+    // debugging Code:
+    console.info("Event is: ", e);
+	console.info("Custom data is: ", e.detail);
+});
+```
+The additional `data-on-action` attribute is not used.
+
 ### Description of data
 
 The onAction Callback gets some data to have a better look inside of tho plenigo checkout process. Best way to know the path, your customer takes through the checkout is, tracking each page of the checkout process. This is done by only taking calls with `action === "load"`. In these cases you will miss some data and get the name of the page on pageName. Since one can easily change the product during the checkout, we will put in the productID on the `product`-parameter whenever the change of it is done. This should always be the basket page.
