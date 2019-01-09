@@ -57,11 +57,11 @@ data = {
 ### working with Events
 
 If your tracking javascript code should not be accassible from outside, you should use our tracking events:
-```
+```javascript
 document.addEventListener("plenigo.Statistic", function(e) {
     // debugging Code:
     console.info("Event is: ", e);
-	console.info("Custom data is: ", e.detail);
+    console.info("Custom data is: ", e.detail);
 });
 ```
 The additional `data-on-action` attribute is not used.
