@@ -352,7 +352,12 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 $error = 'the error';
 $email = $_POST['email'];
 $password = $_POST['password'];
-$user = \plenigo\services\UserService::verifyLogin($email, $password);
+$data = [
+  "browser": "Browser-Name",
+  "os": "Betriebssystem",
+  "source": "Website"
+];
+$user = \plenigo\services\UserService::verifyLogin($email, $password, $data, $error);
 
 if ($user === false) {
     echo $error;
