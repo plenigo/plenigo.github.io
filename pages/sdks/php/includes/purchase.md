@@ -32,5 +32,5 @@ $useMerchantCustomerId = true; // optional, defaults to false
  * @return string OrderID
  * @throws PlenigoException
  */
-$orderID = \plenigo\services\CheckoutService::purchase(customerID, $order, $paymentMethod, $useMerchantCustomerId);
+$orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $paymentMethod, $useMerchantCustomerId);
 ```
