@@ -59,4 +59,4 @@ $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout -> build();
 ```
 
-Please compare with [/checkout_plenigo_managed_products_php](Checkout)
+Please compare with [Checkout](/checkout_plenigo_managed_products_php)
