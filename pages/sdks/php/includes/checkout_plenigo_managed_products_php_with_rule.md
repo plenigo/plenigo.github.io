@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Checkout with plenigo managed products including rules
