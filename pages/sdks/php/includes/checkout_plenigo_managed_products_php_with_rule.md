@@ -45,11 +45,11 @@ $loginToken = UserManagementService::createLoginToken($userId);
 // 5.Step: Set the product id.
 $product = new ProductBase($productId);
 
-// For example CRSF Token....
-$settings = array();
-
 // 6.Step: add a birthday to validate the rule
 $checkout->addBirthdayRule(new DateTime("10.09.1976"));
+
+// For example CRSF Token....
+$settings = array();
 
 // 7.Step: Create the login token.
 $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
