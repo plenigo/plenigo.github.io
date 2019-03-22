@@ -13,7 +13,7 @@ If you're working with external customers, use this example:
 
 ```php
 
-$customerID = 4711; // you're working with external customers, thos ist your unique ID of this customer
+$customerID = 4711; // you're working with external customers, this ist your unique ID of this customer
 $order = [
   ['productId' => 'P_amrSQ6154783308456', // not optional
     'title' => 'some blue shoes', // optional, will be displayed on invoice
