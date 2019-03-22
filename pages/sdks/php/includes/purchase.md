@@ -32,7 +32,7 @@ $ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $
  * @param bool $useMerchantCustomerId
  * @param string $ipAddress IP-Address of the customer
  * @return string OrderID
- * @throws PlenigoException
+ * @throws RegistrationException | PlenigoException
  */
 $orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $paymentMethod, $useMerchantCustomerId, $ipAddress);
 ```
