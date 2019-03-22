@@ -21,7 +21,7 @@ $order = [
     'amount' => 4 // optional, defaults to 1
   ],
 ];
-$paymentMethod = 'INVOICE'; // optional, defaults to 'PREFFERED'
+$paymentMethod = 'INVOICE'; // optional, defaults to 'PREFERRED'
 $useMerchantCustomerId = true; // optional, defaults to false
 $ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
 
