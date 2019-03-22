@@ -12,7 +12,6 @@ Some of you want to handle the checkout process in your very own look and feel. 
 If you're working with external customers, use this example:
 
 ```php
-
 $customerID = 4711; // you're working with external customers, this ist your unique ID of this customer
 $order = [
   ['productId' => 'P_amrSQ6154783308456', // not optional
@@ -21,6 +20,7 @@ $order = [
     'amount' => 4 // optional, defaults to 1
   ],
 ];
+$userCountry = 'DE'; // required. Sets country of user to calculate taxes. If user has an address in plenigo, this address is used
 $paymentMethod = 'INVOICE'; // optional, defaults to 'PREFERRED'
 $useMerchantCustomerId = true; // optional, defaults to false
 $ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
@@ -28,11 +28,12 @@ $ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $
 /**
  * @param string $customerId ID of plenigo-customer, or external customer, if $useMerchantCustomerId is set to true
  * @param array $order
+ * @param string $userCountry ISO-CODE of country 'DE' for example
  * @param string $paymentMethod
  * @param bool $useMerchantCustomerId
  * @param string $ipAddress IP-Address of the customer
  * @return string OrderID
  * @throws RegistrationException | PlenigoException
  */
-$orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $paymentMethod, $useMerchantCustomerId, $ipAddress);
+$orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $userCountry, $paymentMethod, $useMerchantCustomerId, $ipAddress);
 ```
