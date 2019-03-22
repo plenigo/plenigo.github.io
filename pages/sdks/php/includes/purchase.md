@@ -15,7 +15,7 @@ If you're working with external customers, use this example:
 
 $customerID = 4711; // you're working with external customers, thos ist your unique ID of this customer
 $order = [
-  ['product_id' => 'P_amrSQ6154783308456', // not optional
+  ['productId' => 'P_amrSQ6154783308456', // not optional
     'title' => 'some blue shoes', // optional, will be displayed on invoice
     'description' => 'Size 8, special design', // optional, will be displayed on ivoice
     'amount' => 4 // optional, defaults to 1
@@ -23,14 +23,16 @@ $order = [
 ];
 $paymentMethod = 'INVOICE'; // optional, defaults to 'PREFFERED'
 $useMerchantCustomerId = true; // optional, defaults to false
+$ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
 
 /**
  * @param string $customerId ID of plenigo-customer, or external customer, if $useMerchantCustomerId is set to true
  * @param array $order
  * @param string $paymentMethod
  * @param bool $useMerchantCustomerId
+ * @param string $ipAddress IP-Address of the customer
  * @return string OrderID
  * @throws PlenigoException
  */
-$orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $paymentMethod, $useMerchantCustomerId);
+$orderID = \plenigo\services\CheckoutService::purchase($customerID, $order, $paymentMethod, $useMerchantCustomerId, $ipAddress);
 ```
