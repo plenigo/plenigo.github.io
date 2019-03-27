@@ -249,6 +249,8 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </html>
 ```
 
+{% include checkout_plenigo_managed_products_php_with_rule.md %}
+
 ## Checkout without SDK
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
