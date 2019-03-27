@@ -267,7 +267,7 @@ $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your s
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
 
-// 2.Step: The product id from the plenigo backend.
+// 2.Step: The product id from the plenigo backend. 
 $productId = 'EgLUrT56328991046641';
 $customerId = '12345'; // The customer id
 
@@ -293,6 +293,45 @@ $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout -> build();
 ```
+## Working with skeleton products
+Sometimes you have a huge amount of similar products. In this case you can create one product in the plenigo Backend to manage them all. We call it "sekeleton".
+
+You can overwrite the product title, which will be shown during checkout and in invoices, price and the product id.
+
+### Example of skeletons
+Lets say we have a wordpress blog. We want to sell each post as single products. Users should have access only to post they've bought, all other posts should remain locked. Since we have a huge amount of posts we don't want create coresponding plenigo products in the plenigo backend.
+
+```
+require_once 'libs/php_sdk/plenigo/Plenigo.php';
+
+// 1.Step: Configure the PHP SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
+$companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
+\plenigo\PlenigoManager::configure($secret, $companyId, true);
+
+// 2.Step: The product id from the plenigo backend. (our skeleton)
+$productId = 'EgLUrT56328991046641';
+$customerId = '12345'; // The customer id
+
+// 3.Step: Register the user into the plenigo system.
+$userId = UserManagementService::registerUser("user@testmail.com", "language", "theCustomerId", 'firstName', 'name');
+
+// 4.Step: Create the login token for this user. 
+$loginToken = UserManagementService::createLoginToken($userId);
+
+// 5.Step: Set the product id.
+$price = '12.99'; // our customized price
+$product = new ProductBase($productId, 'Title which should be shown during checkout', $price);
+$product->setProductIdReplacement('123456'); // ID of our blog-post
+
+// 6.Step: Create the login token.
+$plenigoCheckoutCode = $checkout->build($settings, $loginToken);
+
+// 8.Step: Creating the checkout snippet for this product.
+$plenigoCheckoutCode = $checkout -> build();
+
+```
+
 ## Checkout without SDK
 
 If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
