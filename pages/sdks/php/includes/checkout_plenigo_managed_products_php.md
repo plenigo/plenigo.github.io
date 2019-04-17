@@ -201,7 +201,6 @@ $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 
 // 7.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkoutWithRemoteLogin('ENCRYPTED_STRING_HERE').
-$checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout -> build();
 ```
 
@@ -292,7 +291,6 @@ $settings = array();
 $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 
 // 8.Step: Creating the checkout snippet for this product. The snippet will have the following format: plenigo.checkoutWithRemoteLogin('ENCRYPTED_STRING_HERE').
-$checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout -> build();
 ```
 ## Working with skeleton products
