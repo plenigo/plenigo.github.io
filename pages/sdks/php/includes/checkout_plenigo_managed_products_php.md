@@ -329,7 +329,7 @@ $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 
 // 8.Step: Creating the checkout snippet for this product.
-$plenigoCheckoutCode = $checkout -> build();
+$plenigoCheckoutCode = $checkout -> build(['overrideMode' => true]);
 
 ```
 
