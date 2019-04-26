@@ -324,12 +324,11 @@ $price = '12.99'; // our customized price
 $product = new ProductBase($productId, 'Title which should be shown during checkout', $price);
 $product->setProductIdReplacement('123456'); // ID of our blog-post
 
-// 6.Step: Create the login token.
+// 6.Step: Create the Checkout object
 $checkout = new \plenigo\builders\CheckoutSnippetBuilder($product);
-$plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 
-// 8.Step: Creating the checkout snippet for this product.
-$plenigoCheckoutCode = $checkout -> build(['overrideMode' => true]);
+// 7.Step: Creating the checkout snippet for this product.
+$plenigoCheckoutCode = $checkout -> build(['overrideMode' => true], $loginToken);
 
 ```
 
