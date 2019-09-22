@@ -11,18 +11,8 @@ Changelog for plenigo API version 3.
 
 We released a new Alpha-Version of our API that has multiple changes:
 
- * **Authorize-Header-Token renamed to "X-plenigo-api-token"**  
-    We had to rename our Authorize-Header-Token to prevent confusion and
-    conflicts with our existing header tokens. The new name should
-    properly reflect the usage and allow developers to easily
-    differentiate between the available token types.
- * **Improved description of the "startTime"-Parameter and the
-    "endTime"-Parameter**  
-    One feedback we got from you was that the description of the
-    "startTime"-Parameter and the "endTime"-Parameter is misleading. We
-    now made clear that these fields target the updated date of an
-    entity. It does not differentiate between creation and update. A
-    creation of an entity is also an update.
+**New:**
+
 * **Added "changedDate"-Field to entities**  
     Every entity now delivers a "changedDate"-Field that contains the
     time of the last change. A change can also be the creation of the
@@ -56,6 +46,21 @@ We released a new Alpha-Version of our API that has multiple changes:
     blob to the user entity. A user has an associated data blog that
     contains a HashMap which is currently limited to 50 entries that are
     complete free to fill.
+
+**Changed:**
+
+ * **Authorize-Header-Token renamed to "X-plenigo-api-token"**  
+    We had to rename our Authorize-Header-Token to prevent confusion and
+    conflicts with our existing header tokens. The new name should
+    properly reflect the usage and allow developers to easily
+    differentiate between the available token types.
+ * **Improved description of the "startTime"-Parameter and the
+    "endTime"-Parameter**  
+    One feedback we got from you was that the description of the
+    "startTime"-Parameter and the "endTime"-Parameter is misleading. We
+    now made clear that these fields target the updated date of an
+    entity. It does not differentiate between creation and update. A
+    creation of an entity is also an update.
 * **Splitting up payment methods**  
     After some discussions with API test users and internal reviews we
     came to the conclusion that we have to split up the payment
