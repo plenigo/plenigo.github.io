@@ -3,9 +3,9 @@ layout: default
 title: plenigo API Changelog
 permalink: /changelog/apiV3_0
 ---
-# API v3 Changelog
+# API v3.0 Changelog
 
-Changelog for plenigo API version 3.
+Changelog for plenigo API version 3.0.
 
 ## 2019-09-21 - 3.0.0 Alpha 5
 
