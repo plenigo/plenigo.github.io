@@ -1,3 +1,9 @@
+---
+layout: default
+title: plenigo API Changelog
+permalink: /changelog/api
+---
+
 ***
 # API v3 Changelog
 
