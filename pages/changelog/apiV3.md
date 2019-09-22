@@ -9,7 +9,7 @@ Changelog for plenigo API version 3.
 
 ## 2019-09-21 - 3.0.0 Alpha 5
 
-We released a new Alpha-Version of our API that has multiple changes:
+We released a new Alpha-Version of our API that has multiple changes.
 
 **New:**
 
