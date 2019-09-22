@@ -8,7 +8,7 @@ permalink: /changelog/api
 All changes to version 3 API is documented here.
 
 ***
-_2019-09-22_
+_2019-09-22_\
 **Hello customers and fellows,**
 
 we released a new Working-Version of our new API that has multiple changes:
