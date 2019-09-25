@@ -7,6 +7,29 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2019-09-25 - 3.0.0 Alpha 6
+
+The main goal of this release is to complete existing functions and add new functionality.
+
+**New:**
+
+* **Enhanced customer creation**  
+    During the creation of a customer you can now pass all addresses you already
+    have from the customer. Also the additional data blob can be filled immediately.
+* **Additional customer values**  
+    The customer now has additional fields: invoiceEmail, birthday, status. The first
+    two can be passed during creation and modified via customer change request.
+* **Add additional customer data**  
+    It is now possible to add additional data to customer.
+* **Add mandate to to bank account**   
+    Bank account entities missed the mandate fields that identify the mandate for SEPA.
+
+**Changed:**
+ 
+* **Missing required annotations**  
+    Some mandatory fields missed the required annotation.
+
+
 ## 2019-09-21 - 3.0.0 Alpha 5
 
 We released a new Alpha-Version of our API that has multiple changes.
