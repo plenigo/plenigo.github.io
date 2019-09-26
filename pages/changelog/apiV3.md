@@ -21,6 +21,9 @@ This release is a bug fixing release.
     The invoice and invoice item incorrectly referenced to the invoice and delivery address of the customer.
     This may be incorrect because the address could have changed since the invoice creation which doesn't impact the
     order itself. Now the complete address is returned instead.
+* **Customer creation returns included addresses**  
+    The return value of customer creation now returns the complete addresses including address ids that were included
+    in the creation process
 
 
 ## 2019-09-25 - 3.0.0 Alpha 6
