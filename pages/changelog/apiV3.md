@@ -7,6 +7,22 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2019-09-26 - 3.0.0 Alpha 7
+
+This release is a bug fixing release.
+
+**Changed:**
+ 
+* **Incorrect order address reference**  
+    The order and order item incorrectly referenced to the invoice and delivery address of the customer.
+    This may be incorrect because the address could have changed since the original order which doesn't impact the
+    order itself. Now the complete address is returned instead.
+* **Incorrect invoice address reference**  
+    The invoice and invoice item incorrectly referenced to the invoice and delivery address of the customer.
+    This may be incorrect because the address could have changed since the invoice creation which doesn't impact the
+    order itself. Now the complete address is returned instead.
+
+
 ## 2019-09-25 - 3.0.0 Alpha 6
 
 The main goal of this release is to complete existing functions and add new functionality.
