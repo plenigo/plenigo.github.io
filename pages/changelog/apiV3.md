@@ -7,6 +7,20 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2019-10-17 - 3.0.0 Alpha 8
+
+This release is a bug fixing release.
+
+**Changed:**
+ 
+* **Successful deletion repsonse**  
+    All deletion methods are now returning a 202 status code in case of success.
+* **Moved discount percentage from order to order item**  
+    The discount percentage is offered per order item not for a complete order.
+* **Add search parameters to invoices search**  
+    The invoices search function now also takes an order id or a subscription item id as search parameter.
+    
+    
 ## 2019-09-26 - 3.0.0 Alpha 7
 
 This release is a bug fixing release.
