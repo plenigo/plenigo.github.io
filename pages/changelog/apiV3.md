@@ -7,6 +7,18 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+
+## 2019-10-23 - 3.0.0 Alpha 9
+
+This release is feature release.
+
+**Changed:**
+ 
+**New:**
+
+* **Add voucher methods**  
+    It is now possible to create and modify campaings and to validate vouchers.
+    
 ## 2019-10-17 - 3.0.0 Alpha 8
 
 This release is a bug fixing release.
