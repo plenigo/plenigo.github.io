@@ -8,6 +8,15 @@ permalink: /changelog/apiV3
 Changelog for plenigo API version 3.
 
 
+## 2019-11-02 - 3.0.0 Beta 1
+
+A subscription chain can now handle additional data.
+
+**New:**
+
+* **Additional chain data**  
+    Additional data can now be added to a subscription chain.
+
 ## 2019-10-23 - 3.0.0 Alpha 9
 
 This release is feature release.
