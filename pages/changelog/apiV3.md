@@ -8,6 +8,16 @@ permalink: /changelog/apiV3
 Changelog for plenigo API version 3.
 
 
+
+## 2019-11-07 - 3.0.0 Beta 2
+
+Invoice cancellation via API was added.
+
+**New:**
+
+* **Invoice cancellation**  
+    Invoices can now be cancelled via API.
+
 ## 2019-11-02 - 3.0.0 Beta 1
 
 A subscription chain can now handle additional data.
