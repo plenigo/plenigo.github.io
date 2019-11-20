@@ -9,6 +9,22 @@ Changelog for plenigo API version 3.
 
 
 
+## 2019-11-20 - 3.0.0 Beta 3
+
+Add missing fields to documentation and added transactions API.
+
+**New:**
+
+* **Transactions**  
+    It is now possible to request the payment service provider transactions via API. This way all communications with the payment service provider can be traced.
+* **Registration source field**  
+    When creating a customer a registration source can be passed to identify the source of the registration later.
+
+**Changed:**
+
+* **Invoice**
+    Added missing explanation for invoice type field.
+
 ## 2019-11-07 - 3.0.0 Beta 2
 
 Invoice cancellation via API was added.
@@ -30,8 +46,6 @@ A subscription chain can now handle additional data.
 ## 2019-10-23 - 3.0.0 Alpha 9
 
 This release is feature release.
-
-**Changed:**
  
 **New:**
 
