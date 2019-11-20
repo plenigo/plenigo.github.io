@@ -22,7 +22,7 @@ Add missing fields to documentation and added transactions API.
 
 **Changed:**
 
-* **Invoice**
+* **Invoice**  
     Added missing explanation for invoice type field.
 
 ## 2019-11-07 - 3.0.0 Beta 2
