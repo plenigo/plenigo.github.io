@@ -9,6 +9,15 @@ Changelog for plenigo API version 3.
 
 
 
+## 2019-11-25 - 3.0.0 Beta 4
+
+Invoice PDF download via API was added.
+
+**New:**
+
+* **Invoice PDF download**  
+    PDF of an invoice can now be downloaded via API.
+
 ## 2019-11-20 - 3.0.0 Beta 3
 
 Add missing fields to documentation and added transactions API.
