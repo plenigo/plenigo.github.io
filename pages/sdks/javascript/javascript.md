@@ -39,3 +39,7 @@ If you plan to use the PayWall functionality of plenigo you have to choose betwe
 {% include_relative includes/metered.md %}
 
 {% include_relative includes/video3q.md %}
+
+{% include_relative includes/js_v3.md %}
+
+
