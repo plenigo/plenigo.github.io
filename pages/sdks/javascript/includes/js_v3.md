@@ -7,17 +7,36 @@ changing to Javascript Implementations.
 
 The installation is is equal to plenigo Javscript-SDK and needs no changes.
 ```html
+   <div id="plenigoCheckout"></div>
    <!-- please replace {your_companyId} with your companyId -->
    <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" data-disable-redirect="true" data-lang="de"></script>
 ```
 
 ### Starting checkout
 To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo.com/doc/v3/#/checkout/post_checkout_preparePurchase)
+plenigo Checkout starts in an iframe and needs some Javscript to start:
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+        location.href = "/success-page/?order=" + e.detail.orderId ;
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).start();
+```
 
 
 ### Example with full html
 
-Just put the plenigo Jacascript call somewhere in your html. To enable video player, add attribute `data-video="3q"`.
+Just put the plenigo Jacascript call somewhere in your html.
 
 ```html
 
@@ -29,39 +48,35 @@ Just put the plenigo Jacascript call somewhere in your html. To enable video pla
 <body>
 
     <header class="main">
-        <h1>My 1st video</h1>
+        <h1>My 1st Checkout</h1>
     </header>
 
 
-        <div id="video"></div>
+        <div id="plenigoCheckout"></div>
     
     
-<script type="application/javascript"
-        src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js" 
-        data-lang="de" 
-        data-video="3q"></script>
-
-<script>
-
-        window.plenigoVideoPlayer = window.plenigoVideoPlayer || [];
-
-            plenigoVideoPlayer.push({
-                'data-id': '5280e612-c311-11e8-ae4b-0cc47a188158',
-                'container': 'video',
-                'productIDs': 'P_WWWWQQQQ27351,P_WWWWQQQQ77286351',
-                'sticky': true,
-                'playlistbar' : true,
-                'teaserLength': 2,
-                'no-access-callback': function (productIds, videoId) {
-
-                    location.href = "/video/checkout";
-                }
-            });
+<!-- please replace {your_companyId} with your companyId -->
+   <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" data-disable-redirect="true" data-lang="de"></script>
+   
+   <script>
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+        location.href = "/success-page/?order=" + e.detail.orderId ;
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).start();
     </script>
 
 </body>
 </html>
 
 ```
-
-If the customer has not bought at least one of the products given in the `productIDs` parameter, it will call call function given in `no-access-callback`. Here one can simply call a landing page, or open a dialog or simply start a plenigo checkout.
