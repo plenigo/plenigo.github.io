@@ -7,7 +7,14 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2019-12-05 - 3.0.0 Beta 5
 
+Access rights management functionality was added.
+
+**New:**
+
+* **Access rights management**  
+    Management of access rights is now possible via API.
 
 ## 2019-11-25 - 3.0.0 Beta 4
 
