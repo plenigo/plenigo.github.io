@@ -7,6 +7,22 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2020-01-22 - 3.0.0 Beta 6
+
+Add activities interfaces and corrected spellings
+
+**New:**
+
+* **Activities**  
+    Added new activities interfaces.
+
+**Changed:**
+
+* **Invoice**  
+    Fixed incorrect documented invoice fields.
+* **Addresses**
+    The spelling of the word "postcode" was not consistent everywhere. This is now fixed.
+
 ## 2019-12-05 - 3.0.0 Beta 5
 
 Access rights management functionality was added.
