@@ -54,7 +54,7 @@ Add activities interfaces and corrected spellings
 
 * **Invoice**  
     Fixed incorrect documented invoice fields.
-* **Addresses**
+* **Addresses**   
     The spelling of the word "postcode" was not consistent everywhere. This is now fixed.
 
 ## 2019-12-05 - 3.0.0 Beta 5
