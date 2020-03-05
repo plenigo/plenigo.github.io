@@ -7,6 +7,40 @@ permalink: /changelog/apiV3
 
 Changelog for plenigo API version 3.
 
+## 2020-03-04 - 3.0.0 Beta 7
+
+New subscription endpoints and bugfixing.
+
+**New:**
+
+* **Subscriptions**  
+    Add subscription access endpoint to change access state for a subscription (block access).
+    Add subscription discount functionality to add a discount percentage to a subscription.
+    Add subscription payment method change functionality to change the payment method associated with a subscription.
+    Add subscription quantity change functionality to change the quantity of a subscription.
+
+**Changed:**
+
+* **General**
+    Renamed productType to taxType.
+* **Access rights**  
+    Remove accessRightItemId from url of access right creation to be consistent with other API endpoints.
+    Renamed accessRightItemId to accessRightUniqueId to be consistent with offer api.
+    Add missing 400 response for access right creation.
+* **Addresses**
+    Fixed typo in address documentation regarding salutation.
+* **Invoices**
+    Fixed typo in address documentation regarding salutation.
+    Renamed subscriptionId to subscriptionItemId for invoice item to reflect the actual content.
+* **Orders**
+    Fixed typo in address documentation regarding salutation.
+    Add accessRightUniqueId to order item.
+    Renamed subscriptionId to subscriptionItemId for order item to reflect the actual content.
+* **Subscriptions**
+    Add acessRightUniqueId to subscription item.
+* **Vouchers**
+    Fixed incorrect channel update example.
+
 ## 2020-01-22 - 3.0.0 Beta 6
 
 Add activities interfaces and corrected spellings
