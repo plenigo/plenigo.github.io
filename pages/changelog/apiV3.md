@@ -28,12 +28,12 @@ New subscription endpoints and bugfixing.
     * Renamed accessRightItemId to accessRightUniqueId to be consistent with offer api.
     * Add missing 400 response for access right creation.
 * **Addresses**
-    * Fixed typo in address documentation regarding salutation.
+    * Fixed typo in documentation regarding salutation.
 * **Invoices**
-    * Fixed typo in address documentation regarding salutation.
+    * Fixed typo in documentation regarding salutation.
     * Renamed subscriptionId to subscriptionItemId for invoice item to reflect the actual content.
 * **Orders**
-    * Fixed typo in address documentation regarding salutation.
+    * Fixed typo in documentation regarding salutation.
     * Add accessRightUniqueId to order item.
     * Renamed subscriptionId to subscriptionItemId for order item to reflect the actual content.
 * **Subscriptions**
