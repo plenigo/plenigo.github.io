@@ -178,3 +178,18 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).login();
 ```
+
+
+### Using Web-Analytics
+Since the plenigo checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
+
+```javascript
+// All page loads trigger this event
+  document.addEventListener("plenigo.WebAnalyticsLoad", function (e) {
+    // debugging Code:
+    console.group("ANALYTICS");
+    console.info("Event is: ", e);
+    console.info("Custom data is: ", e.detail);
+    console.groupEnd();
+  });
+```
