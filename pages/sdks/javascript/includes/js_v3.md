@@ -73,7 +73,7 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
       });
 // start Checkout
 // put in purchaseId and elementId to start checkout
-new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).start();
+new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).start();
     </script>
 
 </body>
@@ -176,7 +176,7 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
       });
 // start Checkout
 // put in purchaseId and elementId to start checkout
-new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).login();
+new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();
 ```
 
 
