@@ -193,3 +193,58 @@ Since the plenigo checkout is running in an iFrame, you can't track the whole pr
     console.groupEnd();
   });
 ```
+
+## Using Selfservice with API v3.0
+plenigo offers a complete customer selfservice portal, where users can manage their SSO profiles, payment methods and orders. 
+
+You can embedd this selfservice portal into your website with a single Javascript method: `new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).start();`. Where `plenigoCustomerSession` represents the plenigoSessionString.
+
+You can create such a session with an api call (https://api.plenigo-stage.com/#operation/createCustomerSession) or with the plenigo SSO functionality.
+
+### Startung Snippets
+```html
+<div id="plenigoSnippets"></div>
+
+<!-- please replace {your_companyId} with your companyId -->
+<script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" 
+        data-disable-redirect="true" 
+        data-sso="true"
+        data-companyId="{your_companyId}"
+        data-lang="de"></script>
+<script>
+   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).start();
+</script>
+```
+
+### Starting Snippets with special pages
+
+If you want to display only one page of the selfservice, you can control it by using method 
+```javascript
+   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
+```
+The available constants are the following:
+```javascript
+    PERSONAL_DATA: 'PERSONAL_DATA',
+    PERSONAL_DATA_ADDRESS: 'PERSONAL_DATA_ADDRESS',
+    PERSONAL_DATA_SETTINGS: 'PERSONAL_DATA_SETTINGS',
+    ADDRESS_DATA: 'ADDRESS_DATA',
+    PERSONAL_DATA_PASSWORD: 'PERSONAL_DATA_PASSWORD',
+    ORDER: 'ORDER',
+    DASHBOARD: 'DASHBOARD',
+    SUBSCRIPTION: 'SUBSCRIPTION',
+    PAYMENT_METHODS: 'PAYMENT_METHODS',
+    BILLING_ADDRESS_DATA: 'BILLING_ADDRESS_DATA',
+    DELIVERY_ADDRESS_DATA: 'DELIVERY_ADDRESS_DATA',
+    CREDIT_CARD: 'CREDIT_CARD',
+    BANK_ACCOUNT: 'BANK_ACCOUNT',
+    PERSONAL_DATA_PROTECTION: 'PERSONAL_DATA_PROTECTION',
+    TERMS_AND_CONDITIONS: 'TERMS_AND_CONDITIONS',
+    NEWSLETTER: 'NEWSLETTER',
+    OPT_IN: 'OPT_IN'
+```
+
+
+
+
+
+
