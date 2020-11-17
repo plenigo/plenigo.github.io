@@ -201,7 +201,7 @@ You can embedd this selfservice portal into your website with a single Javascrip
 
 You can create such a session with an api call (https://api.plenigo-stage.com/#operation/createCustomerSession) or with the plenigo SSO functionality.
 
-### Startung Snippets
+### Starting Snippets
 ```html
 <div id="plenigoSnippets"></div>
 
@@ -212,7 +212,8 @@ You can create such a session with an api call (https://api.plenigo-stage.com/#o
         data-companyId="{your_companyId}"
         data-lang="de"></script>
 <script>
-   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).start();
+   // use plenigo session to create transfer token: https://api.plenigo-stage.com/#operation/createTransferToken
+   new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();
 </script>
 ```
 
@@ -241,6 +242,20 @@ The available constants are the following:
     TERMS_AND_CONDITIONS: 'TERMS_AND_CONDITIONS',
     NEWSLETTER: 'NEWSLETTER',
     OPT_IN: 'OPT_IN'
+```
+
+### manipulate or hide Snippets navigation
+
+You can hide navigation or toggle navigation type
+```javascript
+   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets", navigation: plenigo.CONSTS.SNIPPET_NAVIGATION.DEFAULT}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
+```
+The available constants are the following:
+```javascript
+    OFF: 'OFF', // hide navigation
+    HORIZONTAL: 'HORIZONTAL', // display navigation on top of the page
+    VERTICAL: 'VERTICAL', // display navigation on the left side of the page
+    DEFAULT: 'HORIZONTAL', // the default setting
 ```
 
 
