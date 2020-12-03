@@ -157,6 +157,8 @@ document.addEventListener("plenigo.LoginSuccess", function(e) {
       };
 new plenigo.SSO(config).register();
 ```
+#### Implementation
+If configured plenigo adds two parameters to verification URL: `verificationToken` and `token`. You simply grab these two parameters and call: https://api.plenigo-stage.com/#operation/validateRegistration to verify user.
 
 
 ### Starting Password forgot
