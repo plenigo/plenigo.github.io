@@ -219,9 +219,13 @@ Since the plenigo checkout is running in an iFrame, you can't track the whole pr
 ## Using Selfservice with API v3.0
 plenigo offers a complete customer selfservice portal, where users can manage their SSO profiles, payment methods and orders. 
 
-You can embedd this selfservice portal into your website with a single Javascript method: `new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).start();`. Where `plenigoCustomerSession` represents the plenigoSessionString.
+You can embedd this selfservice portal into your website with a single Javascript method: `new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();`. Where `plenigoTransferToken` represents a secure transfer token for a plenigoSessionString.
 
-You can create such a session with an api call (https://api.plenigo-stage.com/#operation/createCustomerSession) or with the plenigo SSO functionality.
+### Create a session
+If you are using plenigo SSO you should already have a plenigo session string. Otherwise you have to create a plenigo session with an api call [https://api.plenigo-stage.com/#operation/createCustomerSession](https://api.plenigo-stage.com/#operation/createCustomerSession). You can limit sessions in the plenigo backend, the default limit is 2 sessions per user. If you then create a 3rd session, you will get an error message and have to delete one of the existing sessions.
+
+### Create a transfer token
+For security reasons it is not recommended to work directly with this session string in any frontend application, javascript or html, since 3rd parties will have access to it. Thats why plenigo uses a mechanism called plenigo transfer token. It is used to generate a single one time token out of a session to be able to share it. To create a transfer token use the following call: [https://api.plenigo-stage.com/#operation/createTransferToken](https://api.plenigo-stage.com/#operation/createTransferToken).
 
 ### Starting Snippets
 ```html
@@ -243,7 +247,7 @@ You can create such a session with an api call (https://api.plenigo-stage.com/#o
 
 If you want to display only one page of the selfservice, you can control it by using method 
 ```javascript
-   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets"}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
+   new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
 ```
 The available constants are the following:
 ```javascript
@@ -270,7 +274,7 @@ The available constants are the following:
 
 You can hide navigation or toggle navigation type
 ```javascript
-   new plenigo.Snippets(plenigoCustomerSession, {elementId: "plenigoSnippets", navigation: plenigo.CONSTS.SNIPPET_NAVIGATION.DEFAULT}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
+   new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets", navigation: plenigo.CONSTS.SNIPPET_NAVIGATION.DEFAULT}).open(plenigo.CONSTS.SNIPPETS.PAYMENT_METHODS);
 ```
 The available constants are the following:
 ```javascript
