@@ -179,6 +179,15 @@ document.addEventListener("plenigo.LoginSuccess", function(e) {
       };
 new plenigo.SSO(config).forgotPassword();
 ```
+If you want to set the email address before starting password forgot process you have to change your code in the following way:
+```javascript
+   // start the process
+      var config = {
+         elementId: "plenigoLogin", // the DOM element you want to put the iframe in
+         email: "john.doe@example.com" // use config attribute email to set the email address in password forgot form
+      };
+new plenigo.SSO(config).forgotPassword();
+```
 
 ### Starting a Checkout with plenigo SSO
 To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo.com/doc/v3/#/checkout/post_checkout_preparePurchase)
