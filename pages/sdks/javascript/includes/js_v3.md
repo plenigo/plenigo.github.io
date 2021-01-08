@@ -30,9 +30,8 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
       });
 // start Checkout
 // put in purchaseId and elementId to start checkout
-new plenigo.Checkout("{{ purchase.purchaseId }}", { elementId: "plenigoCheckout" }).start();
+new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
-
 
 ### Example with full html
 
@@ -134,6 +133,18 @@ document.addEventListener("plenigo.LoginSuccess", function(e) {
       // start the process
       var config = {
          elementId: "plenigoLogin" // the DOM element you want to put the iframe in
+      };
+new plenigo.SSO(config).login();
+```
+
+### Additional configuration examples
+Javascript methods know some more configuration
+```javascript
+// start the process
+      var config = {
+         elementId: "plenigoLogin", // the DOM element you want to put the iframe in
+         email: "john.doe@example.com", // default: '' -> prefill email address in forms
+         source: "news-website", // default: 'plenigoSSO' -> source for registration, to filter users by their origin
       };
 new plenigo.SSO(config).login();
 ```
