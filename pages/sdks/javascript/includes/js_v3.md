@@ -221,6 +221,34 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();
 ```
 
+### Multi user products
+plenigo enables you to sell products for families or B2B customers. These products work with an invitation. Once a multi user product is bought, customer can invite people to use it together with himself. You can start invitation process with plenigo javascript SDK.
+
+#### Start invitation
+The invitation process is called `connection`. You connect a permission to use a product with a person. The process itself will start either login or registration process. Thats why it is an enhancement of these already known processes. Connect process starts like this:
+```javascript
+// starting with login
+new plenigo.SSO({
+    elementId: 'plenigoCheckout',
+    connect: 'USER',
+  }).login();
+```
+```javascript
+// starting with registration
+new plenigo.SSO({
+    elementId: 'plenigoCheckout',
+    connect: 'USER',
+  }).register();
+```
+You can prefill the token for your customers to skip this step in the process:
+```javascript
+// starting with registration, prefill process and skip token form
+new plenigo.SSO({
+    elementId: 'plenigoCheckout',
+    connect: 'USER',
+    connectToken: 'E97876wef8EFGRWR',
+  }).register();
+```
 
 ### Using Web-Analytics
 Since the plenigo checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
