@@ -77,7 +77,28 @@ new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).s
 
 </body>
 </html>
+```
+### Dealing with errors
 
+If there are Errors in the checkout, user gets displayed error message and steps, how to proceed. If there are errors, the customer can not fix, checkout will stop with an error message. If customer is not able to restart the checkout process by simply reloading the whole page, you should implement some error handling here. You should start by listening to error events:
+```html
+   <script>
+// Checkout breaks with a javascript-Event one have to listen to
+document.addEventListener("plenigo.Error", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.Error") {
+          return false;
+        }
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);
+        // here we display error message in console:
+        console.info(e.detail.errorMsg);
+      // reload the page to restart checkout
+      location.reload(true);
+         
+      });
+   </script>
 ```
 
 ## Using plenigo SSO
