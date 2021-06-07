@@ -34,7 +34,7 @@ new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).star
 ```
 
 ### Important!
-If you are using dynamic urls for the page to include the checkout, take care about the maximum length of its url. The url of the page containing a checkout should not be longer than 150 chars, including protocols, ports and all query parameters.<br>
+If you are using dynamic urls for the page to include the checkout, take care about the maximum length of its url. The url of the page containing a checkout should not be longer than 220 chars, including protocols, ports and all query parameters.<br>
 An example: `https://www.example.com/news/architecture/park-and-garden/why-everybody-needs-to-have-oaks-behind-the-house.0a2937db-e3f1-471f-8a5d-80212929ee30.html?utm_source=homepage&utm_medium=web&utm_campaign=summer_sale&utm_term=architecture&utm_content=gardening` is 253 chars long and this will be too long.
 
 
