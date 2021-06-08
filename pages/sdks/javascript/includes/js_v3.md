@@ -114,9 +114,9 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
 `config` can have the following attributes:
 | Attribute name     | is mandatory? | example                        | description                                                                                                                                                                                                |
 |--------------------|---------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| elementId          | mandatory     | "plenigoCheckout"              | Value of the id-attribute of an existing HTML-Element in current DOM. It should be accessible with document.getElementById                                                                                 |
-| returnUrl          |               | "https://example.com/checkout" | If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided. |
-| supportedCardTypes |               | ['V','M','J','A']              | If you are using PayOne as PSP you can configure card types. Use [PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523).                                                  |
+| elementId          | mandatory     | `"plenigoCheckout"`              | Value of the id-attribute of an existing HTML-Element in current DOM. It should be accessible with document.getElementById                                                                                 |
+| returnUrl          |               | `"https://example.com/checkout"` | If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided. |
+| supportedCardTypes |               | `['V','M','J','A']`              | If you are using PayOne as PSP you can configure card types. Use [PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523).                                                  |
 
 ## Using plenigo SSO
 
