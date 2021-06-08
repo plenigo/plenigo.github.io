@@ -112,6 +112,7 @@ var config = { elementId: "plenigoCheckout" };
 new plenigo.Checkout(purchase.purchaseId, config).start();
 ```
 `config` can have the following attributes:
+
 | Attribute name     | is mandatory? | example                        | description                                                                                                                                                                                                |
 |--------------------|---------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | elementId          | mandatory     | `"plenigoCheckout"`              | Value of the id-attribute of an existing HTML-Element in current DOM. It should be accessible with document.getElementById                                                                                 |
