@@ -112,14 +112,44 @@ var config = { elementId: "plenigoCheckout" };
 new plenigo.Checkout(purchase.purchaseId, config).start();
 ```
 `config` can have the following attributes:
-<br>
-| Attribute name     | is mandatory? | example                        | description                                                                                                                                                                                                |
-|--------------------|---------------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| elementId          | mandatory     | `"plenigoCheckout"`              | Value of the id-attribute of an existing HTML-Element in current DOM. It should be accessible with document.getElementById                                                                                 |
-| returnUrl          |               | `"https://example.com/checkout"` | If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided. |
-| supportedCardTypes |               | `['V','M','J','A']`              | If you are using PayOne as PSP you can configure card types. Use [PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523).                                                  |
-<br>
-
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">Attribute name</th>
+    <th class="tg-0pky">is mandatory?</th>
+    <th class="tg-0pky">example</th>
+    <th class="tg-0pky">description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">elementId</td>
+    <td class="tg-0pky">mandatory</td>
+    <td class="tg-0pky">"plenigoCheckout"</td>
+    <td class="tg-0pky">Value of the id-attribute of an existing HTML-Element in current DOM. It should be accessible with document.getElementById</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">returnUrl</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">"<a href="https://example.com/checkout&quot;"><span style="color:#905">https://example.com/checkout"</span></a></td>
+    <td class="tg-0pky">If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">supportedCardTypes</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">['V','M','J','A']</td>
+    <td class="tg-0pky">If you are using PayOne as PSP you can configure card types. Use <a href="https://docs.payone.com/pages/releaseview.action?pageId=1214523"><span style="color:#905">[PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523)</span></a>.</td>
+  </tr>
+</tbody>
+</table>
 ## Using plenigo SSO
 
 The code above shows, how to start a plenigo checkout with you own user provider. plenigo itselfs offers you an outstanding SSO functionality to enable you using users credentials on every website.
