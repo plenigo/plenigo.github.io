@@ -119,6 +119,7 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
 | returnUrl          |               | `"https://example.com/checkout"` | If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided. |
 | supportedCardTypes |               | `['V','M','J','A']`              | If you are using PayOne as PSP you can configure card types. Use [PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523).                                                  |
 
+
 ## Using plenigo SSO
 
 The code above shows, how to start a plenigo checkout with you own user provider. plenigo itselfs offers you an outstanding SSO functionality to enable you using users credentials on every website.
