@@ -140,7 +140,7 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">returnUrl</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">"<a href="https://example.com/checkout&quot;"><span style="color:#905">https://example.com/checkout"</span></a></td>
-    <td class="tg-0pky">If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided.</td>
+    <td class="tg-0pky">If it comes to a return from a external payment page like PayPal, PayOne, Stripe, AmazonPay or similar, plenigo checkout will use url of current page (location.href) or attribute returnUrl, if provided. Length of `returnUrl` is limited to 220 characters including protocols, ports and all query parameters.</td>
   </tr>
   <tr>
     <td class="tg-0pky">supportedCardTypes</td>
