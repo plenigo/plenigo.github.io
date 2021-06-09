@@ -319,6 +319,15 @@ new plenigo.SSO({
     connectToken: 'E97876wef8EFGRWR',
   }).register();
 ```
+If customer is already logged in, you can skip login during connection process. You need to [create a transferToken](https://api.plenigo-stage.com/#operation/createTransferToken) to pass it into the javascript method:
+```javascript
+// starting with registration, prefill process and skip token form
+new plenigo.SSO({
+    elementId: 'plenigoCheckout',
+    connect: 'USER',
+    transferToken: 'Jhge6jhgIRBMkjhe9'
+  }).register();
+```
 
 ### Using Web-Analytics
 Since the plenigo checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
