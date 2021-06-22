@@ -342,6 +342,294 @@ Since the plenigo checkout is running in an iFrame, you can't track the whole pr
     console.groupEnd();
   });
 ```
+The different pages are:
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"> <br>Eventname </th>
+    <th class="tg-0pky"> <br>Checkout </th>
+    <th class="tg-0pky"> <br>SSO </th>
+    <th class="tg-0pky"> <br>Description </th>
+    <th class="tg-0pky"> <br>category </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultAddressesForm </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Enter an address </td>
+    <td class="tg-0pky"> <br>data </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultAddressesSelect                  </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Select an existing address </td>
+    <td class="tg-0pky"> <br>data </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentAmazonForm                </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Start amazon payment </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentAmazonSuccess             </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Submit amazon payment </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentCreditcardPayoneForm      </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Start PayOne Payment with credit card </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentCreditcardStripeForm      </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Start Stripe Payment with credit card </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentCreditcardSubmit          </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Submit credit card form </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultCrossSellingForm                 </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Cross Selling formular </td>
+    <td class="tg-0pky"> <br>Subscription </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultCrossSellingSubmit               </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Cross Selling submit </td>
+    <td class="tg-0pky"> <br>Subscription </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentExistingSubmit            </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Existing payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentIdealSubmit               </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>iDeal payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentIdealForm                 </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>iDeal payment form </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentInvoiceSubmit             </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Invoice payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentInvoiceForm               </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Invoice payment form </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentAddressForm               </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Enter an address </td>
+    <td class="tg-0pky"> <br>data </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentPaypalForm                </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>PayPal payment form </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentPaypalSuccess             </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>PayPal payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentSepaSubmit                </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Sepa payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentSepaForm                  </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Sepa payment form </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultVoucherForm                      </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Voucher input form </td>
+    <td class="tg-0pky"> <br>voucher </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPaymentZeroSubmit                </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Zero payment submit </td>
+    <td class="tg-0pky"> <br>payment </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultConnectForm                      </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Corporate Account connecting form </td>
+    <td class="tg-0pky"> <br>Corporate account </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultConnectSkip                      </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Corporate Account skip connect process </td>
+    <td class="tg-0pky"> <br>Corporate account </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultConnectValidate                  </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Corporate Account validate connect key </td>
+    <td class="tg-0pky"> <br>Corporate account </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultLoginForm                        </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Login form </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultLoginLoginVerifyTwoFactor        </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Two factor form </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPasswordForgottenResendMail      </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Resend mail in password forgotten process </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPasswordForgottenPasswordReset   </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Reset password form </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPasswordForgottenVerificationCode </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Reset password verification code form </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPasswordForgottenPasswordSet       </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Reset password form </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultPasswordForgottenVerifyTwoFactor </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Two factor form in password forgotten process </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultRegisterForm                     </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Register process form </td>
+    <td class="tg-0pky"> <br>Sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultRegisterResendMail               </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Register process resend mail </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultStepAdditonalDataForm            </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Additional data form, called, if company account needs some more data from customer </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultLoginStepSessionForm             </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Verify sessions after login </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultLoginStepSessionRemoveAll        </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Remove alle sessions after login </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultStepSuccessRegister              </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Successfully registered </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>  defaultStepSuccessLogin                 </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Successfully logged in </td>
+    <td class="tg-0pky"> <br>sso </td>
+  </tr>
+</tbody>
+</table>
 
 ## Using Selfservice with API v3.0
 plenigo offers a complete customer selfservice portal, where users can manage their SSO profiles, payment methods and orders. 
