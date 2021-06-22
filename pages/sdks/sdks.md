@@ -8,17 +8,17 @@ permalink: /sdks
 
 plenigo offers SDKs for different programming languages. These SDKs only encapsulate the existing plenigo API. 
 
-1. [PHP-SDK](/sdks/php)
+1. [PHP-SDK](/sdks/php) (plenigo v2.0 only!)
 
-   Supports PHP versions up from PHP 5.5.
+   Supports PHP versions up from PHP 5.5. Customers with v3-Companies should not use this SDK!.
    
-2. [Java-SDK](/sdks/java)
+2. [Java-SDK](/sdks/java) (plenigo v2.0 only!)
 
-   Supports Java versions up from 7.0.
+   Supports Java versions up from 7.0. Customers with v3-Companies should not use this SDK!.
    
-3. [Javascript-SDK](/sdks/javascript)
+3. [Javascript-SDK](/sdks/javascript) (plenigo v2.0 only!)
 
-   The JavaScript-SDK can be used completely standalone but is always needed for every integration of plenigo.
+   The JavaScript-SDK can be used completely standalone but is always needed for every integration of plenigo. Customers with v3-Companies should not use this SDK!.
    
 4. [Javascript-SDK v3](/sdks/javascript-v3)
 
