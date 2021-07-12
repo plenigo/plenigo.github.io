@@ -13,7 +13,7 @@ The installation is equal to plenigo Javscript-SDK and needs no changes.
 ```
 
 ### Starting checkout
-To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo.com/doc/v3/#/checkout/post_checkout_preparePurchase)
+To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo-stage.com/#operation/preparePurchase)
 plenigo Checkout starts in an iframe and needs some Javscript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
