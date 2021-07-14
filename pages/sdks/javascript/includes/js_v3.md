@@ -290,7 +290,7 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();
 ```
-To start with registration instead of login, please use `new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();`.
+To start with registration instead of login, please use `new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).register();`.
 
 
 ### Multi user products
