@@ -290,6 +290,8 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();
 ```
+To start with registration instead of login, please use `new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();`.
+
 
 ### Multi user products
 plenigo enables you to sell products for families or B2B customers. These products work with an invitation. Once a multi user product is bought, customer can invite people to use it together with himself. You can start invitation process with plenigo javascript SDK.
