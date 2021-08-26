@@ -219,8 +219,31 @@ Javascript methods know some more configuration
 new plenigo.SSO(config).login();
 ```
 
+
+### Starting Registration with connect feature (loginIdentifier) 
+If you import subscriptions into plenigo system there may be some users without an e-mail address. To enable these users to login into plenigo SSO they have to connect their imported account with their e-mail address. plenigo connect feature will lead you customer through this process.
+
+You have to enable and configure this feature in checkout settings in the plenigo backend. To start the process you should create an additional registration process with the following settings:
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.LoginSuccess", function(e) {
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+        location.href = "/start-session/?session=" + e.detail.customerSession;
+      });
+      // start the process
+      var config = {
+         elementId: "plenigoLogin", // the DOM element you want to put the iframe in
+         loginIdentifier: true
+      };
+new plenigo.SSO(config).register();
+```
+
+
 ### Starting Registration without using plenigo token process
-You may wonder about the token plenigo process: If you register as a new user, you have to validate email address with a token plenigo sends to the new registered email. If you want to implement a different process, you can use your own implementation. Simply add a verification url to the process. You will find this url in the email templates in plenigo backend to be able to start your very own process right here.
+You may wonder about the token process: If you register as a new user, you have to validate email address with a token plenigo sends to the new registered email. If you want to implement a different process, you can use your own implementation. Simply add a verification url to the process. You will find this url in the email templates in plenigo backend to be able to start your very own process right here.
 plenigo SSO starts in an iframe and needs some Javscript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
