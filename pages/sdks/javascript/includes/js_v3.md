@@ -726,8 +726,33 @@ The available constants are the following:
     DEFAULT: 'HORIZONTAL', // the default setting
 ```
 
+### Disable User Data to prevent changes
+If plenigo is not your SSO, customers should change their user data as there are e-mail address, password or 2-factor settings directly in your SSO. In this case you can disable or hide managing user data in self service. You simply have to enhance the configuration a bit:
+```javascript
+{
+ elementId: "plenigoSnippets",
+ displaySettings: {
+    SSO: {
+        personalDetailsEdit: 'VIEW',
+        twoFactor: 'HIDE'
+    }
+ }
+}
+```
+You can chose from these values: `SHOW`, `HIDE` and `EDIT`. Here is the complete example:
+```javascript
+   let snippetConfig = {
+    elementId: "plenigoSnippets",
+    displaySettings: {
+       SSO: {
+           personalDetailsEdit: 'VIEW',
+           twoFactor: 'HIDE'
+       }
+    }
+};
 
-
+new plenigo.Snippets(plenigoTransferToken, snippetConfig).start();
+```
 
 
 
