@@ -733,10 +733,10 @@ If plenigo is not your SSO, customers should change their user data as there are
  elementId: "plenigoSnippets",
  displaySettings: {
     SSO: {
-        personalDetailsEdit: 'VIEW',
+        personalDetails: 'VIEW',
         twoFactor: 'HIDE'
     }
- }
+  }
 }
 ```
 You can chose from these values: `SHOW`, `HIDE` and `EDIT`. Here is the complete example:
@@ -745,7 +745,7 @@ You can chose from these values: `SHOW`, `HIDE` and `EDIT`. Here is the complete
     elementId: "plenigoSnippets",
     displaySettings: {
        SSO: {
-           personalDetailsEdit: 'VIEW',
+           personalDetails: 'VIEW',
            twoFactor: 'HIDE'
        }
     }
