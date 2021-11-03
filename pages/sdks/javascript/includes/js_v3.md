@@ -148,6 +148,12 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">['V','M','J','A']</td>
     <td class="tg-0pky">If you are using PayOne as PSP you can configure card types. Use <a href="https://docs.payone.com/pages/releaseview.action?pageId=1214523"><span style="color:#905">[PayOne documentation](https://docs.payone.com/pages/releaseview.action?pageId=1214523)</span></a>.</td>
   </tr>
+  <tr>
+    <td class="tg-0pky">filterSalutations</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">['DIVERSE']</td>
+    <td class="tg-0pky">Use `filterSalutations` if you want to filter salutation values. It's value has to be of type array. Avaiable values are `DIVERSE`, `NONE`, `MR`, `MRS`</td>
+  </tr>
 </tbody>
 </table>
 ## Using plenigo SSO
