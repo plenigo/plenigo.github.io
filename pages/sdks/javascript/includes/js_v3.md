@@ -156,6 +156,60 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
   </tr>
 </tbody>
 </table>
+### Passing additional data through the checkout
+You can pass some additional data through the checkout. This would be usable for example to have a redirect url after the checkout.
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);        
+        console.info("additional data is: ", e.detail.data);
+        
+        if (typeof e.detail.orderId !== "undefined") {
+              location.href = e.detail.data.redirectUrl;
+              return;
+        }
+        
+        // here we redirect to a new page
+        location.href = "/success-page/?order=" + e.detail.orderId ;
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout", redirectUrl: "https://www.example.com/link/to/article.html" }).start();
+```
+
+
+
+
+If there are Errors in the checkout, user gets displayed error message and steps, how to proceed. If there are errors, the customer can not fix, checkout will stop with an error message. If customer is not able to restart the checkout process by simply reloading the whole page, you should implement some error handling here. You should start by listening to error events:
+```html
+   <script>
+// Checkout breaks with a javascript-Event one have to listen to
+document.addEventListener("plenigo.Error", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.Error") {
+          return false;
+        }
+        console.info("Event is: " + e.type);
+        console.info(e);
+        console.info("Custom data is: ", e.detail);
+        // here we display error message in console:
+        console.info(e.detail.errorMsg);
+      // reload the page to restart checkout
+      location.reload(true);
+         
+      });
+   </script>
+```
+
+
+
+
 ## Using plenigo SSO
 
 The code above shows, how to start a plenigo checkout with you own user provider. plenigo itselfs offers you an outstanding SSO functionality to enable you using users credentials on every website.
