@@ -33,6 +33,31 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
 
+#### Dealing with already bought products
+If customer starts a checkout with a product he has already bought, checkout will display a message and a next button. Next button will trigger `plenigo.PurchaseSuccess`-Event too, but not with the original orderId. It will use `-1` instead:
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        let orderId = e.detail.orderId;
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+         if (orderId < 0) {
+            location.href = "/customer-came-again-page/";
+         } else {
+         // Solution from example before
+            location.href = "/success-page/?order=" + orderId;
+         }
+     
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
+```
+
 ### Important!
 If you are using dynamic urls for the page to include the checkout, take care about the maximum length of its url. The url of the page containing a checkout should not be longer than 220 chars, including protocols, ports and all query parameters.<br>
 An example: `https://www.example.com/news/architecture/park-and-garden/why-everybody-needs-to-have-oaks-behind-the-house.0a2937db-e3f1-471f-8a5d-80212929ee30.html?utm_source=homepage&utm_medium=web&utm_campaign=summer_sale&utm_term=architecture&utm_content=gardening` is 253 chars long and this will be too long.
