@@ -33,6 +33,7 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
 
+
 #### Dealing with already bought products
 If customer starts a checkout with a product he has already bought, checkout will display a message and a next button. Next button will trigger `plenigo.PurchaseSuccess`-Event too, but not with the original orderId. It will use `-1` instead:
 ```javascript
@@ -57,6 +58,35 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
+
+#### Empty Checkout
+If customer starts a checkout with a product he can't buy based on rules, checkout will show an error message. If user wants to proceed, checkout calls
+`plenigo.PurchaseSuccess`-Event too, but not with the original orderId. It will use `-2` instead:
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        let orderId = e.detail.orderId;
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+         if (orderId < 0) {
+            location.href = "/customer-came-again-page/";
+         } else {
+         // Solution from example before
+            location.href = "/success-page/?order=" + orderId;
+         }
+     
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
+```
+Additional event `plenigo.PurchaseFailed` is used.
+
+
 
 ### Important!
 If you are using dynamic urls for the page to include the checkout, take care about the maximum length of its url. The url of the page containing a checkout should not be longer than 220 chars, including protocols, ports and all query parameters.<br>
