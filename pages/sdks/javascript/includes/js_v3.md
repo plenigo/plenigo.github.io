@@ -209,6 +209,12 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">['DIVERSE']</td>
     <td class="tg-0pky">Use `filterSalutations` if you want to filter salutation values. It's value has to be of type array. Avaiable values are `DIVERSE`, `NONE`, `MR`, `MRS`</td>
   </tr>
+  <tr>
+    <td class="tg-0pky">address</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">{ postbox: true, phoneNumber: true }</td>
+    <td class="tg-0pky">Use `address` if you want to display additional input fields in address forms. It's value has to be of type object. Avaiable keys are `postbox`, `phoneNumber`. Value has to be of type `bool`.</td>
+  </tr>
 </tbody>
 </table>
 ### Passing additional data through the checkout
