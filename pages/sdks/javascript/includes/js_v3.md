@@ -361,7 +361,24 @@ document.addEventListener("plenigo.LoginSuccess", function(e) {
       };
 new plenigo.SSO(config).register();
 ```
-
+To display the connect feature in registration screen you can use property `showLoginIdentifier`:
+```javascript
+      // start the process
+      var config = {
+         elementId: "plenigoLogin", // the DOM element you want to put the iframe in
+         showLoginIdentifier: true // show link to connect feature in registration screen
+      };
+new plenigo.SSO(config).register();
+```
+You can use custom text for the link:
+```javascript
+      // start the process
+      var config = {
+         elementId: "plenigoLogin", // the DOM element you want to put the iframe in
+         showLoginIdentifier: "Click here to connect with an existing subscription" // show link to connect feature in registration screen
+      };
+new plenigo.SSO(config).register();
+```
 
 ### Starting Registration without using plenigo token process
 You may wonder about the token process: If you register as a new user, you have to validate email address with a token plenigo sends to the new registered email. If you want to implement a different process, you can use your own implementation. Simply add a verification url to the process. You will find this url in the email templates in plenigo backend to be able to start your very own process right here.
