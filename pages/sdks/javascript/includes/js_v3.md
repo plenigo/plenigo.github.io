@@ -336,6 +336,7 @@ Javascript methods know some more configuration
          elementId: "plenigoLogin", // the DOM element you want to put the iframe in
          email: "john.doe@example.com", // default: '' -> prefill email address in forms
          source: "news-website", // default: 'plenigoSSO' -> source for registration, to filter users by their origin
+         showTabs: true, // show registration and login as tabs on top of the page
       };
 new plenigo.SSO(config).login();
 ```
