@@ -219,7 +219,7 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">customCSS</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">https://example.com/assets/checkout.css</td>
-    <td class="tg-0pky">Use `customCSS` if you want to overwrite checkout styles. You have to use complete https url of your custom css file. This file will be loaded as last source. Please take care of CORE Headers.</td>
+    <td class="tg-0pky">Use `customCSS` if you want to overwrite checkout styles. You have to use complete https url of your custom css file. This file will be loaded as last source. Please take care of CORS Headers.</td>
   </tr>
 </tbody>
 </table>
