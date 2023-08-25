@@ -1,15 +1,26 @@
 ## Checkout with API v3.0
 
-plenigo starts its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com/doc/v3/) and needs some 
-changing to Javascript Implementations.
+plenigo started its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com/doc/v3/).
 
 ### Installation
 
-The installation is equal to plenigo Javscript-SDK and needs no changes.
+The installation is equal to plenigo Javscript-SDK and needs no changes. You can copy this code with matching company id from you plenigo backend in section settings / developer.
+Please note, that javascript embeds may slow down your page. Thats why we designed our sdk to be embeded at the end of your html code. Please also note, that your plenigo stage account has a different company id to your live account. Working against plenigo stage also means, to load the sdk from a different domain.
 ```html
    <div id="plenigoCheckout"></div>
    <!-- please replace {your_companyId} with your companyId -->
-   <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" data-disable-redirect="true" data-lang="de"></script>
+   <!-- for implementing in production environment -->
+   <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js"
+                                    data-disable-redirect="true"
+                                    data-companyId="{your_companyId}"
+                                    data-lang="en"></script>
+
+   <!-- for implementing in stage environment only -->
+   <script src="https://static.plenigo-stage.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js"
+                                    data-disable-redirect="true"
+                                    data-companyId="{your_companyId}"
+                                    data-lang="en"></script>
+                            
 ```
 
 ### Starting checkout
