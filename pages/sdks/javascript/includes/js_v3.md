@@ -1,6 +1,6 @@
 ## Checkout with API v3.0
 
-plenigo started its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com/doc/v3/).
+plenigo started its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com).
 
 ### Installation
 
