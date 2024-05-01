@@ -297,7 +297,16 @@ document.addEventListener("plenigo.Error", function(e) {
    </script>
 ```
 
+### Work with custom css
 
+In the plenigo backend, or with additional configration `customCSS` you simply can override plenigo styles to provide your own style by using the logic of [cascading style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS). Checkout at the moment shows most common information and hides some very specific information. As there are:
+
+#### Cancelation information
+```
+.price-list table tr.cancel-rules {
+   display: inherit;
+}
+```
 
 
 ## Using plenigo SSO
