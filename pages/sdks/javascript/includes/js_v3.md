@@ -889,6 +889,12 @@ The available constants are the following:
     OPT_IN: 'OPT_IN'
 ```
 
+#### Show a subscription detail page only
+If you want to provide the shortest possible way to a customers subscription, you can start self service just in a detail view:
+```javascript
+   new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets", subscriptionId: 123456}).start();
+```
+
 ### manipulate or hide Snippets navigation
 
 You can hide navigation or toggle navigation type
