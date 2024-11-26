@@ -28,89 +28,143 @@ To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenig
 plenigo Checkout starts in an iframe and needs some Javscript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseFailed", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseFailed") {
+          return false;
+        }
+        console.info("Checkout failed! Custom data is: ", e.detail);
+        // here we redirect to a new page         
+         location.href = "/customer-came-again-page/";
+      });
+
 document.addEventListener("plenigo.PurchaseSuccess", function(e) {
         // debugging Code:
         if (e.type !== "plenigo.PurchaseSuccess") {
           return false;
         }
-        console.info("Event is: " + e.type);
-        console.info(e);
+        let orderId = parseInt(e.detail.orderId);
         console.info("Custom data is: ", e.detail);
         // here we redirect to a new page
-        location.href = "/success-page/?order=" + e.detail.orderId ;
+         if (orderId > 0) {
+         // Solution from example before
+            location.href = "/success-page/?order=" + orderId;
+         } else {
+            location.href = "/customer-came-again-page/";
+         }
       });
 // start Checkout
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
-
-
 #### Dealing with already bought products
 If customer starts a checkout with a product he has already bought, checkout will display a message and a next button. Next button will trigger `plenigo.PurchaseSuccess`-Event too, but not with the original orderId. It will use `-1` instead:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseFailed", function(e) {
+     // debugging Code:
+     if (e.type !== "plenigo.PurchaseFailed") {
+       return false;
+     }
+     console.info("Checkout failed! Custom data is: ", e.detail);
+     // here we redirect to a new page         
+      location.href = "/customer-came-again-page/";
+   });
+
 document.addEventListener("plenigo.PurchaseSuccess", function(e) {
-        // debugging Code:
-        if (e.type !== "plenigo.PurchaseSuccess") {
-          return false;
-        }
-        let orderId = e.detail.orderId;
-        console.info("Custom data is: ", e.detail);
-        // here we redirect to a new page
-         if (orderId < 0) {
-            location.href = "/customer-came-again-page/";
-         } else {
-         // Solution from example before
-            location.href = "/success-page/?order=" + orderId;
-         }
-     
-      });
+     // debugging Code:
+     if (e.type !== "plenigo.PurchaseSuccess") {
+       return false;
+     }
+     let orderId = parseInt(e.detail.orderId);
+     console.info("Custom data is: ", e.detail);
+     // here we redirect to a new page
+      if (orderId > 0) {
+      // Solution from example before
+         location.href = "/success-page/?order=" + orderId;
+      } else {
+         location.href = "/customer-came-again-page/";
+      }
+   });
 // start Checkout
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
-
 #### Empty Checkout
 If customer starts a checkout with a product he can't buy based on rules, checkout will show an error message. If user wants to proceed, checkout calls
 `plenigo.PurchaseSuccess`-Event too, but not with the original orderId. It will use `-2` instead:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseFailed", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseFailed") {
+          return false;
+        }
+        console.info("Checkout failed! Custom data is: ", e.detail);
+        // here we redirect to a new page         
+         location.href = "/customer-came-again-page/";
+      });
+
 document.addEventListener("plenigo.PurchaseSuccess", function(e) {
         // debugging Code:
         if (e.type !== "plenigo.PurchaseSuccess") {
           return false;
         }
-        let orderId = e.detail.orderId;
+        let orderId = parseInt(e.detail.orderId);
         console.info("Custom data is: ", e.detail);
         // here we redirect to a new page
-         if (orderId < 0) {
-            location.href = "/customer-came-again-page/";
-         } else {
+         if (orderId > 0) {
          // Solution from example before
             location.href = "/success-page/?order=" + orderId;
+         } else {
+            location.href = "/customer-came-again-page/";
          }
-     
       });
 // start Checkout
 // put in purchaseId and elementId to start checkout
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
-Additional event `plenigo.PurchaseFailed` is used.
-
-
-
+#### Deal with errors
+The plenigo checkout tries to finish every checkout successfully. But during communication with payment providers there are rare cases checkout may fail. In these cases additional event `plenigo.PurchaseFailed` is used.
+We recommend to restart checkout in these cases.
+```javascript
+// Checkout finishes with a javascript-Event one have to listen to
+document.addEventListener("plenigo.PurchaseFailed", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseFailed") {
+          return false;
+        }
+        console.info("Checkout failed! Custom data is: ", e.detail);
+        // here we redirect to a new page         
+         location.href = "/customer-came-again-page/";
+      });
+document.addEventListener("plenigo.PurchaseSuccess", function(e) {
+        // debugging Code:
+        if (e.type !== "plenigo.PurchaseSuccess") {
+          return false;
+        }
+        let orderId = parseInt(e.detail.orderId);
+        console.info("Custom data is: ", e.detail);
+        // here we redirect to a new page
+         if (orderId > 0) {
+         // Solution from example before
+            location.href = "/success-page/?order=" + orderId;
+         } else {
+            location.href = "/customer-came-again-page/";
+         }
+      });
+// start Checkout
+// put in purchaseId and elementId to start checkout
+new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
+```
 ### Important!
 If you are using dynamic urls for the page to include the checkout, take care about the maximum length of its url. The url of the page containing a checkout should not be longer than 220 chars, including protocols, ports and all query parameters.<br>
 An example: `https://www.example.com/news/architecture/park-and-garden/why-everybody-needs-to-have-oaks-behind-the-house.0a2937db-e3f1-471f-8a5d-80212929ee30.html?utm_source=homepage&utm_medium=web&utm_campaign=summer_sale&utm_term=architecture&utm_content=gardening` is 253 chars long and this will be too long.
 
 
-
 ### Example with full html
-
 Just put the plenigo Jacascript call somewhere in your html.
-
 ```html
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -151,7 +205,6 @@ new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).s
 </html>
 ```
 ### Dealing with errors
-
 If there are Errors in the checkout, user gets displayed error message and steps, how to proceed. If there are errors, the customer can not fix, checkout will stop with an error message. If customer is not able to restart the checkout process by simply reloading the whole page, you should implement some error handling here. You should start by listening to error events:
 ```html
    <script>
