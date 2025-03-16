@@ -5,12 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" type="text/css" href="{{ '/assets/css/print.css' | relative_url }}" media="print">
-    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-196x196.png" sizes="196x196"/>
-    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96"/>
-    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32"/>
-    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16"/>
-    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128"/>
-    <link href="/assets/images/favicons/favicon.ico" rel="shortcut icon">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/assets/images/favicons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/assets/images/favicons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/assets/images/favicons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/assets/images/favicons/mstile-310x310.png" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -24,10 +38,11 @@
         <header>
           <div>
             <a href="https://plenigo.github.io">
-              <img src="/assets/images/plenigo Logo RZ.png" id="logo"/>
+              <img src="/assets/images/FRISBII_MEDIA_BLUE.png" id="logo"/>
             </a>
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
           </div>
+          <div class="tagline">As we transition from plenigo to Frisbii Media, you may still encounter the name "plenigo" throughout this documentation. This is simply due to the ongoing rebranding process - rest assured, plenigo and Frisbii Media are the same platform. All functionalities, APIs, and integrations remain unchanged. We appreciate your understanding and are excited to continue supporting you under our new name!</div>
         </header>
 
       <nav id="navigation">
@@ -77,7 +92,7 @@
             <div class="col-md-4">
                 <ul>
                     <li><h3>Find more.</h3></li>
-                    <li><a href="https://plenigo.com/en/company">About us</a></li>
+                    <li><a href="https://frisbii.com/about-frisbii">About us</a></li>
                     <li><a href="https://support.plenigo.com/help/de-de/2-release-notes">Release Notes</a></li>
                     <li><a href="https://github.com/plenigo/plenigo-doc" target="_blank">API Doc</a></li>
                 </ul>
@@ -85,16 +100,15 @@
             <div class="col-md-4">
                 <ul>
                     <li></li>
-                    <li><a href="https://plenigo.com/en/imprint">Imprint</a></li>
-                    <li><a href="https://plenigo.com/en/data-protection">Data protection</a></li>
-                    <li><a href="https://static.plenigo.com/v3/assets/plenigo/terms-and-conditions/de/terms.pdf">Terms</a></li>
+                    <li><a href="https://frisbii.com/imprint">Imprint</a></li>
+                    <li><a href="https://frisbii.com/data-protection-notice">Data protection</a></li>
+                    <li><a href="https://frisbii.com/terms-and-conditions">Terms and Conditions</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <ul>
                     <li></li>
-                    <li><a href="https://plenigo.com/en/contact">Contact</a></li>
-                    <li><a href="https://jobs.plenigo.com/en/">Career</a></li>
+                    <li><a href="https://frisbii.com/contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -103,9 +117,7 @@
             <div class="col-md-6">
                 <ul>
                     <li><h3>Talk to us.</h3></li>
-                    <li><h4>Sales-Hotline:</h4></li>
-                    <li><a href="#">+49 (0) 831 523 734 09 </a></li>
-                    <li><a href="mailto:info@plenigo.com">info@plenigo.com</a></li>
+                    <li><a href="mailto:support-media@frisbii.com">support-media@frisbii.com</a></li>
                     <li>&nbsp;</li>
                 </ul>
             </div>
@@ -116,10 +128,7 @@
     </div>
     <div class="enp-soc-icn">
         <div><a href="https://www.facebook.com/plenigo" target="_blank" class="fa fa-facebook-square"></a></div>
-        <div><a href="https://twitter.com/plenigo" target="_blank" class="fa fa-twitter"></a></div>
-        <div><a href="https://www.xing.com/companies/plenigogmbh" target="_blank" class="fa fa-xing"></a></div>
         <div><a href="https://www.linkedin.com/company/plenigo-gmbh" target="_blank" class="fa fa-linkedin-square"></a></div>
-        <div><a href="https://plus.google.com/101043920012522748461" target="_blank" class="fa fa-google-plus"></a></div>
     </div>
 </div>
         </footer>
