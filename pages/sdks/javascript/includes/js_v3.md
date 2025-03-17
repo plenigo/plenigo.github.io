@@ -1,11 +1,11 @@
 ## Checkout with API v3.0
 
-plenigo started its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com/doc/v3/).
+Frisbii Media started its APIv3.0 in late 2019. It comes with several new [API-calls](https://api.plenigo.com).
 
 ### Installation
 
-The installation is equal to plenigo Javscript-SDK and needs no changes. You can copy this code with matching company id from you plenigo backend in section settings / developer.
-Please note, that javascript embeds may slow down your page. Thats why we designed our sdk to be embeded at the end of your html code. Please also note, that your plenigo stage account has a different company id to your live account. Working against plenigo stage also means, to load the sdk from a different domain.
+The installation is equal to Frisbii Media Javascript-SDK and needs no changes. You can copy this code with matching company id from you Frisbii Media backend in section settings / developer.
+Please note, that javascript embeds may slow down your page. Thats why we designed our sdk to be embeded at the end of your html code. Please also note, that your Frisbii Media stage account has a different company id to your live account. Working against Frisbii Media stage also means, to load the sdk from a different domain.
 ```html
    <div id="plenigoCheckout"></div>
    <!-- please replace {your_companyId} with your companyId -->
@@ -24,8 +24,8 @@ Please note, that javascript embeds may slow down your page. Thats why we design
 ```
 
 ### Starting checkout
-To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo-stage.com/#operation/preparePurchase)
-plenigo Checkout starts in an iframe and needs some Javscript to start:
+To start a Frisbii Media Checkout you need to [obtain a purchaseId](https://api.plenigo-stage.com/#operation/preparePurchase)
+Frisbii Media Checkout starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.PurchaseFailed", function(e) {
@@ -125,7 +125,7 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 new plenigo.Checkout(purchase.purchaseId, { elementId: "plenigoCheckout" }).start();
 ```
 #### Deal with errors
-The plenigo checkout tries to finish every checkout successfully. But during communication with payment providers there are rare cases checkout may fail. In these cases additional event `plenigo.PurchaseFailed` is used.
+The Frisbii Media checkout tries to finish every checkout successfully. But during communication with payment providers there are rare cases checkout may fail. In these cases additional event `plenigo.PurchaseFailed` is used.
 We recommend to restart checkout in these cases.
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
@@ -163,7 +163,7 @@ An example: `https://www.example.com/news/architecture/park-and-garden/why-every
 
 
 ### Example with full html
-Just put the plenigo Jacascript call somewhere in your html.
+Just put the Frisbii Media Javascript call somewhere in your html.
 ```html
 <!DOCTYPE html>
 <html>
@@ -352,7 +352,7 @@ document.addEventListener("plenigo.Error", function(e) {
 
 ### Work with custom css
 
-In the plenigo backend, or with additional configration `customCSS` you simply can override plenigo styles to provide your own style by using the logic of [cascading style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS). Checkout at the moment shows most common information and hides some very specific information. As there are:
+In the Frisbii Media backend, or with additional configration `customCSS` you simply can override Frisbii Media styles to provide your own style by using the logic of [cascading style sheets](https://developer.mozilla.org/en-US/docs/Web/CSS). Checkout at the moment shows most common information and hides some very specific information. As there are:
 
 #### Cancelation information
 ```
@@ -362,15 +362,15 @@ In the plenigo backend, or with additional configration `customCSS` you simply c
 ```
 
 
-## Using plenigo SSO
+## Using Frisbii Media SSO
 
-The code above shows, how to start a plenigo checkout with you own user provider. plenigo itselfs offers you an outstanding SSO functionality to enable you using users credentials on every website.
-Starting it is quite easy. The plenigo Javascript comes with its SSO object: `plenigo.SSO`.
+The code above shows, how to start a Frisbii Media checkout with you own user provider. Frisbii Media itself offers you an outstanding SSO functionality to enable you using users credentials on every website.
+Starting it is quite easy. The Frisbii Media Javascript comes with its SSO object: `plenigo.SSO`.
 The login or registration process is completely in an iframe. To start it, you can chose between one of these functions: `login`, `register`, `forgotPassword`.
 
 ### Installation
 
-The installation is equal to plenigo Javscript-SDK.
+The installation is equal to Frisbii Media Javascript-SDK.
 ```html
    <div id="plenigoLogin"></div>
    <!-- please replace {your_companyId} with your companyId -->
@@ -382,8 +382,8 @@ The installation is equal to plenigo Javscript-SDK.
 ```
 
 ### Starting Registration
-To start a plenigo SSO Registration you need to the following code.
-plenigo SSO starts in an iframe and needs some Javscript to start:
+To start a Frisbii Media SSO Registration you need to the following code.
+Frisbii Media SSO starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.LoginSuccess", function(e) {
@@ -401,8 +401,8 @@ new plenigo.SSO(config).register();
 ```
 
 ### Starting Login
-To start a plenigo SSO Login you need to the following code.
-plenigo SSO starts in an iframe and needs some Javscript to start:
+To start a Frisbii Media SSO Login you need to the following code.
+Frisbii Media SSO starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.LoginSuccess", function(e) {
@@ -434,9 +434,9 @@ new plenigo.SSO(config).login();
 
 
 ### Starting Registration with connect feature (loginIdentifier) 
-If you import subscriptions into plenigo system there may be some users without an e-mail address. To enable these users to login into plenigo SSO they have to connect their imported account with their e-mail address. plenigo connect feature will lead you customer through this process.
+If you import subscriptions into Frisbii Media system there may be some users without an e-mail address. To enable these users to login into Frisbii Media SSO they have to connect their imported account with their e-mail address. Frisbii Media connect feature will lead you customer through this process.
 
-You have to enable and configure this feature in checkout settings in the plenigo backend. To start the process you should create an additional registration process with the following settings:
+You have to enable and configure this feature in checkout settings in the Frisbii Media backend. To start the process you should create an additional registration process with the following settings:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.LoginSuccess", function(e) {
@@ -472,9 +472,9 @@ You can use custom text for the link:
 new plenigo.SSO(config).register();
 ```
 
-### Starting Registration without using plenigo token process
-You may wonder about the token process: If you register as a new user, you have to validate email address with a token plenigo sends to the new registered email. If you want to implement a different process, you can use your own implementation. Simply add a verification url to the process. You will find this url in the email templates in plenigo backend to be able to start your very own process right here.
-plenigo SSO starts in an iframe and needs some Javscript to start:
+### Starting Registration without using Frisbii Media token process
+You may wonder about the token process: If you register as a new user, you have to validate email address with a token Frisbii Media sends to the new registered email. If you want to implement a different process, you can use your own implementation. Simply add a verification url to the process. You will find this url in the email templates in Frisbii Media backend to be able to start your very own process right here.
+Frisbii Media SSO starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.LoginSuccess", function(e) {
@@ -492,12 +492,12 @@ document.addEventListener("plenigo.LoginSuccess", function(e) {
 new plenigo.SSO(config).register();
 ```
 #### Implementation
-If configured plenigo adds two parameters to verification URL: `verificationToken` and `token`. You simply grab these two parameters and call: https://api.plenigo-stage.com/#operation/validateRegistration to verify user.
+If configured Frisbii Media adds two parameters to verification URL: `verificationToken` and `token`. You simply grab these two parameters and call: https://api.plenigo-stage.com/#operation/validateRegistration to verify user.
 
 
 ### Starting Password forgot
-To start a plenigo SSO Login you need to the following code.
-plenigo SSO starts in an iframe and needs some Javscript to start:
+To start a Frisbii Media SSO Login you need to the following code.
+Frisbii Media SSO starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.LoginSuccess", function(e) {
@@ -523,9 +523,9 @@ If you want to set the email address before starting password forgot process you
 new plenigo.SSO(config).forgotPassword();
 ```
 
-### Starting a Checkout with plenigo SSO
-To start a plenigo Checkout you need to [obtain a purchaseId](https://api.plenigo.com/doc/v3/#/checkout/post_checkout_preparePurchase)
-plenigo Checkout starts in an iframe and needs some Javscript to start:
+### Starting a Checkout with Frisbii Media SSO
+To start a Frisbii Media Checkout you need to [obtain a purchaseId](https://api.plenigo.com#/checkout/post_checkout_preparePurchase)
+Frisbii Media Checkout starts in an iframe and needs some Javascript to start:
 ```javascript
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.PurchaseSuccess", function(e) {
@@ -547,7 +547,7 @@ To start with registration instead of login, please use `new plenigo.Checkout("$
 
 
 ### Multi user products
-plenigo enables you to sell products for families or B2B customers. These products work with an invitation. Once a multi user product is bought, customer can invite people to use it together with himself. You can start invitation process with plenigo javascript SDK.
+Frisbii Media enables you to sell products for families or B2B customers. These products work with an invitation. Once a multi user product is bought, customer can invite people to use it together with himself. You can start invitation process with Frisbii Media javascript SDK.
 
 #### Start invitation
 The invitation process is called `connection`. You connect a permission to use a product with a person. The process itself will start either login or registration process. Thats why it is an enhancement of these already known processes. Connect process starts like this:
@@ -585,7 +585,7 @@ new plenigo.SSO({
 ```
 
 ### Using Web-Analytics
-Since the plenigo checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
+Since the Frisbii Media checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
 
 ```javascript
 // All page loads trigger this event
@@ -887,15 +887,15 @@ The different pages are:
 </table>
 
 ## Using Selfservice with API v3.0
-plenigo offers a complete customer selfservice portal, where users can manage their SSO profiles, payment methods and orders. 
+Frisbii Media offers a complete customer selfservice portal, where users can manage their SSO profiles, payment methods and orders. 
 
-You can embedd this selfservice portal into your website with a single Javascript method: `new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();`. Where `plenigoTransferToken` represents a secure transfer token for a plenigoSessionString.
+You can embed this selfservice portal into your website with a single Javascript method: `new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();`. Where `plenigoTransferToken` represents a secure transfer token for a Frisbii MediaSessionString.
 
 ### Create a session
-If you are using plenigo SSO you should already have a plenigo session string. Otherwise you have to create a plenigo session with an api call [https://api.plenigo-stage.com/#operation/createCustomerSession](https://api.plenigo-stage.com/#operation/createCustomerSession). You can limit sessions in the plenigo backend, the default limit is 2 sessions per user. If you then create a 3rd session, you will get an error message and have to delete one of the existing sessions.
+If you are using Frisbii Media SSO you should already have a Frisbii Media session string. Otherwise you have to create a Frisbii Media session with an api call [https://api.plenigo-stage.com/#operation/createCustomerSession](https://api.plenigo-stage.com/#operation/createCustomerSession). You can limit sessions in the Frisbii Media backend, the default limit is 2 sessions per user. If you then create a 3rd session, you will get an error message and have to delete one of the existing sessions.
 
 ### Create a transfer token
-For security reasons it is not recommended to work directly with this session string in any frontend application, javascript or html, since 3rd parties will have access to it. Thats why plenigo uses a mechanism called plenigo transfer token. It is used to generate a single one time token out of a session to be able to share it. To create a transfer token use the following call: [https://api.plenigo-stage.com/#operation/createTransferToken](https://api.plenigo-stage.com/#operation/createTransferToken).
+For security reasons it is not recommended to work directly with this session string in any frontend application, javascript or html, since 3rd parties will have access to it. Thats why Frisbii Media uses a mechanism called Frisbii Media transfer token. It is used to generate a single one time token out of a session to be able to share it. To create a transfer token use the following call: [https://api.plenigo-stage.com/#operation/createTransferToken](https://api.plenigo-stage.com/#operation/createTransferToken).
 
 ### Starting Snippets
 ```html
@@ -908,7 +908,7 @@ For security reasons it is not recommended to work directly with this session st
         data-companyId="{your_companyId}"
         data-lang="de"></script>
 <script>
-   // use plenigo session to create transfer token: https://api.plenigo-stage.com/#operation/createTransferToken
+   // use Frisbii Media session to create transfer token: https://api.plenigo-stage.com/#operation/createTransferToken
    new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();
 </script>
 ```
@@ -963,7 +963,7 @@ The available constants are the following:
 ```
 
 ### Disable User Data to prevent changes
-If plenigo is not your SSO, customers should change their user data as there are e-mail address, password or 2-factor settings directly in your SSO. In this case you can disable or hide managing user data in self service. You simply have to enhance the configuration a bit:
+If Frisbii Media is not your SSO, customers should change their user data as there are e-mail address, password or 2-factor settings directly in your SSO. In this case you can disable or hide managing user data in self service. You simply have to enhance the configuration a bit:
 ```javascript
 {
  elementId: "plenigoSnippets",

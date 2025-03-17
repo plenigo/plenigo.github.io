@@ -1,7 +1,7 @@
 The content will be placed in an HTML element that is hidden. After the user was verified to be allowed to see the content the content will be made visible
-by the plenigo JavaScript-SDK. The user is still able to access the content in the HTML sources.
+by the Frisbii Media JavaScript-SDK. The user is still able to access the content in the HTML sources.
    
-The plenigo JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS 
+The Frisbii Media JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS 
 style that hides the content is removed and the up selling window is hidden. To integrate the JavaScript SDK add the following line to your
 template/html. The `COMPANY_ID` variable must be replaced with the actual company id.
 
@@ -14,7 +14,7 @@ There are additional configuration options. This options are added as attributes
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
 |data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
-|data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
+|data-hide-metered-counter|No|true/false|If set to true the Frisbii Media metered counter widget is not shown to the user.|
 |data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
 |data-client-paywall|Yes|true|Must be set to enabled client side PayWall.|
 |data-test-mode|No|true/false|Flag indicating if test mode should be used.|

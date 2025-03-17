@@ -1,17 +1,17 @@
 ## Web Statistics
 
-As by design, the SDK opens up an iframe to offer the plenigo checkout process. This makes it difficult to track the user experience through this process. With the plenigo module _web analytics_ we offer you a look inside this process and give the missing data.
+As by design, the SDK opens up an iframe to offer the Frisbii Media checkout process. This makes it difficult to track the user experience through this process. With the Frisbii Media module _web analytics_ we offer you a look inside this process and give the missing data.
 
 ### Installation
 
-The installation is just adding the new attribute __data-on-action__ to your plenigo SDK call:
+The installation is just adding the new attribute __data-on-action__ to your Frisbii Media SDK call:
 ```html
 <!DOCTYPE html>
 <html>
     <head>
         <title>Track even interactive elements</title>
     
-        // Replace $COMPANY_ID$ with the company id from the plenigo merchant backend. 
+        // Replace $COMPANY_ID$ with the company id from the Frisbii Media merchant backend. 
         <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js"
             data-disable-metered="true"
             data-on-action="statisticFunction">
@@ -68,7 +68,7 @@ The additional `data-on-action` attribute is not used.
 
 ### Description of data
 
-The onAction Callback gets some data to have a better look inside of tho plenigo checkout process. Best way to know the path, your customer takes through the checkout is, tracking each page of the checkout process. This is done by only taking calls with `action === "load"`. In these cases you will miss some data and get the name of the page on pageName. Since one can easily change the product during the checkout, we will put in the productID on the `product`-parameter whenever the change of it is done. This should always be the basket page.
+The onAction Callback gets some data to have a better look inside of tho Frisbii Media checkout process. Best way to know the path, your customer takes through the checkout is, tracking each page of the checkout process. This is done by only taking calls with `action === "load"`. In these cases you will miss some data and get the name of the page on pageName. Since one can easily change the product during the checkout, we will put in the productID on the `product`-parameter whenever the change of it is done. This should always be the basket page.
 
 ```javascript
 // valid pageNames are:
@@ -101,7 +101,7 @@ To get a working example you have to replace some variables. Variables to are st
     <head>
         <title>Greatest product ever!</title>
     
-        // Replace $COMPANY_ID$ with the company id from the plenigo merchant backend. 
+        // Replace $COMPANY_ID$ with the company id from the Frisbii Media merchant backend. 
         <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/$COMPANY_ID$/plenigo_sdk.min.js"
             data-disable-metered="true"
             data-on-action="statistics.checkout">
