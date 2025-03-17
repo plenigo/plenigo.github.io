@@ -22,12 +22,12 @@ try {
     $isNewsPaid = UserService::hasUserBought($pid);
     if ($isNewsPaid === FALSE) {
         //In this example, the product costs 0.99 euros and is a non
-        //managed plenigo product. The description usually is filled
+        //managed Frisbii Media product. The description usually is filled
         //depending on the product, but for simplicity, we will
         //hardcode it
         $prodToChkOut = new ProductBase($pid, "Sample news title description",0.99 , "EUR");
         //Since he has not bought the product, we need to build the
-        //checkout snippet so that he can do the flow on the plenigo
+        //checkout snippet so that he can do the flow on the Frisbii Media
         //site and buy
         $snippet = new CheckoutSnippetBuilder($prodToChkOut)->build();
     }
@@ -43,7 +43,7 @@ try {
 <html>
 <head>
     <title><?php echo $pid; ?></title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/<?php echo $companyId; ?>/plenigo_sdk.min.js"></script>
 </head>
 <body>
@@ -66,7 +66,7 @@ To get this information you must do part of the Single Sign On until you finish 
 ```php
 <?php
 $code = filter_input(INPUT_GET, 'code', FILTER_SANITIZE_SPECIAL_CHARS);
-//this url must be registered in plenigo
+//this url must be registered in Frisbii Media
 $redirectUrl = "https://example.com/given_path";
 if(!is_null($code) && FALSE !== $code){
     //TokenData contains both the refresh and access token, so you can

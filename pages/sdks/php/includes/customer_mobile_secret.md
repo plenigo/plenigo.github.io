@@ -10,7 +10,7 @@ There are a couple of steps that you have to do in order to do this:
 
 #### Configure an application id(only companies can do this)
 
-As a company, you have to add this using the plenigo management interface, through the account menu, inside the extended settings tab.
+As a company, you have to add this using the Frisbii Media management interface, through the account menu, inside the extended settings tab.
 
 #### Create a mobile secret(only companies can do this)
 
@@ -33,14 +33,14 @@ Once you have the mobile secret information, you can give this to the third part
 As a third party, once we have all the information provided above, we can query the customer id, a code sample of how to do this is provided below:
 
 ***
-You must configure the plenigo manager once before doing any sdk method call, but we configure it in this example in order to clarify where to put the application id provided by the company.
+You must configure the Frisbii Media manager once before doing any sdk method call, but we configure it in this example in order to clarify where to put the application id provided by the company.
 
 Also companies can use their own secret instead of the application id to call this method.
 ***
 
 ```php
 <?php
-//We must configure the plenigo manager so that it contains the company id and the application id that the //company provided, please note that application id is the one provided above in the first step
+//We must configure the Frisbii Media manager so that it contains the company id and the application id that the //company provided, please note that application id is the one provided above in the first step
 PlenigoManager::configure("applicationIdOrSecret","companyId");
 
 //With the mobile secret information, we can request the customer id

@@ -1,11 +1,11 @@
-If you want to realize the Login into plenigo within your own application, you can verify the user's login with this method.
+If you want to realize the Login into Frisbii Media within your own application, you can verify the user's login with this method.
 It works very straight forward. If the user provides the correct login data, the method retuns the complete user data, otherwise it returns false.
 To prevent misuse, the **user's account will be deactivated after 3 failed login attempts**.
 
 ```php
 <?php
 
-// get this information from the settings in your plenigo backend
+// get this information from the settings in your Frisbii Media backend
 $companyId = "YOUR COMPANY ID"; 
 $secret = "YOUR COMPANY SECRET";
 
@@ -32,7 +32,7 @@ The method can give you an error message from the service too. It uses a the pas
 ```php
 <?php
 
-// get this information from the settings in your plenigo backend
+// get this information from the settings in your Frisbii Media backend
 $companyId = "YOUR COMPANY ID"; 
 $secret = "YOUR COMPANY SECRET";
 $error = "";
@@ -55,7 +55,7 @@ if ($user === false) {
 
 ### Send additional data
 
-You can use this method to enable users of your external apps a login in plenigo. To analyze such logins one can pass 
+You can use this method to enable users of your external apps a login in Frisbii Media. To analyze such logins one can pass 
 additional data to the method:
 
 ```php
@@ -77,7 +77,7 @@ function getUserIP()
     return $ip;
 }
 
-// get this information from the settings in your plenigo backend
+// get this information from the settings in your Frisbii Media backend
 $companyId = "YOUR COMPANY ID"; 
 $secret = "YOUR COMPANY SECRET";
 

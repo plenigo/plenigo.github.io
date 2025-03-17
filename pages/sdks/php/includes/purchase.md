@@ -20,13 +20,13 @@ $order = [
     'amount' => 4 // optional, defaults to 1
   ],
 ];
-$customerCountry = 'DE'; // required. Sets country of user to calculate taxes. If user has an address in plenigo, this address is used
+$customerCountry = 'DE'; // required. Sets country of user to calculate taxes. If user has an address in Frisbii Media, this address is used
 $paymentMethod = 'INVOICE'; // optional, defaults to 'PREFERRED'
 $useMerchantCustomerId = true; // optional, defaults to false
 $ipAddress = '1.1.1.1'; // optional, defaults to $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']
 
 /**
- * @param string $customerId ID of plenigo-customer, or external customer, if $useMerchantCustomerId is set to true
+ * @param string $customerId ID of Frisbii Media-customer, or external customer, if $useMerchantCustomerId is set to true
  * @param array $order
  * @param string $customerCountry ISO-CODE of country 'DE' for example
  * @param string $paymentMethod

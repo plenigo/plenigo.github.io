@@ -1,4 +1,4 @@
-If you want a user to register at plenigo you can simply use the [Javscript SDK](/sdks/javascript#registration---open-the-plenigo-registration-window), or you can use this PHP-wrapper-method for this function
+If you want a user to register at Frisbii Media you can simply use the [Javascript SDK](/sdks/javascript#registration---open-the-plenigo-registration-window), or you can use this PHP-wrapper-method for this function
 
 These are the ways you can provide a registration for your customers.
 
@@ -27,7 +27,7 @@ echo $config;
 echo '<a href="#" onclick="'.$snippet.'return false;">Register</a>';
 ```
 
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the register flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the register flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 ### Merge existing user
 If you already imported your users to our system, you can merge the registered user with his subscriber ID by passing the following parameter:

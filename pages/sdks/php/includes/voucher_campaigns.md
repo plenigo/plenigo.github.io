@@ -110,15 +110,15 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step : Redeem the voucher.
-$voucherCode = "X1XZ-12DF-74ZI"; // The voucher code from the plenigo backend.
-$customerId = "EgLUrT56321245687421"; // The customer id from the plenigo backend.
+$voucherCode = "X1XZ-12DF-74ZI"; // The voucher code from the Frisbii Media Backend.
+$customerId = "EgLUrT56321245687421"; // The customer id from the Frisbii Media Backend.
 $useExternalUserId = false; // The external user id.
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $useExternalUserId);
 ```
 
 ### Use case 
 
-Use case for creating and redeeming a voucher. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
+Use case for creating and redeeming a voucher. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic 
 The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php). 
@@ -136,9 +136,9 @@ use plenigo\services\CheckoutService;
 \plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: Redeem the voucher.
-$productId = "EgLUrT56321245687421"; // The product id from the plenigo backend.
-$voucherCode = "R7R2-ZLJX-LDKD"; // The voucher code from the plenigo backend.
-$customerId = "YDZKV7DPBH0Z"; // The customer id from the plenigo backend.
+$productId = "EgLUrT56321245687421"; // The product id from the Frisbii Media Backend.
+$voucherCode = "R7R2-ZLJX-LDKD"; // The voucher code from the Frisbii Media Backend.
+$customerId = "YDZKV7DPBH0Z"; // The customer id from the Frisbii Media Backend.
 $externalUserId = false; // The external user id.
 $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $externalUserId);
 
@@ -146,7 +146,7 @@ $result = CheckoutService::redeemVoucher($voucherCode, $customerId, $externalUse
 $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $prodToChkOut = new ProductId($productId);
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
@@ -164,7 +164,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   
@@ -226,7 +226,7 @@ $result = CheckoutService::buyFreeProduct($productId, $customerId, $useExternalU
 
 ### Use case 
 
-Use case for implementing 'Buying' a free product. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
+Use case for implementing 'Buying' a free product. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj), the product id(e.g. aitnVIz1503443609941), the voucherCode (R7R2-ZLJX-LDKD) and the customer (YDZKV7DPBH0Z). This example assumes you are running in test mode.
 
 #### Server logic
 
@@ -272,7 +272,7 @@ $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
     $prodToChkOut = new ProductId($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
 }
@@ -288,7 +288,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   

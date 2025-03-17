@@ -4,9 +4,9 @@ title: web page snippets
 permalink: /web_page_snippets_php
 ---
 
-### Integrate your site with predefined views of your plenigo customers
+### Integrate your site with predefined views of your Frisbii Media customers
 
-Handling login and users in plenigo is easy but sometimes can be bothersome for users to edit their profile in a site that's not yours. With snippets we can help you achieve that "white label" experience, so they can interact with plenigo without leaving your site.
+Handling login and users in Frisbii Media is easy but sometimes can be bothersome for users to edit their profile in a site that's not yours. With snippets we can help you achieve that "white label" experience, so they can interact with Frisbii Media without leaving your site.
 
 This is the list of snippets available so far:
 
@@ -52,7 +52,7 @@ $config = new SnippetConfig($elementId, $snippetId, $redirectUrl); //optional al
 | $elementId     | optional     | string         | The id of the HTML element the snippet should be rendered into. If null is given, the build string will contain an HTML DIV element to render the snippet.                                   |
 | $snippetId     | required     | string         | Altough this is a string parameter it needs to ve one of the components on the SnippetType enum. You can call the class statically (i.e: `SnippetType::PERSONAL_DATA`)                       |
 | $redirectUrl   | required     | url (string)   | It is strongly recommended that you check if a user is logged in before showing a snippet.  If you don't do this check the user will be redirected to this URL if the user is not logged in. |
-| $loginToken    | optional     | string         | This is required only if you are using external user management and not plenigo internal user management.                                                                                    |
+| $loginToken    | optional     | string         | This is required only if you are using external user management and not Frisbii Media internal user management.                                                                                    |
 
 
 The builder object now get to be instantiated and upon a call to the `build()` method, it will return a string that should be placed in the output of the page. For example:
@@ -98,4 +98,4 @@ $snippetScript = $builder->build();
 (...)
 ```
 
-And that is all for showing up the plenigo snippets on your site. Be creative and test different combinations. You can instantiate as many builders as you want. The sky is the limit
+And that is all for showing up the Frisbii Media snippets on your site. Be creative and test different combinations. You can instantiate as many builders as you want. The sky is the limit

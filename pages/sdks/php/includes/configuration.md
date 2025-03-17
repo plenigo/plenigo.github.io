@@ -8,18 +8,18 @@ permalink: /configuration_php
 
 In order to use the PHP DSK you need to configure it.
 
-> Please keep in mind that you need to include the plenigo JavaScript-SDK in every HTML page you would like to use plenigo functionality. The necessary information can be found in the [JavaScript documentation](/sdks/javascript).
+> Please keep in mind that you need to include the Frisbii Media JavaScript-SDK in every HTML page you would like to use Frisbii Media functionality. The necessary information can be found in the [JavaScript documentation](/sdks/javascript).
 
 For PHP integration you can use the `\plenigo\PlenigoManager::configure()`method in order to configure the SDK.
 
 |name       | description                                                            |
 |:----------|:-----------------------------------------------------------------------|
-|$secret    | It is a String that represents the secret key for your specific company (from the plenigo backend)|
-|$companyId | It is a String that represents the company ID used (from the plenigo backend)                    |
+|$secret    | It is a String that represents the secret key for your specific company (from the Frisbii Media Backend)|
+|$companyId | It is a String that represents the company ID used (from the Frisbii Media Backend)                    |
 
 This class will contain the configuration and will be used by all the calls that need these variables, such as creating a checkout snippet.
 
-After you have called this method, you are now ready to communicate with plenigo.
+After you have called this method, you are now ready to communicate with Frisbii Media.
 
 
 ```php
@@ -62,6 +62,6 @@ $secret = 'SECRET';  // The secret key of your specific company.
 $companyId = 'COMPANY_ID'; // The company id of your specific company.
 $isTestMode = true; // Flag indicating if it is in test mode.
 
-//configure plenigo:
+//configure Frisbii Media:
 \plenigo\PlenigoManager::configure($secret, $companyId, $isTestMode);
 ```

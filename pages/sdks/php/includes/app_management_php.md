@@ -22,7 +22,7 @@ For PHP integration you can use `plenigo\services\AppManagement#requestAppToken`
 
 1: Configure an application ID
 
-You have to add this using the plenigo management interface, through the account menu, inside the extended settings tab(Settings->Apps).
+You have to add this using the Frisbii Media management interface, through the account menu, inside the extended settings tab(Settings->Apps).
 
 ![Configure an application ID ](/assets/images/ci/app_id.png)
 
@@ -38,13 +38,13 @@ You have to add this using the plenigo management interface, through the account
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company from the plenigo backend.
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company from the Frisbii Media backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Request an access token.
-$customerId = '56202510'; // The customer id from the plenigo backend.
-$productId = 'RgKUHT78563989856641'; // The product id from the plenigo backend.
+$customerId = '56202510'; // The customer id from the Frisbii Media backend.
+$productId = 'RgKUHT78563989856641'; // The product id from the Frisbii Media backend.
 $description = 'test'; // The description of the product.
 // This method returns a plenigo\services\AppAccessToken object.
 $appAccessToken = AppManagementService::requestAppToken($customerId, $productId , $description);
@@ -62,8 +62,8 @@ Returned AppAccessToken object:
 ```php
 <?php
 // 3. Step: Request a customer application access with the AppTokenData object.
-$customerId = '56202510'; // The customer id from the plenigo backend. 
-$productId = 'RgKUHT78563989856641'; // The product id from the plenigo backend.
+$customerId = '56202510'; // The customer id from the Frisbii Media backend. 
+$productId = 'RgKUHT78563989856641'; // The product id from the Frisbii Media backend.
 // This method returns a plenigo\services\AppAccessData object.
 $appAccessData = AppManagementService::requestAppId($customerId, $productId);
 ```
@@ -101,12 +101,12 @@ For PHP integration you can use the `plenigo\services\AppManagementService::hasU
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj';  // The company ID of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The secret key of your specific company from the plenigo backend.
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj';  // The company ID of your specific company from the Frisbii Media backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The secret key of your specific company from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
-$customerId = '56202510'; // The customer ID from the plenigo backend.
-$productId = 'RgKUHT78563989856641'; // The product ID from the plenigo backend.
+$customerId = '56202510'; // The customer ID from the Frisbii Media backend.
+$productId = 'RgKUHT78563989856641'; // The product ID from the Frisbii Media backend.
 $customerAppId = 'ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G'; // The customer app ID.
 
 // With the customer application ID you can query product information.
@@ -159,12 +159,12 @@ For PHP integration you can use the `plenigo\services\AppManagement::deleteCusto
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company from the plenigo backend.
+$secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company from the Frisbii Media backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Delete the customer app.
-$customerId = '56202510'; // The customer ID from the plenigo backend.
+$customerId = '56202510'; // The customer ID from the Frisbii Media backend.
 $customerAppId = 'ftYHMpmIiRzM40ZDIQx5CIPPtN3H33mzPd7BSr3G'; // The customer app ID.
 // This method does not return an exception, this will delete the customer app id for the specific customer.
 AppManagementService::deleteCustomerApp($customerId, $customerAppId);
