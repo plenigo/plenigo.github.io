@@ -19,7 +19,7 @@ permalink: /complete_documentation
 
 [3.3  Checkout]()
 
-[3.3.1 Checkout with plenigo manged Products](/checkout_plenigo_managed_products)
+[3.3.1 Checkout with Frisbii Media managed Products](/checkout_plenigo_managed_products)
 
 [3.3.2 Checkout with external Products](/checkout_external_products)
 

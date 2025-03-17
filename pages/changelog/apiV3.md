@@ -1,11 +1,11 @@
 ---
 layout: default
-title: plenigo API Changelog
+title: Frisbii Media API Changelog
 permalink: /changelog/apiV3
 ---
 # API v3 Changelog
 
-Changelog for plenigo API version 3.
+Changelog for Frisbii Media API version 3.
 
 ## 2020-03-04 - 3.0.0 Beta 7
 
@@ -208,7 +208,7 @@ We released a new Alpha-Version of our API that has multiple changes.
     the subscription chain.
 * **Additional customer data**  
     Many customers use as their SSO solution so a often requested
-    feature was to save additional data to a user not related to plenigo
+    feature was to save additional data to a user not related to Frisbii Media
     itself. We (finally) heard your screams and added a kind of data
     blob to the user entity. A user has an associated data blog that
     contains a HashMap which is currently limited to 50 entries that are

@@ -1,6 +1,6 @@
 ### Check if an user has bought a product
 
-To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this.
+To query if an user has bought a product, you must be logged in with Frisbii Media, once you have done this you will have a cookie that contains encrypted data of the user, once you have this.
 The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below.
 
 #### Implementation with SDKs  
@@ -11,7 +11,7 @@ For Java you can use the `com.plenigo.sdk.services.UserService#hasUserBought` me
 
 ```java
 javax.servlet.http.HttpServletRequest request = null;
-// Replace "MY_PRODUCT_ID" with the product id from the plenigo backend
+// Replace "MY_PRODUCT_ID" with the product id from the Frisbii Media backend
 //We fill the request object with the appropriate get object and we get the Cookie header this way
 String cookieHeader = request.getHeader("Cookie");
 String productId = "MY_PRODUCT_ID";
@@ -22,7 +22,7 @@ boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
 For PHP you can use the `\plenigo\services\UserService::hasBoughtProductWithProducts` method for this purpose.
 
 ```php
-// Replace "MY_PRODUCT_ID" with the product id from the plenigo backend
+// Replace "MY_PRODUCT_ID" with the product id from the Frisbii Media backend
 <?php
 $hasUserBought = \plenigo\services\UserService::hasUserBought($MY_PRODUCT_ID);
 ```
@@ -37,7 +37,7 @@ Another possiblity to check if the user has bought the product - can be a direct
 
 ### Obtain a list of bought products and subscriptions
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
-The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK
+The user, company and secret data will be obtained from the current logged in user, and the configured Frisbii Media SDK
 
 #### Implementation with SDKs  
 
@@ -69,7 +69,7 @@ The error codes include 400 (if company/secret has a problem) and 401 (if paramt
 
 ### Get product information
 
-In order to get product information you need the product ID, you can get it in the product management area of the plenigo website, let's say for example that your product id is QFURxFv0098893021041, below there are examples of how to get the information of this product.
+In order to get product information you need the product ID, you can get it in the product management area of the Frisbii Media website, let's say for example that your product id is QFURxFv0098893021041, below there are examples of how to get the information of this product.
 
 #### Implementation with SDKs  
 
@@ -132,7 +132,7 @@ Another possibility to get product list - can be a direct call to our REST API:
 
 ### Get category information
 
-In order to get category information you need the category ID, you can get it in the category management area of the plenigo website, let's say for example that your category id is QFURxFv0098893021041, below there are examples of how to get the information of this category.
+In order to get category information you need the category ID, you can get it in the category management area of the Frisbii Media website, let's say for example that your category id is QFURxFv0098893021041, below there are examples of how to get the information of this category.
 
 #### Code Examples with SDKs  
 
@@ -192,7 +192,7 @@ Another possibility to get a category list - can be a direct call to our REST AP
 
 ### Is the Paywall enabled
 
-This method allows to check if the entire paywall has been disabled from the Plenigo Administration Page. It allows to Quickly bring down all payments for a given Company and is useful for testing and development purposes.
+This method allows to check if the entire paywall has been disabled from the Frisbii Media Administration Page. It allows to Quickly bring down all payments for a given Company and is useful for testing and development purposes.
 
 
 **Java** 

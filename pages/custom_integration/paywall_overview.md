@@ -6,7 +6,7 @@ permalink: /paywall_overview
 
 # Paywall 
 
-There are 2 different possibilities to implement the registration and logic functionality of plenigo.
+There are 2 different possibilities to implement the registration and logic functionality of Frisbii Media.
 
 1. [Implement the product functionality with the Java SDK](/p)
 
