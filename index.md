@@ -4,7 +4,7 @@ layout: default
 
 <div class="title">  
     <h2 class="schrift"> Frisbii Media developer documentation </h2>
-    <p><div class="subtitle">Use the documentation on this site to learn how to implement the different Frisbii Media functionalities.</div></p>
+    <div class="subtitle"><p>Use the documentation on this site to learn how to implement the different Frisbii Media functionalities.</p></div>
 </div>
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
