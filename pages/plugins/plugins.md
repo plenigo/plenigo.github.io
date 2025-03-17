@@ -1,12 +1,12 @@
 ---
 layout: default
-title: plenigo CMS plugins
+title: Frisbii Media CMS plugins
 permalink: /plugins
 ---
 
-# plenigo plugins
+# Frisbii Media plugins
 
-plenigo offers ready to use plugins for different CMS systems. Currently plenigo supports the following CMS systems out of the box:
+Frisbii Media offers ready to use plugins for different CMS systems. Currently Frisbii Media supports the following CMS systems out of the box:
 
 1. [Wordpress](/plugins/wordpress)
 

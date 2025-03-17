@@ -1,17 +1,17 @@
 ---
 layout: default
-title: plenigo SixCMS plugin
+title: Frisbii Media SixCMS plugin
 permalink: /plugins/sixcms
 ---
 
-# plenigo SixCMS plugin
+# Frisbii Media SixCMS plugin
 
-plenigo offers a plugin for the SixCMS to integrate and enable plenigo out-of-the-box. The plugin uses the plenigo [PHP-SDK](/sdks/php).
-This way all the functionality that is available in the plenigo PHP-SDK can also be added manually.
+Frisbii Media offers a plugin for the SixCMS to integrate and enable Frisbii Media out-of-the-box. The plugin uses the Frisbii Media [PHP-SDK](/sdks/php).
+This way all the functionality that is available in the Frisbii Media PHP-SDK can also be added manually.
 
 ## Installation 
 
-The plenigo SixCMS plugin is a standardised SixCMS system and can be installed as such.
+The Frisbii Media SixCMS plugin is a standardised SixCMS system and can be installed as such.
 
 ## How does the plugin works?
 
@@ -62,7 +62,7 @@ Parameter:
 
 |Name|Mandatory|Description|
 |:---|:--------|:----------|
-|id|No|ID of the plenigo product. If it is empty it will be used the ID of the template context.|
+|id|No|ID of the Frisbii Media product. If it is empty it will be used the ID of the template context.|
 |if_template|Yes|Template which represents the article.|
 |else_template|Yes|Template which will be loaded if the content is not payed.|
 
@@ -90,7 +90,7 @@ Parameter:
 
 ### Usage
 
-If the user is not logged in, then he can simple login with the help of JavaScript interface from the plenigo system.
+If the user is not logged in, then he can simple login with the help of JavaScript interface from the Frisbii Media system.
 
 ```html
 <button onclick="%CMS_PLUGIN_PLENIGO::login(redirect="http://example.com/sixcms/detail.php/template/login")">Login</button>
@@ -100,7 +100,7 @@ Parameter:
 
 |Name|Mandatory|Description|
 |:---|:--------|:----------|
-|Redirect|No|URL which should be called after successfully logged in into the plenigo system.|
+|Redirect|No|URL which should be called after successfully logged in into the Frisbii Media system.|
 
 In the called template you can get the logged in user and add a session to your system or add an account into the SixCMS.
 
