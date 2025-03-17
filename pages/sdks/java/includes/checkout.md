@@ -4,15 +4,15 @@
 It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. 
 ***
 
-Plenigo's checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
+Frisbii Media's checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
 ### Types of checkout
 
 Depending on which type of product you want to checkout, there is a different amount of data that must be filled in, below there are examples:
 
-#### Plenigo Managed Product
+#### Frisbii Media Managed Product
 
-If the product is managed by the plenigo and was configured in the plenigo website, only the product id is required for checkout.
+If the product is managed by the Frisbii Media and was configured in the Frisbii Media website, only the product id is required for checkout.
 
 By using the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the com.plenigo.sdk.models.Product class with the required information:
 
@@ -34,7 +34,7 @@ CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.build();
 ```
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the checkout flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the checkout flow when used in a webpage (html, jsp, gsp, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 #### Failed Payments
 
@@ -63,7 +63,7 @@ String snippet = snippetBuilder.build();
 
 #### Override mode
 
-This is used when you want to replace the regular price of a plenigo managed product for another one of your liking:
+This is used when you want to replace the regular price of a Frisbii Media managed product for another one of your liking:
 
 ```java
  // id of the product and the custom price, this will override the regular price of the product for that
@@ -110,7 +110,7 @@ Product product = new Product("news2014");
 CheckoutSnippetBuilder snippetBuilder = new CheckoutSnippetBuilder(product);
 //We create a CSRF random token with the TokenService
 String csrfToken = TokenService.createCsrfToken();
-//This url must be registered within plenigo prior to being used
+//This url must be registered within Frisbii Media prior to being used
 String redirectUrl = "http://example.com";
 //The snippet will have the following format: plenigo.checkout('ENCRYPTED_STRING_HERE');
 String snippet = snippetBuilder.withCSRFToken(csrfToken).withSSO(redirectUrl).build();

@@ -14,7 +14,7 @@ You have to choose between three different paywall types:
 
 ## Server side Paywall
 
-**Note: The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).** 
+**Note: The first thing you have to do is enabling the paywall in the Frisbii Media backend (Paywall->Settings).** 
 
 
 After you have done this you can continue with the following step.
@@ -27,7 +27,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUs
 
 ```java
 String cookieHeader = request.getHeader("Cookie");
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 String productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -65,7 +65,7 @@ public class Paywall {
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // The product id  from the plenigo backend.
+        // The product id  from the Frisbii Media Backend.
         String productId = "aitnVIz1503443609941";
         // This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -73,7 +73,7 @@ public class Paywall {
         if (!isHasUserBought) {
             Product product = new Product(productId);
             // Since he has not bought the product, we need to build the
-            // checkout snippet so that he can do the flow on the plenigo
+            // checkout snippet so that he can do the flow on the Frisbii Media
             // site and buy.
             CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
             String checkoutCode = builder.build();
@@ -97,7 +97,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-disable-metered="true"> </script>
 ```
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -144,7 +144,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 A soft paywall(metered paywall)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 
-**Note: The first thing you have to do is enabling the paywall in the plenigo backend (Paywall-> Metered Settings).** 
+**Note: The first thing you have to do is enabling the paywall in the Frisbii Media Backend (Paywall-> Metered Settings).** 
 
 After you have done this you can continue with the following step.
 
@@ -156,11 +156,11 @@ After you have done this you can continue with the following step.
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-With SDKS
+With SDKs
 
 (A) + (B): [Java SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
-Without plenigo SDKS
+Without Frisbii Media SDKs
 
 (A) + (B): [Implementation without SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
@@ -170,7 +170,7 @@ The idea behind metered view functionality is demonstrated with the following ps
 
 ```java
 String cookieHeader = request.getHeader("Cookie");
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media Backend.
 String productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 boolean hasfreeViews = UserService.hasUserBought(productId, cookieHeader);
@@ -205,7 +205,7 @@ public class Paywall {
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
             String cookieHeader = request.getHeader("Cookie");
             boolean isHasUserBought;
-            // The product id  from the plenigo backend.
+            // The product id  from the Frisbii Media Backend.
             String productId = "aitnVIz1503443609941";
             // This method returns true if the user has already bought the product.
             isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -243,7 +243,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-disable-metered="true"> </script>
 ```
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 

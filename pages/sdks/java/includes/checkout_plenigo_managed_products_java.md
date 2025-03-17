@@ -1,51 +1,51 @@
 ---
 layout: default
-title: Checkout with plenigo managed products
+title: Checkout with Frisbii Media managed products
 permalink: /checkout_plenigo_managed_products_java
 ---
-# Checkout with plenigo managed products 
-If the product is managed by plenigo and was configured in the plenigo website, only the product id is required for checkout.
+# Checkout with Frisbii Media managed products 
+If the product is managed by Frisbii Media and was configured in the Frisbii Media website, only the product id is required for checkout.
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
-## Workflow Checkout with plenigo managed products 
+## Workflow Checkout with Frisbii Media managed products 
 
-![General Workflow Checkout with plenigo managed products](/assets/images/ci/Checkout .png)
+![General Workflow Checkout with Frisbii Media managed products](/assets/images/ci/Checkout .png)
 
-(A) Create plenigo iFrame: If you want to create a registration and login page click the following link -> [Create plenigo iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+(A) Create Frisbii Media iFrame: If you want to create a registration and login page click the following link -> [Create Frisbii Media iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
-(B) Check with plenigo API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
+(B) Check with Frisbii Media API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-(C) optional: Create product page with the help of plenigo product management: If you want to create a product page with the help of plenigo click the following link -> [Create product Page ](https://api.plenigo.com/#!/product/getProduct)
+(C) optional: Create product page with the help of Frisbii Media product management: If you want to create a product page with the help of Frisbii Media click the following link -> [Create product Page ](https://api.plenigo.com/#!/product/getProduct)
  
-(D) Create plenigo iFrame checkout: If you want create a plenigo iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
-                                    [Start plenigo checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
+(D) Create Frisbii Media iFrame checkout: If you want create a Frisbii Media iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
+                                    [Start Frisbii Media checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
 
-## Checkout including plenigo login
-If the product is managed by the plenigo and was configured in the plenigo website, only the product id is required for checkout. 
+## Checkout including Frisbii Media login
+If the product is managed by the Frisbii Media and was configured in the Frisbii Media website, only the product id is required for checkout. 
 
-In the plenigo backend you can create different types of products:
+In the Frisbii Media Backend you can create different types of products:
 * Subscription
 * Subscription with delivery
 * Time Pass
 * Single Product
 
 
-It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
+It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Frisbii Media’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
 For Java integration you can use  the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product id from the plenigo backend |
+| productId     | yes     | string         | The product id from the Frisbii Media Backend |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: Set the product id from the plenigo backend.
+// 2.Step: Set the product id from the Frisbii Media Backend.
 String productId = "EgLUrT56328991046641"; 
 Product product = new Product(productId);
 
@@ -55,7 +55,7 @@ String snippet = snippetBuilder.build();
 ```
 ### Use case 
 
-Use case for implementing checkout with plenigo managed products including plenigo login. 
+Use case for implementing checkout with Frisbii Media managed products including Frisbii Media login. 
 
 This is a complete example page where you only need to replace the company ID(e.g.23NuCmdPoiRRkQiCqP9Q ), the secret(e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
 
@@ -69,14 +69,14 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // 2.Step: The product id  from the plenigo backend.
+        // 2.Step: The product id  from the Frisbii Media Backend.
         String productId = "aitnVIz1503443609941";
         // 3.Step: This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -84,7 +84,7 @@ public class Paywall {
         if (!isHasUserBought) {
             Product product = new Product(productId);
             // Since he has not bought the product, we need to build the
-            // checkout snippet so that he can do the flow on the plenigo
+            // checkout snippet so that he can do the flow on the Frisbii Media
             // site and buy.
             CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
             String checkoutCode = builder.build();
@@ -111,7 +111,7 @@ You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCm
 ```
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -122,7 +122,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ```html
 <!DOCTYPE html>
 <html>
-   <!--import the Plenigo Javascript SDK
+   <!--import the Frisbii Media Javascript SDK
       Let's use concrete values:
       company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
@@ -159,7 +159,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 ## Checkout without SDKs
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media Backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 ## Failed Payments 
 
@@ -180,7 +180,7 @@ String snippet = snippetBuilder.build();
 ```
 ### Use case 
 
-Use case for implementing failed payments. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
+Use case for implementing failed payments. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
 
 #### Server logic
 The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/configuration_java). 
@@ -190,7 +190,7 @@ public class FailedPayments {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 
@@ -247,7 +247,7 @@ String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: The product id of the product from the plenigo backend.
+// 2.Step: The product id of the product from the Frisbii Media Backend.
 Product product = new Product("EgLUrT56328991046641");
 
 // 3.Step: Set the renewal flag.
@@ -259,7 +259,7 @@ String snippet = snippetBuilder.build();
 ```
 ### Use case 
 
-Use case for implementing subscription renewal. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
+Use case for implementing subscription renewal. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 
 
 #### Server logic
@@ -271,7 +271,7 @@ public class SubscriptionRenewal {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
 
@@ -316,7 +316,7 @@ You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCm
 
 ## Override product price 
 
-This is used when you want to replace the regular price of a plenigo managed product for another one of your liking:
+This is used when you want to replace the regular price of a Frisbii Media managed product for another one of your liking:
 
 
 ```java
@@ -325,7 +325,7 @@ String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyId );
 
-// 2.Step: The product ID of the product from the plenigo backend.
+// 2.Step: The product ID of the product from the Frisbii Media Backend.
 String productId = "EgLUrT56328991046641";
 
 // 3.Step: The price of the product.

@@ -4,14 +4,14 @@ title: Client side JavaScript-SDK
 permalink: /sdks
 ---
 
-# plenigo SDKs
+# Frisbii Media SDKs
 
-plenigo offers SDKs for different programming languages. These SDKs only encapsulate the existing plenigo API. 
+Frisbii Media offers SDKs for different programming languages. These SDKs only encapsulate the existing Frisbii Media API. 
 
-## plenigo v3
+## Frisbii Media v3
 1. [Javascript-SDK v3](/sdks/javascript-v3)
 
-   If you are using plenigo all new version v3 you should use v3 SDK.
+   If you are using Frisbii Media all new version v3 you should use v3 SDK.
 
 2. [PHP-Integration Examples](/v3_php)
 

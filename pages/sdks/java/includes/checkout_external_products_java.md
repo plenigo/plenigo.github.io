@@ -6,23 +6,23 @@ permalink: /checkout_external_products_java
 # Checkout with external products 
 A checkout with external products is just possible for single products. Therefore you have to specify more information such as tax, description, currency, etc..
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 ## Workflow Checkout with external products 
 
 ![Workflow external products ](/assets/images/ci/CheckoutExternProduct.png)
 
-(A) Create plenigo iFrame: If you want to create a registration and login page click the following link -> [Create plenigo iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+(A) Create Frisbii Media iFrame: If you want to create a registration and login page click the following link -> [Create Frisbii Media iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
-(B) Check with plenigo API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
+(B) Check with Frisbii Media API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
  
-(C) Create plenigo iFrame checkout: If you want create a plenigo iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
-                                    [Start plenigo checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
+(C) Create Frisbii Media iFrame checkout: If you want create a Frisbii Media iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
+                                    [Start Frisbii Media checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
 
-## Checkout including plenigo login
-It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
+## Checkout including Frisbii Media login
+It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Frisbii Media’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
-If the product is not managed by plenigo, you have to specify more information such as tax, description, currency, etc..
+If the product is not managed by Frisbii Media, you have to specify more information such as tax, description, currency, etc..
 
 
 For Java integration you can use the `com.plenigo.sdk.builders.CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `com.plenigo.sdk.models.Product` class with the required information.
@@ -64,7 +64,7 @@ This example assumes you are running in test mode.
 
 **Prerequisites**
 1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
-2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
+2. Create a product in the Frisbii Media Backend. In every checkout you need the ID for the corresponding product.
 
 ```java
 @Controller
@@ -79,7 +79,7 @@ public class Paywall {
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // 2.Step: The product ID  from the plenigo backend.
+        // 2.Step: The product ID  from the Frisbii Media Backend.
         String productId = "EgLUrT56328991046641";
         // 3.Step: This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -117,7 +117,7 @@ You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -150,7 +150,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 ## Checkout without SDK
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media Backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 
 ## Failed Payments 
@@ -178,7 +178,7 @@ Use case for implementing failed payments.
 
 **Prerequisites**
 1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
-2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
+2. Create a product in the Frisbii Media Backend. In every checkout you need the ID for the corresponding product.
 
 ```java
 public class FailedPayments {
@@ -198,7 +198,7 @@ public class FailedPayments {
 ```
 
 #### Page logic 
-In the Page logic you have to replace the company id (e.g. 23NuCmdPoiRRkQiCqP9Q). By clicking on the “Buy now” Button the Checkout flow from plenigo will start.
+In the Page logic you have to replace the company id (e.g. 23NuCmdPoiRRkQiCqP9Q). By clicking on the “Buy now” Button the Checkout flow from Frisbii Media will start.
 
 
 ```html

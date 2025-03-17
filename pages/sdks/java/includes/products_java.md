@@ -15,23 +15,23 @@ Here you can get information about the product.
 
 ## Check if an user has bought a product
 
-To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
+To query if an user has bought a product, you must be logged in with Frisbii Media, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
  
 For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUserBought` in order to check if an user has bought a product.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         | The product ID from the plenigo backend |
+| productId     | yes     | string         | The product ID from the Frisbii Media Backend |
 | cookieHeader     | yes     | string         | The cookie  header |
 
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
-// 2. Step: Get the product id from the plenigo backend.
+// 2. Step: Get the product id from the Frisbii Media Backend.
 // We fill the request object with the appropriate get object and we get the Cookie header this way.
 javax.servlet.http.HttpServletRequest request = null;
 String productId = "aitnVIz1503443609941";
@@ -52,7 +52,7 @@ In order to check if an user has bought a product you have to do some prerequisi
 
 **Prerequisites**
 1. Configure the [Java SDK](https://plenigo.github.io/configuration_java).
-2. Create a product in the plenigo backend. In every checkout you need the id for the corresponding product.
+2. Create a product in the Frisbii Media Backend. In every checkout you need the id for the corresponding product.
 
 
 ```java
@@ -61,14 +61,14 @@ public class Paywall {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // 2.Step: The product id  from the plenigo backend.
+        // 2.Step: The product id  from the Frisbii Media Backend.
         String productId = "aitnVIz1503443609941";
         // 3.Step: This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -76,7 +76,7 @@ public class Paywall {
         if (!isHasUserBought) {
             Product product = new Product(productId);
             // Since he has not bought the product, we need to build the
-            // checkout snippet so that he can do the flow on the plenigo
+            // checkout snippet so that he can do the flow on the Frisbii Media
             // site and buy.
             CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
             String checkoutCode = builder.build();
@@ -106,7 +106,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ```html
 <!DOCTYPE html>
 <html>
-   <!--import the Plenigo Javascript SDK
+   <!--import the Frisbii Media Javascript SDK
       Let's use concrete values:
       company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
    -->
@@ -127,7 +127,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </html>
 ```
 
-###  Implementation without plenigo SDK
+###  Implementation without Frisbii Media SDK
 
 Another possiblity to check if the user has bought the product - can be a direct call to our REST API:
 [Has user bought request](https://api.plenigo.com/#!/user/hasBoughtProduct)
@@ -135,7 +135,7 @@ Another possiblity to check if the user has bought the product - can be a direct
 ##  Obtain a list of bought products and subscriptions
 
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
-The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK.
+The user, company and secret data will be obtained from the current logged in user, and the configured Frisbii Media SDK.
 
 For Java integration you can use the `com.plenigo.sdk.services.UserService#getProductsBought` method in order to get an obtain list of bought products and subscriptions.
 
@@ -144,7 +144,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserService#getPr
 | cookieHeader     | yes     | string         | The cookie  header |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -180,14 +180,14 @@ The returned  ProductData object look like this example:
 ```
 
 
-###  Implementation without plenigo SDK
+###  Implementation without Frisbii Media SDK
 
 Another possibility to check if the user has bought products - can be a direct call to our REST API:
 [Has user bought products and subscriptions request](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
 ##  Is the Paywall enabled 
 
-If you want to know if your paywall is enabled you can have a look at the plenigo backend.
+If you want to know if your paywall is enabled you can have a look at the Frisbii Media Backend.
 
 ![Enable paywall](/assets/images/ci/paywall.png)
 
@@ -195,7 +195,7 @@ If you want to know if your paywall is enabled you can have a look at the plenig
 For Java integration you can use the `com.plenigo.sdk.services.UserService#isPaywallEnabled()` method in order to check if the paywall is enabled.
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "BZTzF7qJ9y0uuz2Iw1Oik3ZMLVeYKq9yXh7liOPL"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";// The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -214,16 +214,16 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| productId     | yes     | string         |  The product id from the plenigo backend  |
+| productId     | yes     | string         |  The product id from the Frisbii Media Backend  |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The company ID of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The secret key of your specific company.
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get product information.
-String productId = "aitnVIz1503443609941"; // The product ID from the plenigo backend.
+String productId = "aitnVIz1503443609941"; // The product ID from the Frisbii Media Backend.
 // This method returns a com.plenigo.sdk.models.ProductsBought object with the required data.
 ProductData productData = ProductService.getProductData(productId);
 // The title of the product.
@@ -246,7 +246,7 @@ The returned  ProductData object look like this example:
 
 
 
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get product information - can be a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
 
@@ -262,7 +262,7 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService#ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -286,7 +286,7 @@ title: News
 id: SVjYNCn5024345046641
 description: Test 
 ```
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get product list - is a direct call to our REST API:
 
@@ -305,7 +305,7 @@ For Java integration you can use the `com.plenigo.sdk.services.ProductService:ge
 | page     | yes     | string         | The page number |
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj"; // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // The company id of your specific your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -335,10 +335,10 @@ The returned  ProductData object look like this example:
     }
 }
 ```
-The category ids in the plenigo backend looks like this example:
+The category ids in the Frisbii Media Backend looks like this example:
 ![Enable paywall](/assets/images/ci/category.png)
 
 
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get a category list - is a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)

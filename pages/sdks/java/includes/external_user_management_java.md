@@ -6,7 +6,7 @@ permalink: /external_user_management_java
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Token”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
+It is possible to use your own registration and login process and only login users into Frisbii Media via so called “Login Token”. Therefore you have to register the user into the Frisbii Media system. After that you have to create a Login Token to indicate a successful login.
 
 * [Register an external user ?](https://plenigo.github.io/external_user_management_java#register-an-external-user)
 * [Create a Login Token for an external user ? ](https://plenigo.github.io/external_user_management_java#create-login-token)
@@ -17,10 +17,10 @@ It is possible to use your own registration and login process and only login use
 
 ![General Workflow External User Management](/assets/images/ci/ExternalUser.png)
 
-(A) Register external user in the plenigo system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
+(A) Register external user in the Frisbii Media system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
 ## Register an external user 
-First of all you have to register the user into the plenigo system.
+First of all you have to register the user into the Frisbii Media system.
 
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#registerUser` in order to register the external user.
@@ -34,7 +34,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | name       | yes   | string        | The name of the new customer|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company. 
 String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
@@ -46,21 +46,21 @@ String externalUserID = "A1BKAFZZ3H0H"; // The external customer ID e.g "A1BKAFZ
 String firstName = "new"; // The first name of the customer.
 String name = "user"; // The name of the customer.
 
-// 3.Step: Returns the internal plenigo customer id.
-// If the user is already registered, it will not recreate the customer, it will return the internal plenigo customer id. 
+// 3.Step: Returns the internal Frisbii Media customer id.
+// If the user is already registered, it will not recreate the customer, it will return the internal Frisbii Media customer id. 
 String registerUser = UserManagementService.registerUser(email, language, externalUserID, firstName, name); 
 ```
 
 ## Implementation without SDK 
 
-Another possibility to register an external user into the plenigo system - is a direct call to our REST API:
+Another possibility to register an external user into the Frisbii Media system - is a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
 
 ## Create Login Token 
 
-To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This Login Token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
+To indicate a successful login to the Frisbii Media system you need to create a so called “Login Token”. This Login Token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#createLoginToken` in order to create a Login Token.
 
@@ -70,7 +70,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID     | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // The secret key of your specific company.
 String companyID = "23NuCmdPoiRRkQiCqP9Q"; // The company ID of your specific company. 
 PlenigoManager.get().configure(secret, companyID );
@@ -94,7 +94,7 @@ public class ExternalUser_Management {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
     }
     
@@ -102,7 +102,7 @@ public class ExternalUser_Management {
         // 2.Step: Register the external user.
         String registerExternalUser = UserManagement.registerUser(externalUser);
         externalUser.setPlenigoId(registerExternalUser);
-        // 3.Step: Create a Login Token for this user by getting his plenigo ID.
+        // 3.Step: Create a Login Token for this user by getting his Frisbii Media ID.
         UserManagement.createLoginToken(registerExternalUser.getPlenigoId);
         model.addAttribute("externalUser", registerExternalUser);
         }
@@ -116,7 +116,7 @@ public class ExternalUser_Management {
 html>
 <head>
     <title> The title  </title>
-        <!-- import the plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->          <script type="application/javascript"
@@ -138,7 +138,7 @@ Another possibility to create Login Token - can be a direct call to our REST API
 
 ## Change email address of an existing user
 
-It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
+It is very important for the Frisbii Media system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the Frisbii Media system about the changes.
 
 
 For Java integration you can use the `com.plenigo.sdk.services.UserManagementService#changeEmail` in order to change the e-mail address of an existing user.
@@ -150,7 +150,7 @@ For Java integration you can use the `com.plenigo.sdk.services.UserManagementSer
 | useExternalCustomerID    | yes     | boolean         | The external customer ID|
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj";  // The secret key of your specific company.
 String companyId = "23NuCmdPoiRRkQiCqP9Q";  // The company ID of your specific company.
 PlenigoManager.get().configure(secret, companyID );
