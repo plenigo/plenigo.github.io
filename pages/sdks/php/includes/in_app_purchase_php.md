@@ -11,7 +11,7 @@ If you're using this process, you will get at least a **receipt**, to check a [p
 
 #### external purchases
 Since we're able to implement even subscriptions via app store, we want to create products one can pay via mobile device and use on the desktop.
-To check users access on any device, you simply have to push the purchase as an access right to plenigo, and put the **receipt** into this right:
+To check users access on any device, you simply have to push the purchase as an access right to Frisbii Media, and put the **receipt** into this right:
 ```php
 // a list of AccessRights
 $accessRights = [];

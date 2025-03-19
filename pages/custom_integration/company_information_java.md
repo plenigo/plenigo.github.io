@@ -63,7 +63,7 @@ String companyId = "12NuCmdZUTRRkQiCqP2Q"; // The company id of your specific co
 PlenigoManager.get().configure(secret, companyId );
 
 // 2.Step: Get user by ids.
-String userIds [] = {"XXXC9XXVZX6J", "QTYYW6EBDXXV", "XXXVBX3SN2EI", "RRZ1XX3WRPV5"}; // The customer ids from the plenigo backend.
+String userIds [] = {"XXXC9XXVZX6J", "QTYYW6EBDXXV", "XXXVBX3SN2EI", "RRZ1XX3WRPV5"}; // The customer ids from the Frisbii Media backend.
 List  = new ArrayList(Arrays.asList(userIds));
 List<CompanyUser> list = CompanyService.getUserList(list);
 ```

@@ -1,6 +1,6 @@
 ## Video-Player with access control
 
-Based on the 3q video player plenigo offers you a video player with access control. You may need a 3q account one can create at [3q video](https://3q.video/de/)
+Based on the 3q video player Frisbii Media offers you a video player with access control. You may need a 3q account one can create at [3q video](https://3q.video/de/)
 
 There one can upload multiple videos.
 
@@ -14,7 +14,7 @@ The installation is based on the 3qvideo player. All the configuration parameter
             plenigoVideoPlayer.push({
                 'data-id': '5280e612-c311-11e8-ae4b-0cc47a188158', // Video ID from 3q backend
                 'container': 'video1', // ID of HTML-Element in you html page
-                'productIDs': 'P_PWywB6996251827351,P_ygHn66932077286351', // lst of plenigo product IDs to check access against
+                'productIDs': 'P_PWywB6996251827351,P_ygHn66932077286351', // list of Frisbii Media product IDs to check access against
                 'teaserLength': 2, // length of free videoteaser until video is stopped
                 'no-access-callback': function (par1, par2) { // callbackfunction we call, if customer has no access
                     location.href = "/landingpage";
@@ -25,7 +25,7 @@ The installation is based on the 3qvideo player. All the configuration parameter
 
 ### Example with full html
 
-Just put the plenigo Jacascript call somewhere in your html. To enable video player, add attribute `data-video="3q"`.
+Just put the Frisbii Media Javascript call somewhere in your html. To enable video player, add attribute `data-video="3q"`.
 
 ```html
 
@@ -72,4 +72,4 @@ Just put the plenigo Jacascript call somewhere in your html. To enable video pla
 
 ```
 
-If the customer has not bought at least one of the products given in the `productIDs` parameter, it will call call function given in `no-access-callback`. Here one can simply call a landing page, or open a dialog or simply start a plenigo checkout.
+If the customer has not bought at least one of the products given in the `productIDs` parameter, it will call call function given in `no-access-callback`. Here one can simply call a landing page, or open a dialog or simply start a Frisbii Media checkout.

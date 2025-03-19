@@ -5,7 +5,7 @@ permalink: /server_side_paywall
 ---
 # Server Side Paywall
 
-The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).
+The first thing you have to do is enabling the paywall in the Frisbii Media backend (Paywall->Settings).
 After you have done this you can continue with the following step.
 
 1. Check if the user has bought product
@@ -19,7 +19,7 @@ After you have done this you can continue with the following step.
 You can use the `com.plenigo.sdk.services.UserService#hasUserBought` method for this purpose:
 ```java
 String cookieHeader = request.getHeader("Cookie");
-// Replaxe my_product_id with the product id from the plenigo backend
+// Replaxe my_product_id with the product id from the Frisbii Media backend
 String productId = "my_product_id";
 // This method returns true if the user has already bought the product.
 boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -32,7 +32,7 @@ if (hasUserBought) {
 
 #### Use case Java
 
-Use case for implementing plenigo paywall.
+Use case for implementing Frisbii Media paywall.
 
 ##### Server logic
 
@@ -49,7 +49,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     if (!isNewsPaid) {
     Product prodToChkOut = new Product(productId);
     //Since he has not bought the product, we need to build the checkout snippet so that he can
-    //do the flow on the plenigo site and buy
+    //do the flow on the Frisbii Media site and buy
     String snippet = new CheckoutSnippetBuilder(prodToChkOut).build();
     //Set all the attributes that you are going to need, the snippet is a url that opens a dialog
     //initiating the checkout process
@@ -73,7 +73,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 <html>
 <head>
     <title>${id}</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/${companyId}/plenigo_sdk.min.js" data-disable-metered="true"></script>
 </head>
 <body>
@@ -109,14 +109,14 @@ if($hasUserBought) {
 
 #### Use case PHP
 
-Use case for implementing plenigo paywall.
+Use case for implementing Frisbii Media paywall.
 
 
 ##### Server logic
 
 ```php
 <?php
-      // Replace my_product_id with the product it from the plenigo backend  
+      // Replace my_product_id with the product it from the Frisbii Media backend  
       $productId ="my_product_id";
       $returnPage = "news.php";
       //This method returns true if the user has already bought the
@@ -125,7 +125,7 @@ Use case for implementing plenigo paywall.
       if ($isNewsPaid === FALSE) {
       $product = new \plenigo\models\ProductBase($productId);
       //Since he has not bought the product, we need to build the
-      //checkout snippet so that he can do the flow on the plenigo
+      //checkout snippet so that he can do the flow on the Frisbii Media
       //site and buy
        $snippet = new CheckoutSnippetBuilder($prodToChkOut)->build();
       }
@@ -137,7 +137,7 @@ Use case for implementing plenigo paywall.
 <html>
 <head>
     <title><?php echo $pid; ?></title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/<?php echo $companyId; ?>/plenigo_sdk.min.js"></script>
 </head>
 <body>
@@ -154,7 +154,7 @@ Use case for implementing plenigo paywall.
 ```
 ## Implementation without SDKs
 
-If you are not able to use one of the existing SDKs you can also implement the paywall functionality of the [plenigo API](https://api.plenigo.com) by yourself.
+If you are not able to use one of the existing SDKs you can also implement the paywall functionality of the [Frisbii Media API](https://api.plenigo.com) by yourself.
 
 * [Enable paywall request](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
 

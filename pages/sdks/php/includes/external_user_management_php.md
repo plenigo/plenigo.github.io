@@ -6,7 +6,7 @@ permalink: /external_user_management_php
 
 # External user management
 
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Token”. Therefore you have to register the user into the plenigo system. After that you have to create a Login Token to indicate a successful login.
+It is possible to use your own registration and login process and only login users into Frisbii Media via so called “Login Token”. Therefore you have to register the user into the Frisbii Media system. After that you have to create a Login Token to indicate a successful login.
 
 * [Register an external user ?](https://plenigo.github.io/external_user_management_php#register-an-external-user)
 * [Create a login token for an external user ? ](https://plenigo.github.io/external_user_management_php#create-login-token)
@@ -19,10 +19,10 @@ It is possible to use your own registration and login process and only login use
 
 ![General Workflow External User Management](/assets/images/ci/ExternalUser.png)
 
-(A) Register external user in the plenigo system: -> [Register External User](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/registerExternalUser)
+(A) Register external user in the Frisbii Media system: -> [Register External User](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/registerExternalUser)
 
 ## Register an external user 
-First of all you have to register the user in the plenigo system.
+First of all you have to register the user in the Frisbii Media system.
 
 ### PHP
 
@@ -40,7 +40,7 @@ For PHP integration you can use the `plenigo\services\UserManagementService::reg
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The company ID of your specific company. 
 $companyId = '12NuCmdZUTRRkQiCqP2Q'; // The secret key of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -52,21 +52,21 @@ $externalUserId = "A1BKAFZZ3H0H"; // The external customer ID e.g "A1BKAFZZ3H0H"
 $firstName = "new"; // The first name of the customer. 
 $name = "user"; // The name of the customer.
 $withPasswordReset = false; // (Parameter: True) The customer will get a one time password. With this password he can login in the application.
-$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the existing plenigo customer id.
+$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the existing Frisbii Media customer id.
 // (Parameter: True): If the customer is already registered it will return the http status 409.  
 $registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name, $withPasswordReset, $failByExistingEmail);
 ```
 
 ## Implementation without SDK
 
-Another possibility to register an external user into the plenigo system - is a direct call to our REST API:
+Another possibility to register an external user into the Frisbii Media system - is a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/external_user_management_php.md#!/external_user_management/registerExternalUser)
 
 
 ## Create Login Token 
 
-To indicate a successful login to the plenigo system you need to create a so called “Login Token”. This login token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
+To indicate a successful login to the Frisbii Media system you need to create a so called “Login Token”. This login token is valid for 5 minutes and can be passed e.g. to the build()-method of the `\plenigo\builders\CheckoutSnippetBuilder`.
 
 ### PHP
 
@@ -81,7 +81,7 @@ For PHP integration you can use the `plenigo\services\UserManagementService::cre
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
 $companyId = '12NuCmdZUTRRkQiCqP2Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -96,7 +96,7 @@ $loginToken = \plenigo\services\UserManagementService::createLoginToken($custome
 
 #### Use case PHP
 
-Use case for registrating  and creating a login token for a checkout.
+Use case for registering and creating a login token for a checkout.
 
 #### Server logic
 
@@ -111,7 +111,7 @@ use plenigo\models\ProductBase;
 use plenigo\services\UserManagementService;
 use plenigo\builders\CheckoutSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
 
 // 2.Step: The product ID.
@@ -127,7 +127,7 @@ $externalUserID = "12345"; // The external user ID.
 $firstName = "new"; // The first name.
 $name = "customer"; // The name.
 $withPasswordReset = false; // (Parameter: True) The customer will get a one time password. With this password he can login in the application.
-$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the  existing plenigo customer id.
+$failByExistingEmail = false; // (Parameter:False)If the customer already registered it will not recreate a the customer it will return the  existing Frisbii Media customer id.
 // (Parameter: True): If the customer is already registered it will return the http status 409.  
 $registerUser = \plenigo\services\UserManagementService::registerUser($email, $language , $externalUserId, $firstName , $name, $withPasswordReset, $failByExistingEmail);
 $userId = UserManagementService::registerUser($email, $language, $externalUserID, $firstName, $name);
@@ -151,7 +151,7 @@ In the Page logic you have to replace the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q)
 <html>
 <head>
     <title> Title of the product </title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript"
             src="https://static.s-devops.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
             data-lang="en">
@@ -171,7 +171,7 @@ Another possibility to create login token -  is a direct call to our REST API:
 
 ## Change email address of an existing user
 
-It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
+It is very important for the Frisbii Media system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the Frisbii Media system about the changes.
 
 
 ### PHP
@@ -189,7 +189,7 @@ For PHP integration you can use the `plenigo\services\UserManagementService::cha
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyID);
@@ -257,14 +257,14 @@ For PHP integration you can use the `plenigo\services\UserManagementService::add
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Fill the data for the addExternalCustomerId() method.
-$customerId = '56202510'; // The customer ID from the plenigo backend.
-$externalCustomerId = '12345'; // The external user ID you want to add to the customer and which is not existing in the plenigo backend yet.
+$customerId = '56202510'; // The customer ID from the Frisbii Media Backend.
+$externalCustomerId = '12345'; // The external user ID you want to add to the customer and which is not existing in the Frisbii Media Backend yet.
 
 // 3.Step: This method return true if the user is added successfully otherwise it will return false.
 $addExternalCustomerId = UserManagementService::addExternalCustomerId($customerId, $externalCustomerId);

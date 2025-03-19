@@ -1,4 +1,4 @@
-Every request to the plenigo API is protected by a so called "plenigo Token". The plenigo token is a JWT with Hash Algorithm HS256. Use your plenigo merchant
+Every request to the Frisbii Media API is protected by a so called "Frisbii Media Token". The Frisbii Media token is a JWT with Hash Algorithm HS256. Use your Frisbii Media merchant
 secret key as key for the hash function.
 
 The JWT itself contains the following payload
@@ -8,7 +8,7 @@ The JWT itself contains the following payload
 |jti|Unique identifier for this request. This identifier is there to prevent reply attacks so you must not reuse it|
 |aud|Must be the string "plenigo"|
 |exp|Validity time for the JWT. We recommend the current timestamp plus 5 minutes|
-|companyId|Your company id from the plenigo merchant backend|
+|companyId|Your company id from the Frisbii Media merchant backend|
 
 Test
 

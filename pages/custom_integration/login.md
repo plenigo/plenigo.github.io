@@ -8,7 +8,7 @@ permalink: /login
 
 ## Registration
 
-Plenigo offers you a simple registration functionality. 
+Frisbii Media offers you a simple registration functionality. 
 
 
 ### JavaScript
@@ -32,23 +32,23 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the "Registration" Button the Registration flow will start:
 
-**Registration flow from plenigo:**
+**Registration flow from Frisbii Media:**
 
-1. User clicks on "Registration" button. The plenigo registration window will appear.  
+1. User clicks on "Registration" button. The Frisbii Media registration window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password) and has to accept the legal and privacy notes.
 
 3. After a successful registration the user gets an e-mail.
 
-**Note:** You can activate or deactivate the e-mail address verification in the plenigo backend. (Settings -> Company Data -> Settings)
+**Note:** You can activate or deactivate the e-mail address verification in the Frisbii Media backend. (Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.registration()` method:  [Plenigo Registration](https://plenigo.github.io/sdks/javascript#registration---open-the-plenigo-registration-window)
+**Note:** You can configure the `plenigo.registration()` method:  [Frisbii Media Registration](https://Frisbii Media.github.io/sdks/javascript#registration---open-the-Frisbii Media-registration-window)
 
 ```html
 html>
 <head>
     <title> The title  </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->          <script type="application/javascript"
@@ -63,7 +63,7 @@ html>
 
 ## Login
 
-Plenigo offers you different possibilities for login.
+Frisbii Media offers you different possibilities for login.
 
 * [Standard Login](https://plenigo.github.io/login#standard-login)
 * [Single sign on](https://plenigo.github.io/sdks/login#sso)
@@ -77,7 +77,7 @@ This is the simplest way to login, below there are examples of how to generate t
 For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` method for this purpose:
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // // The secret key of your specific company. 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -99,7 +99,7 @@ public class StandardLogin {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
     }
 
@@ -147,23 +147,23 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Login” button the Checkout flow will start.
 
-**Login flow from plenigo:**
+**Login flow from Frisbii Media:**
 
-1. User clicks on "Login" button. The plenigo login window will appear.  
+1. User clicks on "Login" button. The Frisbii Media login window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password).
 
 3. After a successful login. The user will be redirected to the page.
 
-**Note:** You can force on login the user to enter an username. (Plenigo backend: Settings -> Company Data -> Settings)
+**Note:** You can force on login the user to enter an username. (Frisbii Media backend: Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.login()` method:  [Plenigo Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+**Note:** You can configure the `plenigo.login()` method:  [Frisbii Media Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 ```html
 <html>
 <head>
     <title> The title </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
         -->          <script type="application/javascript"
@@ -187,7 +187,7 @@ For PHP integration you can use the `\plenigo\builders\LoginSnippetBuilder` meth
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -201,7 +201,7 @@ $snippet = $builder->build();
 
 #### Use case 
 
-Use case for implementing plenigo standard login.
+Use case for implementing Frisbii Media standard login.
 
 #### Server logic 
 The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration). 
@@ -211,7 +211,7 @@ The first thing you have to do is configuring the [PHP SDK](https://plenigo.gith
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\LoginSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
 
 
@@ -239,24 +239,24 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Login” button the Checkout flow will start.
 
-**Login flow from plenigo:**
+**Login flow from Frisbii Media:**
 
-1. User clicks on "Login" button. The plenigo login window will appear.  
+1. User clicks on "Login" button. The Frisbii Media login window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password).
 
 3. After a successful login. The user will be redirected to the page.
 
-**Note:** You can force on login the user to enter an username. (Plenigo backend: Settings -> Company Data -> Settings)
+**Note:** You can force on login the user to enter an username. (Frisbii Media backend: Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.login()` method:  [Plenigo Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+**Note:** You can configure the `plenigo.login()` method:  [Frisbii Media Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 
 ```html
 <html>
 <head>
     <title> The title of the article  </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
         -->            <script type="application/javascript"
@@ -273,7 +273,7 @@ By clicking on the “Login” button the Checkout flow will start.
 </html>
 ```
 
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 ### Single sign on (OAuth2)
 
@@ -287,7 +287,7 @@ In order to create the snippet you must fill a com.plenigo.sdk.models.LoginConfi
 
 | parameter 	| description |
 | ------------- | ----------- |
-redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in plenigo before using it |
+redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in Frisbii Media before using it |
 dataAccessScope | The data access scope permission that you need from the user, the com.plenigo.sdk.models.DataAccessScope enum contains all the available values |
 
 ```java
@@ -310,7 +310,7 @@ String csrfToken = TokenService.createCsrfToken();
 String snippet = snippetBuilder.withCSRFToken(csrfToken).build(); //The generated login snippet format: plenigo.login('VAL','VAL','VAL');
 ```
 
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 After the user has allowed the data access scope that you need, the login flow will redirect you to the uri you specified previously.
 
@@ -366,7 +366,7 @@ UserData userData = UserService.getUserData(data.getAccessToken());
 
 Single sign-on (SSO) is a session and user authentication service that permits a user to use one set of login credentials (e.g., name and password) to access multiple applications. The service authenticates the end user for all the applications the user has been given rights to and eliminates further prompts when the user switches applications during the same session. On the back end, SSO is helpful for logging user activities as well as monitoring user accounts.
 
-There are two different ways to implement SSO with plenigo:
+There are two different ways to implement SSO with Frisbii Media:
 
 * OAuth2 (recommended)
 * Cookie based
@@ -408,46 +408,46 @@ with the approval of the resource owner, or end-user. The client then uses the a
 |        |<-(3.1)-- Protected Resource --|               |
 +--------+                               +---------------+
 ```
-#### Example usage for OAuth 2.0 with plenigo
+#### Example usage for OAuth 2.0 with Frisbii Media
 
-In the following example we assume that a plenigo client called "Merchant" is using the plenigo OAuth 2.0 interfaces. To concentrate on the actual logic, 
+In the following example we assume that a Frisbii Media client called "Merchant" is using the Frisbii Media OAuth 2.0 interfaces. To concentrate on the actual logic, 
 there will be no concrete programming languages included. Please consult the SDK documentations for that case.
 
 We are starting with the following scenario:
-* UserA is registered at plenigo
+* UserA is registered at Frisbii Media
 * UserA is not known by Merchant
-* UserB is registered at plenigo
-* UserB was logged in via OAuth 2.0 and plenigo by Merchant before
+* UserB is registered at Frisbii Media
+* UserB was logged in via OAuth 2.0 and Frisbii Media by Merchant before
 
 Let's start with UserA
 1. UserA visits the homepage of Merchant and click login
-2. Merchant calls the plenigo login screen snippet
-3. UserA enters his user data at plenigo and logs in
+2. Merchant calls the Frisbii Media login screen snippet
+3. UserA enters his user data at Frisbii Media and logs in
 4. UserA gets redirected to the Merchant's homepage together with a so called access code
-5. Merchant's server takes this access code and requests an access token and a refresh token from plenigo. Both codes are saved within the users session. (After requesting an access token for the first time UserA will never be prompted again to authorize Merchant)
-   > A access token has only a limited lifetime, after that the plenigo server will response with a timeout message. Then the Merchant server has to request a new access token with the refresh token.
-     If Merchant wants to access the plenigo API over a longer time period, e.g. 20 days without requesting a new login process for the user, it can save the refresh token to create new access tokens at anytime.
+5. Merchant's server takes this access code and requests an access token and a refresh token from Frisbii Media. Both codes are saved within the users session. (After requesting an access token for the first time UserA will never be prompted again to authorize Merchant)
+   > A access token has only a limited lifetime, after that the Frisbii Media server will response with a timeout message. Then the Merchant server has to request a new access token with the refresh token.
+     If Merchant wants to access the Frisbii Media API over a longer time period, e.g. 20 days without requesting a new login process for the user, it can save the refresh token to create new access tokens at anytime.
      
-6. With the access token Merchant requests the user profile of the user from the plenigo API
-7. Merchant now compares the customerId of plenigo with the ones he has within his user database and will not find it, because UserA was never there before. So Merchant creates a new customer profile for UserA with the data delivered by plenigo.
-8. Merchant can now use this customer as if it was his own customer only future logins must done via plenigo
+6. With the access token Merchant requests the user profile of the user from the Frisbii Media API
+7. Merchant now compares the customerId of Frisbii Media with the ones he has within his user database and will not find it, because UserA was never there before. So Merchant creates a new customer profile for UserA with the data delivered by Frisbii Media.
+8. Merchant can now use this customer as if it was his own customer only future logins must done via Frisbii Media
 
 Now let's see what is going on with UserB
 
 1. UserB visits the homepage of Merchant and click login
-2. Merchant calls the plenigo login screen snippet
-3. UserB enters his user data at plenigo and logs in
+2. Merchant calls the Frisbii Media login screen snippet
+3. UserB enters his user data at Frisbii Media and logs in
 4. UserB gets redirected to the Merchant's homepage together with a so called access code
-5. Merchant's server takes this access code and requests an access token and a refresh token from plenigo. Both codes are saved within the users session. (After requesting an access token for the first time UserA will never be prompted again to authorize Merchant)
+5. Merchant's server takes this access code and requests an access token and a refresh token from Frisbii Media. Both codes are saved within the users session. (After requesting an access token for the first time UserA will never be prompted again to authorize Merchant)
    > Any old refresh tokens will be invalid from this point on.
    
-6. With the access token Merchant requests the user profile of the user from the plenigo API
-7. Merchant now compares the customerId of plenigo with the ones it has within its user database and will find it, because UserB was there before. So the login is finished now. (Of course you could check if user data has changed and update them if necessary)
+6. With the access token Merchant requests the user profile of the user from the Frisbii Media API
+7. Merchant now compares the customerId of Frisbii Media with the ones it has within its user database and will find it, because UserB was there before. So the login is finished now. (Of course you could check if user data has changed and update them if necessary)
 
-#### Using OAuth 2.0 to use plenigo as SSO 
+#### Using OAuth 2.0 to use Frisbii Media as SSO 
 
 
-plenigo APIs use the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) for authentication and authorization. plenigo supports common OAuth 2.0 scenarios such as those for web server, installed, and client-side applications.
+Frisbii Media APIs use the [OAuth 2.0 protocol](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) for authentication and authorization. Frisbii Media supports common OAuth 2.0 scenarios such as those for web server, installed, and client-side applications.
 
 OAuth 2.0 is a relatively simple protocol. To begin, a customer must obtain OAuth 2.0 credentials from the company dashboard. Then the different log in features the Javascript SDK offers can be used in combination with the server side SDKs.
 
@@ -457,13 +457,13 @@ OAuth 2.0 is a relatively simple protocol. To begin, a customer must obtain OAut
 
 There are two possible ways to start the user authentication
 1. During a checkout process by providing the SSO flag
-2. Implementing a javascript snippet that starts a login process at plenigo
+2. Implementing a javascript snippet that starts a login process at Frisbii Media
 
 ### Start user authentication
 
 #### Login Process
 
-Customers should protect the security of their end users by preventing request forgery attacks. The first step is creating a unique session token that holds state between the customers server and the end user's client. This unique session token is later matched with the authentication response returned by the plenigo OAuth Login service to verify that the user is making the request and not a malicious attacker. These tokens are often referred to as cross-site request forgery (CSRF) tokens.
+Customers should protect the security of their end users by preventing request forgery attacks. The first step is creating a unique session token that holds state between the customers server and the end user's client. This unique session token is later matched with the authentication response returned by the Frisbii Media OAuth Login service to verify that the user is making the request and not a malicious attacker. These tokens are often referred to as cross-site request forgery (CSRF) tokens.
 
 One good choice for a state token is a string of 30 or so characters constructed using a high-quality random-number generator. Another one is a hash generated by signing some of the session state variables with a key that is kept secret on the back-end.
 
@@ -489,7 +489,7 @@ state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in x
 session['state'] = state
 ```
 
-#### Plenigo Login
+#### Frisbii Media Login
 
 After the optional CSRF token creation, the SDKs should offer the functionality to create the following Javascript snippet
 
@@ -501,7 +501,7 @@ The three parameters to use can partially be filled automatically and some has t
 
 |Name|Value|
 |:---|:----|
-|REDIRECT_URI|The URL to be redirected to after successful login to finish up the server side workflow. The given URL (or at least the starting part) must be registered in the plenigo backend. Otherwise an error is returned.|
+|REDIRECT_URI|The URL to be redirected to after successful login to finish up the server side workflow. The given URL (or at least the starting part) must be registered in the Frisbii Media backend. Otherwise an error is returned.|
 |SCOPE|Currently the only supported scope is profile. But more will come so this should be set by the customer.|
 |STATE|The state is the CSRF. During the management of the CSRF by the SDK this should be provided by the SDK.|
  
@@ -567,7 +567,7 @@ if request.args.get('state', '') != session['state']:
 ```
 
 Now the access token has to be obtained in exchange for the access code received after the login.
-To do so the a server side request to the plenigo server must be executed and call the following URL. The request is an HTTP POST request.
+To do so the a server side request to the Frisbii Media server must be executed and call the following URL. The request is an HTTP POST request.
 
 ```html
 https://api.plenigo.com/api/v2/oauth2/verify
@@ -579,8 +579,8 @@ The body has to contain the following parameters
 |:---|:----|:--------|
 |grant_type|The only allowed value is _authorization_code_.|Yes|
 |code|	The authorization code returned in the code parameter after the login.|Yes|
-|redirect_uri|A valid return URL defined in the plenigo company backend.|Yes|
-|client_id|The company id offered by plenigo.|Yes|
+|redirect_uri|A valid return URL defined in the Frisbii Media company backend.|Yes|
+|client_id|The company id offered by Frisbii Media.|Yes|
 |client_secret|The company secret also used for encryption, etc.|Yes|
 |state|There can be added an optional identifier like in the request above and it will be returned in the result.|No|
 
@@ -609,7 +609,7 @@ With the help of the refresh token received during the request of an access toke
 
 > If the refresh token is no longer available the login process has to be restarted from the Javascript part.
 
-To get a new access token the SDK has to make a server side request to the plenigo server and call the following URL. The request is a HTTP POST request.
+To get a new access token the SDK has to make a server side request to the Frisbii Media server and call the following URL. The request is a HTTP POST request.
 
 ```html
 https://api.plenigo.com/api/v2/oauth2/renew
@@ -621,7 +621,7 @@ The body has to contain the following parameters
 |:---|:----|:--------|
 |grant_type|The only allowed value is _refresh_token_.|Yes|
 |refresh_token|	he refresh token received during the authorization token request.|Yes|
-|client_id|The company id offered by plenigo.|Yes|
+|client_id|The company id offered by Frisbii Media.|Yes|
 |client_secret|The company secret also used for encryption, etc.|Yes|
 |state|There can be added an optional identifier like in the request above and it will be returned in the result.|No|
 
@@ -643,7 +643,7 @@ In case of an error the the following parameters are returned.
 
 ### Cookie based
 
-To verify if a user is logged in you need to read the cookie `plenigo_user` and sent it to the plenigo API [getUserProfileBySessionCookie](https://api.plenigo.com/#!/user/getUserProfileBySessionCookie).
+To verify if a user is logged in you need to read the cookie `plenigo_user` and sent it to the Frisbii Media API [getUserProfileBySessionCookie](https://api.plenigo.com/#!/user/getUserProfileBySessionCookie).
 
 * `403 HTTP Response` - user is not logged in 
 * `200 HTTP Response` - user is logged in and user data is returned 

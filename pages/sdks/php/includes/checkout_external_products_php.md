@@ -6,23 +6,23 @@ permalink: /checkout_external_products_php
 # Checkout with external products 
 A checkout with external products is just possible for single products. Therefore you have to specify more information such as tax, description, currency, etc..
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 ## Workflow Checkout with external products 
 
 ![Workflow external products ](/assets/images/ci/CheckoutExternProduct.png)
 
-(A) Create plenigo iFrame: If you want to create a registration and login page click the following link -> [Create plenigo iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+(A) Create Frisbii Media iFrame: If you want to create a registration and login page click the following link -> [Create Frisbii Media iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
-(B) Check with plenigo API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
+(B) Check with Frisbii Media API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
  
-(C) Create plenigo iFrame checkout: If you want create a plenigo iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
-                                    [Start plenigo checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
+(C) Create Frisbii Media iFrame checkout: If you want create a Frisbii Media iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
+                                    [Start Frisbii Media checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
 
-## Checkout including plenigo login
-It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
+## Checkout including Frisbii Media login
+It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Frisbii Media’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
-If the product is not managed by plenigo, you have to specify more information such as tax, description, currency, etc..
+If the product is not managed by Frisbii Media, you have to specify more information such as tax, description, currency, etc..
 
 
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
@@ -59,7 +59,7 @@ $plenigoCheckoutCode = $checkout->build();
 ```
 ### Use case 
 
-Use case for implementing checkout with external products (Single Products) including plenigo login.
+Use case for implementing checkout with external products (Single Products) including Frisbii Media login.
 
 This is a complete example page where you only need to replace the company id (e.g.23NuCmdPoiRRkQiCqP9Q ) and the secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj).
 This example assumes you are running in test mode.
@@ -126,7 +126,7 @@ $plenigoCheckoutCode = $checkout->build();
 
 ## Checkout with external login
 
-If you want to do a checkout without the login functionality of plenigo you have to do the following steps. First of all you have to register the external user into the plenigo system. After you have done this you have to create a Login Token for this user.
+If you want to do a checkout without the login functionality of Frisbii Media you have to do the following steps. First of all you have to register the external user into the Frisbii Media system. After you have done this you have to create a Login Token for this user.
 
 
 ### Use case 
@@ -151,7 +151,7 @@ use plenigo\services\UserManagementService;
 $product = new ProductBase('ProductID', 'ProductDescription', PriceOfTheProduct, 'TheCurrency');
 $product->setType(ProductBase::TYPE_EBOOK);
 
-// 3.Step: Register the user into the plenigo system.
+// 3.Step: Register the user into the Frisbii Media system.
 $userId = UserManagementService::registerUser("user@testmail.com", "language", "theCustomerId", 'firstName', 'name');
 
 // 4.Step: Create the login token for this user. 
@@ -161,7 +161,7 @@ $loginToken = UserManagementService::createLoginToken($userId);
 $hasUserBought = UserService::hasUserBought($product1->getId());
 if ($hasUserBought === FALSE) {
 // Since he has not bought the product, we need to build the
-// checkout snippet so that he can do the flow on the plenigo
+// checkout snippet so that he can do the flow on the Frisbii Media
 // site and buy.
 $checkout = new CheckoutSnippetBuilder($product);
 $settings = array();
@@ -179,9 +179,9 @@ You will replace COMPANY_ID for the corresponding ID of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
-1. User clicks on "Buy now" button. User has to login into the plenigo system. [Checkout With Remote Login](https://plenigo.github.io/sdks/javascript#checkout-with-remote-login---start-a-plenigo-checkout-with-external-user-management)) 
+1. User clicks on "Buy now" button. User has to login into the Frisbii Media system. [Checkout With Remote Login](https://plenigo.github.io/sdks/javascript#checkout-with-remote-login---start-a-plenigo-checkout-with-external-user-management)) 
   
 2. After the login was successful a payment screen will appear. There the user has to choose a payment method for the product.
 
@@ -215,7 +215,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 ## Checkout without SDK
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media Backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 
 ## Failed Payments 

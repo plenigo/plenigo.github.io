@@ -6,17 +6,17 @@ permalink: /configure_environment
 
 # Configure your environment 
 
-> plenigo relies heavily on correct date times so make sure your servers time is up to date. Running NTP is strongly recommended.
+> Frisbii Media relies heavily on correct date times so make sure your servers time is up to date. Running NTP is strongly recommended.
 
-> Please keep in mind that you need to include the plenigo JavaScript-SDK in every HTML page you would like to use plenigo functionality. The necessary information can be found in the JavaScript documentation.
+> Please keep in mind that you need to include the Frisbii Media JavaScript-SDK in every HTML page you would like to use Frisbii Media functionality. The necessary information can be found in the JavaScript documentation.
 
-### Implementation with SDKS
+### Implementation with SDKs
 
 #### Java
 
 In order to configure the SDK, you have to execute the following steps.
 
-1. Get the company secret and id from the plenigo backend
+1. Get the company secret and id from the Frisbii Media backend
 
 ![Company data](/assets/images/ci/company_data.png)
 
@@ -25,14 +25,14 @@ In order to configure the SDK, you have to execute the following steps.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| companyId     | yes     | string         | The secret key for your specific company (Plenigo Backend-> Settings->Company data) |
-| secret     | yes     | string         | The company ID of your specific company (Plenigo Backend-> Settings->Company data) |
+| companyId     | yes     | string         | The secret key for your specific company (Frisbii Media Backend-> Settings->Company data) |
+| secret     | yes     | string         | The company ID of your specific company (Frisbii Media Backend-> Settings->Company data) |
 
 In order to configure the SDK, you must do the following: You must require and call `com.plenigo.sdk.PlenigoManager#configure ` method.
 
 ```java
-String companyId = "12NuCmdZUTRRkQiCqP2Q";  // Replace this with your company id from the plenigo backend. 
-String secret = "RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj";  // Replace this with your secret from the plenigo backend. 
+String companyId = "12NuCmdZUTRRkQiCqP2Q";  // Replace this with your company id from the Frisbii Media backend. 
+String secret = "RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj";  // Replace this with your secret from the Frisbii Media backend. 
 PlenigoManager.get().configure(secret, companyId );
 ```
 #### PHP
@@ -42,24 +42,24 @@ In order to configure the SDK, you must do the following: You must require and c
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $companyId     | yes     | string         | The secret key for your specific company(Plenigo Backend-> Settings->Company data) |
-| $secret     | yes     | string         |  The company ID of your specific company (Plenigo Backend-> Settings->Company data) |
+| $companyId     | yes     | string         | The secret key for your specific company(Frisbii Media Backend-> Settings->Company data) |
+| $secret     | yes     | string         |  The company ID of your specific company (Frisbii Media Backend-> Settings->Company data) |
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-$companyId = '12NuCmdZUTRRkQiCqP2Q';  // Replace this with your company id from the plenigo backend. 
-$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj';  // Replace this with your secret from the plenigo backend. 
-//configure plenigo:
+$companyId = '12NuCmdZUTRRkQiCqP2Q';  // Replace this with your company id from the Frisbii Media backend. 
+$secret = 'RrrDfmzUTcQiY8PpLtwzNP8LHsV78TngrY5TTvj';  // Replace this with your secret from the Frisbii Media backend. 
+//configure Frisbii Media:
 \plenigo\PlenigoManager::configure($secret, $companyId);
 ?>
 ```
 
-### Implementation without plenigo SDKS
+### Implementation without Frisbii Media SDKs
 
-If you are using a programming language that is not supported by one of our SDKs you have to implement the functionality of the plenigo API by yourself.
+If you are using a programming language that is not supported by one of our SDKs you have to implement the functionality of the Frisbii Media API by yourself.
 
-Every request to the plenigo API is protected by a so called "plenigo Token". The plenigo token is a JWT with Hash Algorithm HS256. Use your plenigo merchant
+Every request to the Frisbii Media API is protected by a so called "plenigo Token". The Frisbii Media token is a JWT with Hash Algorithm HS256. Use your Frisbii Media merchant
 secret key as key for the hash function.
 
 The JWT itself contains the following payload
@@ -67,9 +67,9 @@ The JWT itself contains the following payload
 |Parameter|Description|
 |:--------|:----------|
 |jti|Unique identifier for this request. This identifier is there to prevent reply attacks so you must not reuse it|
-|aud|Must be the string "plenigo"|
+|aud|Must be the string "Frisbii Media"|
 |exp|Validity time for the JWT. We recommend the current timestamp plus 5 minutes|
-|companyId|Your company id from the plenigo merchant backend|
+|companyId|Your company id from the Frisbii Media merchant backend|
 
 
 #### C#

@@ -1,55 +1,55 @@
 ---
 layout: default
-title: Checkout with plenigo managed products
+title: Checkout with Frisbii Media managed products
 permalink: /checkout_plenigo_managed_products_php
 ---
-# Checkout with plenigo managed products 
-If the product is managed by plenigo and was configured in the plenigo website, only the product id is required for checkout.
+# Checkout with Frisbii Media managed products 
+If the product is managed by Frisbii Media and was configured in the Frisbii Media website, only the product id is required for checkout.
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
-## Workflow Checkout with plenigo managed products 
+## Workflow Checkout with Frisbii Media managed products 
 
-![General Workflow Checkout with plenigo managed products](/assets/images/ci/Checkout .png)
+![General Workflow Checkout with Frisbii Media managed products](/assets/images/ci/Checkout .png)
 
-(A) Create plenigo iFrame: If you want to create a registration and login page click the following link -> [Create plenigo iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+(A) Create Frisbii Media iFrame: If you want to create a registration and login page click the following link -> [Create Frisbii Media iFrame](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
-(B) Check with plenigo API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
+(B) Check with Frisbii Media API: If you want to check if the user has bought the product click the following link -> [Has user bought ](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
-(C) optional: Create product page with the help of plenigo product management: If you want to create a product page with the help of plenigo click the following link -> [Create product Page ](https://api.plenigo.com/#!/product/getProduct)
+(C) optional: Create product page with the help of Frisbii Media product management: If you want to create a product page with the help of Frisbii Media click the following link -> [Create product Page ](https://api.plenigo.com/#!/product/getProduct)
  
-(D) Create plenigo iFrame checkout: If you want create a plenigo iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
+(D) Create Frisbii Media iFrame checkout: If you want create a Frisbii Media iFrame checkout click the following link -> [Encrpyt checkout String ](https://plenigo.github.io/#encrypted-checkout-string),
                                     [Start plenigo checkout ](https://plenigo.github.io/sdks/javascript#checkout---start-a-plenigo-checkout)
 
-## Checkout including plenigo login
-If the product is managed by the plenigo and was configured in the plenigo website, only the product id is required for checkout. 
+## Checkout including Frisbii Media login
+If the product is managed by the Frisbii Media and was configured in the Frisbii Media website, only the product id is required for checkout. 
 
-In the plenigo backend you can create different types of products:
+In the Frisbii Media Backend you can create different types of products:
 * Subscription
 * Subscription with delivery
 * Time Pass
 * Single Product
 
 
-It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Plenigo’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
+It is not necessary to be logged in to use this snippet, the checkout flow is smart enough to identify when the user is not, and asks him to do so before. Frisbii Media’s checkout flow is done in their own site, and it can easily be started by using the Javascript SDK, there is a quick way of creating a snippet of this call in the SDK.
 
 
 For PHP integration you can use the `\plenigo\builders\CheckoutSnippetBuilder` class, you can create snippets easily by filling out the `\plenigo\models\ProductBase` class with the required information.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $productId     | yes     | string         | The product id from the plenigo backend |
+| $productId     | yes     | string         | The product id from the Frisbii Media Backend |
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
-// 2.Step: The product id from the plenigo backend.
+// 2.Step: The product id from the Frisbii Media Backend.
 $productId = 'EgLUrT56328991046641';
 $product = new \plenigo\models\ProductBase($productId);
 
@@ -59,7 +59,7 @@ $plenigoCheckoutCode = $checkout -> build();
 ```
 ### Use case 
 
-Use case for implementing checkout with plenigo managed products including plenigo login. 
+Use case for implementing checkout with Frisbii Media managed products including Frisbii Media login. 
 
 This is a complete example page where you only need to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q ), the secret (e.g.QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the productID (aitnVIz1503443609941). This example assumes you are running in test mode.
 
@@ -74,10 +74,10 @@ use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
-// 2.Step: The product_id from the plenigo backend.
+// 2.Step: The product_id from the Frisbii Media Backend.
 $productId = "EgLUrT56328991046641";
 
 // 3.Step: This method returns true if the user has already bought the product.
@@ -85,7 +85,7 @@ $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
     $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
 }
@@ -107,7 +107,7 @@ You will replace COMPANY_ID for the corresponding id of your company (e.g. 23NuC
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -121,7 +121,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title> New York City Reimagines How It Works  </title>
-     <!-- import the Plenigo Javascript SDK
+     <!-- import the Frisbii Media Javascript SDK
          Let's use concrete values
          company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
      -->
@@ -161,11 +161,11 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ```
 ## Checkout with external login
 
-If you want to do a checkout without the login functionality of plenigo you have to do the following steps. First of all you have to register the external user into the plenigo system. After you have done this you have to create a Login Token for this user.
+If you want to do a checkout without the login functionality of Frisbii Media you have to do the following steps. First of all you have to register the external user into the Frisbii Media system. After you have done this you have to create a Login Token for this user.
 
 
 ### Use case  
-Use case for implementing checkout with plenigo managed products wihout plenigo login. The only thing you have to do is creating a product in the plenigo backend.
+Use case for implementing checkout with Frisbii Media managed products without Frisbii Media login. The only thing you have to do is creating a product in the Frisbii Media Backend.
 Then you have to replace the company ID (e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj)  and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 
 #### Server logic
@@ -175,16 +175,16 @@ The first thing you have to do is configuring the [PHP SDK](https://plenigo.gith
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
 
-// 2.Step: The product id from the plenigo backend.
+// 2.Step: The product id from the Frisbii Media Backend.
 $productId = 'EgLUrT56328991046641';
 $customerId = '12345'; // The customer id
 
-// 3.Step: Register the user into the plenigo system.
+// 3.Step: Register the user into the Frisbii Media system.
 $userId = UserManagementService::registerUser("user@testmail.com", "language", "theCustomerId", 'firstName', 'name');
 
 // 4.Step: Create the login token for this user. 
@@ -220,7 +220,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). [Checkout With Remote Login](https://plenigo.github.io/sdks/javascript#checkout-with-remote-login---start-a-plenigo-checkout-with-external-user-management)) 
   
@@ -234,7 +234,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title> The title of the aritcle </title>
-    <!-- import the Plenigo Javascript SDK
+    <!-- import the Frisbii Media Javascript SDK
      Let's use concrete values:
      company id = e.g. "23NuCmdPoiRRkQiCqP9Q"  
      -->
@@ -250,28 +250,28 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ```
 
 ### Working with Rules
-plenigo offers ability to add rules to each product. One have to add those rules within plenigo Backend. Rules append logic to each purchase. So one can sell a cheaper product only, if the customer is younger than 20 years - if the customer is older he will buy the normal priced product automatically.  If a 19 years old customer buys this product, he will be switched to the normal priced product at his 20th birthday.
+Frisbii Media offers ability to add rules to each product. One have to add those rules within Frisbii Media Backend. Rules append logic to each purchase. So one can sell a cheaper product only, if the customer is younger than 20 years - if the customer is older he will buy the normal priced product automatically.  If a 19 years old customer buys this product, he will be switched to the normal priced product at his 20th birthday.
 
 #### Rule Logic
-To validate a rule, plenigo normally shows additional screens in the checkout.
+To validate a rule, Frisbii Media normally shows additional screens in the checkout.
 
 ##### Rule via API
-Otherwise you can validate a rule before starting a checkout. You have to decide, which product should be shown to the user. plenigo will switch the products automatically at the customer's birthday. You only have to add the birthday rule via API:
+Otherwise you can validate a rule before starting a checkout. You have to decide, which product should be shown to the user. Frisbii Media will switch the products automatically at the customer's birthday. You only have to add the birthday rule via API:
  
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
 
-// 2.Step: The product id from the plenigo backend. 
+// 2.Step: The product id from the Frisbii Media Backend. 
 $productId = 'EgLUrT56328991046641';
 $customerId = '12345'; // The customer id
 
-// 3.Step: Register the user into the plenigo system.
+// 3.Step: Register the user into the Frisbii Media system.
 $userId = UserManagementService::registerUser("user@testmail.com", "language", "theCustomerId", 'firstName', 'name');
 
 // 4.Step: Create the login token for this user. 
@@ -294,26 +294,26 @@ $plenigoCheckoutCode = $checkout->build($settings, $loginToken);
 $plenigoCheckoutCode = $checkout -> build();
 ```
 ## Working with skeleton products
-Sometimes you have a huge amount of similar products. In this case you can create one product in the plenigo Backend to manage them all. We call it "sekeleton".
+Sometimes you have a huge amount of similar products. In this case you can create one product in the Frisbii Media Backend to manage them all. We call it "skeleton".
 
 You can overwrite the product title, which will be shown during checkout and in invoices, price and the product id.
 
 ### Example of skeletons
-Lets say we have a wordpress blog. We want to sell each post as single products. Users should have access only to post they've bought, all other posts should remain locked. Since we have a huge amount of posts we don't want create coresponding plenigo products in the plenigo backend.
+Lets say we have a wordpress blog. We want to sell each post as single products. Users should have access only to post they've bought, all other posts should remain locked. Since we have a huge amount of posts we don't want create corresponding Frisbii Media products in the Frisbii Media Backend.
 
 ```php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the PHP SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
 
-// 2.Step: The product id from the plenigo backend. (our skeleton)
+// 2.Step: The product id from the Frisbii Media Backend. (our skeleton)
 $productId = 'EgLUrT56328991046641';
 $customerId = '12345'; // The customer id
 
-// 3.Step: Register the user into the plenigo system.
+// 3.Step: Register the user into the Frisbii Media system.
 $userId = UserManagementService::registerUser("user@testmail.com", "language", "theCustomerId", 'firstName', 'name');
 
 // 4.Step: Create the login token for this user. 
@@ -334,7 +334,7 @@ $plenigoCheckoutCode = $checkout -> build(['overrideMode' => true], $loginToken)
 
 ## Checkout without SDK
 
-If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the plenigo backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
+If you are using a programming language that is not supported by one of our SDKs and the pre generated checkout string from the Frisbii Media Backend sufficient enough you must create the checkout string dynamically. [Enrypt Checkout String](https://plenigo.github.io/custom_integration#encrypted-checkout-string)
 
 ## Failed Payments 
 If a payment gets failed form a customer you can create a button/link to the “Failed Payments” listing for the customer you can do it by creating a special product object like this.
@@ -362,7 +362,7 @@ echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Buy now </a>';
 ```
 ### Use case 
 
-Use case for implementing failed payments. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
+Use case for implementing failed payments. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q) and the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj).This example assumes you are running in test mode.
 
 
 #### Server logic
@@ -375,7 +375,7 @@ require_once __DIR__ . '/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q"), true;
 
 // 2.Step: Creating special product object for "Failed Payments".
@@ -429,7 +429,7 @@ If the product correspond to the subscription renewal, there is a flag in the Pr
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $productId     | yes     | string         | The product id from the plenigo backend |
+| $productId     | yes     | string         | The product id from the Frisbii Media Backend |
 
 ```php
 <?php
@@ -437,7 +437,7 @@ require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -458,7 +458,7 @@ echo '<a href="#" onclick="'.$plenigoCheckoutCode.'return false;">Renew your sub
 ```
 ### Use case 
 
-Use case for implementing checkout with plenigo managed products wihout plenigo login. The only thing you have to do is creating a product in the plenigo backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
+Use case for implementing checkout with Frisbii Media managed products without Frisbii Media login. The only thing you have to do is creating a product in the Frisbii Media Backend. Then you have to replace the company id(e.g.23NuCmdPoiRRkQiCqP9Q), the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the product id(e.g. aitnVIz1503443609941).This example assumes you are running in test mode.
 #### Server logic
 The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/configuration_php). 
 
@@ -469,10 +469,10 @@ require_once __DIR__ . '/plenigo/Plenigo.php';
 use plenigo\builders\CheckoutSnippetBuilder;
 use plenigo\models\ProductBase;
 
-// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode (true).
+// 1.Step: Configure the Java SDK: Provide the secret (e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode (true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
-// 2.Step: The_product_ID from the plenigo backend.
+// 2.Step: The_product_ID from the Frisbii Media Backend.
 $productId = 'aitnVIz1503443609941';
 $product = new ProductBase($productId);
 
@@ -502,7 +502,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 ```html
 <html>
 <head>
-    <title> The title of the article  </title>
+    <title> The title of the article </title>
     <!--
         Let's use concrete values
         company ID = e.g. "23NuCmdPoiRRkQiCqP9Q"

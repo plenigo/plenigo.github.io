@@ -6,7 +6,7 @@ permalink: /registration_login_java
 
 # Login 
 
-Whenever you want the user to login in order to do things such as retrieving user information from plenigo, you can use the SDK to generate a login snippet that will start the flow on the plenigo website.
+Whenever you want the user to login in order to do things such as retrieving user information from Frisbii Media, you can use the SDK to generate a login snippet that will start the flow on the Frisbii Media website.
 
 These are the following ways that you can login.
 
@@ -20,7 +20,7 @@ For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuild
 LoginSnippetBuilder snippetBuilder = new  com.plenigo.sdk.builders.LoginSnippetBuilder();
 String snippet = snippetBuilder.build(); //This will generate the login snippet of the following format: plenigo.login();
 ```
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 ### Use case 
 This is a complete example page where you only need to insert your data. This example was done with the Spring MVC.
@@ -35,7 +35,7 @@ public class StandardLogin {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
     }
 
@@ -113,7 +113,7 @@ In order to create the snippet you must fill a com.plenigo.sdk.models.LoginConfi
 
 | parameter 	| description |
 | ------------- | ----------- |
-redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in plenigo before using it |
+redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in Frisbii Media before using it |
 dataAccessScope | The data access scope permission that you need from the user, the com.plenigo.sdk.models.DataAccessScope enum contains all the available values |
 
 ```java
@@ -136,7 +136,7 @@ String csrfToken = TokenService.createCsrfToken();
 String snippet = snippetBuilder.withCSRFToken(csrfToken).build(); //The generated login snippet format: plenigo.login('VAL','VAL','VAL');
 ```
 
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 After the user has allowed the data access scope that you need, the login flow will redirect you to the uri you specified previously.
 
@@ -159,7 +159,7 @@ With this you can get an access token which can be used to access information wi
 You must call the `com.plenigo.sdk.services.TokenService.getAccessToken` method, all you have to provide is the code you got when the user was redirected and provide the redirect url that you specified when the user was going to login, all this will be provided inside the com.plenigo.sdk.models.AccessTokenRequest object:
 
 ```java
-//this url must be registered in plenigo
+//this url must be registered in Frisbii Media
 String code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
 String redirectUrl = "https://example.com/given_path";
 AccessTokenRequest request = new AccessTokenRequest(code, redirectUrl);

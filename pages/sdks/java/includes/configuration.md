@@ -8,7 +8,7 @@ permalink: /configuration_java
 
 In order to configure the Java SDK, you have to execute the following steps. 
 
-> Please keep in mind that you need to include the plenigo JavaScript-SDK in every HTML page you would like to use plenigo functionality. The necessary information can be found in the [JavaScript documentation](/sdks/javascript).
+> Please keep in mind that you need to include the Frisbii Media JavaScript-SDK in every HTML page you would like to use Frisbii Media functionality. The necessary information can be found in the [JavaScript documentation](/sdks/javascript).
 
 
 You must call the `com.plenigo.sdk.PlenigoManager#configure` method.
@@ -22,7 +22,7 @@ In this call we are using two parameters:
 
 This class will contain the configuration and will be used by all the calls that need these variables, such as creating a checkout snippet.
 
-After you have called this method, you are now ready to communicate with plenigo.
+After you have called this method, you are now ready to communicate with Frisbii Media.
 
 
 ```java

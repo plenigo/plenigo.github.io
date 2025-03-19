@@ -1,4 +1,4 @@
-The metered views are counted by the JavaScript SDK and the plenigo system. To block the user on the server side you still have to implement the functionality
+The metered views are counted by the JavaScript SDK and the Frisbii Media system. To block the user on the server side you still have to implement the functionality
 to show the PayWall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
 
 Preferred way to handle the metered check is via cookie (name: _plenigo_view_). But the JavaScript SDK also adds an parameter to the URL (_meteredLimitReached=true_).

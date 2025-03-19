@@ -4,7 +4,7 @@ title: registration_login_php
 permalink: /registration_login_php
 ---
 # Registration
-If you want a user to register at plenigo you can simply use the [Javscript SDK](/sdks/javascript#registration---open-the-plenigo-registration-window), or you can use this PHP-wrapper-method for this function
+If you want a user to register at Frisbii Media you can simply use the [Javascript SDK](/sdks/javascript#registration---open-the-plenigo-registration-window), or you can use this PHP-wrapper-method for this function
 
 These are the ways you can provide a registration for your customers.
 
@@ -33,7 +33,7 @@ echo $config;
 echo '<a href="#" onclick="'.$snippet.'return false;">Register</a>';
 ```
 
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the register flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the register flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 ## Merge existing user
 If you already imported your users to our system, you can merge the registered user with his subscriber ID by passing the following parameter:
@@ -135,7 +135,7 @@ your twig-template:
 
 ## Login
 
-Whenever you want the user to login in order to do things such as retrieving user information from plenigo, you can use the SDK to generate a login snippet that will start the flow on the plenigo website.
+Whenever you want the user to login in order to do things such as retrieving user information from Frisbii Media, you can use the SDK to generate a login snippet that will start the flow on the Frisbii Media website.
 
 These are the following ways that you can login.
 
@@ -156,7 +156,7 @@ $snippet = $builder->build();
 echo '<a href="#" onclick="'.$snippet.'return false;">Login to buy</a>';
 ```
 
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 
 ### Use case
@@ -172,7 +172,7 @@ The first thing you have to do is configuring the [PHP SDK](https://plenigo.gith
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\LoginSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q". true);
 
 
@@ -200,17 +200,17 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Login” button the Checkout flow will start.
 
-**Login flow from plenigo:**
+**Login flow from Frisbii Media:**
 
-1. User clicks on "Login" button. The plenigo login window will appear.  
+1. User clicks on "Login" button. The Frisbii Media login window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password).
 
 3. After a successful login. The user will be redirected to the page.
 
-**Note:** You can force on login the user to enter an username. (Plenigo backend: Settings -> Company Data -> Settings)
+**Note:** You can force on login the user to enter an username. (Frisbii Media Backend: Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.login()` method:  [Plenigo Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+**Note:** You can configure the `plenigo.login()` method:  [Frisbii Media Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 ## Single sign on (OAuth2)
 
@@ -224,7 +224,7 @@ In order to create the snippet you must fill a `\plenigo\models\LoginConfig` obj
 
 |parameter|description|
 |:--------|:----------|
-|redUri|The URI where the user is going to be redirected to when the login flow is over, this url must be registered in plenigo before using it|
+|redUri|The URI where the user is going to be redirected to when the login flow is over, this url must be registered in Frisbii Media before using it|
 |dataAccessScope|The data access scope permission that you need from the user, the \plenigo\models\AccessScope enum contains all the available values|
 
 ```php
@@ -235,7 +235,7 @@ $builder = new  \plenigo\builders\LoginSnippetBuilder($config);
 $snippet = $builder->build();
 
 // now we can use this snippet in a link or button
-echo '<a href="#" onclick="'.$snippet.'return false;">Login to plenigo</a>';
+echo '<a href="#" onclick="'.$snippet.'return false;">Login to Frisbii Media</a>';
 ```
 
 ##### Using CSRF Token
@@ -250,13 +250,13 @@ $code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
 //generating a random CSRF Token
 $csrfToken = TokenService::createCsrfToken();
 
-//this url must be registered in plenigo
+//this url must be registered in Frisbii Media
 $redirectUrl = "https://example.com/given_path";
 //Now we pass the generated CSRF Token as third parameter
 $data = TokenService::getAccessToken($code,$redirectUrl,$csrfToken);
 ```
 
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 After the user has allowed the data access scope that you need, the login flow will redirect you to the uri you specified previously.
 
@@ -281,7 +281,7 @@ You must call the `\plenigo\services\TokenService.getAccessToken` method, all yo
 ```php
 <?php
 $code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
-//this url must be registered in plenigo
+//this url must be registered in Frisbii Media
 $redirectUrl = "https://example.com/given_path";
 //TokenData contains both the refresh and access token, so you can use it
 $data = TokenService::getAccessToken($code,$redirectUrl);
@@ -313,7 +313,7 @@ $userData = UserService::getUserData($data->getAccessToken());
 
 ## Verify user login
 
-If you want to realize the Login into plenigo within your own application, you can verify the user’s login with this method. It works very straight forward. If the user provides the correct login data, the method retuns the complete user data, otherwise it returns false.
+If you want to realize the Login into Frisbii Media within your own application, you can verify the user’s login with this method. It works very straight forward. If the user provides the correct login data, the method retuns the complete user data, otherwise it returns false.
  
 **Note: To prevent misuse, the user’s account will be deactivated after 3 failed login attempts.**
 
@@ -321,7 +321,7 @@ If you want to realize the Login into plenigo within your own application, you c
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
@@ -343,7 +343,7 @@ This method can give you an error message from the service too.
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId, true);
@@ -365,7 +365,7 @@ if ($user === false) {
 ```
 
 ### Send additional data
-You can use this method to enable users of your external apps a login in plenigo. To analyze such logins one can pass additional data to the method:
+You can use this method to enable users of your external apps a login in Frisbii Media. To analyze such logins one can pass additional data to the method:
 
 
 ```php
@@ -387,7 +387,7 @@ function getUserIP()
     return $ip;
 }
 
-// get this information from the settings in your plenigo backend
+// get this information from the settings in your Frisbii Media Backend
 $companyId = "YOUR COMPANY ID"; 
 $secret = "YOUR COMPANY SECRET";
 

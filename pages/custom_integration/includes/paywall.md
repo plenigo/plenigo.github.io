@@ -1,18 +1,18 @@
 ### MV
-Plenigo makes it simple to add a paywall to your system. First of all you have to enable the paywall. Therefore you have to login in the merchant backend with your credentials.
+Frisbii Media makes it simple to add a paywall to your system. First of all you have to enable the paywall. Therefore you have to login in the merchant backend with your credentials.
 Navigate to "Paywall" -> "Settings". Here you must activate the paywall. Furthermore you can disable and enable the paywall with the timing.
 
 #### Workflow metered views 
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-With SDKS
+With SDKs
 
 (A) + (B): [Java SDK](https://api.plenigo.com/#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
 
-Without plenigo SDKS
+Without Frisbii Media SDKs
 
-(A) Check with plenigo API -> [Paywall state](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
+(A) Check with Frisbii Media API -> [Paywall state](https://api.plenigo.com/#!/paywall/isPaywallEnabled)
 
 (B)
 

@@ -5,7 +5,7 @@ permalink: /layout
 ---
 # Getting started
 
-If you want to beginn implementing plenigo into your system first of all you have to configure your environment. After that you can choose the solution that bests suits your needs from the documentation.
+If you want to beginn implementing Frisbii Media into your system first of all you have to configure your environment. After that you can choose the solution that bests suits your needs from the documentation.
  
 [1. Configure your environment](/configure_environment)
 
@@ -21,7 +21,7 @@ If you want to beginn implementing plenigo into your system first of all you hav
     
 [3.3  Checkout]()
 
-[3.3.1 Checkout with plenigo manged Products](/checkout_plenigo_managed_products)
+[3.3.1 Checkout with Frisbii Media managed Products](/checkout_plenigo_managed_products)
 
 [3.3.2 Checkout with external Products](/checkout_external_products)
 

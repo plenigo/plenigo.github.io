@@ -15,25 +15,25 @@ Here you can get information about the product.
 
 ## Check if an user has bought a product
 
-To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
+To query if an user has bought a product, you must be logged in with Frisbii Media, once you have done this you will have a cookie that contains encrypted data of the user, once you have this. The only thing you have to do is pass the product id and the cookie header to a service method, examples are provided below. 
 
 For PHP integration you can use the `\plenigo\services\UserService::hasBoughtProduct` method in order to check if an user has bought a product.
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $productId     | yes     | string         | The product ID from the plenigo backend |
-| $customerId     | yes     | string         | The customer ID you can get from the plenigo backend. |
+| $productId     | yes     | string         | The product ID from the Frisbii Media backend |
+| $customerId     | yes     | string         | The customer ID you can get from the Frisbii Media backend. |
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
-// 2. Step: Get the product id from the plenigo backend.
+// 2. Step: Get the product id from the Frisbii Media Backend.
 $productId = 'aitnVIz1503443609941';
 
 // This returns a boolean that will tell you if the user did buy the product(true) or not (false).
@@ -50,7 +50,7 @@ This is an example for using the hasUserBought function. Therefore we use the ch
 
 **Prerequisites**
 1. Configure the [PHP SDK](https://plenigo.github.io/configuration_php).
-2. Create a product in the plenigo backend. In every checkout you need the ID for the corresponding product.
+2. Create a product in the Frisbii Media Backend. In every checkout you need the ID for the corresponding product.
 
 ```php
 <?php
@@ -60,7 +60,7 @@ use plenigo\models\ProductBase;
 use plenigo\services\UserService;
 use plenigo\builders\CheckoutSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj", "23NuCmdPoiRRkQiCqP9Q", true);
 
 // 2.Step: Set the product.
@@ -74,7 +74,7 @@ $product->setType(ProductBase::TYPE_EBOOK);
 $hasUserBought = UserService::hasUserBought($product->getId());
 if ($hasUserBought === FALSE) {
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo site and buy.   
+    // checkout snippet so that he can do the flow on the Frisbii Media site and buy.   
 $checkout = new CheckoutSnippetBuilder($product);
 $plenigoCheckoutCode = $checkout->build();
 }
@@ -92,7 +92,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   
@@ -126,7 +126,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </body>
 </html>
 ```
-###  Implementation without plenigo SDK
+###  Implementation without Frisbii Media SDK
 
 Another possiblity to check if the user has bought the product - can be a direct call to our REST API:
 [Has user bought request](https://api.plenigo.com/#!/user/hasBoughtProduct)
@@ -134,7 +134,7 @@ Another possiblity to check if the user has bought the product - can be a direct
 ##  Obtain a list of bought products and subscriptions
 
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
-The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK.
+The user, company and secret data will be obtained from the current logged in user, and the configured Frisbii Media SDK.
 
 
 For PHP integration can use the `\plenigo\services\UserService::getProductsBought()` in order to get an obtain list of bought products and subscriptions.
@@ -142,7 +142,7 @@ For PHP integration can use the `\plenigo\services\UserService::getProductsBough
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -173,14 +173,14 @@ array (
 )
 ```
 
-###  Implementation without plenigo SDK
+###  Implementation without Frisbii Media SDK
 
 Another possibility to check if the user has bought products - can be a direct call to our REST API:
 [Has user bought products and subscriptions request](https://api.plenigo.com/#!/user/hasBoughtProduct)
 
 ##  Is the Paywall enabled 
 
-If you want to know if your paywall is enabled you can have a look at the plenigo backend.
+If you want to know if your paywall is enabled you can have a look at the Frisbii Media Backend.
 
 ![Enable paywall](/assets/images/ci/paywall.png)
 
@@ -190,7 +190,7 @@ For PHP integration you can use the `\plenigo\services\UserService::isPaywallEna
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -212,18 +212,18 @@ For PHP integration you can use the `\plenigo\services\ProductService::getProduc
 
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
-| $productId     | yes     | string         |  The product id from the plenigo backend  |
+| $productId     | yes     | string         |  The product id from the Frisbii Media Backend  |
 
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj';  // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get product information
-$productId = "aitnVIz1503443609941"; // Replace this with the product ID from the plenigo backend.
+$productId = "aitnVIz1503443609941"; // Replace this with the product ID from the Frisbii Media Backend.
 // This method will return a ProductData object.
 $productData = \plenigo\services\ProductService::getProductData(productId);
 // The tile of the product.
@@ -244,7 +244,7 @@ id: RgKUHT78563989856641
 price: 18,99 EUR
 ```
 
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get product information - is a direct call to our REST API: [Get product information request](https://api.plenigo.com/#!/product/getProduct)
 
@@ -257,7 +257,7 @@ For PHP integration you can use the `\plenigo\services\ProductService::getProduc
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -268,7 +268,7 @@ $productList = \plenigo\services\ProductService::getProductList();
 // The ProductInfo objects are equal as in the Java example.
 ```
 
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get product list - is a direct call to our REST API:
 
@@ -288,7 +288,7 @@ To get information of the categories you can use the `\plenigo\services\ProductS
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 $secret = 'QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj'; // The secret key of your specific company. 
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -300,6 +300,6 @@ $catList = ProductService::getCategoryList($pageSize);
 // The CategoryInfo objects are equal as in the Java example .
 ```
 
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
 Another possibility to get a category list - is a direct call to our REST API: [Get category list request](https://api.plenigo.com/#!/category/getCategories)

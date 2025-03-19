@@ -1,13 +1,13 @@
 ---
 layout: default
-title: plenigo WordPress plugin
+title: Frisbii Media WordPress plugin
 permalink: /plugins/wordpress
 ---
 
-# plenigo WordPress plugin
+# Frisbii Media WordPress plugin
 
-Our WordPress plugin can integrate and enable plenigo with minimal configuration. The plugin uses the plenigo [PHP-SDK](https://github.com/plenigo/plenigo_php_sdk/wiki).
-This way all the functionality that is available in the plenigo PHP-SDK can also be added manually.
+Our WordPress plugin can integrate and enable Frisbii Media with minimal configuration. The plugin uses the Frisbii Media [PHP-SDK](https://github.com/plenigo/plenigo_php_sdk/wiki).
+This way all the functionality that is available in the Frisbii Media PHP-SDK can also be added manually.
 
 ## Installation
 
@@ -35,7 +35,7 @@ General configuration allows you to set the main attributes required to start us
 
 ### Basic configuration
 
-To configure this screen you need to set the company id and the private key. You can get this information from the [plenigo merchant backend](https://www.plenigo.com) by going to Settings > Company Data,
+To configure this screen you need to set the company id and the private key. You can get this information from the [Frisbii Media merchant backend](https://www.plenigo.com) by going to Settings > Company Data,
 an image below shows how the screen looks like:
 
  ![Company ID and private key](/assets/images/wp/general/company_id_and_secret.png)
@@ -79,9 +79,9 @@ There are various events that get collected with Google Analytics, like:
 
 ![OAuth Login settings](/assets/images/wp/oauth_login/oauth_settings.png)
 
-OAuth enables your WordPress installation to register plenigo users as WordPress users with their profile information after it has been authenticated with the plenigo system.
+OAuth enables your WordPress installation to register Frisbii Media users as WordPress users with their profile information after it has been authenticated with the Frisbii Media system.
 
-plenigo recommends to install a plugin that disables the default WordPress user profile for the default user role if you enable the OAuth login.
+Frisbii Media recommends to install a plugin that disables the default WordPress user profile for the default user role if you enable the OAuth login.
 
 ### Basic configuration
 
@@ -97,10 +97,10 @@ Below there is an image of the **recommended** settings:
 
 To finish up you have to set an **OAuth redirect URL**. This is needed because OAuth2 is a standardized protocol that needs a server to server communication.
 
-The URL you enter here will be called after the authentication process on plenigo is finished. The target page processes the values returned by plenigo and
+The URL you enter here will be called after the authentication process on Frisbii Media is finished. The target page processes the values returned by Frisbii Media and
 is going to redirect the user. Normally this page will never be seen by the user so you should choose one that is rendered very fast. The default WordPress login is a good start.
 
-Once you know which URL to choose you must also configure it in the [plenigo merchant  backend](https://www.plenigo.com), instructions below:
+Once you know which URL to choose you must also configure it in the [Frisbii Media merchant  backend](https://www.plenigo.com), instructions below:
 
 1. You must go to Settings > OAuth2 and add the URL(for maintenance purposes, it is better to just add the base URL, so add http://example.com instead of http://example.com/wordpress/wp-login.php for example, once you do this, all URLs that start with http://example.com will be valid).
 
@@ -194,7 +194,7 @@ Enter the tag name "premium" into the first field.
 
 ![Premium content tag selection](/assets/images/wp/premium_content/premium_content_tag_selection.png)
 
-The first field should contain "premium{premium}" now. In the second field add the product ids of the plenigo merchant backend product overview, below an image of where you can find product ids.
+The first field should contain "premium{premium}" now. In the second field add the product ids of the Frisbii Media merchant backend product overview, below an image of where you can find product ids.
 
 ![Premium Content Product Search](/assets/images/wp/premium_content/premium_content_product_search.png)
 
@@ -206,9 +206,9 @@ Click save and your paywall will be activated for every content the tag is assig
 
 ![Premium content product selected](/assets/images/wp/premium_content/premium_content_product_selected.png)
 
-For categories is the same procedure except that you would have to look for Category IDs in the plenigo merchant backend.
+For categories is the same procedure except that you would have to look for Category IDs in the Frisbii Media merchant backend.
 
-> If the paywall is deactivated in the plenigo merchant backend you must activate it for this to work.
+> If the paywall is deactivated in the Frisbii Media merchant backend you must activate it for this to work.
 
 Below an example of how the curtain looks:
 
@@ -238,17 +238,17 @@ After saving this settings, you can go to a paywalled page and you should see th
 
 ### Basic Configuration
 
-Metered views are controlled over the plenigo merchant backend.
+Metered views are controlled over the Frisbii Media merchant backend.
 
-> If metered is deactivated in the plenigo merchant backend you must also deactivate it in the WordPress backend.
+> If metered is deactivated in the Frisbii Media merchant backend you must also deactivate it in the WordPress backend.
 
-In order to configure your metered settings you must go to the plenigo merchant backend.
+In order to configure your metered settings you must go to the Frisbii Media merchant backend.
 
-![Metered Views plenigo configuration](/assets/images/wp/metered_views/metered_views_plenigo_configuration.png)
+![Metered Views Frisbii Media configuration](/assets/images/wp/metered_views/metered_views_plenigo_configuration.png)
 
 Enable metered settings with the trial period configuration of your choice. Below there is a configuration of enabled metering with 3 free articles per month for each user:
 
-![Metered Views plenigo edit](/assets/images/wp/metered_views/metered_views_plenigo_edit.png)
+![Metered Views Frisbii Media edit](/assets/images/wp/metered_views/metered_views_plenigo_edit.png)
 
 After this you can enable the metered settings in the plenigo plugin(Enabled by default).
 
@@ -282,7 +282,7 @@ Below is the default curtain for reference:
 
 ### Title and message
 
-The title and the message can be configured for members(plenigo registered users) and non-members,
+The title and the message can be configured for members(Frisbii Media registered users) and non-members,
 in the example below we modify the default settings for non-members and show the results:
 
 ![Curtain customization message title edit](/assets/images/wp/curtain_customization/curtain_customization_msg_title_edit.png)
@@ -320,15 +320,15 @@ The button texts work in a similar way, they have default values, and you can re
 
 This field has 2 options:
 
-* **Show register form to anonymous users when buying products**: When doing this **your checkout will start with a registration process**, this is convenient for people that know that most of their buyers will have to register to plenigo.
+* **Show register form to anonymous users when buying products**: When doing this **your checkout will start with a registration process**, this is convenient for people that know that most of their buyers will have to register to Frisbii Media.
 
-* **Do not show the registration form when buying products**: When doing this **your checkout will start with the login process**, this is convenient for people that have migrated users to the plenigo platform or that make users register to the platform by other means before accessing the paid content.
+* **Do not show the registration form when buying products**: When doing this **your checkout will start with the login process**, this is convenient for people that have migrated users to the Frisbii Media platform or that make users register to the platform by other means before accessing the paid content.
 
 ## Advanced
 
 ![Advanced settings](/assets/images/wp/advanced/advanced_settings.png)
 
-The advanced section is used in order to debug the WordPress plugin in case of unexpected errors, it is an attempt to find and fix mistakes for our customers with support without the need to have access to the database or WordPress server. We do not go much into detail with this since it is made to be used by plenigo support.
+The advanced section is used in order to debug the WordPress plugin in case of unexpected errors, it is an attempt to find and fix mistakes for our customers with support without the need to have access to the database or WordPress server. We do not go much into detail with this since it is made to be used by Frisbii Media support.
 
 > Do not use these settings without communicating with us first since if misused it can disable your website.
 
@@ -336,11 +336,11 @@ The advanced section is used in order to debug the WordPress plugin in case of u
 
 ![Error log section](/assets/images/wp/error_logs/error_logs_section.png)
 
-Here you can see the communication errors with the plenigo API and send them for better understanding of the latest problems that you might report.
+Here you can see the communication errors with the Frisbii Media API and send them for better understanding of the latest problems that you might report.
 
 ### Send Mail Log
 
-You can send a mail of the errors to plenigo with the Send Mail Log button,
+You can send a mail of the errors to Frisbii Media with the Send Mail Log button,
 only need to click it and it will be sent automatically if your WordPress instance has an email service enabled.
 
 ## Post/Page editing features
@@ -362,7 +362,7 @@ In order to use the checkout button functionality you must select the area where
 
 ![Checkout button](/assets/images/wp/checkout_button/checkout_button_dialog.png)
 
-The only required field is the **Product ID**, you can find the correct product ID by going to the [plenigo merchant backend](https://www.plenigo.com) in the Products > Products sub-menu. After getting the correct product ID, fill it in the dialog and press OK.
+The only required field is the **Product ID**, you can find the correct product ID by going to the [Frisbii Media merchant backend](https://www.plenigo.com) in the Products > Products sub-menu. After getting the correct product ID, fill it in the dialog and press OK.
 
 ![Checkout button with only product id](/assets/images/wp/checkout_button/checkout_button_dialog_with_prod_id.png)
 
@@ -418,7 +418,7 @@ To show the flow of the quantity we will be showing a sample checkout and show t
 
 ![Checkout process with multiple quantity](/assets/images/wp/checkout_button/checkout_display_checkout_process_quantity.png)
 
-The product title is in the format "Quantity x Product Title", the product title by default will be the one you configured in the plenigo merchant backend.
+The product title is in the format "Quantity x Product Title", the product title by default will be the one you configured in the Frisbii Media merchant backend.
 
 As you can see, the total amount of the checkout is reflected in the "Amount to pay" field with the custom price we set.
 
@@ -447,9 +447,9 @@ Affiliate systems are based on the principle of commission. The mediation takes 
 
 If someone clicks on such an affiliate link, he is redirected to the page of the corresponding merchant. Parameters are transferred here that enable the concrete allocation of the generated turnover by a publisher.
 
-This field is used to pass these parameters to the plenigo system and link them to an order to be analyzed later.
+This field is used to pass these parameters to the Frisbii Media system and link them to an order to be analyzed later.
 
-You have to purchase the plenigo marketing suite to enable this functionality in plenigo.
+You have to purchase the Frisbii Media marketing suite to enable this functionality in Frisbii Media.
 
 #### Hide Button when bought
 
@@ -467,7 +467,7 @@ If you want to override the product title with the post title you can set this o
 
 ![Snippets](/assets/images/wp/snippets/snippets_button.png)
 
-The snippets button enables you to display information from plenigo to the user such as personal data, orders, subscriptions, address information, password change, among others, we will give a brief description of what each snippet does.
+The snippets button enables you to display information from Frisbii Media to the user such as personal data, orders, subscriptions, address information, password change, among others, we will give a brief description of what each snippet does.
 
 #### Redirection
 
@@ -715,7 +715,7 @@ Example of pl_user_profile: ```[pl_user_profile]```
 
 #### pl_mobile_admin
 
-This is used for third party access of your products, this way the user can check access to your products through plenigo without having to use your companies credentials.
+This is used for third party access of your products, this way the user can check access to your products through Frisbii Media without having to use your companies credentials.
 
 Example of pl_mobile_admin: [pl_mobile_admin]
 

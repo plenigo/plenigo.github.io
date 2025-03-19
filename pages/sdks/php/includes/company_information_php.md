@@ -28,8 +28,8 @@ For PHP you can use `plenigo\services\CompanyService::getUserList()` method for 
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the Frisbii Media Backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the Frisbii Media Backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Get paginated list of customers
@@ -66,12 +66,12 @@ For PHP integration you can use `plenigo\services\AppManagement#requestAppToken`
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the Frisbii Media Backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the Frisbii Media Backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2,Step : Get user by ids.
-$ids = "XXXC9XXVZX6J, QTYYW6EBDXXV, XXXVBX3SN2EI, RRZ1XX3WRPV5"; // The customer ids from the plenigo backend.
+$ids = "XXXC9XXVZX6J, QTYYW6EBDXXV, XXXVBX3SN2EI, RRZ1XX3WRPV5"; // The customer ids from the Frisbii Media Backend.
 try {
      $userList = CompanyService::getUserList($ids);
 } catch (PlenigoException $e) {
@@ -107,8 +107,8 @@ For PHP integration you can use `plenigo\services\CompanyService::getFailedPayme
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the Frisbii Media Backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the Frisbii Media Backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 $start = '2016-01-01'; // The start date
@@ -153,8 +153,8 @@ For PHP integration you can use `plenigo\services\CompanyService::getOrders()` m
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the Frisbii Media Backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the Frisbii Media Backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 $start = '2016-01-01'; // The start date
@@ -198,8 +198,8 @@ For PHP integration you can use `plenigo\services\CompanyService::getSubscriptio
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 // 1.Step: Configure the PHP SDK: The secret (e.g. secret:QrrDfmzRQcQie3Pp3twzNP8LHsV78TngrY5TTvj) and the company ID (e.g.:23NuCmdPoiRRkQiCqP9Q).
-$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the plenigo backend.
-$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the plenigo backend.
+$secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company from the Frisbii Media Backend.
+$companyId = '23NuCmdPoiRRkQiCqP9Q';  // The company id of your specific company from the Frisbii Media Backend.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 $start = '2016-01-01'; // The start date

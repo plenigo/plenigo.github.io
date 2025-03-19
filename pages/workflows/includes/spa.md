@@ -1,15 +1,15 @@
 ### External
 
-If the single page application/video player handles user access rights via one time URLs or something similar and the plenigo checkout will be 
+If the single page application/video player handles user access rights via one time URLs or something similar and the Frisbii Media checkout will be 
 integrated before the player is rendered, you can follow the integration examples for the [Website checkout](/workflows#Website_checkout)
 
 ### Embedded
 
-The plenigo [JavaScript SDK](/sdks/javascript) offers some functionality that was especially designed for single page application/video player. This way 
+The Frisbii Media [JavaScript SDK](/sdks/javascript) offers some functionality that was especially designed for single page application/video player. This way 
 single page applications/video players can start the checkout, allow user login and do product verification inside the app / player.
 
 For the following steps we assume the app / player is running in it's own iFrame or is encapsulated anyhow. The app / player needs a special configuration 
-of the plenigo [JavaScript SDK](/sdks/javascript). If the JavaScript SDK is only loaded once for the whole page including the app / player, the page must 
+of the Frisbii Media [JavaScript SDK](/sdks/javascript). If the JavaScript SDK is only loaded once for the whole page including the app / player, the page must 
 handle the JavaScript events identically to the app / player.
 
 ```html
@@ -21,19 +21,19 @@ handle the JavaScript events identically to the app / player.
        data-oauth2-access-code="oAuth2Function" data-payment-check="checkProductAccess" 
        data-login-status="loginStatus" data-disable-metered="true"></script>
      
-// Normally the plenigo JavaScript SDK initializes itself but if it is loaded manually you do this manually.
+// Normally the Frisbii Media JavaScript SDK initializes itself but if it is loaded manually you do this manually.
 <script type="application/javascript">
     plenigo.start();
     
     // the OAuth2 access code is passed to this function
     oAuth2Function = function(oAuth2AccessCode) {
-        // do server call to your server for a server to server communication with plenigo to convert 
+        // do server call to your server for a server to server communication with Frisbii Media to convert 
         // the OAuth2 access code to an OAuth2 token
     };
     
     // check if user has bought the product to access
     checkProductAccess = function() {
-        // do server call to your server for a server to server communication with plenigo to check
+        // do server call to your server for a server to server communication with Frisbii Media to check
         // if the user has bought the product he tries to access
     };
     

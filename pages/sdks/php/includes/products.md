@@ -1,6 +1,6 @@
 ### Check if an user has bought a product
 
-To query if an user has bought a product, you must be logged in with plenigo, once you have done this you will have a cookie that contains encrypted data of the user, once you have this
+To query if an user has bought a product, you must be logged in with Frisbii Media, once you have done this you will have a cookie that contains encrypted data of the user, once you have this
 
 The only thing you have to do is pass the product id to a service method, examples are provided below.
 
@@ -37,7 +37,7 @@ This will return true always if the Paywall isn't enabled, see below.
 
 #### Check product access without login
 
-If you want to check the user access right without login, you can simply add the plenigo customerID as 2nd parameter:
+If you want to check the user access right without login, you can simply add the Frisbii Media customerID as 2nd parameter:
 ```php
 <?php
     /**
@@ -128,7 +128,7 @@ The userProducts array contains all products that the user owns and that were in
 
 If you wish to show a listing of bought products (limited to your company's products and subscriptions) to the user or you want to cache the products into your system this method will come handy.
 
-The user, company and secret data will be obtained from the current logged in user, and the configured Plenigo SDK
+The user, company and secret data will be obtained from the current logged in user, and the configured Frisbii Media SDK
 
 You can use the `\plenigo\services\UserService::getProductsBought()` method for this purpose.
 
@@ -180,7 +180,7 @@ The error codes include 400 (if company/secret has a problem) and 401 (if paramt
 
 ### Is the PayWall enabled
 
-This method allows to check if the entire PayWall has been disabled from the Plenigo Administration Page. It allows to Quickly bring down all payments for a given Company and is useful for testing and development purposes.
+This method allows to check if the entire PayWall has been disabled from the Frisbii Media Administration Page. It allows to Quickly bring down all payments for a given Company and is useful for testing and development purposes.
 
 You can use the `\plenigo\services\UserService::isPaywallEnabled()` method for this purpose.
 
@@ -193,7 +193,7 @@ This returns a boolean that will tell you if the paywall is enabled (true) or no
 
 ### Get product information
 
-In order to get product information you need the product ID, you can get it in the product management area of the plenigo website, let's say for example that your product id is QFURxFv0098893021041, below there are examples of how to get the information of this product.
+In order to get product information you need the product ID, you can get it in the product management area of the Frisbii Media website, let's say for example that your product id is QFURxFv0098893021041, below there are examples of how to get the information of this product.
 
 To get the information related to this product you can use the `\plenigo\services\ProductService::getProductData` method, which requires the product id and returns a \plenigo\models\ProductData object.
 

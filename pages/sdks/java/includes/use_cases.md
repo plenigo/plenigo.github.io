@@ -27,12 +27,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
        //If the user has bought the product or has no more free views, metering should be disabled
        boolean disableMeter = hasBought || !hasFreeViews;
        if (!isNewsPaid) {
-            //In this example, the product costs 0.99 euros and is a non managed plenigo product
+            //In this example, the product costs 0.99 euros and is a non managed Frisbii Media product
             //The description usually is filled depending on the product, but for simplicity,
             //we will hardcode it
             Product prodToChkOut = new Product(0.99, "Sample news title description", id, "EUR", 0.55);
             //Since he has not bought the product, we need to build the checkout snippet so that he can
-            //do the flow on the plenigo site and buy
+            //do the flow on the Frisbii Media site and buy
             String snippet = new CheckoutSnippetBuilder(prodToChkOut).build();
             //Set all the attributes that you are going to need, the snippet is a url that opens a dialog
             //initiating the checkout process
@@ -64,7 +64,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 <html>
 <head>
     <title>${id}</title>
-<!-- import the Plenigo Javascript SDK -->
+<!-- import the Frisbii Media Javascript SDK -->
  <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/${companyId}/plenigo_sdk.min.js" data-disable-metered="${disableMeter}"></script>
 </head>
 <body>

@@ -8,13 +8,13 @@ permalink: /registration_and_login_with_SDKs
 
 ## Registration
 
-Plenigo offers you a simple registration functionality. 
+Frisbii Media offers you a simple registration functionality. 
 
 
 ### JavaScript
 
 
-For JavaScript integration you  have to use the `plenigo.registration()` method in order to do a registration with plenigo.
+For JavaScript integration you  have to use the `plenigo.registration()` method in order to do a registration with Frisbii Media.
 
 
 In the Page you have to replace the **COMPANY_ID** in the Javascript declaration, e.g. if you have the following link: 
@@ -32,23 +32,23 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the "Registration" Button the Registration flow will start:
 
-**Registration flow from plenigo:**
+**Registration flow from Frisbii Media:**
 
-1. User clicks on "Registration" button. The plenigo registration window will appear.  
+1. User clicks on "Registration" button. The Frisbii Media registration window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password) and has to accept the legal and privacy notes.
 
 3. After a successful registration the user gets an e-mail.
 
-**Note:** You can activate or deactivate the e-mail address verification in the plenigo backend. (Settings -> Company Data -> Settings)
+**Note:** You can activate or deactivate the e-mail address verification in the Frisbii Media backend. (Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.registration()` method:  [Plenigo Registration](https://plenigo.github.io/sdks/javascript#registration---open-the-plenigo-registration-window)
+**Note:** You can configure the `plenigo.registration()` method:  [Frisbii Media Registration](https://plenigo.github.io/sdks/javascript#registration---open-the-plenigo-registration-window)
 
 ```html
 <html>
 <head>
     <title> The title  </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->          <script type="application/javascript"
@@ -63,7 +63,7 @@ By clicking on the "Registration" Button the Registration flow will start:
 
 ## Login
 
-Plenigo offers you different possibilities for login.
+Frisbii Media offers you different possibilities for login.
 
 * [Standard Login](https://plenigo.github.io/login#standard-login)
 * [Single sign on](https://plenigo.github.io/sdks/login#sso)
@@ -77,7 +77,7 @@ This is the simplest way to login, below there are examples of how to generate t
 For Java integration you can use the `com.plenigo.sdk.builders.LoginSnippetBuilder` method for this purpose:
 
 ```java
-// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 String secret = "Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj"; // // The secret key of your specific company. 
 String companyId = "23NuCmdPoiRRkQiCqP9Q"; // // The company id of your specific company.
 PlenigoManager.get().configure(secret, companyId );
@@ -99,7 +99,7 @@ public class StandardLogin {
 
     @PostConstruct
     public void config() {
-        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+        // 1.Step: Configure the Java SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
         PlenigoManager.get().configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
     }
 
@@ -147,23 +147,23 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Login” button the Checkout flow will start.
 
-**Login flow from plenigo:**
+**Login flow from Frisbii Media:**
 
-1. User clicks on "Login" button. The plenigo login window will appear.  
+1. User clicks on "Login" button. The Frisbii Media login window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password).
 
 3. After a successful login. The user will be redirected to the page.
 
-**Note:** You can force on login the user to enter an username. (Plenigo backend: Settings -> Company Data -> Settings)
+**Note:** You can force on login the user to enter an username. (Frisbii Media backend: Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.login()` method:  [Plenigo Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+**Note:** You can configure the `plenigo.login()` method:  [Frisbii Media Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 ```html
 <html>
 <head>
     <title> The title </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
         -->          <script type="application/javascript"
@@ -187,7 +187,7 @@ For PHP integration you can use the `\plenigo\builders\LoginSnippetBuilder` meth
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 $secret = 'Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj'; // The secret key of your specific company.
 $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company. 
 \plenigo\PlenigoManager::configure($secret, $companyId);
@@ -201,7 +201,7 @@ $snippet = $builder->build();
 
 #### Use case 
 
-Use case for implementing plenigo standard login.
+Use case for implementing Frisbii Media standard login.
 
 #### Server logic 
 The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/java#configuration). 
@@ -211,7 +211,7 @@ The first thing you have to do is configuring the [PHP SDK](https://plenigo.gith
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 use plenigo\builders\LoginSnippetBuilder;
 
-// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend , in Test Mode(true).
+// 1.Step: Configure the PHP SDK: Provide the secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend , in Test Mode(true).
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj", "23NuCmdPoiRRkQiCqP9Q");
 
 
@@ -239,24 +239,24 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Login” button the Checkout flow will start.
 
-**Login flow from plenigo:**
+**Login flow from Frisbii Media:**
 
-1. User clicks on "Login" button. The plenigo login window will appear.  
+1. User clicks on "Login" button. The Frisbii Media login window will appear.  
   
 2. The user need to fill in his personal data (e-mail-address and password).
 
 3. After a successful login. The user will be redirected to the page.
 
-**Note:** You can force on login the user to enter an username. (Plenigo backend: Settings -> Company Data -> Settings)
+**Note:** You can force on login the user to enter an username. (Frisbii Media backend: Settings -> Company Data -> Settings)
 
-**Note:** You can configure the `plenigo.login()` method:  [Plenigo Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
+**Note:** You can configure the `plenigo.login()` method:  [Frisbii Media Login](https://plenigo.github.io/sdks/javascript#login---open-the-plenigo-login-window)
 
 
 ```html
 <html>
 <head>
     <title> The title of the article  </title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "12NuCmdZUTRRkQiCqP2Q"
         -->            <script type="application/javascript"
@@ -273,7 +273,7 @@ By clicking on the “Login” button the Checkout flow will start.
 </html>
 ```
 
-This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+This will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, php, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 ### Single sign on (OAuth2)
 
@@ -287,7 +287,7 @@ In order to create the snippet you must fill a com.plenigo.sdk.models.LoginConfi
 
 | parameter 	| description |
 | ------------- | ----------- |
-redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in plenigo before using it |
+redUri 	        | The URI where the user is going to be redirected to when the login flow is over, this url must be registered in Frisbii Media before using it |
 dataAccessScope | The data access scope permission that you need from the user, the com.plenigo.sdk.models.DataAccessScope enum contains all the available values |
 
 ```java
@@ -310,7 +310,7 @@ String csrfToken = TokenService.createCsrfToken();
 String snippet = snippetBuilder.withCSRFToken(csrfToken).build(); //The generated login snippet format: plenigo.login('VAL','VAL','VAL');
 ```
 
-Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the plenigo Javascript SDK included as a script and initialized correctly.
+Both of these examples will create a snippet that can be used in a javascript event(such as onclick) and it will start the login flow when used in a webpage (html, jsp, gsp, etc) that has the Frisbii Media Javascript SDK included as a script and initialized correctly.
 
 After the user has allowed the data access scope that you need, the login flow will redirect you to the uri you specified previously.
 
@@ -333,7 +333,7 @@ With this you can get an access token which can be used to access information wi
 You must call the `com.plenigo.sdk.services.TokenService.getAccessToken` method, all you have to provide is the code you got when the user was redirected and provide the redirect url that you specified when the user was going to login, all this will be provided inside the com.plenigo.sdk.models.AccessTokenRequest object:
 
 ```java
-//this url must be registered in plenigo
+//this url must be registered in Frisbii Media
 String code = "CODE_RECEIVED_FROM_THE_REDIRECTION";
 String redirectUrl = "https://example.com/given_path";
 AccessTokenRequest request = new AccessTokenRequest(code, redirectUrl);

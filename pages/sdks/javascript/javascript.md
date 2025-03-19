@@ -1,12 +1,12 @@
 ---
 layout: default
-title: plenigo Client side JavaScript-SDK
+title: Frisbii Media Client side JavaScript-SDK
 permalink: /sdks/javascript
 ---
 
 # JavaScript SDK client side integration
 
-The plenigo JavaScript-SDK offers the possibility to implement the plenigo functionality without a need for a server side request.
+The Frisbii Media JavaScript-SDK offers the possibility to implement the Frisbii Media functionality without a need for a server side request.
  
 ## General functionality
 
@@ -18,7 +18,7 @@ The plenigo JavaScript-SDK offers the possibility to implement the plenigo funct
 
 ## PayWall functionality
 
-If you plan to use the PayWall functionality of plenigo you have to choose between three different use cases:
+If you plan to use the PayWall functionality of Frisbii Media you have to choose between three different use cases:
 
 ### Hide content afterwards
 

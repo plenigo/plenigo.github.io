@@ -1,9 +1,9 @@
 
 footer {
   background-position: center 0;  
-    position: relative;
-    z-index: 1;
-    background: #fff;
+  position: relative;
+  z-index: 1;
+  background: #fff;
   padding: 0;
   
   div.footer {    
@@ -16,12 +16,15 @@ footer {
 }
 
 footer .footer {
-  
   ul, li {
     list-style: none;
     padding-left: 0;
     padding-right: 0;
+    a {
+      color: #001E58 !important;
+    }
   }
+
   
   .col-md-4 li:first-child {
     height: 35px;
@@ -29,11 +32,9 @@ footer .footer {
   
   #enp-footer-logo {
     width: 100%;
-    background: transparent url('/assets/images/plenigo Logo RZ.png') no-repeat top right;
+    background: transparent url('/assets/images/FRISBII_MEDIA_BLUE.png') no-repeat top right;
     min-height: 200px;
     display: block;
     background-size: contain;
-  
   }
-
 }

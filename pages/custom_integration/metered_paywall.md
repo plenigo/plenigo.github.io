@@ -5,25 +5,25 @@ permalink: /metered_paywall
 ---
 
 # Metered views 
-Plenigo makes it simple to add a paywall to your system. First of all you have to enable the paywall. Therefore you have to login in the merchant backend with your credentials.
+Frisbii Media makes it simple to add a paywall to your system. First of all you have to enable the paywall. Therefore you have to login in the merchant backend with your credentials.
 Navigate to "Paywall" -> "Settings". Here you must activate the paywall. Furthermore you can disable and enable the paywall with the timing.
 
 ## Workflow metered views 
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-**With SDKS**
+**With SDKs**
 
 (A) + (B): [Java SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
-**Without plenigo SDKS**
+**Without Frisbii Media SDKs**
 
-(A) Check with plenigo API -> [Paywall state](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
+(A) Check with Frisbii Media API -> [Paywall state](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
 (B)
 
 
-### Implementation with SDKS
+### Implementation with SDKs
 
 ##### Java
 
@@ -52,9 +52,9 @@ else {
         showPaywall();
      }
 ```
-### Implementation without plengio SDKS
+### Implementation without Frisbii Media SDKs
 
-If you are using a programming language that is not supported by one of our SDKS you have to do the following steps.
+If you are using a programming language that is not supported by one of our SDKs you have to do the following steps.
 
 1. Cookie decryption
 2. Cookie content

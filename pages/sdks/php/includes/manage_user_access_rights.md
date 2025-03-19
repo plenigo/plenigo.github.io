@@ -36,11 +36,11 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company id of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Give user access.
-$customerId = 'WMAQRX4EQ7R5'; // The customer ID from the plenigo backend.
+$customerId = 'WMAQRX4EQ7R5'; // The customer ID from the Frisbii Media Backend.
 $useExternalCustomerId = 'false'; // The external customer ID.
 $startTime = '2019-11-06'; // The start date.
 $endTime = '2099-11-06'; // The end time.
-$productIds = 'EgLUrT56328991046641'; // The product ids from the plenigo backend.
+$productIds = 'EgLUrT56328991046641'; // The product ids from the Frisbii Media Backend.
 AccessService::grantUserAccess($customerId, $useExternalCustomerId, $startTime, $endTime, array($productIds));
 ```
 
@@ -75,9 +75,9 @@ $companyId = '23NuCmdPoiRRkQiCqP9Q'; // The company ID of your specific company.
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2.Step: Remove user access.
-$customerId = 'WMAQRX4EQ7R5'; // The customer ID from the plenigo backend.
+$customerId = 'WMAQRX4EQ7R5'; // The customer ID from the Frisbii Media Backend.
 $useExternalCustomerId = 'false'; // The external customer ID.
-$productIds = 'EgLUrT56328991046641'; // The product IDs from the plenigo backend.
+$productIds = 'EgLUrT56328991046641'; // The product IDs from the Frisbii Media Backend.
 AccessService::removeUserAccess($customerId, $useExternalCustomerId, array($productIds));
 ```
 

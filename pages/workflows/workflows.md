@@ -1,16 +1,16 @@
 ---
 layout: default
-title: plenigo example workflows
+title: Frisbii Media example workflows
 permalink: /workflows
 ---
 
-# plenigo example workflows
+# Frisbii Media example workflows
 
-Following a few example workflows how to integrate plenigo
+Following a few example workflows how to integrate Frisbii Media
 
 ## Website checkout
 
-1. Checkout process with plenigo managed users
+1. Checkout process with Frisbii Media managed users
    ![checkout_internal_users](/assets/images/ci/plenigo-managed-checkout.png)
 
 2. Checkout process with external managed users

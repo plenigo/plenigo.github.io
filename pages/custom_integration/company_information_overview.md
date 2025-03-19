@@ -6,7 +6,7 @@ permalink: /company_information_overview
 
 # Company information 
 
-There are 2 different possibilities to implement the checkout with plenigo managed products.
+There are 2 different possibilities to implement the checkout with Frisbii Media managed products.
 
 1. [Implement the company information functionality with the Java SDK](/company_information_java)
 

@@ -6,18 +6,18 @@ permalink: /paywall
 # Paywall
 Paywalls are systems designed to monetize online and other digital information by preventing visitors from accessing web sites and similar content providers without having a paid subscription.  Online news and sports web sites are the most frequent users of paywalls, with some sites implementing hard paywalls while others deploy soft paywalls. A hard paywall's content restrictions are much more stringent than a soft paywall, allowing either no access or minimal access to free content.  A soft paywall(metered views), on the other hand, provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 ## Client Side paywall 
-**The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).** 
+**The first thing you have to do is enabling the paywall in the Frisbii Media backend (Paywall->Settings).** 
 
-After you have done this you can use the PayWall functionality of plenigo. You have to choose between three different use cases:
+After you have done this you can use the PayWall functionality of Frisbii Media. You have to choose between three different use cases:
 * [Hide content afterwards](https://plenigo.github.io/sdks/javascript#hide-content-afterwards)
 * [Hide content by default](https://plenigo.github.io/sdks/javascript#hide-content-by-default)
 * [Load content afterwards](https://plenigo.github.io/sdks/javascript#hide-content-afterwards)
 
 
 ### Hide content afterwards
-The content will be visible on the page from the beginning and the plenigo JavaScript-SDK is going to hide it if the user is not allowed to see the content. If JavaScript is disabled or the user blocks the plenigo JavaScript-SDK it can access the whole page without any restrictions.
+The content will be visible on the page from the beginning and the Frisbii Media JavaScript-SDK is going to hide it if the user is not allowed to see the content. If JavaScript is disabled or the user blocks the Frisbii Media JavaScript-SDK it can access the whole page without any restrictions.
 
-The plenigo JavaScript checks if the user has all  necessary rights to see the content and if not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
+The Frisbii Media JavaScript checks if the user has all  necessary rights to see the content and if not the content is replaced with an up selling window or anything else. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
 
 ```javascript
 <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/COMPANY_ID/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="upselling-teaser" data-paywall-target-element-id="page-content" data-product-id="product"  data-disable-metered="true"></script>
@@ -28,7 +28,7 @@ There are additional configuration options. This options are added as attributes
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
 |data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
-|data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
+|data-hide-metered-counter|No|true/false|If set to true the Frisbii Media metered counter widget is not shown to the user.|
 |data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
 |data-client-paywall|Yes|true|Must be set to enabled client side PayWall.|
 |data-test-mode|No|true/false|Flag indicating if test mode should be used.|
@@ -74,7 +74,7 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   
@@ -98,7 +98,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
         <script type="application/javascript" src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js" data-client-paywall="true" data-paywall-type="hide" data-paywall-source-element-id="sourceId" data-paywall-target-element-id="targetId" data-product-id="aitnVIz0982443600981" data-test-mode="true" >
 	</script>
 <script type="application/javascript">
-//The Live-String of the product from the plenigo backend.
+//The Live-String of the product from the Frisbii Media backend.
 var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
 </script>
     </head>
@@ -127,9 +127,9 @@ var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a
 
 ### Hide content by default
 
-The content will be placed in an HTML element that is hidden. After the user was verified to be allowed to see the content the content will be made visible by the plenigo JavaScript-SDK. The user is still able to access the content in the HTML sources.
+The content will be placed in an HTML element that is hidden. After the user was verified to be allowed to see the content the content will be made visible by the Frisbii Media JavaScript-SDK. The user is still able to access the content in the HTML sources.
 
-The plenigo JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS style that hides the content is removed and the up selling window is hidden. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
+The Frisbii Media JavaScript checks if the user has all rights necessary to see the content and if the content is accessible the CSS style that hides the content is removed and the up selling window is hidden. To integrate the JavaScript SDK add the following line to your template/html. The COMPANY_ID variable must be replaced with the actual company id.
 
 
 ```javascript
@@ -140,7 +140,7 @@ There are additional configuration options. These options are added as attribute
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
 |data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
-|data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
+|data-hide-metered-counter|No|true/false|If set to true the Frisbii Media metered counter widget is not shown to the user.|
 |data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
 |data-client-paywall|Yes|true|Must be set to enabled client side PayWall.|
 |data-test-mode|No|true/false|Flag indicating if test mode should be used.|
@@ -185,7 +185,7 @@ You will replace the **COMPANY_ID (e.g. 23NuCmdPoiRRkQiCqP9Q)** for the correspo
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   
@@ -213,7 +213,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
       data-product-id="aitnVIz0982443600981" data-test-mode="false">
       </script>
       <script type="application/javascript">
-         //The Live-String from the product from the plenigo backend.
+         //The Live-String from the product from the Frisbii Media backend.
          var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
       </script>
    </head>
@@ -254,9 +254,9 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ### Load content afterwards
 
 The content to be protected isn't on the site at all. After the user was verified to be allowed to see the content the content will be loaded by another URL.
-If the user disables JavaScript or blocks the plenigo JavaScript-SDK he will not be able to see the content. It is also not visible in the HTML sources.
+If the user disables JavaScript or blocks the Frisbii Media JavaScript-SDK he will not be able to see the content. It is also not visible in the HTML sources.
    
-The page is only rendered with a teaser and an up selling window or anything else defined. The plenigo JavaScript checks if the user has all rights 
+The page is only rendered with a teaser and an up selling window or anything else defined. The Frisbii Media JavaScript checks if the user has all rights 
 necessary to see the content and if the content is accessible it loads the complete article snippet from another URL not visible to the user. 
 To integrate the JavaScript SDK add the following line to your template/html. The `COMPANY_ID` variable must be replaced with the actual company id.
 
@@ -269,7 +269,7 @@ There are additional configuration options. This options are added as attributes
 | Attribute | Mandatory | Values | Description |
 |:----------|:----------|:-------|:------------|
 |data-disable-metered|No|true/false|Deactivates the metered functionality and all the logic coming with it.|
-|data-hide-metered-counter|No|true/false|If set to true the plengio metered counter widget is not shown to the user.|
+|data-hide-metered-counter|No|true/false|If set to true the Frisbii Media metered counter widget is not shown to the user.|
 |data-lang|No|de/en|Set the language used for metered counter, etc. If not set the browser language is taken.|
 |data-client-paywall|Yes|true|Must be set to enabled client side PayWall.|
 |data-test-mode|No|true/false|Flag indicating if test mode should be used.|
@@ -324,7 +324,7 @@ In this example we do not replace the **data-paywall-external-content-id** and t
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before). 
   
@@ -353,7 +353,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
          data-client-paywall="true" data-paywall-type="url" data-paywall-base-url="YOUR_DOMAIN_URL"
          data-paywall-target-element-id="targetId" data-product-id="EgLUrT56328991046641" data-paywall-external-content-id="YOUR_IDENTIFIER_FOR_THIS_CONTENT"></script>
       <script type="application/javascript">
-         //The Live-String from the product from the plenigo backend.
+         //The Live-String from the product from the Frisbii Media backend.
          var checkoutString = 'cd6749ba9c67b0bbe3e29a672ba150713b3e7274a1cbfe64b89f22c41a8561e775fcddeaae0f3c97.6c87b959ec78b9fd9ce949967e04066439dfd6b480d40434264e2e419803debd';
       </script>
    </head>
@@ -387,7 +387,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 
 ## Server Side Paywall
 
-The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).
+The first thing you have to do is enabling the paywall in the Frisbii Media backend (Paywall->Settings).
 After you have done this you can continue with the following step.
 
 1. Check if the user has bought product
@@ -401,7 +401,7 @@ After you have done this you can continue with the following step.
 For Java integration you can use the `com.plenigo.sdk.services.UserService#hasUserBought` method for this purpose.
 ```java
 String cookieHeader = request.getHeader("Cookie");
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 String productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 boolean hasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -422,7 +422,7 @@ This is a complete example page where you only need to insert your data.
 #### Server logic
 
 
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). After that you can implement the plenigo paywall.
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/java#configuration). After that you can implement the Frisbii Media paywall.
 
 ```java
 @Controller
@@ -437,7 +437,7 @@ public class Paywall {
     public void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // The product id  from the plenigo backend.
+        // The product id  from the Frisbii Media backend.
         String productId = "aitnVIz1503443609941";
         // This method returns true if the user has already bought the product.
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
@@ -445,7 +445,7 @@ public class Paywall {
         if (!isHasUserBought) {
             Product product = new Product(productId);
             // Since he has not bought the product, we need to build the
-            // checkout snippet so that he can do the flow on the plenigo
+            // checkout snippet so that he can do the flow on the Frisbii Media
             // site and buy.
             CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
             String checkoutCode = builder.build();
@@ -466,7 +466,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -514,7 +514,7 @@ For PHP integration can use the `\plenigo\services\UserService::hasUserBought` m
 
 ```php
 <?php
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 $productId = 'EgLUrT56328991046641';
 // This method returns true if the user has already bought the product.
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
@@ -530,7 +530,7 @@ if($hasUserBought) {
 
 
 #### Server logic
-The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
+The first thing you have to do is configuring the [PHP SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the Frisbii Media paywall.
 
 ```php
 <?php
@@ -541,16 +541,16 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
 
-//Configure the PHP SDK: The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+//Configure the PHP SDK: The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", true);
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
     $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $prodToChkOut = new ProductId($productId);
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
@@ -569,7 +569,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -583,7 +583,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
             data-disable-metered="true"></script>
@@ -616,7 +616,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ## Server Side Metered Paywall
 A soft paywall(metered paywall)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 
-The first thing you have to do is enabling the metered paywall in the plenigo backend (Paywall-> Metered Settings).
+The first thing you have to do is enabling the metered paywall in the Frisbii Media backend (Paywall-> Metered Settings).
 After you have done this you can continue with the following step.
 
 1. Check if the user has free views for the product
@@ -627,11 +627,11 @@ After you have done this you can continue with the following step.
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-With SDKS
+With SDKs
 
 (A) + (B): [Java SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
-Without plenigo SDKS
+Without Frisbii Media SDKs
 
 (A) + (B): [Implementation without SDKs](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
@@ -645,13 +645,13 @@ The idea behind metered view functionality is demonstrated with the following ps
 |Parameter|Required|Value type|Description|
 |:--------|:-------|:---------|:----------|
 | cookieHeader     | yes     | string         | The cookie header |
-| productId     | yes     | string         | The product id from the plenigo backend string |
+| productId     | yes     | string         | The product id from the Frisbii Media backend string |
 
 For Java integration you  can use the `com.plenigo.sdk.services.MeterService#hasFreeViews` method for this purpose.
 ```java
 // We fill the request object with the appropriate get object and we get the Cookie header this way
 String cookieHeader = request.getHeader("Cookie");
-// Replace my_product_id with the product id from the plenigo backend
+// Replace my_product_id with the product id from the Frisbii Media backend
 String productId = "EgLUrT56328991046641";
 // This method returns true if the user has free views.
 boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader, productId);
@@ -664,10 +664,10 @@ if (hasFreeViews) {
 
 #### Use case 
 
-Use case for implementing plenigo metered paywall.
+Use case for implementing Frisbii Media metered paywall.
 
 #### Server logic
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the Frisbii Media paywall.
 
 
 ```java
@@ -682,7 +682,7 @@ public class MeteredPaywall {
     protected void handlePaywall(HttpServletRequest request, Model model) throws PlenigoException, InvalidDataException {
         String cookieHeader = request.getHeader("Cookie");
         boolean isHasUserBought;
-        // The product id from the plenigo backend.
+        // The product id from the Frisbii Media backend.
         String productId = "EgLUrT56328991046641";
         isHasUserBought = UserService.hasUserBought(productId, cookieHeader);
         model.addAttribute("showPaywall", false);
@@ -691,7 +691,7 @@ public class MeteredPaywall {
             if (!hasFreeViews) {
                 Product product = new Product(productId);
                 // Since he has not bought the product, we need to build the
-                // checkout snippet so that he can do the flow on the plenigo
+                // checkout snippet so that he can do the flow on the Frisbii Media
                 // site and buy.
                 Product product = new Product(productId);
                 CheckoutSnippetBuilder builder = new CheckoutSnippetBuilder(product);
@@ -715,7 +715,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -729,7 +729,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
         <title>New York City Reimagines How It Works</title>
-        <!-- import the Plenigo Javascript SDK
+        <!-- import the Frisbii Media Javascript SDK
                Let's use concrete values:
                company id = e.g. "23NuCmdPoiRRkQiCqP9Q"
         -->               
@@ -779,11 +779,11 @@ if($hasFreeViews) {
 
 #### Use case 
 
-Use case for implementing plenigo metered paywall.
+Use case for implementing Frisbii Media metered paywall.
 
 ##### Server logic
 
-The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the plenigo paywall.
+The first thing you have to do is configuring the [Java SDK](https://plenigo.github.io/sdks/php#configuration). After that you can implement the Frisbii Media paywall.
 
 ```php
 <?php
@@ -794,9 +794,9 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 use plenigo\services\MeterService;
 
-// The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company(e.g. 23NuCmdPoiRRkQiCqP9Q) id from the plengio backend.
+// The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company(e.g. 23NuCmdPoiRRkQiCqP9Q) id from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", false);
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
@@ -804,7 +804,7 @@ $hasFreeViews = MeterService::hasFreeViews();
 if (!$hasUserBought || !$hasFreeViews) {
     $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $prodToChkOut = new ProductId($productId);
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
@@ -821,7 +821,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -835,7 +835,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js">
     </script>
@@ -868,11 +868,11 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </body>
 </html>
 ```
-### Implementation without plenigo SDKs
+### Implementation without Frisbii Media SDKs
 
-If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [plenigo API](https://api.plenigo.com) by yourself.
+If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [Frisbii Media API](https://api.plenigo.com) by yourself.
 
-The metered views are counted by the JavaScript SDK and the plenigo System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
+The metered views are counted by the JavaScript SDK and the Frisbii Media System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
 
 Preferred way to handle the metered check is via cookie (name: plenig_view). But the JavaScript SDK also adds a parameter to the URL (meteredLimitReached=true). This parameter prevents the user from blocking cookies and cheat the PayWall this way.
 

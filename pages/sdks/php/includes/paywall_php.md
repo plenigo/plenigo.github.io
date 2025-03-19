@@ -14,7 +14,7 @@ You have to choose between three different paywall types:
 
 ## Server side Paywall
 
-**Note: The first thing you have to do is enabling the paywall in the plenigo backend (Paywall->Settings).** 
+**Note: The first thing you have to do is enabling the paywall in the Frisbii Media backend (Paywall->Settings).** 
 
 After you have done this you can continue with the following step.
 
@@ -26,7 +26,7 @@ For PHP integration can use the `\plenigo\services\UserService::hasUserBought` m
 
 ```php
 <?php
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media backend.
 $productId = 'EgLUrT56328991046641';
 // This method returns true if the user has already bought the product.
 $hasUserBought = \plenigo\services\UserService::hasUserBought($productId);
@@ -61,16 +61,16 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 
 
-//Configure the PHP SDK: The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the plengio backend.
+//Configure the PHP SDK: The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl) and the company id(e.g. 23NuCmdPoiRRkQiCqP9Q) from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", true);
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media Backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
 if ($hasUserBought === FALSE) {
     $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $prodToChkOut = new ProductId($productId);
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
@@ -93,7 +93,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -107,7 +107,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js"
             data-disable-metered="true"></script>
@@ -140,7 +140,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 ## Server Side Metered Paywall
 A soft paywall(metered paywall)  provides significant access to free content as a means of encouraging users to subscribe for access to premium content.
 
-**Note: The first thing you have to do is enabling the paywall in the plenigo backend (Paywall-> Metered Settings).** 
+**Note: The first thing you have to do is enabling the paywall in the Frisbii Media Backend (Paywall-> Metered Settings).** 
 
 After you have done this you can continue with the following step.
 
@@ -171,7 +171,7 @@ if($hasFreeViews) {
 
 #### Use case 
 
-Use case for implementing plenigo metered paywall.
+Use case for implementing Frisbii Media metered paywall.
 
 ##### Server logic
 
@@ -186,9 +186,9 @@ use plenigo\models\ProductId;
 use plenigo\services\UserService;
 use plenigo\services\MeterService;
 
-// The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company(e.g. 23NuCmdPoiRRkQiCqP9Q) id from the plengio backend.
+// The secret(e.g.Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddvj) and the company(e.g. 23NuCmdPoiRRkQiCqP9Q) id from the Frisbii Media backend.
 \plenigo\PlenigoManager::configure("Q11DfmzRQcQie3Pp3twzKO32HsV78TngrY2ddpl", "23NuCmdPoiRRkQiCqP9Q", true);
-// The_product_id from the plenigo backend.
+// The_product_id from the Frisbii Media Backend.
 $productId = "EgLUrT56328991046641";
 // This method returns true if the user has already bought the product.
 $hasUserBought = UserService::hasUserBought($productId);
@@ -196,7 +196,7 @@ $hasFreeViews = MeterService::hasFreeViews();
 if (!$hasUserBought || !$hasFreeViews) {
     $product = new ProductBase($productId);
     // Since he has not bought the product, we need to build the
-    // checkout snippet so that he can do the flow on the plenigo
+    // checkout snippet so that he can do the flow on the Frisbii Media
     // site and buy.
     $prodToChkOut = new ProductId($productId);
     $snippet = (new CheckoutSnippetBuilder($prodToChkOut))->build();
@@ -213,7 +213,7 @@ You will replace COMPANY_ID for the corresponding id of your company(e.g. 23NuCm
 
 By clicking on the “Buy now” button the Checkout flow will start.
 
-**Checkout flow from plenigo:**
+**Checkout flow from Frisbii Media:**
 
 1. User clicks on "Buy now" button. A login screen will appear, the user has to login in (the checkout flow is smart enough to identify when the user is not, and asks him to do so before).
 
@@ -227,7 +227,7 @@ By clicking on the “Buy now” button the Checkout flow will start.
 <html>
 <head>
     <title>New York City Reimagines How It Works</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript"
             src="https://static.plenigo.com/static_resources/javascript/23NuCmdPoiRRkQiCqP9Q/plenigo_sdk.min.js">
     </script>
@@ -260,13 +260,13 @@ By clicking on the “Buy now” button the Checkout flow will start.
 </body>
 </html>
 ```
-### Implementation without plenigo SDK
+### Implementation without Frisbii Media SDK
 
-If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [plenigo API](https://api.plenigo.com) by yourself.
+If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [Frisbii Media API](https://api.plenigo.com) by yourself.
 
-The metered views are counted by the JavaScript SDK and the plenigo System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
+The metered views are counted by the JavaScript SDK and the Frisbii Media System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
 
-Preferred way to handle the metered check is via cookie (name: plenig_view). But the JavaScript SDK also adds a parameter to the URL (meteredLimitReached=true). This parameter prevents the user from blocking cookies and cheat the PayWall this way.
+Preferred way to handle the metered check is via cookie (name: plenigo_view). But the JavaScript SDK also adds a parameter to the URL (meteredLimitReached=true). This parameter prevents the user from blocking cookies and cheat the PayWall this way.
 
 The are 2 things you have to do to implement a metered paywall.
 

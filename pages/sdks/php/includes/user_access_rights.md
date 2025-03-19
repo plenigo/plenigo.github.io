@@ -53,8 +53,8 @@ $companyId = 'COMPANY_ID';
 
 // .... some code that creates a user, checks login state, or something else
 
-// we assume the user is a user not managed by plenigo for the rest of this example
-// this user will be granted endless access to two products that are not managed by plenigo
+// we assume the user is a user not managed by Frisbii Media for the rest of this example
+// this user will be granted endless access to two products that are not managed by Frisbii Media
 // in real life your customer id and product ids will most likly be dynamic
 AccessService::grantUserAccess('MY_CUSTOMER_ONE', true, null, array('productOne', 'productTwo')); 
  

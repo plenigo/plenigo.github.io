@@ -5,7 +5,7 @@ permalink: /server_side_metered_paywall
 ---
 # Server Side Metered Paywall
 
-The first thing you have to do is enabling the metered paywall in the plenigo backend (Paywall-> Metered Settings).
+The first thing you have to do is enabling the metered paywall in the Frisbii Media backend (Paywall-> Metered Settings).
 After you have done this you can continue with the following step.
 
 1. Check if the user has free views for the product
@@ -16,17 +16,17 @@ After you have done this you can continue with the following step.
 
 ![Metered views](/assets/images/ci/PaywallEnabled .png)
 
-With SDKS
+With SDKs
 
 (A) + (B): [Java SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled), [PHP SDK](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
-Without plenigo SDKS
+Without Frisbii Media SDKs
 
 (A) + (B): [Implementation without SDKs](https://api.plenigo.com/metered_paywall.md#!/paywall/isPaywallEnabled)
 
 ## Implementation with SDKs
 
-The idea behind metered view functionality is demonstrated with the following pseudo code examples. If you do not know how to get the product id from the plenigo backend click the following link: [Get product id]()
+The idea behind metered view functionality is demonstrated with the following pseudo code examples. If you do not know how to get the product id from the Frisbii Media backend click the following link: [Get product id]()
 
 ### Java
 
@@ -39,7 +39,7 @@ You can use the `com.plenigo.sdk.services.MeterService#hasFreeViews` method for 
 ```java
 // We fill the request object with the appropriate get object and we get the Cookie header this way
 String cookieHeader = request.getHeader("Cookie");
-// Replaxe my_product_id with the product id from the plenigo backend
+// Replaxe my_product_id with the product id from the Frisbii Media backend
 String productId = "RgKUHT78563989856641";
 // This method returns true if the user has free views.
 boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader, requestQueryString);
@@ -54,7 +54,7 @@ The method `MeterService.hasFreeViews` returns true if the user has free views o
 
 #### Use case Java
 
-Use case for implementing plenigo metered paywall.
+Use case for implementing Frisbii Media metered paywall.
 
 ##### Server logic
 
@@ -63,7 +63,7 @@ Use case for implementing plenigo metered paywall.
 protected void handlePaywall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     //We fill the request object with the appropriate get object and we get the Cookie header this way
     String cookieHeader = request.getHeader("Cookie");
-    // Replace my_product_id with the product it from the plenigo backend  
+    // Replace my_product_id with the product it from the Frisbii Media backend  
     String productId = "RgKUHT78563989856641"; 
     //This method returns true if the user has free views.
     boolean hasFreeViews = MeterService.hasFreeViews(cookieHeader);
@@ -75,7 +75,7 @@ protected void handlePaywall(HttpServletRequest request, HttpServletResponse res
     if (!isNewsPaid) {
     Product prodToChkOut = new Product(productId);
     //Since he has not bought the product, we need to build the checkout snippet so that he can
-    //do the flow on the plenigo site and buy
+    //do the flow on the Frisbii Media site and buy
     String snippet = new CheckoutSnippetBuilder(prodToChkOut).build();
     //Set all the attributes that you are going to need, the snippet is a url that opens a dialog
     //initiating the checkout process
@@ -99,7 +99,7 @@ protected void handlePaywall(HttpServletRequest request, HttpServletResponse res
 <html>
 <head>
     <title>${id}</title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
  <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/${companyId}/plenigo_sdk.min.js" data-disable-metered="${disableMeter}"></script>
 </head>
 <body>
@@ -133,13 +133,13 @@ if($hasUserBought) {
 
 #### Use case PHP
 
-Use case for implementing plenigo metered paywall.
+Use case for implementing Frisbii Media metered paywall.
 
 ##### Server logic
 
 ```php
 <?php
-      // Replace my_product_id with the product it from the plenigo backend  
+      // Replace my_product_id with the product it from the Frisbii Media backend  
       $productId ="RgKUHT78563989856641";
       $returnPage = "news.php";
       //This method returns true if the user has already bought the
@@ -148,7 +148,7 @@ Use case for implementing plenigo metered paywall.
       if ($isNewsPaid === FALSE) {
       $product = new \plenigo\models\ProductBase($productId);
       //Since he has not bought the product, we need to build the
-      //checkout snippet so that he can do the flow on the plenigo
+      //checkout snippet so that he can do the flow on the Frisbii Media
       //site and buy
        $snippet = new CheckoutSnippetBuilder($prodToChkOut)->build();
       }
@@ -160,7 +160,7 @@ Use case for implementing plenigo metered paywall.
 <html>
 <head>
     <title><?php echo $pid; ?></title>
-    <!-- import the Plenigo Javascript SDK -->
+    <!-- import the Frisbii Media Javascript SDK -->
     <script type="application/javascript" src="https://www.plenigo.com/static_resources/javascript/<?php echo $companyId; ?>/plenigo_sdk.min.js"></script>
 </head>
 <body>
@@ -175,11 +175,11 @@ Use case for implementing plenigo metered paywall.
 </body>
 </html>
 ```
-## Implementation without plenigo SDKs
+## Implementation without Frisbii Media SDKs
 
-If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [plenigo API](https://api.plenigo.com) by yourself.
+If you are not able to use one of the existing SDKs you can also implement the metered paywall functionality of the [Frisbii Media API](https://api.plenigo.com) by yourself.
 
-The metered views are counted by the JavaScript SDK and the plenigo System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
+The metered views are counted by the JavaScript SDK and the Frisbii Media System. To block the user on the server side you still have to implement the functionality to show the Paywall if the user has reached his view limit. The exception to this case is if you are using the JavaScript only PayWall.
 
 Preferred way to handle the metered check is via cookie (name: plenig_view). But the JavaScript SDK also adds a parameter to the URL (meteredLimitReached=true). This parameter prevents the user from blocking cookies and cheat the PayWall this way.
 

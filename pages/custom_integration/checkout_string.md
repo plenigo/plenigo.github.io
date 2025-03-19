@@ -6,37 +6,37 @@ permalink: /checkout_string
 
 
 The [checkout functionality of the JavaScript-SDK](/sdks/javascript#checkout---start-a-plenigo-checkout) request an JWT as `paymentData` value.
-This string can be received from the product management page of the plenigo merchant backend or be generated on the fly. The JWT string itself can handle
+This string can be received from the product management page of the Frisbii Media merchant backend or be generated on the fly. The JWT string itself can handle
 different configurations so it is suggested to generate it on the server side.
 
 Base information:
 
 * JWT data is formatted the following way {key}=>{value}&{key}=>{value}&{key}=>{value}...
-* The key to use is your company secret from the plenigo merchant backend.
+* The key to use is your company secret from the Frisbii Media merchant backend.
 * Hash algorithm used is HS256
 
-The JWT data can include the following parameter. The mandatory parameters change if the plenigo is managed by the plenigo backend or
-if you create a product dynamically on the fly by every checkout. Non plenigo managed products can only be one time purchases. Subscriptions must be
-managed over the plenigo merchant backend.
+The JWT data can include the following parameter. The mandatory parameters change if the Frisbii Media is managed by the Frisbii Media backend or
+if you create a product dynamically on the fly by every checkout. Non Frisbii Media managed products can only be one time purchases. Subscriptions must be
+managed over the Frisbii Media merchant backend.
 
-1. Parameters plenigo managed product
+1. Parameters Frisbii Media managed product
 
     |Parameter|Mandatory|Description|
     |:--------|:--------|:----------|
-    |pi|Yes|plenigo product id of the product in the plenigo merchant backend|
+    |pi|Yes|Frisbii Media product id of the product in the Frisbii Media merchant backend|
     |ts|Yes|flag indicating if checkout should run in test mode, must be `true` or `false`|
     |pr|No|Price of the product (only usable for single purchases, not for subscriptions)|
     |cu|No|Currency identifier - ISO 4217 (only usable for single purchases, not for subscriptions)|
     |pt|No|Type identifier that indicates the type of the product - Important for tax rates (available values below)|
     |ti|No|Title to overwrite product title with|
-    |ci|No|plenigo category id of the category in the plenigo merchant backend to provide additional settings to the product|
+    |ci|No|Frisbii Media category id of the category in the Frisbii Media merchant backend to provide additional settings to the product|
     |sso|No|OAuth2 redirect url if OAuth2 should be used|
     |csrf|No|OAuth2 csrf token|
     |rs|No|Flag indicating if the checkout is for a product renewal - necessary for payment methods that don't support auto recurring e.g. SOFORT-Überweisung (only usable for subscription products)|
     |fp|No|Flag indicating if the checkout should be a failed payment checkout process that allows the user to close his open debts|
     |sc|No|Shipping costs (only usable for single purchases, not for subscriptions)|
-    |om|No|Flag indicating if you want to use a plenigo managed product but still want to overwrite the price, the title, and the product id - the plenigo product only delivers the base information that are going to be overwritten dynamically|
-    |pir|No|Product id to overwrite the plenigo product id with. Only usable in combination with the `om`-Flag|
+    |om|No|Flag indicating if you want to use a Frisbii Media managed product but still want to overwrite the price, the title, and the product id - the Frisbii Media product only delivers the base information that are going to be overwritten dynamically|
+    |pir|No|Product id to overwrite the Frisbii Media product id with. Only usable in combination with the `om`-Flag|
     |si|No|Unique id of the price segment to use - the price segment passed here will be used no matter of user country or anything else|
     |pa|No|Flag indicating if the customers billing address should be pre filled with the name and first name saved by the personal user data|
 2. Parameters foreign product
@@ -49,7 +49,7 @@ managed over the plenigo merchant backend.
     |cu|Yes|Currency identifier - ISO 4217|
     |pt|Yes|Type identifier that indicates the type of the product - Important for tax rates (available values below)|
     |ti|Yes|Product title|
-    |ci|No|plenigo category id of the category in the plenigo merchant backend to provide additional settings to the product|
+    |ci|No|Frisbii Media category id of the category in the Frisbii Media merchant backend to provide additional settings to the product|
     |sso|No|OAuth2 redirect url if OAuth2 should be used|
     |csrf|No|OAuth2 csrf token|
     |sc|No|Shipping costs|

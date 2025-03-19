@@ -1,4 +1,4 @@
-It is possible to use your own registration and login process and only login users into plenigo via so called “Login Tokens”.
+It is possible to use your own registration and login process and only login users into Frisbii Media via so called “Login Tokens”.
 
 ### Register an external user
 
@@ -6,7 +6,7 @@ It is possible to use your own registration and login process and only login use
 
 ![General Workflow External User Management](/assets/images/ci/ExternalUser.png)
 
-(A) Register external user in the plenigo system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
+(A) Register external user in the Frisbii Media system: -> [Register External User](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
 #### Implementation with SDKs  
 
@@ -33,14 +33,14 @@ It is possible to use your own registration and login process and only login use
 
 #### Implementation without SDKs 
 
-Another possibility to register an external user into the plenigo system - can be a direct call to our REST API:
+Another possibility to register an external user into the Frisbii Media system - can be a direct call to our REST API:
 
 * [Register external user](https://api.plenigo.com/#!/external_user_management/registerExternalUser)
 
 
 ### Change email address of an existing user
 
-It is very important for the plenigo system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the plenigo system about the changes.
+It is very important for the Frisbii Media system to know the correct email address of the user. Otherwise invoices, etc. cannot sent to the user. If the user or one of your support agents changes the email of the user in your user management system you have to inform the Frisbii Media system about the changes.
 
 #### Implementation with SDKs
 
@@ -71,7 +71,7 @@ Another possibility to change an email address of an existing user - can be a di
 
 **PHP**
 
-To indicate a successful login to the plenigo system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed  e.g. to the `bulid()`- method of the \plenigo\builders\CheckoutSnippetBuilder`.
+To indicate a successful login to the Frisbii Media system you need to create a so called "Login Token". This login token is valid for 5 minutes and can be passed  e.g. to the `bulid()`- method of the \plenigo\builders\CheckoutSnippetBuilder`.
 
 #### Implementation without SDKs 
 
@@ -93,16 +93,16 @@ sdk fehlt
 
 **PHP**
 
-The secret (e.g. "RYsDfmNzTWcQiO8PpLtwzNP8LHsV154TngrY5SSvj") and the company-ID (e.g. "51NuCmdDRTZZDkQqCqP2Q") of the plenigo merchant backend.  
+The secret (e.g. "RYsDfmNzTWcQiO8PpLtwzNP8LHsV154TngrY5SSvj") and the company-ID (e.g. "51NuCmdDRTZZDkQqCqP2Q") of the Frisbii Media merchant backend.  
 ```php
 <?php
 require_once 'libs/php_sdk/plenigo/Plenigo.php';
 
-// 1.Step Configure the plenigo Manager:
+// 1.Step Configure the Frisbii Media Manager:
 $secret = 'SECRET';
 $companyId = 'COMPANY_ID';
 
-//configure plenigo:
+//configure Frisbii Media:
 \plenigo\PlenigoManager::configure($secret, $companyId);
 
 // 2. Get the customer id
@@ -122,7 +122,7 @@ To check if a customer has bought a product follow these steps:
 
 ```php
 <?php
-// 1.Step Configure the plenigo Manager:
+// 1.Step Configure the Frisbii Media Manager:
 $secret = 'SECRET';
 $companyId = 'COMPANY_ID';
 
