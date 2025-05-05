@@ -200,8 +200,9 @@ Just put the Frisbii Media Javascript call somewhere in your html.
     
     
 <!-- please replace {your_companyId} with your companyId -->
-   <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" data-disable-redirect="true" data-lang="de"></script>
-   
+   <script src="https://static.frisbii-media-stage.com/web/v1/frisbii_media.min.js"
+                                    data-company-id="{your_companyId}"
+                                    data-lang="en"></script>   
    <script>
 // Checkout finishes with a javascript-Event one have to listen to
 document.addEventListener("plenigo.PurchaseSuccess", function(e) {
@@ -379,7 +380,6 @@ In the Frisbii Media backend, or with additional configration `customCSS` you si
    display: inherit;
 }
 ```
-
 
 ## Using Frisbii Media SSO
 
