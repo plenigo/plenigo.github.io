@@ -10,6 +10,25 @@ Please note, that javascript embeds may slow down your page. Thats why we design
    <div id="plenigoCheckout"></div>
    <!-- please replace {your_companyId} with your companyId -->
    <!-- for implementing in production environment -->
+   <script src="https://static.frisbii-media.com/web/v1/frisbii_media.min.js"
+                                    data-company-id="{your_companyId}"
+                                    data-lang="en"></script>
+
+   <!-- for implementing in stage environment only -->
+   <script src="https://static.frisbii-media-stage.com/web/v1/frisbii_media.min.js"
+                                    data-company-id="{your_companyId}"
+                                    data-lang="en"></script>
+```
+#### Upgrade from legacy plenigo v3 checkout (before May 2025)
+We changed the complete URL, please change it.
+Please note, we removed companyId from SDK-path. 
+We also removed some parameters and changed spelling of attribute **data-company-id**. You have to changed it in your implementation too.
+
+#### Installation of legacy plenigo v3 checkout (before May 2025)
+```html
+   <div id="plenigoCheckout"></div>
+   <!-- please replace {your_companyId} with your companyId -->
+   <!-- for implementing in production environment -->
    <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js"
                                     data-disable-redirect="true"
                                     data-companyId="{your_companyId}"
