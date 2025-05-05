@@ -393,11 +393,9 @@ The installation is equal to Frisbii Media Javascript-SDK.
 ```html
    <div id="plenigoLogin"></div>
    <!-- please replace {your_companyId} with your companyId -->
-   <script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" 
-           data-disable-redirect="true" 
-           data-sso="true"
-           data-companyId="{your_companyId}"
-           data-lang="de"></script>
+   <script src="https://static.frisbii-media-stage.com/web/v1/frisbii_media.min.js"
+                                    data-company-id="{your_companyId}"
+                                    data-lang="en"></script>
 ```
 
 ### Starting Registration
@@ -921,11 +919,9 @@ For security reasons it is not recommended to work directly with this session st
 <div id="plenigoSnippets"></div>
 
 <!-- please replace {your_companyId} with your companyId -->
-<script src="https://static.plenigo.com/static_resources/javascript/{your_companyId}/plenigo_sdk.min.js" 
-        data-disable-redirect="true" 
-        data-sso="true"
-        data-companyId="{your_companyId}"
-        data-lang="de"></script>
+<script src="https://static.frisbii-media-stage.com/web/v1/frisbii_media.min.js"
+                                 data-company-id="{your_companyId}"
+                                 data-lang="en"></script>
 <script>
    // use Frisbii Media session to create transfer token: https://api.plenigo-stage.com/#operation/createTransferToken
    new plenigo.Snippets(plenigoTransferToken, {elementId: "plenigoSnippets"}).start();
