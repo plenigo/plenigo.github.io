@@ -315,8 +315,15 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">checkoutDesignId</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">CD_R0MWF7YXMJ13TNDED</td>
-    <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant.</td>
+    <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant. (in legacy checkout only)</td>
   </tr>
+     <tr>
+    <td class="tg-0pky">VariantUniqueId</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">fastTrack</td>
+    <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant. (available in new checkout since may 2025)</td>
+  </tr>
+
 </tbody>
 </table>
 ### Passing additional data through the checkout
