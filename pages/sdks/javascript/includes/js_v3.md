@@ -321,7 +321,7 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">VariantUniqueId</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">fastTrack</td>
-    <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant. (available in new checkout since may 2025)</td>
+    <td class="tg-0pky">Use the `VariantUniqueId` if you want to overwrite an individual checkout variant created in the Checkout Editor. (Available in the new checkout since May 2025)</td>
   </tr>
 
 </tbody>
