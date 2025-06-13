@@ -317,11 +317,17 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">CD_R0MWF7YXMJ13TNDED</td>
     <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant. (in legacy checkout only)</td>
   </tr>
-     <tr>
+  <tr>
     <td class="tg-0pky">VariantUniqueId</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">fastTrack</td>
     <td class="tg-0pky">Use the `VariantUniqueId` if you want to overwrite an individual checkout variant created in the Checkout Editor. (Available in the new checkout since May 2025)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">title</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">Customer Self Service</td>
+    <td class="tg-0pky">Use `title` do set title attribute of iframe due to accessibility requirements. If not set it falls back to defaults.</td>
   </tr>
 
 </tbody>
