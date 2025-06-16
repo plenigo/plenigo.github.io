@@ -643,275 +643,278 @@ The different pages are:
     <th class="tg-0pky"> <br>Checkout </th>
     <th class="tg-0pky"> <br>SSO </th>
     <th class="tg-0pky"> <br>Description </th>
-    <th class="tg-0pky"> <br>category </th>
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td class="tg-0pky"> <br>  defaultAddressesForm </td>
+  </tr>
+    <td class="tg-0pky"> <br>defaultSelectForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Enter an address </td>
-    <td class="tg-0pky"> <br>data </td>
+    <td class="tg-0pky"> <br>Select an existing address</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultAddressesSelect                  </td>
+    <td class="tg-0pky"> <br>defaultAddressShowForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Select an existing address </td>
-    <td class="tg-0pky"> <br>data </td>
+    <td class="tg-0pky"> <br>Enter an address</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentAmazonForm                </td>
+    <td class="tg-0pky"> <br>defaultAgeCheckForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Start amazon payment </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Processing screen for age check</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentAmazonSuccess             </td>
+    <td class="tg-0pky"> <br>defaultAgeCheckShowForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Submit amazon payment </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Enter data for age check</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentCreditcardPayoneForm      </td>
+    <td class="tg-0pky"> <br>defaultCrossSellingShowForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Start PayOne Payment with credit card </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show cross selling form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentCreditcardStripeForm      </td>
+    <td class="tg-0pky"> <br>defaultConnectShowForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Start Stripe Payment with credit card </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show connect form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentCreditcardSubmit          </td>
+    <td class="tg-0pky"> <br>defaultPaymentExistingSubmitForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Submit credit card form </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show existing payment method submit form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultCrossSellingForm                 </td>
+    <td class="tg-0pky"> <br>defaultPaymentSelectForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Cross Selling formular </td>
-    <td class="tg-0pky"> <br>Subscription </td>
+    <td class="tg-0pky"> <br>Show payment selection form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultCrossSellingSubmit               </td>
+    <td class="tg-0pky"> <br>defaultPaymentSubmitForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Cross Selling submit </td>
-    <td class="tg-0pky"> <br>Subscription </td>
+    <td class="tg-0pky"> <br>Show payment submit form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentExistingSubmit            </td>
+    <td class="tg-0pky"> <br>defaultPaymentRedirectForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Existing payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Execute payment redirect if payment method requires a redirect</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentIdealSubmit               </td>
+    <td class="tg-0pky"> <br>defaultPaymentSuccessForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>iDeal payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show payment success form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentIdealForm                 </td>
+    <td class="tg-0pky"> <br>defaultPaymentVoucherForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>iDeal payment form </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show payment voucher form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentInvoiceSubmit             </td>
+    <td class="tg-0pky"> <br>defaultPaymentWaitForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Invoice payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show waiting page for successful payment</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentInvoiceForm               </td>
+    <td class="tg-0pky"> <br>defaultPurchaseOrderIndicatorForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Invoice payment form </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show form to enter purchase order indicator</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentAddressForm               </td>
+    <td class="tg-0pky"> <br>defaultBlockedCountryForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Enter an address </td>
-    <td class="tg-0pky"> <br>data </td>
+    <td class="tg-0pky"> <br>Show page that country is blocked for purchase</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentPaypalForm                </td>
+    <td class="tg-0pky"> <br>defaultConfigurationFailedForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>PayPal payment form </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show configuration failure page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentPaypalSuccess             </td>
+    <td class="tg-0pky"> <br>defaultEmergencyModeForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>PayPal payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show emergency mode enabled page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentSepaSubmit                </td>
+    <td class="tg-0pky"> <br>defaultInvalidDomainForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Sepa payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show page that the checkout must not be used under this domain</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentSepaForm                  </td>
+    <td class="tg-0pky"> <br>defaultMissingOffersForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Sepa payment form </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show page that there are no offers available for sale</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultVoucherForm                      </td>
+    <td class="tg-0pky"> <br>defaultPageNotFoundForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Voucher input form </td>
-    <td class="tg-0pky"> <br>voucher </td>
+    <td class="tg-0pky"> <br>Show not found page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPaymentZeroSubmit                </td>
+    <td class="tg-0pky"> <br>defaultPaymentMethodFailedForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Zero payment submit </td>
-    <td class="tg-0pky"> <br>payment </td>
+    <td class="tg-0pky"> <br>Show payment method failed page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultConnectForm                      </td>
+    <td class="tg-0pky"> <br>defaultOfferSalesStoppedForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Corporate Account connecting form </td>
-    <td class="tg-0pky"> <br>Corporate account </td>
+    <td class="tg-0pky"> <br>Show page that sales for this specific offer has been stopped</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultConnectSkip                      </td>
+    <td class="tg-0pky"> <br>defaultPurchaseAlreadyFinishedForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Corporate Account skip connect process </td>
-    <td class="tg-0pky"> <br>Corporate account </td>
+    <td class="tg-0pky"> <br>Show page that product is already bought</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultConnectValidate                  </td>
+    <td class="tg-0pky"> <br>defaultPurchaseFinishedForm</td>
     <td class="tg-0pky"> <br>x </td>
     <td class="tg-0pky"> <br> </td>
-    <td class="tg-0pky"> <br>Corporate Account validate connect key </td>
-    <td class="tg-0pky"> <br>Corporate account </td>
+    <td class="tg-0pky"> <br>Show purchase finished page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultLoginForm                        </td>
-    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>defaultSessionOutdatedForm</td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Login form </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Show page that session is outdated</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultLoginLoginVerifyTwoFactor        </td>
-    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>defaultTooManyRequestsForm</td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Two factor form </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Show page that there were too many requests</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPasswordForgottenResendMail      </td>
-    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>defaultErrorForm</td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Resend mail in password forgotten process </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Show error page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPasswordForgottenPasswordReset   </td>
+    <td class="tg-0pky"> <br>defaultLoginForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Reset password form </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Login form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPasswordForgottenVerificationCode </td>
+    <td class="tg-0pky"> <br>defaultAdditionalDataStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Reset password verification code form </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Page requesting additional data from the user if necessary, e.g. username, terms and conditions</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPasswordForgottenPasswordSet       </td>
+    <td class="tg-0pky"> <br>defaultAdditionalNameStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Reset password form </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Page requesting a firstname and lastname if necessary</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultPasswordForgottenVerifyTwoFactor </td>
+    <td class="tg-0pky"> <br>defaultLoginTwoFactorStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Two factor form in password forgotten process </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Page requesting two factor code</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultRegisterForm                     </td>
+    <td class="tg-0pky"> <br>defaultLoginSuccessForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Register process form </td>
-    <td class="tg-0pky"> <br>Sso </td>
+    <td class="tg-0pky"> <br>Login success page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultRegisterResendMail               </td>
+    <td class="tg-0pky"> <br>defaultLoginSessionsForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Register process resend mail </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Form shown if there are too many active sessions</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultStepAdditonalDataForm            </td>
+    <td class="tg-0pky"> <br>defaultPasswordForgottenEmailForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Additional data form, called, if company account needs some more data from customer </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Password forgotten form</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultLoginStepSessionForm             </td>
+    <td class="tg-0pky"> <br>defaultPasswordForgottenVerifyStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Verify sessions after login </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Password forgotten verification code page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultLoginStepSessionRemoveAll        </td>
+    <td class="tg-0pky"> <br>defaultPasswordForgottenTwoFactorStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Remove alle sessions after login </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Password forgotten two factor code page</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultStepSuccessRegister              </td>
+    <td class="tg-0pky"> <br>defaultPasswordForgottenPasswordStepForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Successfully registered </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Enter new password step</td>
   </tr>
   <tr>
-    <td class="tg-0pky"> <br>  defaultStepSuccessLogin                 </td>
+    <td class="tg-0pky"> <br>defaultRegistrationForm</td>
     <td class="tg-0pky"> <br> </td>
     <td class="tg-0pky"> <br>x </td>
-    <td class="tg-0pky"> <br>Successfully logged in </td>
-    <td class="tg-0pky"> <br>sso </td>
+    <td class="tg-0pky"> <br>Show registration form</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultRegistrationWithIdentifierForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show registration form with merge identifier</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultRegistrationVerifyStepForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show registration form verification code step</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultConfigurationFailedForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show configuration failed page</td>
+  </tr>
+ <tr>
+    <td class="tg-0pky"> <br>defaultEmergencyModeForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show emergency mode enabled page</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultInvalidDomainForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show page that the checkout must not be used under this domain</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultPageNotFoundForm</td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br>Show not found page</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> <br>defaultErrorForm</td>
+    <td class="tg-0pky"> <br>x </td>
+    <td class="tg-0pky"> <br> </td>
+    <td class="tg-0pky"> <br>Show error page</td>
   </tr>
 </tbody>
 </table>
