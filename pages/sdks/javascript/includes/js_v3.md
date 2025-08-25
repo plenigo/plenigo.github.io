@@ -1020,6 +1020,14 @@ You can chose from these values: `SHOW`, `HIDE` and `EDIT`. Here is the complete
 
 new plenigo.Snippets(plenigoTransferToken, snippetConfig).start();
 ```
-
-
-
+### Order or hide tiles on dashboard page
+You can easily order and hide tiles of selfservice overview. The option is `orderTiles`. It can have these values: `PERSONAL_DATA`, `USER_ADMINISTRATION`, `PAYMENT`, `ADDRESS`, `INVOICES`, `SUBSCRIPTIONS`, `WALLETS`. 
+Here is the complete example:
+```javascript
+   let snippetConfig = {
+       elementId: "plenigoSnippets",
+       orderTiles: ['PERSONAL_DATA', 'PAYMENT', 'SUBSCRIPTIONS']
+   };
+new plenigo.Snippets(plenigoTransferToken, snippetConfig).start();
+```
+This only will show these three tiles.
