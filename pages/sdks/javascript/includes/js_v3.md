@@ -318,12 +318,6 @@ new plenigo.Checkout(purchase.purchaseId, config).start();
     <td class="tg-0pky">Use `checkoutDesignId` if you want to overwrite checkout design variant. (in legacy checkout only)</td>
   </tr>
   <tr>
-    <td class="tg-0pky">VariantUniqueId</td>
-    <td class="tg-0pky"></td>
-    <td class="tg-0pky">fastTrack</td>
-    <td class="tg-0pky">Use the `VariantUniqueId` if you want to overwrite an individual checkout variant created in the Checkout Editor. (Available in the new checkout since May 2025)</td>
-  </tr>
-  <tr>
     <td class="tg-0pky">title</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky">Customer Self Service</td>
@@ -574,45 +568,6 @@ document.addEventListener("plenigo.PurchaseSuccess", function(e) {
 new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).login();
 ```
 To start with registration instead of login, please use `new plenigo.Checkout("$purchase.purchaseId", { elementId: "plenigoCheckout" }).register();`.
-
-
-### Multi user products
-Frisbii Media enables you to sell products for families or B2B customers. These products work with an invitation. Once a multi user product is bought, customer can invite people to use it together with himself. You can start invitation process with Frisbii Media javascript SDK.
-
-#### Start invitation
-The invitation process is called `connection`. You connect a permission to use a product with a person. The process itself will start either login or registration process. Thats why it is an enhancement of these already known processes. Connect process starts like this:
-```javascript
-// starting with login
-new plenigo.SSO({
-    elementId: 'plenigoCheckout',
-    connect: 'USER',
-  }).login();
-```
-```javascript
-// starting with registration
-new plenigo.SSO({
-    elementId: 'plenigoCheckout',
-    connect: 'USER',
-  }).register();
-```
-You can prefill the token for your customers to skip this step in the process:
-```javascript
-// starting with registration, prefill process and skip token form
-new plenigo.SSO({
-    elementId: 'plenigoCheckout',
-    connect: 'USER',
-    connectToken: 'E97876wef8EFGRWR',
-  }).register();
-```
-If customer is already logged in, you can skip login during connection process. You need to [create a transferToken](https://api.plenigo-stage.com/#operation/createTransferToken) to pass it into the javascript method:
-```javascript
-// starting with registration, prefill process and skip token form
-new plenigo.SSO({
-    elementId: 'plenigoCheckout',
-    connect: 'USER',
-    transferToken: 'Jhge6jhgIRBMkjhe9'
-  }).register();
-```
 
 ### Using Web-Analytics
 Since the Frisbii Media checkout is running in an iFrame, you can't track the whole process in your analytics tool. We offer the ability to track all page loads inside of the iFrame by using Javascript Events.
